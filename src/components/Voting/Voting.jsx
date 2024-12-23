@@ -21,7 +21,7 @@ function Voting() {
     try {
       // Отправляем запрос на сервер
       const response = await fetch(
-        `http://localhost:5000/api/fighter/${trimmedName}`
+        `/api/fighter/${trimmedName}`
       );
 
       if (response.ok) {
