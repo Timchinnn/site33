@@ -7,7 +7,7 @@ function ProfileUser() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
   // console.log(localStorage.getItem("profilePhotoUrl"))
-  // console.log(profilePhoto);
+  console.log(profilePhoto);
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
