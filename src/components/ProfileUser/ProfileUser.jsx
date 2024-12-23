@@ -6,7 +6,7 @@ function ProfileUser() {
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
-
+  console.log(localStorage.getItem("profilePhotoUrl"))
   console.log(profilePhoto);
   useEffect(() => {
     const fetchUserData = async () => {
