@@ -53,7 +53,7 @@ function ProfileUser() {
               (localStorage.getItem("profilePhotoUrl") || "").slice(-4) ===
               "null"
                 ? "/Avatar.png"
-                : `https://1408493-cd47309.tw1.ru${localStorage.getItem("profilePhotoUrl")}`
+                : "localStorage.getItem("profilePhotoUrl")}"
             }
             onClick ={console.log(localStorage.getItem("profilePhotoUrl"))}
             alt="Profile"
