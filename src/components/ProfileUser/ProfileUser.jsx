@@ -55,12 +55,12 @@ function ProfileUser() {
                 ? "/Avatar.png"
                 : localStorage.getItem('profilePhotoUrl')
             }
-            onClick ={console.log(localStorage.getItem("profilePhotoUrl"))}
+            
             alt="Profile"
           />
 
           <div>
-            <h2>{userName}</h2>
+            <h2 onClick ={console.log(localStorage.getItem("profilePhotoUrl"))}>{userName}</h2>
             <p>Легендарный донатер</p>
           </div>
         </div>
