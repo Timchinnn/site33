@@ -6,8 +6,8 @@ function ProfileUser() {
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
-  console.log(localStorage.getItem("profilePhotoUrl"))
-  console.log(profilePhoto);
+  // console.log(localStorage.getItem("profilePhotoUrl"))
+  // console.log(profilePhoto);
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
@@ -55,6 +55,7 @@ function ProfileUser() {
                 ? "/Avatar.png"
                 : localStorage.getItem("profilePhotoUrl")
             }
+            onClick ={console.log(localStorage.getItem("profilePhotoUrl"))}
             alt="Profile"
           />
 
