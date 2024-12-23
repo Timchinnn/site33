@@ -3,3 +3,9 @@
   to = "http://91.186.198.179:3000/api/:splat"
   status = 200
   force = true
+
+[[redirects]]
+ from = "/uploads/×"
+ to = "http://91.186.198.179:3000/uploads/:splat"
+ status = 200
+ force = true
