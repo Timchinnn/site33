@@ -1,0 +1,469 @@
+@font-face {
+  font-family: "Bebas Neue Cyrillic";
+  src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
+}
+
+img {
+  width: 28px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.container {
+  width: 91vw;
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+}
+.backArrow {
+  display: flex;
+  align-items: center;
+}
+.backArrow h1 {
+  margin: 0;
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 3vw, 35px);
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 0.4vh;
+  padding-left: 1vw;
+}
+.search {
+  width: 19px;
+  height: 19px;
+  padding-bottom: 4px;
+}
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottomNav button {
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.container {
+  padding-bottom: 82px;
+}
+.bottomNav p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+.bottomNav img {
+  /* padding-left: 8px; */
+}
+.catalogItem {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+}
+
+.catalogImage {
+  margin-bottom: 4px; /* Отступ между изображением и текстом */
+}
+
+.catalogText {
+  margin: 0; /* Убираем стандартные отступы */
+}
+.dropdownContent {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #e8e7ed4d;
+  margin-bottom: 1vh;
+  height: 8vh;
+  border-top-width: 1px; /* Задаем ширину границы */
+  border-style: solid; /* Задаем стиль границы */
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ef5050 50.5%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-image-slice: 1; /* Указываем, как изображение должно быть нарезано */
+  border-bottom: none;
+}
+.name {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.time {
+  width: 4vw;
+  height: 4vw;
+  padding: 8px;
+  border-radius: 50px;
+  background: #ff003326;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ff0033;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 27px;
+  min-height: 27px;
+}
+.timeDate {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #95959b;
+  width: 62px;
+}
+.mdiFire {
+  position: absolute;
+}
+.selectTour {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #707579;
+}
+.container h1 {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.date {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.currentVoting {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.currentVotings div {
+  width: 43.8vw;
+  /* height: 74px; */
+  background-color: #e8e7ed;
+  border-radius: 12px;
+  display: inline-table;
+}
+
+.currentVotings div :first-child {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  /* width: 164px; */
+}
+
+.currentVotings div :last-child {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  /* padding-top: 2px; */
+  padding-bottom: 7px;
+}
+.currentVotings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.currentVotings > div {
+  /* flex: 1 1 50%; Каждый элемент будет занимать 50% ширины контейнера */
+  box-sizing: border-box; /* Учитывать отступы и границы в ширине элемента */
+  /* padding: 10px; Добавить отступы для элементов */
+  margin-bottom: 0px;
+}
+.topTournamentDonations {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+.topTournamentDonations p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+  padding-bottom: 2px;
+}
+.topTournamentDonations :first-child :last-child {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #707579;
+}
+.topTournamentDonations :last-child :first-child {
+  text-align: end;
+}
+hr {
+  border-color: #0f0f0f0f;
+}
+.vote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vote button {
+  width: 83%;
+  max-width: 357px;
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  height: 42px;
+}
+.vote img {
+  width: 23px;
+}
+.imgDonateBlack {
+  background: black;
+  width: 10.6vw;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1px;
+}
+.modalOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Добавлено для покрытия всей страницы */
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  max-height: 80vh;
+  /* overflow-y: auto; */
+}
+.topModalHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topModalHead div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.choose {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.choose > div {
+  /* width: calc(50% - 10px);
+  margin-bottom: 10px; */
+}
+.modalContent p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.chooseFan {
+  width: 90vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0f0f0f0f;
+  padding: 9px;
+  margin-bottom: 8px;
+}
+.choosesTp {
+  width: 38vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0f0f0f0f;
+  padding: 14px;
+  margin-bottom: 8px;
+}
+.chooseFan,
+.choosesTp {
+  cursor: pointer;
+  /* padding: 10px; */
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.categorySelected {
+  background-color: #808080;
+  color: white;
+}
+
+.selectionBlock {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.selectionBlock.visible {
+  height: auto;
+  margin-top: 10px;
+}
+
+.selectionContent {
+  padding: 15px;
+  background-color: #fefefe;
+  border-radius: 5px;
+}
+.selectionContent button {
+  width: 100%;
+  max-width: 357px;
+  border: none;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  height: 42px;
+}
+.selectionContent select {
+  border: none;
+  background-color: rgba(15, 15, 15, 0.06);
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 10px;
+  max-width: 343px;
+  width: 100%;
+  height: 40px;
+  font-size: clamp(16px, 3vw, 35px);
+  margin-bottom: 22px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAA1ISURBVHgB7d1bblRXGobhtW1DJKRIzKCdEXRm0PEM0iOIfBMJcRNGEBgBiSKE1LkgPQN6BCEzoEfQnkFzFQkbu7o2xs3Jhzrsw/r/9TwSAoSwBLbqe2vtqu1SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgNp1pRGPHz+7u7t78u3u7s7fSll8vViU/a4rd/s/W/761fLXR8v/jpfLn1+8fr37rwcPDl8VAMLz+H+59AHw+PHT/du3d39YLLrvLj7hq+l+Oz4+efTgwb2jAkA4Hv+vlzYA+uL74os3Py7r7oeyheUXzU+vX+89ciIAEIPH/9WkDIB31ff78p+3XwbRHS1r8MBpAEDdPP6vbqckM/wnv7dYfsxbvz958o+vCwBV8vi/nlQnAON88j+yPAZaHNy///3LAkA1xn/8z3cSkOoEYOTx791dfnwnAQAVmeDJX7k4CehfX1CSSBMAT578+uPI439BBABUYprxv7DY719cWJJIcQng/Atg7z9lWi4HAMxo2vF/7/j4zVcZLgWkOAG4dWvvYZmekwCAmcw1/r3lpYAUpwDhTwD66zG3b7/5b5mPkwCACc05/u+8Oj7e+yr6/QHCnwDcvn3ybZmXkwCAiVQw/r23txYuwYUPgMWi+6bMTwQAjKyS8X/r/PsKxJbhNQB/KXUQAQAjqWn8zy3CP9aHD4CuKzV9EkQAwMDqG/+39ktwGU4AarspgwgAGEil498Lf0OgdN8LoBIiAGBLFY9/ChkCoNa3YYgAgA0FGP/w3yI4wbsAylGplwgAWFOQZ/5HJbgEJwBn/y51EwEAK4pz7N+Fv/lb+AA4O+telPqJAIAbRLrm33XlRQkufACcnt56XmJcixEBAFeI9oK/rjv5owQXPgD6ezGfnS3+WWIQAQCfiPdq/+63e/d8N8Aq7O2d/lTiEAEA70R8q9/OzsmjkkCKAOhL7Oys+7nEIQKA5sV8n3/3c4Zn/700NwJ682b3YSmLoxKHCACaFXT8j+7c6bcmhzQB0L8WYGfn9EAEANQt6vgvj/4PDg8Pw98A6EKqWwH3xzIiAKBeEcd/sejfaXb29yxH/xe6ktDTp0/3z87C3T96+QW2OLh///vwN5cAuEzU8e+6nI/NKQOgJwIA6mH865M2AHoiAGB+xr9OqQOgJwIA5mP865U+AHoiAGB6xr9uTQRATwQATMf416+ZAOiJAIDxGf8YmgqAnggAGI/xj6O5AOiJAIDhGf9YmgyAnggAGI7xj6fZAOiJAIDtGf+Ymg6AnggA2Jzxj6v5AOiJAID1Gf/YBMA7IgBgdcY/PgHwAREAcDPjn4MA+IQIALia8c9DAFxCBAB8zvjnIgCuIAIA3jP++QiAa4gAAOOflQC4gQgAWmb88xIAKxABQIuMf24CYEUiAGiJ8c9PAKxBBAAtMP5tEABrEgFAZsa/HQJgAyIAyMj4t0UAbEgEAJkY//YIgC2IACAD498mAbAlEQBEZvzbJQAGIAKAiIx/2wTAQEQAEInxRwAMSAQAERh/egJgYCIAqJnx54IAGIEIAGpk/PmQABiJCABqYvz5lAAYkQgAamD8uYwAGJkIAOZk/LmKAJiACADmYPy5jgCYiAgApmT8uYkAmJAIAKZg/FmFAJiYCADGZPxZlQCYgQgAxmD8WYcAmIkIAIZk/FmXAJiRCACGYPzZhACYmQgAtmH82ZQAqIAIADZh/NmGAKiECADWYfzZlgCoiAgAVmH8GYIAqIwIAK5j/BmKAKiQCAAuY/wZkgColAgAPmT8GZoAqJgIAHrGnzEIgMqJAGib8WcsAiAAEQBtMv6MSQAEIQKgLcafsQmAQEQAtMH4MwUBEIwIgNyMP1MRAAGJAMjJ+DMlARCUCIBcjD9TEwCBiQDIwfgzBwEQnAiA2Iw/cxEACYgAiMn4MycBkIQIgFiMP3MTAImIAIjB+FMDAZCMCIC6GX9qIQASEgFQJ+NPTQRAUiIA6mL8qY0ASEwEQB2MPzUSAMmJAJiX8adWAqABIgDmYfypmQBohAiAaRl/aicAGiICYBrGnwgEQGNEAIzL+BOFAGiQCIBxGH8iEQCNEgEwLONPNAKgYSIAhmH8iUgANE4EwHaMP1EJAEQAbMj4E5kA4C0RAOsx/kQnAPg/EQCrMf5kIAD4iAiA6xl/shAAfEYEwOWMP5kIAC4lAuBjxp9sBABXEgFwzviTkQDgWiKA1hl/shIA3EgE0CrjT2YCgJWIAFpj/MlOALAyEUArjD8tEACsRQSQnfGnFQKAtYkAsjL+tEQAsBERQDbGn9YIADYmAsjC+NMiAcBWRADRGX9aJQDYmgggKuNPywQAgxABRGP8aZ0AYDAigCiMPwgABiYCqJ3xh3MCgMGJAGpl/OE9AcAoRAC1Mf7wMQHAaEQAtTD+8DkBwKhEAHMz/nA5AcDoRABzMf5wNQHAJEQAUzP+cD0BwGREAFMx/nAzAcCkRABjM/6wGgHA5EQAYzH+sDoBwCxEAEMz/rAeAcBsRABDMf6wPgHArEQA2zL+sBkBwOxEAJsy/rA5AUAVRADrMv6wHQFANUQAqzL+sD0BQFVEADcx/jAMAUB1RABXMf4wHAFAlUQAnzL+MCwBQLVEABeMPwxPAFA1EYDxh3EIAKonAtpl/GE8AoAQREB7jD+MSwAQhghoh/GH8QkAQhEB+Rl/mIYAIBwRkJfxh+kIAEISAfkYf5iWACAsEZCH8YfpCQBCEwHxGX+YhwAgPBEQl/GH+QgAUhAB8Rh/mJcAIA0REIfxh/kJAFIRAfUz/lAHAUA6IqBexh/qIQBISQTUx/hDXQQAaYmAehh/qI8AIDURMD/jD3USAKQnAuZj/KFeAoAmiIDpGX+omwCgGSJgOsYf6icAaIoIGJ/xhxgEAM0RAeMx/hCHAKBJImB4xh9iEQA0SwQMx/hDPAKApomA7Rl/iEkA0DwRsDnjD3EJACgiYBPGH2ITAPCOCFid8Yf4BAB8QATczPhDDgIAPiECrmb8IQ8BAJcQAZ8z/pCLAIAriID3jD/kIwDgGiLA+ENWAgBu0HIEGH/ISwDAClqMAOMPuQkAWFFLEWD8IT8BAGtoIQKMP7RBAMCaMkeA8Yd2CADYQMYIMP7QFgEAG8oUAcYf2iMAYAsZIsD4Q5sEAGwpcgQcH5++Mv7QJgEAAwgcAa+MP7RJAMBAgkZAGMYfhiUAYEAiYBzGH4YnAGBgImBYxh/GIQBgBCJgGMYfxiMAYCQiYDvGH8YlAGBEImAzxh/GJwBgZCJgPcYfpiEAYAIiYDXGH6YjAGAiIuB6xh+mJQBgQiLgcsYfpicAYGIi4GPGH+YhAGAGIuCc8Yf5CACYSesRYPxhXgIAZtRqBBh/mJ8AgJm1FgHGH+ogAKACrUSA8Yd6CACoRPYIMP5QFwEAFckaAcYf6iMAoDLZIsD4Q50EAFQoSwQYf6iXAIBKRY8A4w91EwBQsagRYPyhfgIAKhctAow/xCAAIIAoEWD8IQ4BAEHUHgHGH2IRABBIrRFg/CEeAQDB1BYBxh9iEgAQUC0RYPwhLgEAQc0dAcYfYhMAENhcEWD8IT4BAMFNHQHGH3IQAJDAVBFg/CEPAQBJjB0Bxh9y2SlACvfu3Tva2Tk9WE71URlcd2T8IRcnAJDM8CcB3TIsTg76wChAGgIAkvrll18f7uyUH8tWup/v3Nl9eHh4+KoAqQgASKw/DTg93XvYdeW7Vf/O+bX+7vnyWf8jz/ohLwEADXj27NndP/88+Xax6L5Z/vavyx/7yyi42/9ZP/jLn5bX+LuXp6dnf3z55a3nnvEDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwPz+BydjF/SXvJO3AAAAAElFTkSuQmCC);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 26px;
+  padding-right: 30px;
+}
+.selectionContent select:focus {
+  outline: none;
+}

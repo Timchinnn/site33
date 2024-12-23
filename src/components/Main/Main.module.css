@@ -1,0 +1,350 @@
+@font-face {
+  font-family: "Bebas Neue Cyrillic";
+  src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
+}
+
+img {
+  width: 28px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.container {
+  width: 91vw;
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+}
+.backArrow {
+  display: flex;
+  align-items: center;
+}
+.backArrow h1 {
+  margin: 0;
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 3vw, 35px);
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 0.4vh;
+  padding-left: 1vw;
+}
+
+.iconsContainer {
+  display: flex;
+}
+.notification {
+  padding-right: 2vw;
+}
+.search {
+  width: 19px;
+  height: 19px;
+  padding-top: 4px;
+}
+/*  */
+.viewersDecide {
+  color: rgba(255, 255, 255, 1);
+  font-family: "Bebas Neue Cyrillic", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.viewersBlock {
+  background: linear-gradient(291.04deg, #ff0033 0%, #99001f 101.64%);
+  width: 31.6vw;
+  height: 14.7vh;
+  border-radius: 8px;
+  margin-right: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navigationMenu {
+  display: flex;
+  align-items: center;
+  padding-top: 4vh;
+}
+
+.donateLeaders {
+  background: linear-gradient(291.04deg, #ff0033 0%, #99001f 101.64%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  font-family: "Bebas Neue Cyrillic", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.leadersBlock {
+  background: #e8e7ed;
+  box-shadow: 0px 4px 15px 0px #ff003333 inset;
+  width: 31.6vw;
+  height: 14.7vh;
+  border-radius: 8px;
+  /* margin-right: 3vw; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.votingBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 31.6vw;
+  height: 14.7vh;
+  background-image: url("fire-fon.png");
+  background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь блок */
+  background-position: center; /* Центрирует изображение внутри блока */
+  border-radius: 8px;
+  margin-right: 3vw;
+}
+.hotVoting {
+  font-family: Bebas Neue Cyrillic;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: black;
+  padding-top: 2vh;
+}
+.sportsContainer img {
+  width: 72px;
+}
+.sportsContainer p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-top: 1vh;
+}
+
+.sportsContainer {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-x: hidden;
+}
+.sportsContainer::-webkit-scrollbar {
+  display: none;
+}
+.sportsContainer div {
+  margin-right: 3vw;
+}
+.topMatchesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topMatchesHeader img {
+  width: 20px;
+  padding-top: 1vh;
+}
+.game {
+  display: flex;
+  align-items: center;
+  flex: 0 1 calc(50% - 10px); /* Каждый элемент занимает 50% ширины минус отступы */
+  margin-bottom: 20px; /* Отступ между рядами */
+  box-sizing: border-box;
+}
+.game img {
+  width: 11.1vw;
+}
+.games p {
+  margin: 0;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.participants {
+  height: 5.6vh;
+  padding-left: 2vw;
+  padding-top: 1vh;
+}
+.games {
+  display: flex;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+  justify-content: space-between; /* Распределяет элементы по доступному пространству */
+}
+.referralProgram {
+  height: 24vw;
+  background-color: #e8e7ed;
+  display: flex;
+  align-items: center;
+  padding: 11px;
+}
+.referralText {
+}
+.referralProgram h2 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.08em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.referralProgram p {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 297px;
+}
+.referralProgramimg {
+  background-color: #0f0f0f0f;
+  padding: 1vw;
+}
+.topFightersSection img {
+  width: 40px;
+}
+.fighterItem {
+  display: flex;
+  align-items: center;
+}
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.headerSection p {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #95959b;
+}
+.headerSection h2 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.fightersList p {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 8px;
+}
+.fightersList {
+  display: flex;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
+  justify-content: space-between;
+}
+.fighterItem {
+  flex: 0 1 calc(50% - 10px); /* Каждый элемент занимает 50% ширины минус отступы */
+  margin-bottom: 20px; /* Отступ между рядами */
+  box-sizing: border-box;
+}
+.topFightersSection {
+  height: 157px;
+  background-color: #0f0f0f0f;
+  padding: 11px;
+  padding-top: 3px;
+  margin-top: 12px;
+}
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottomNav button {
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.container {
+  padding-bottom: 82px;
+}
+.bottomNav p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+.bottomNav img {
+  /* padding-left: 8px; */
+}
+.catalogItem {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+}
+
+.catalogImage {
+  margin-bottom: 4px; /* Отступ между изображением и текстом */
+}
+
+.catalogText {
+  margin: 0; /* Убираем стандартные отступы */
+}

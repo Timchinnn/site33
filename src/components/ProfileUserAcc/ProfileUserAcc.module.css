@@ -1,0 +1,278 @@
+@font-face {
+  font-family: "Bebas Neue Cyrillic";
+  src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
+}
+
+img {
+  width: 28px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.container {
+  width: 91vw;
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+}
+.backArrow {
+  display: flex;
+  align-items: center;
+}
+.backArrow h1 {
+  margin: 0;
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-size: clamp(16px, 3vw, 35px);
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 0.4vh;
+  padding-left: 1vw;
+}
+.search {
+  width: 19px;
+  height: 19px;
+  padding-bottom: 4px;
+}
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottomNav button {
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.container {
+  padding-bottom: 82px;
+}
+.bottomNav p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+.bottomNav img {
+  /* padding-left: 8px; */
+}
+.catalogItem {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+}
+
+.catalogImage {
+  margin-bottom: 4px; /* Отступ между изображением и текстом */
+}
+
+.catalogText {
+  margin: 0; /* Убираем стандартные отступы */
+}
+.container div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 40px; /* Изменено */
+  height: 24px; /* Изменено */
+  background: grey;
+  display: block;
+  border-radius: 12px; /* Изменено для соответствия новым размерам */
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+label:after {
+  content: "";
+  position: absolute;
+  top: 2px; /* Изменено для центрирования */
+  left: 2px; /* Изменено для центрирования */
+  width: 20px; /* Изменено */
+  height: 20px; /* Изменено */
+  background: #fff;
+  border-radius: 10px; /* Изменено для соответствия новым размерам */
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #bada55;
+}
+
+input:checked + label:after {
+  left: calc(100% - 2px); /* Изменено */
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 30px; /* Изменено */
+}
+.photoUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profilePhoto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.uploadButton {
+  padding: 8px 16px;
+  background-color: #e8e7ed;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.uploadPhoto p {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.modalOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Добавлено для покрытия всей страницы */
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  max-height: 80vh;
+  /* overflow-y: auto; */
+}
+.topModalHead div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalContent input {
+  width: 94%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f0f;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 16px;
+}
+.modalContent button {
+  width: 99%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f;
+  color: white;
+  margin-top: 9px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.passwordinput {
+  margin-bottom: 5px;
+}
+.modalContent select {
+  border: none;
+  background-color: rgba(15, 15, 15, 0.06);
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 10px;
+  width: 99%;
+  height: 40px;
+  font-size: clamp(16px, 3vw, 35px);
+  margin-bottom: -8px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("./chevron-down.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 26px;
+  padding-right: 30px;
+  margin-bottom: 7px;
+}
+.modalContent select:focus {
+  outline: none;
+}
