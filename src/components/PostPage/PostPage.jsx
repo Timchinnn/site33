@@ -334,7 +334,7 @@ const PostPage = () => {
             <img
               src={
                 fighterData.photo_url
-                  ? `http://localhost:5000${fighterData.photo_url}`
+                  ? `${fighterData.photo_url}`
                   : "Avatar.png"
               }
               alt="User Avatar"
@@ -377,7 +377,7 @@ const PostPage = () => {
                   <img
                     src={
                       comment.photo_url
-                        ? `http://localhost:5000${comment.photo_url}`
+                        ? `${comment.photo_url}`
                         : "/Avatar.png"
                     }
                     alt="User Avatar"
