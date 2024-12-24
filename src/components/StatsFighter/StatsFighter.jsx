@@ -435,7 +435,7 @@ const handleMessageButtonClick = async () => {
           </div>
           <button 
   className={styles.inputButton} 
-  onClick={handleMessageButtonClick}
+  onClick={setShowMessageModal}
 >
   Ввести сообщение
 </button>
