@@ -433,11 +433,8 @@ const handleMessageButtonClick = async () => {
             <p className={styles.greyText}> {fighterData.discipline} </p>
             <p className={styles.greyText}> {fighterData.record} </p>
           </div>
-          <button 
-  className={styles.inputButton} 
-  onClick={setShowMessageModal}
->
-            {fighterData.msg}
+<button className={styles.inputButton} onClick={setShowMessageModal}>
+  {fighterData.msg || "Ввести сообщение"}
 </button>
           <div className={styles.donations}>
             <div>
