@@ -3,9 +3,30 @@ import styles from "./StatsFighter.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
   const [showMessageModal, setShowMessageModal] = useState(false);
-  const handleMessageButtonClick = () => {
-  setShowMessageModal(true);
+const handleMessageButtonClick = async () => {
+  try {
+    const response = await fetch("http://localhost:5000/api/messages", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        senderId: localStorage.getItem("userId"),
+        receiverId: fighterData.id,
+        content: messageText,
+        userType: userType
+      })
+    });
+
+    if (response.ok) {
+      setShowMessageModal(false);
+      setMessageText(""); // очищаем поле после отправки
+    }
+  } catch (error) {
+    console.error("Error sending message:", error); 
+  }
 };
+  const [messageText, setMessageText] = useState("");
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   // console.log(userType);
@@ -673,14 +694,15 @@ function StatsFighter() {
           />
         </div>
       </div>
-      <input
-        type="text"
-        placeholder="Введите текст сообщения"
-        className={styles.modalInput}
-      />
+<input
+  type="text"
+  value={messageText}
+  onChange={(e) => setMessageText(e.target.value)}
+  placeholder="Введите сообщение"
+  className={styles.passwordinput}
+/>
       <button onClick={() => {
-        // Логика сохранения сообщения
-        setShowMessageModal(false);
+        handleMessageButtonClick();
       }}>
         Сохранить
       </button>
