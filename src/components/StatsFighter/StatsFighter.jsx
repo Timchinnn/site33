@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./StatsFighter.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
+  const handleMessageButtonClick = () => {
+  setShowMessageModal(true);
+};
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   // console.log(userType);
@@ -408,7 +411,12 @@ function StatsFighter() {
             <p className={styles.greyText}> {fighterData.discipline} </p>
             <p className={styles.greyText}> {fighterData.record} </p>
           </div>
-          <button className={styles.inputButton}>Ввести сообщение</button>
+          <button 
+  className={styles.inputButton} 
+  onClick={handleMessageButtonClick}
+>
+  Ввести сообщение
+</button>
           <div className={styles.donations}>
             <div>
               <p>Донаты</p>
@@ -651,6 +659,33 @@ function StatsFighter() {
           <p className={styles.catalogText}>Профиль</p>
         </div>
       </div>
+      {showMessageModal && (
+  <div className={styles.modalOverlay}>
+    <div className={styles.modalContent}>
+      <div className={styles.topModalHead}>
+        <div>
+          <h2>Введите сообщение</h2>
+          <img 
+            src="x-circle.png" 
+            alt="#" 
+            onClick={() => setShowMessageModal(false)} 
+          />
+        </div>
+      </div>
+      <input
+        type="text"
+        placeholder="Введите текст сообщения"
+        className={styles.modalInput}
+      />
+      <button onClick={() => {
+        // Логика сохранения сообщения
+        setShowMessageModal(false);
+      }}>
+        Сохранить
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 }
