@@ -542,3 +542,60 @@ img {
   width: 28px;
   /* удалить или закомментировать pointer-events: none; */
 }
+.modalOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Добавлено для покрытия всей страницы */
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  max-height: 80vh;
+  /* overflow-y: auto; */
+}
+.topModalHead div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalContent input {
+  width: 94%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f0f;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 16px;
+}
+.modalContent button {
+  width: 99%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f;
+  color: white;
+  margin-top: 9px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
