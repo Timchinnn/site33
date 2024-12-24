@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./StatsFighter.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
+  const [showMessageModal, setShowMessageModal] = useState(false);
   const handleMessageButtonClick = () => {
   setShowMessageModal(true);
 };
