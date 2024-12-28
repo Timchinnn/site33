@@ -14,14 +14,14 @@ function ProfileUser() {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user/profile/${userId}`
+          `/api/user/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
           console.log(data);
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
           // console.log("Profile photo:", data.userData.photo_url);
-          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
+          const fullPhotoUrl = `${data.userData.photo_url}`;
           setUserName(data.userData.profile_name);
           setBalance(data.userData.balance);
           localStorage.setItem("profilePhotoUrl", fullPhotoUrl);

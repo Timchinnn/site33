@@ -80,7 +80,7 @@ function RoleFan() {
       passwordFromRegister,
     };
 
-    fetch("http://localhost:5000/api/rolefan", {
+    fetch("/api/rolefan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

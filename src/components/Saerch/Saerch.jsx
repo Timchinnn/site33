@@ -14,7 +14,7 @@ function Saerch() {
   useEffect(() => {
     const fetchFighters = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/fighters");
+        const response = await fetch("/api/fighters");
         if (response.ok) {
           const data = await response.json();
           setFighters(data);

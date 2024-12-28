@@ -28,7 +28,7 @@ function Voting() {
     try {
       // Отправляем запрос на сервер
       const response = await fetch(
-        `http://localhost:5000/api/fighter/${trimmedName}`
+        `/api/fighter/${trimmedName}`
       );
 
       if (response.ok) {
@@ -65,7 +65,7 @@ function Voting() {
     const fetchUserVotes = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
+          `/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -92,7 +92,7 @@ function Voting() {
 
     try {
       // Проверяем голоса с учетом userType
-      const response = await fetch("http://localhost:5000/api/check-votes", {
+      const response = await fetch("/api/check-votes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +118,7 @@ function Voting() {
       }
 
       // Сохраняем голос с userType
-      await fetch("http://localhost:5000/api/vote", {
+      await fetch("/api/vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

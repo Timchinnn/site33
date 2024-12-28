@@ -65,7 +65,7 @@ function ProfileFighterAcc() {
       formData.append("userId", localStorage.getItem("userId"));
       try {
         const response = await fetch(
-          "http://localhost:5000/api/fighter/upload-photo",
+          "/api/fighter/upload-photo",
           {
             method: "POST",
             body: formData,
@@ -73,7 +73,7 @@ function ProfileFighterAcc() {
         );
         if (response.ok) {
           const data = await response.json();
-          const fullPhotoUrl = `http://localhost:5000${data.photoUrl}`;
+          const fullPhotoUrl = `${data.photoUrl}`;
           setProfilePhoto(fullPhotoUrl);
         }
       } catch (error) {
@@ -97,7 +97,7 @@ function ProfileFighterAcc() {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/api/fighter/profile/${userId}`,
+          `/api/fighter/profile/${userId}`,
           {
             method: "GET",
             headers: {
@@ -124,7 +124,7 @@ function ProfileFighterAcc() {
     try {
       // Обновляем страну
       const countryResponse = await fetch(
-        `http://localhost:5000/api/user/profile/${userId}`,
+        `/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -141,7 +141,7 @@ function ProfileFighterAcc() {
       // Если обновление страны прошло успешно, обновляем регион
       if (countryResponse.ok) {
         const regionResponse = await fetch(
-          `http://localhost:5000/api/user/profile/${userId}`,
+          `/api/user/profile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -175,7 +175,7 @@ function ProfileFighterAcc() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/profile/${userId}`,
+        `/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
