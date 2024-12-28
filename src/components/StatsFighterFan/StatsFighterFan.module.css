@@ -563,11 +563,12 @@ img {
   max-height: 80vh;
   /* overflow-y: auto; */
 }
-.topModalHead div {
+/* .topModalHead div {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+  margin: 5px;
+} */
 .modalContent input {
   width: 94%;
   height: 40px;
@@ -599,20 +600,193 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
-.donationProgressContainer {
-  width: 100%;
-  margin: 15px 0;
+.votings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.donationProgressContainer p {
+.votingReit .votingDonat {
+  width: 44vw;
+  height: 52px;
+}
+.votingReit p {
   font-family: Inter;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 15px;
-  letter-spacing: -0.04em;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 23vw;
+  min-width: 82px;
+}
+.votingDonat p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: white;
+  width: 23vw;
+}
+.votingDonat {
+  background-color: black;
+  width: 44vw;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.votingReit {
+  background: #e8e7ed;
+  width: 44vw;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.choose {
+  display: flex;
+  justify-content: space-between;
+  width: 101%;
+  margin-right: 1vw;
+}
+.choosesTp {
+  width: 38vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0f0f0f0f;
+  padding: 14px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.categorySelected {
+  background: white;
+  color: #808080;
+}
+
+.modalContent p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.selectionContent {
+  width: 100%;
+}
+.namesBut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.donateButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.donateButtonsGrid button {
+  background: #0f0f0f0f;
+  color: black;
+}
+.donateButton {
+  padding: 10px;
+  border: 1px solid #e8e7ed;
+  background: grey;
+  border-radius: 5px;
+}
+
+.donateButton.selected {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.customAmountButton {
+  width: 100%;
+  padding: 12px;
+  background: #0f0f0f0f !important;
+  color: black !important;
+  border: none;
+  border-radius: 5px;
+}
+.customAmountButton.selected {
+  background: black !important;
+  color: white !important;
+  border: none;
+}
+.donateCounts p {
+  text-align: left;
+}
+.donateCount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.balanceNow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f0f0f0f;
+  padding: 0 8px;
+}
+.visa {
+  width: 58px;
+  height: 31px;
+}
+.master {
+  width: 51px;
+  height: 41px;
+}
+.mir {
+  width: 58px;
+  height: 36px;
+}
+.sbp {
+  width: 66px;
+  height: 36px;
+}
+.halva {
+  width: 69px;
+  height: 29px;
+}
+.banks img {
+  padding-right: 2px;
+}
+.banks img :last-child {
+  padding-right: 0px;
+}
+.noneInput {
+  width: 0px !important;
+  height: 0px !important;
+}
+.autoSupport {
+  display: flex;
+  align-items: center;
+}
+.autoSupportToggleInput {
+  display: flex;
+}
+.autoSupport p {
+  padding-left: 8px;
+}
+.donationProgressContainer {
+  width: 100%;
+  margin: 15px 0;
+}
+
 .donationProgressBar {
   width: 100%;
   height: 24px;
@@ -649,16 +823,30 @@ img {
   font-size: 12px;
   color: #95959b;
 }
-.modalOverlay p {
+.donationProgressContainer p {
   font-family: Inter;
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 18px;
-  letter-spacing: -0.03em;
-  text-align: left;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
-.modalOverlay button {
-  margin-bottom: 15px;
+.balanceNow.selected {
+  border: 2px solid #000;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.banks.active {
+  opacity: 1;
+}
+
+.banks:not(.active) {
+  opacity: 0.5;
+}
+
+.selected {
+  border: 2px solid #000;
+  border-radius: 4px;
 }

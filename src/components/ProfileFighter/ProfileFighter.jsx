@@ -6,6 +6,10 @@ function ProfileFighter() {
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
+  const [fighterName, setFighterName] = useState("");
+  const [fighterData, setFighterData] = useState([]);
+  // fighterData
+  const [balance, setBalance] = useState(0);
 
   console.log(profilePhoto);
   useEffect(() => {
@@ -13,15 +17,24 @@ function ProfileFighter() {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `/api/fighter/profile/${userId}`
+          `http://localhost:5000/api/fighter/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
+
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
           console.log("Profile photo:", data.userData.photo_url);
-          const fullPhotoUrl = `${data.userData.photo_url}`;
-          setUserName(data.userData.first_name);
+          console.log("Profile photo:", data);
+          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
+          console.log(data);
+          setUserName(`${data.userData.name} ${data.userData.surname}`);
+          setFighterName(
+            `${data.userData.first_name} ${data.userData.last_name}`
+          );
+          setBalance(data.userData.balance);
+          setFighterData(data);
           localStorage.setItem("profilePhotoUrl", fullPhotoUrl);
+          console.log(data);
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -44,7 +57,12 @@ function ProfileFighter() {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
         <div className={styles.nameAvatar}>
@@ -64,7 +82,20 @@ function ProfileFighter() {
         </div>
         <div className={styles.achievement}>
           <h3>Профиль спортсмена</h3>
-          <img src="forward.png" alt="" />
+          {fighterName && fighterData && fighterData.userData.fighter_id ? (
+            <img
+              src="forward.png"
+              alt=""
+              onClick={() =>
+                navigate("/StatsFighter", {
+                  state: {
+                    fighterName: fighterName,
+                    fighterData: fighterData,
+                  },
+                })
+              }
+            />
+          ) : null}
         </div>
         {/* <div className={styles.sportsContainer}>
           <img src="Frame 9261.png" alt="#" />
@@ -89,7 +120,7 @@ function ProfileFighter() {
               <img src="cash-stack.png" alt="" />
               <p>Баланс</p>
             </div>{" "}
-            <p class="subscriptions-amount">1060₽ </p>
+            <p class="subscriptions-amount">{balance}₽ </p>
           </div>
           <div>
             <img src="lucide_tickets.png" alt="" />

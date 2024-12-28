@@ -65,7 +65,7 @@ function ProfileFighterAcc() {
       formData.append("userId", localStorage.getItem("userId"));
       try {
         const response = await fetch(
-          "/api/fighter/upload-photo",
+          "http://localhost:5000/api/fighter/upload-photo",
           {
             method: "POST",
             body: formData,
@@ -73,7 +73,7 @@ function ProfileFighterAcc() {
         );
         if (response.ok) {
           const data = await response.json();
-          const fullPhotoUrl = `${data.photoUrl}`;
+          const fullPhotoUrl = `http://localhost:5000${data.photoUrl}`;
           setProfilePhoto(fullPhotoUrl);
         }
       } catch (error) {
@@ -97,7 +97,7 @@ function ProfileFighterAcc() {
 
       try {
         const response = await fetch(
-          `/api/fighter/profile/${userId}`,
+          `http://localhost:5000/api/fighter/profile/${userId}`,
           {
             method: "GET",
             headers: {
@@ -124,7 +124,7 @@ function ProfileFighterAcc() {
     try {
       // Обновляем страну
       const countryResponse = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -141,7 +141,7 @@ function ProfileFighterAcc() {
       // Если обновление страны прошло успешно, обновляем регион
       if (countryResponse.ok) {
         const regionResponse = await fetch(
-          `/api/user/profile/${userId}`,
+          `http://localhost:5000/api/user/profile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -175,7 +175,7 @@ function ProfileFighterAcc() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -200,6 +200,14 @@ function ProfileFighterAcc() {
       console.error("Error updating profile:", error);
     }
   };
+  const handleLogout = () => {
+    // Очищаем данные пользователя из localStorage
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userType");
+
+    // Перенаправляем на страницу входа
+    navigate("/");
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -218,7 +226,12 @@ function ProfileFighterAcc() {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
         <h2>Аккаунт</h2>
@@ -250,17 +263,17 @@ function ProfileFighterAcc() {
           />
         </div>
         <h3>Персональная информация</h3>
-        <div onClick={() => toggleModal("first_name")}>
+        <div onClick={() => toggleModal("name")}>
           <p>Имя</p>
-          <p>{userData.first_name}</p>
+          <p>{userData.name}</p>
         </div>
-        <div onClick={() => toggleModal("last_name")}>
+        <div onClick={() => toggleModal("surname")}>
           <p>Фамилия</p>
-          <p>{userData.last_name}</p>
+          <p>{userData.surname}</p>
         </div>
-        <div onClick={() => toggleModal("nickname")}>
+        <div onClick={() => toggleModal("nick")}>
           <p>Псевдоним</p>
-          <p>{userData.nickname}</p>
+          <p>{userData.nick}</p>
         </div>
         <div onClick={() => toggleModal("country")}>
           <p>Регион/Страна</p>
@@ -303,7 +316,7 @@ function ProfileFighterAcc() {
             <label htmlFor="votingSwitch">Toggle</label>
           </div>
         </div>
-        <h3>Выйти из аккаунта</h3>
+        <h2 onClick={handleLogout}>Выйти из аккаунта</h2>
       </div>
       <div className={styles.bottomNav}>
         <div

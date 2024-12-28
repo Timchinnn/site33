@@ -18,6 +18,9 @@ import ProfileUserAcc from "./ProfileUserAcc/ProfileUserAcc";
 import StatsFighter from "./StatsFighter/StatsFighter";
 import PostPage from "./PostPage/PostPage";
 import Notifications from "./Notifications/Notifications";
+import StatsFighterFan from "./StatsFighterFan/StatsFighterFan";
+import Saerch from "./Saerch/Saerch";
+
 const Router = () => {
   const ProtectedSignin = () => {
     const userId = localStorage.getItem("userId");
@@ -50,6 +53,8 @@ const Router = () => {
         <Route element={<ProfileUserAcc />} path="/profileuseracc" />
         <Route element={<StatsFighter />} path="/StatsFighter" />
         <Route element={<Notifications />} path="/Notifications" />
+        <Route element={<StatsFighterFan />} path="/StatsFighterFan" />
+        <Route element={<Saerch />} path="/Saerch" />
       </Routes>
     </BrowserRouter>
   );

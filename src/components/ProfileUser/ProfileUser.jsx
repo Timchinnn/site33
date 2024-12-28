@@ -6,21 +6,24 @@ function ProfileUser() {
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
-  // console.log(localStorage.getItem("profilePhotoUrl"))
+  const [balance, setBalance] = useState(0);
+
   console.log(profilePhoto);
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `/api/user/profile/${userId}`
+          `http://localhost:5000/api/user/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
-          console.log("Profile photo:", data.userData.photo_url);
-          const fullPhotoUrl = `${data.userData.photo_url}`;
+          // console.log("Profile photo:", data.userData.photo_url);
+          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
           setUserName(data.userData.profile_name);
+          setBalance(data.userData.balance);
           localStorage.setItem("profilePhotoUrl", fullPhotoUrl);
         }
       } catch (error) {
@@ -44,7 +47,12 @@ function ProfileUser() {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
         <div className={styles.nameAvatar}>
@@ -53,14 +61,13 @@ function ProfileUser() {
               (localStorage.getItem("profilePhotoUrl") || "").slice(-4) ===
               "null"
                 ? "/Avatar.png"
-                : localStorage.getItem('profilePhotoUrl')
+                : localStorage.getItem("profilePhotoUrl")
             }
-            
             alt="Profile"
           />
 
           <div>
-            <h2 onClick ={console.log(localStorage.getItem("profilePhotoUrl"))}>{userName}</h2>
+            <h2>{userName}</h2>
             <p>Легендарный донатер</p>
           </div>
         </div>
@@ -91,7 +98,7 @@ function ProfileUser() {
               <img src="cash-stack.png" alt="" />
               <p>Баланс</p>
             </div>{" "}
-            <p className="subscriptions-amount">1060₽ </p>
+            <p className="subscriptions-amount">{balance}₽ </p>
           </div>
           <div>
             <img src="lucide_tickets.png" alt="" />

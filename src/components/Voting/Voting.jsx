@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Voting.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Voting() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
+  const [selectedFighter, setSelectedFighter] = useState("");
 
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
@@ -13,7 +14,13 @@ function Voting() {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+  useEffect(() => {
+    if (showModal && matches.length > 0) {
+      setSelectedFighter(matches[0].competitor_1);
+    }
+  }, [showModal, matches]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  // console.log(selectedCategories);
   const handleFighterClick = async (fighterName) => {
     // Убираем последние 3 символа из имени бойца
     const trimmedName = fighterName.slice(0, -3);
@@ -21,14 +28,14 @@ function Voting() {
     try {
       // Отправляем запрос на сервер
       const response = await fetch(
-        `/api/fighter/${trimmedName}`
+        `http://localhost:5000/api/fighter/${trimmedName}`
       );
 
       if (response.ok) {
         const fighterData = await response.json();
 
         // Перенаправляем на страницу статистики с полученными данными
-        navigate("/StatsFighter", {
+        navigate("/StatsFighterFan", {
           state: {
             fighterName: fighterName,
             fighterData: fighterData,
@@ -50,6 +57,95 @@ function Voting() {
       }
     });
   };
+  const [userVotes, setUserVotes] = useState({});
+  const userId = localStorage.getItem("userId");
+
+  // Функция для проверки голосов пользователя при загрузке компонента
+  useEffect(() => {
+    const fetchUserVotes = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const votedCategories = {};
+          data.votes.forEach((vote) => {
+            votedCategories[vote.category_id] = vote.fighter_id;
+          });
+          setUserVotes(votedCategories);
+        }
+      } catch (error) {
+        console.error("Error fetching user votes:", error);
+      }
+    };
+
+    if (userId && tournament) {
+      fetchUserVotes();
+    }
+  }, [userId, tournament, userType]);
+
+  // Модифицируем функцию голосования
+  // В handleVote функции
+  const handleVote = async (fighterId) => {
+    if (!selectedCategories.length) return;
+
+    try {
+      // Проверяем голоса с учетом userType
+      const response = await fetch("http://localhost:5000/api/check-votes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId,
+          tournamentId: tournament.id,
+          categories: selectedCategories,
+          userType: localStorage.getItem("userType"), // Добавляем userType
+        }),
+      });
+
+      const { votedCategories } = await response.json();
+
+      // Фильтруем категории только для текущего userType
+      const newCategories = selectedCategories.filter(
+        (cat) => !votedCategories.includes(cat)
+      );
+
+      if (newCategories.length === 0) {
+        alert("Вы уже проголосовали во всех выбранных категориях");
+        return;
+      }
+
+      // Сохраняем голос с userType
+      await fetch("http://localhost:5000/api/vote", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          userId,
+          tournamentId: tournament.id,
+          categories: newCategories,
+          fighterId,
+          userType: localStorage.getItem("userType"),
+        }),
+      });
+
+      // Обновляем UI
+      const newVotes = { ...userVotes };
+      newCategories.forEach((cat) => {
+        newVotes[cat] = fighterId;
+      });
+      setUserVotes(newVotes);
+
+      setShowModal(false);
+      setSelectedCategories([]);
+    } catch (error) {
+      console.error("Error voting:", error);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -64,7 +160,12 @@ function Voting() {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
         <p className={styles.selectTour}>Турниры·MMA</p>
@@ -236,13 +337,18 @@ function Voting() {
                   ? styles.categorySelected
                   : ""
               }`}
-              onClick={() => handleCategoryClick("fan")}
+              onClick={() => !userVotes["fan"] && handleCategoryClick("fan")}
+              style={{
+                backgroundColor: userVotes["fan"] ? "black" : "",
+                color: userVotes["fan"] ? "white" : "",
+              }}
             >
               <p>Выбор фанатов</p>
             </div>
 
             <div className={styles.choose}>
               {[
+                // { id: "fan", label: "Выбор фанатов" },
                 { id: "best-fight", label: "Лучший бой турнира" },
                 { id: "best-fighter", label: "Лучший боец турнира" },
                 { id: "best-knockout", label: "Лучший нокаут турнира" },
@@ -255,7 +361,13 @@ function Voting() {
                       ? styles.categorySelected
                       : ""
                   }`}
-                  onClick={() => handleCategoryClick(category.id)}
+                  onClick={() =>
+                    !userVotes[category.id] && handleCategoryClick(category.id)
+                  }
+                  style={{
+                    backgroundColor: userVotes[category.id] ? "black" : "",
+                    color: userVotes[category.id] ? "white" : "",
+                  }}
                 >
                   <p>{category.label}</p>
                 </div>
@@ -266,7 +378,7 @@ function Voting() {
               <div className={`${styles.selectionBlock} ${styles.visible}`}>
                 <div className={styles.selectionContent}>
                   <p>Выберите бойца</p>
-                  <select>
+                  <select onChange={(e) => setSelectedFighter(e.target.value)}>
                     {matches &&
                       matches.flatMap((match) => [
                         <option
@@ -283,7 +395,9 @@ function Voting() {
                         </option>,
                       ])}
                   </select>
-                  <button>Голосовать</button>
+                  <button onClick={() => handleVote(selectedFighter)}>
+                    Голосовать
+                  </button>
                 </div>
               </div>
             )}

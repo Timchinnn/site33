@@ -2,31 +2,65 @@ import React, { useEffect, useState } from "react";
 import styles from "./StatsFighter.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
-const [showMessageModal, setShowMessageModal] = useState(false);
-const handleMessageButtonClick = async () => {
-  try {
-    const response = await fetch("/api/messages", {
-      method: "POST", 
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        senderId: localStorage.getItem("userId"),
-        receiverId: fighterData.id,
-        content: messageText,
-        userType: userType
-      })
-    });
+  const [showMessageModal, setShowMessageModal] = useState(false);
+  const [showEditDonationModal, setShowEditDonationModal] = useState(false);
+  const [editedDream, setEditedDream] = useState("");
+  const [editedTarget, setEditedTarget] = useState("");
+  const handleDonationClick = () => {
+    setShowEditDonationModal(true);
+  };
+  const handleSaveDonation = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/fighter/donation/${fighterData.userData.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            dream: editedDream,
+            target: editedTarget,
+          }),
+        }
+      );
 
-    if (response.ok) {
-      setShowMessageModal(false);
-      setMessageText(""); // очищаем поле после отправки
+      if (response.ok) {
+        setDonationProgress({
+          ...donationProgress,
+          target: editedTarget,
+        });
+        fighterData.userData.dream = editedDream;
+        fighterData.userData.donat = editedTarget;
+        setShowEditDonationModal(false);
+      }
+    } catch (error) {
+      console.error("Error updating donation:", error);
     }
-  } catch (error) {
-    console.error("Error sending message:", error); 
-  }
-};
-  const [messageText, setMessageText] = useState("");
+  };
+  const handleMessageButtonClick = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          senderId: localStorage.getItem("userId"),
+          receiverId: fighterData.userData.id,
+          content: messageText,
+          userType: userType,
+        }),
+      });
+
+      if (response.ok) {
+        setShowMessageModal(false);
+        setMessageText(""); // очищаем поле после отправки
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+  };
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   // console.log(userType);
@@ -35,12 +69,18 @@ const handleMessageButtonClick = async () => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
   const { fighterData } = location.state || {};
+  console.log(fighterData);
   const [showPostForm, setShowPostForm] = useState(false);
   const [postContent, setPostContent] = useState("");
-  const rotation = (fighterData.rating / 100) * 180 - 90;
+  const rotation = (fighterData.userData.rating / 100) * 180 - 90;
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({}); // Добавить состояние для отслеживания лайкнутых постов
   const [likedComments, setLikedComments] = useState({}); // Added state for comment likes
+  const [messageText, setMessageText] = useState("");
+  const [donationProgress, setDonationProgress] = useState({
+    current: fighterData.userData.donat_now, // Current donation amount
+    target: fighterData.userData.donat, // Target donation amount
+  });
   useEffect(() => {
     const fetchCommentLikeStatuses = async () => {
       const statuses = {};
@@ -48,7 +88,7 @@ const handleMessageButtonClick = async () => {
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `/api/comments/${
+              `http://localhost:5000/api/comments/${
                 comment.id
               }/likes/${localStorage.getItem("userId")}`
             );
@@ -72,7 +112,7 @@ const handleMessageButtonClick = async () => {
   const handleCommentLike = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/like`,
+        `http://localhost:5000/api/comments/${commentId}/like`,
         {
           method: "POST",
           headers: {
@@ -105,7 +145,7 @@ const handleMessageButtonClick = async () => {
   async function fetchRepliesCount(commentId) {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
+        `http://localhost:5000/api/comments/${commentId}/repliesCount`
       );
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
@@ -120,7 +160,7 @@ const handleMessageButtonClick = async () => {
   const handleDeletePost = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}`,
+        `http://localhost:5000/api/posts/${postId}`,
         {
           method: "DELETE",
           headers: {
@@ -149,7 +189,7 @@ const handleMessageButtonClick = async () => {
   const fetchPosts = async () => {
     try {
       const response = await fetch(
-        `/api/posts/${fighterData.id}`
+        `http://localhost:5000/api/posts/${fighterData.userData.id}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -174,7 +214,7 @@ const handleMessageButtonClick = async () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          `/api/posts/${fighterData.id}`
+          `http://localhost:5000/api/posts/${fighterData.userData.id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -196,7 +236,7 @@ const handleMessageButtonClick = async () => {
       }
     };
     fetchPosts();
-  }, [fighterData.id]);
+  }, [fighterData.userData.id]);
   useEffect(() => {
     const loadCommentLikesAndReplies = async () => {
       for (const postId in comments) {
@@ -230,7 +270,7 @@ const handleMessageButtonClick = async () => {
   const fetchTotalLikes = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes`
+        `http://localhost:5000/api/posts/${postId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -247,7 +287,7 @@ const handleMessageButtonClick = async () => {
     const fetchLikeStatus = async (postId) => {
       try {
         const response = await fetch(
-          `/api/posts/${postId}/likes/${localStorage.getItem(
+          `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
             "userId"
           )}`
         );
@@ -268,7 +308,7 @@ const handleMessageButtonClick = async () => {
 
   const handleSubmitPost = async () => {
     try {
-      const response = await fetch("/api/posts", {
+      const response = await fetch("http://localhost:5000/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -276,7 +316,7 @@ const handleMessageButtonClick = async () => {
         body: JSON.stringify({
           content: postContent,
           userId: localStorage.getItem("userId"),
-          fighterId: fighterData.id,
+          fighterId: fighterData.userData.id,
         }),
       });
 
@@ -294,7 +334,7 @@ const handleMessageButtonClick = async () => {
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes/${localStorage.getItem(
+        `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
           "userId"
         )}`
       );
@@ -314,7 +354,7 @@ const handleMessageButtonClick = async () => {
     navigate(`/post/${post.id}`, {
       state: {
         post: post,
-        fighterData: fighterData,
+        fighterData: fighterData.userData,
         comments: comments[post.id],
       },
     });
@@ -322,7 +362,7 @@ const handleMessageButtonClick = async () => {
   const fetchComments = async (postId) => {
     try {
       const response = await fetch(
-        `/api/comments/${postId}`
+        `http://localhost:5000/api/comments/${postId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -339,7 +379,7 @@ const handleMessageButtonClick = async () => {
   const fetchCommentLikes = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/likes`
+        `http://localhost:5000/api/comments/${commentId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -355,7 +395,7 @@ const handleMessageButtonClick = async () => {
   const handleLike = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/like`,
+        `http://localhost:5000/api/posts/${postId}/like`,
         {
           method: "POST",
           headers: {
@@ -389,7 +429,7 @@ const handleMessageButtonClick = async () => {
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" />
+            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
             <h1>SportDonation</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -398,20 +438,25 @@ const handleMessageButtonClick = async () => {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
         <p className={styles.competitions}>Турниры·Профиль спортсмена</p>
         <div className={styles.contentAbout}>
           <div className={styles.contentAboutImg}>
             {/* <img
-              src={`${fighterData.photo_url}`}
+              src={`http://localhost:5000${fighterData.userData.photo_url}`}
               alt="#"
             /> */}
             <img
               src={
-                fighterData.photo_url
-                  ? `${fighterData.photo_url}`
+                fighterData.userData.photo_url
+                  ? `http://localhost:5000${fighterData.userData.photo_url}`
                   : "Avatar.png"
               }
               alt="User Avatar"
@@ -421,21 +466,53 @@ const handleMessageButtonClick = async () => {
 
           <div className={styles.nameFlag}>
             <h1>
-              {fighterData.name} {fighterData.surname}
+              {fighterData.userData.name} {fighterData.userData.surname}
             </h1>
             <img src="flag.png" alt="#" />
           </div>
-          <h2>{fighterData.nick}</h2>
+          <h2>{fighterData.userData.nick}</h2>
           <p className={styles.greyText}>
-            {fighterData.region}, {fighterData.country}
+            {fighterData.userData.region}, {fighterData.userData.country}
           </p>
           <div className={styles.count}>
-            <p className={styles.greyText}> {fighterData.discipline} </p>
-            <p className={styles.greyText}> {fighterData.record} </p>
+            <p className={styles.greyText}>
+              {" "}
+              {fighterData.userData.discipline}{" "}
+            </p>
+            <p className={styles.greyText}> {fighterData.userData.record} </p>
           </div>
-<button className={styles.inputButton} onClick={setShowMessageModal}>
-  {fighterData.msg || "Ввести сообщение"}
-</button>
+          <div
+            className={styles.donationProgressContainer}
+            onClick={handleDonationClick}
+          >
+            <p>{fighterData.userData.dream}</p>
+            <div className={styles.donationProgressBar}>
+              <div
+                className={styles.donationProgressFill}
+                style={{
+                  width: `${
+                    (donationProgress.current / donationProgress.target) * 100
+                  }%`,
+                }}
+              >
+                <span className={styles.donationProgressPercentage}>
+                  {Math.round(
+                    (donationProgress.current / donationProgress.target) * 100
+                  )}
+                  %
+                </span>
+              </div>
+            </div>
+            <div className={styles.donationProgressText}>
+              <span>{donationProgress.current.toLocaleString()} ₽</span>
+              <span>{donationProgress.target.toLocaleString()} ₽</span>
+            </div>
+          </div>
+
+          <button className={styles.inputButton} onClick={setShowMessageModal}>
+            {fighterData.userData.msg || "Ввести сообщение"}
+          </button>
+
           <div className={styles.donations}>
             <div>
               <p>Донаты</p>
@@ -464,7 +541,7 @@ const handleMessageButtonClick = async () => {
           <div className={styles.approvalRating}>
             <img src="lucide_info_20.png" alt="#" />
             <p>Рейтинг одобрения</p>
-            <p>{fighterData.rating} %</p>
+            <p>{fighterData.userData.rating} %</p>
           </div>
         </div>
         <h3>Статистика</h3>
@@ -527,15 +604,17 @@ const handleMessageButtonClick = async () => {
                 <div className={styles.cardHeader}>
                   <img
                     src={
-                      fighterData.photo_url
-                        ? `${fighterData.photo_url}`
+                      fighterData.userData.photo_url
+                        ? `http://localhost:5000${fighterData.userData.photo_url}`
                         : "Avatar.png"
                     }
                     alt="User Avatar"
                     className={styles.profileImage}
                   />
                   <div className={styles.userInfo}>
-                    <p className={styles.userName}>{fighterData.name}</p>
+                    <p className={styles.userName}>
+                      {fighterData.userData.name}
+                    </p>
                     <p className={styles.timestamp}>
                       {new Date(post.created_at).toLocaleString()}
                     </p>
@@ -584,7 +663,7 @@ const handleMessageButtonClick = async () => {
                     <img
                       src={
                         comment.photo_url
-                          ? `${comment.photo_url}`
+                          ? `http://localhost:5000${comment.photo_url}`
                           : "Avatar.png"
                       }
                       alt="User Avatar"
@@ -679,33 +758,70 @@ const handleMessageButtonClick = async () => {
         </div>
       </div>
       {showMessageModal && (
-  <div className={styles.modalOverlay}>
-    <div className={styles.modalContent}>
-      <div className={styles.topModalHead}>
-        <div>
-          <h2>Введите сообщение</h2>
-          <img 
-            src="x-circle.png" 
-            alt="#" 
-            onClick={() => setShowMessageModal(false)} 
-          />
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.topModalHead}>
+              <div>
+                <h2>Введите сообщение</h2>
+                <img
+                  src="x-circle.png"
+                  alt="#"
+                  onClick={() => setShowMessageModal(false)}
+                />
+              </div>
+            </div>
+            <input
+              type="text"
+              value={messageText}
+              onChange={(e) => setMessageText(e.target.value)}
+              placeholder="Введите сообщение"
+              className={styles.passwordinput}
+            />
+            <button
+              onClick={() => {
+                // Логика сохранения сообщения
+                handleMessageButtonClick();
+              }}
+            >
+              Сохранить
+            </button>
+          </div>
         </div>
-      </div>
-<input
-  type="text"
-  value={messageText}
-  onChange={(e) => setMessageText(e.target.value)}
-  placeholder="Введите сообщение"
-  className={styles.passwordinput}
-/>
-      <button onClick={() => {
-        handleMessageButtonClick();
-      }}>
-        Сохранить
-      </button>
-    </div>
-  </div>
-)}
+      )}
+      {showEditDonationModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.topModalHead}>
+              <div>
+                <h2>Цель по донатам</h2>
+                <img
+                  src="x-circle.png"
+                  alt="#"
+                  onClick={() => setShowEditDonationModal(false)}
+                />
+              </div>
+            </div>
+            <p>Введите текст цели</p>
+            <input
+              type="text"
+              value={editedDream}
+              onChange={(e) => setEditedDream(e.target.value)}
+              placeholder="Введите цель"
+            />
+            <p>Введите желаемую цель</p>
+            <input
+              type="text"
+              value={editedTarget}
+              onChange={(e) => setEditedTarget(Number(e.target.value))}
+              placeholder="Введите сумму"
+            />
+            <button onClick={handleSaveDonation}>Сохранить</button>
+            {/* <button onClick={() => setShowEditDonationModal(false)}>
+              Отмена
+            </button> */}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

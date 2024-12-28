@@ -65,7 +65,7 @@ function RoleFighter() {
       passwordFromRegister, // получаем из location.state
     };
 
-    fetch("/api/rolefighter", {
+    fetch("http://localhost:5000/api/rolefighter", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -10,7 +10,7 @@ function Main() {
   const handleSportClick = async (sportName) => {
     try {
       const response = await fetch(
-        `/api/tournaments/${sportName}`
+        `http://localhost:5000/api/tournaments/${sportName}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -37,7 +37,12 @@ function Main() {
               alt=""
               className={styles.notification}
             />
-            <img src="search.png" alt="" className={styles.search} />
+            <img
+              src="search.png"
+              alt=""
+              className={styles.search}
+              onClick={() => navigate("/Saerch")}
+            />
           </div>
         </div>
 
