@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./StatsFighterFan.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-function StatsFighterFan() {
+function StatsFighterFan() {const location = useLocation();
   const { fighterData } = location.state || {};
 
   const [selectedCategories, setSelectedCategories] = useState("");
@@ -12,7 +12,7 @@ function StatsFighterFan() {
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [commentLikes, setCommentLikes] = useState({});
-  const location = useLocation();
+  
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
 
