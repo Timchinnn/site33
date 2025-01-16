@@ -72,7 +72,13 @@ function Main() {
     };
 
     fetchTopMatches();
-  }, []);
+  }, []);const handleFighterClick = (fighter) => {
+    navigate("/StatsFighterFan", {
+      state: {
+        fighterData: fighter
+      }
+    });
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -188,7 +194,7 @@ function Main() {
           </div>
           <div className={styles.fightersList}>
             {topFighters.map((fighter) => (
-              <div key={fighter.id} className={styles.fighterItem}>
+              <div key={fighter.id} className={styles.fighterItem} onClick={() => handleFighterClick(fighter)}>
                 <img
                   src={
                     fighter.photo_url
@@ -212,7 +218,7 @@ function Main() {
           </div>
           <div className={styles.fightersList}>
             {topVotedFighters.map((fighter) => (
-              <div key={fighter.id} className={styles.fighterItem}>
+              <div key={fighter.id} className={styles.fighterItem} onClick={() => handleFighterClick(fighter)}>
                 <img
                   src={
                     fighter.photo_url
