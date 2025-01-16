@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./StatsFighterFan.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-function StatsFighterFan() {const location = useLocation();
+function StatsFighterFan() {
+  const location = useLocation();
+
   const { fighterData } = location.state || {};
 
   const [selectedCategories, setSelectedCategories] = useState("");
@@ -12,7 +14,6 @@ function StatsFighterFan() {const location = useLocation();
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
   const [commentLikes, setCommentLikes] = useState({});
-  
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
 
@@ -46,7 +47,7 @@ function StatsFighterFan() {const location = useLocation();
   };
   const handleRatingEnd = async () => {
     try {
-      const response = await fetch("/api/fighter-vote", {
+      const response = await fetch("http://localhost:5000/api/fighter-vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +81,7 @@ function StatsFighterFan() {const location = useLocation();
     if (selectedPayment === "balance") {
       try {
         const response = await fetch(
-          `/api/balance/deduct`,
+          `http://localhost:5000/api/balance/deduct`,
           {
             method: "POST",
             headers: {
@@ -93,7 +94,6 @@ function StatsFighterFan() {const location = useLocation();
             }),
           }
         );
-
         if (!response.ok) {
           alert("Недостаточно средств на балансе");
           return;
@@ -104,12 +104,39 @@ function StatsFighterFan() {const location = useLocation();
       }
     }
 
+    // Добавляем логику создания подписки
+    if (isToggleOn && selectedDate) {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/subscriptions",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: localStorage.getItem("userId"),
+              fighterId: fighterData.id,
+              duration: selectedDate,
+              amount: donateAmount,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Ошибка при создании подписки");
+        }
+      } catch (error) {
+        console.error("Ошибка:", error);
+      }
+    }
+
     setIsThankYouMessage(true);
   };
   const checkVoteStatus = async () => {
     try {
       const response = await fetch(
-        `/api/check-fighter-vote`,
+        `http://localhost:5000/api/check-fighter-vote`,
         {
           method: "POST",
           headers: {
@@ -156,7 +183,7 @@ function StatsFighterFan() {const location = useLocation();
         const userId = localStorage.getItem("userId");
 
         const response = await fetch(
-          `/api/balance/${userId}?userType=${userType}`
+          `http://localhost:5000/api/balance/${userId}?userType=${userType}`
         );
 
         if (response.ok) {
@@ -176,9 +203,9 @@ function StatsFighterFan() {const location = useLocation();
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `/api/comments/${
+              `http://localhost:5000/api/comments/${
                 comment.id
-              }/likes/${localStorage.getItem("userId")}`
+              }/likes/${localStorage.getItem("userId")}?userType=${userType}`
             );
             if (response.ok) {
               const data = await response.json();
@@ -195,12 +222,12 @@ function StatsFighterFan() {const location = useLocation();
     if (Object.keys(comments).length > 0) {
       fetchCommentLikeStatuses();
     }
-  }, [comments]);
+  }, [comments, userType]);
 
   const handleCommentLike = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/like`,
+        `http://localhost:5000/api/comments/${commentId}/like`,
         {
           method: "POST",
           headers: {
@@ -208,7 +235,7 @@ function StatsFighterFan() {const location = useLocation();
           },
           body: JSON.stringify({
             userId: localStorage.getItem("userId"),
-            userType: userType,
+            userType: userType, // Добавляем userType
           }),
         }
       );
@@ -233,7 +260,7 @@ function StatsFighterFan() {const location = useLocation();
   async function fetchRepliesCount(commentId) {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
+        `http://localhost:5000/api/comments/${commentId}/repliesCount`
       );
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
@@ -248,7 +275,7 @@ function StatsFighterFan() {const location = useLocation();
   const handleDeletePost = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}`,
+        `http://localhost:5000/api/posts/${postId}`,
         {
           method: "DELETE",
           headers: {
@@ -277,9 +304,10 @@ function StatsFighterFan() {const location = useLocation();
 
   useEffect(() => {
     const fetchPosts = async () => {
+      console.log(fighterData);
       try {
         const response = await fetch(
-          `/api/posts/${fighterData.id}`
+          `http://localhost:5000/api/posts/${fighterData.id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -293,7 +321,7 @@ function StatsFighterFan() {const location = useLocation();
               return { ...post, totalLikes, comments, likeStatus };
             })
           );
-
+          console.log(postsWithDetails);
           setPosts(postsWithDetails);
         }
       } catch (error) {
@@ -301,7 +329,7 @@ function StatsFighterFan() {const location = useLocation();
       }
     };
     fetchPosts();
-  }, [fighterData.id]);
+  }, [fighterData]);
   useEffect(() => {
     const loadCommentLikesAndReplies = async () => {
       for (const postId in comments) {
@@ -335,7 +363,7 @@ function StatsFighterFan() {const location = useLocation();
   const fetchTotalLikes = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes`
+        `http://localhost:5000/api/posts/${postId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -352,10 +380,11 @@ function StatsFighterFan() {const location = useLocation();
     const fetchLikeStatus = async (postId) => {
       try {
         const response = await fetch(
-          `/api/posts/${postId}/likes/${localStorage.getItem(
+          `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
             "userId"
-          )}`
+          )}?userType=${localStorage.getItem("userType")}`
         );
+
         if (response.ok) {
           const data = await response.json();
           setLikedPosts((prev) => ({
@@ -374,7 +403,7 @@ function StatsFighterFan() {const location = useLocation();
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes/${localStorage.getItem(
+        `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
           "userId"
         )}`
       );
@@ -402,7 +431,7 @@ function StatsFighterFan() {const location = useLocation();
   const fetchComments = async (postId) => {
     try {
       const response = await fetch(
-        `/api/comments/${postId}`
+        `http://localhost:5000/api/comments/${postId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -419,7 +448,7 @@ function StatsFighterFan() {const location = useLocation();
   const fetchCommentLikes = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/likes`
+        `http://localhost:5000/api/comments/${commentId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -435,7 +464,7 @@ function StatsFighterFan() {const location = useLocation();
   const handleLike = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/like`,
+        `http://localhost:5000/api/posts/${postId}/like`,
         {
           method: "POST",
           headers: {
@@ -443,6 +472,7 @@ function StatsFighterFan() {const location = useLocation();
           },
           body: JSON.stringify({
             userId: localStorage.getItem("userId"),
+            userType: localStorage.getItem("userType"), // Добавляем userType
           }),
         }
       );
@@ -463,9 +493,7 @@ function StatsFighterFan() {const location = useLocation();
       console.error("Error liking post:", error);
     }
   };
-  if (!fighterData) {
-    return <div>Загрузка...</div>; // Или обработать состояние ошибки соответствующим образом
-  }
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -479,6 +507,9 @@ function StatsFighterFan() {const location = useLocation();
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -494,7 +525,7 @@ function StatsFighterFan() {const location = useLocation();
             <img
               src={
                 fighterData.photo_url
-                  ? `${fighterData.photo_url}`
+                  ? `http://localhost:5000${fighterData.photo_url}`
                   : "Avatar.png"
               }
               alt="User Avatar"
@@ -516,31 +547,32 @@ function StatsFighterFan() {const location = useLocation();
             <p className={styles.greyText}> {fighterData.record} </p>
           </div>
           {/* jsx // Добавьте это в JSX-код, где отображается полоска прогресса */}
-          <div className={styles.donationProgressContainer}>
-            <p>{fighterData.dream}</p>
-
-            <div className={styles.donationProgressBar}>
-              <div
-                className={styles.donationProgressFill}
-                style={{
-                  width: `${
-                    (donationProgress.current / donationProgress.target) * 100
-                  }%`,
-                }}
-              >
-                <span className={styles.donationProgressPercentage}>
-                  {Math.round(
-                    (donationProgress.current / donationProgress.target) * 100
-                  )}
-                  %
-                </span>
+          {fighterData.donat_now != null && fighterData.donat != null && (
+            <div className={styles.donationProgressContainer}>
+              <p>{fighterData.dream}</p>
+              <div className={styles.donationProgressBar}>
+                <div
+                  className={styles.donationProgressFill}
+                  style={{
+                    width: `${
+                      (donationProgress.current / donationProgress.target) * 100
+                    }%`,
+                  }}
+                >
+                  <span className={styles.donationProgressPercentage}>
+                    {Math.round(
+                      (donationProgress.current / donationProgress.target) * 100
+                    )}
+                    %
+                  </span>
+                </div>
+              </div>
+              <div className={styles.donationProgressText}>
+                <span>{donationProgress.current.toLocaleString()} ₽</span>
+                <span>{donationProgress.target.toLocaleString()} ₽</span>
               </div>
             </div>
-            <div className={styles.donationProgressText}>
-              <span>{donationProgress.current.toLocaleString()} ₽</span>
-              <span>{donationProgress.target.toLocaleString()} ₽</span>
-            </div>
-          </div>
+          )}
           {fighterData.msg && (
             <button className={styles.inputButton}>{fighterData.msg}</button>
           )}
@@ -618,7 +650,7 @@ function StatsFighterFan() {const location = useLocation();
                   <img
                     src={
                       fighterData.photo_url
-                        ? `${fighterData.photo_url}`
+                        ? `http://localhost:5000${fighterData.photo_url}`
                         : "Avatar.png"
                     }
                     alt="User Avatar"
@@ -674,7 +706,7 @@ function StatsFighterFan() {const location = useLocation();
                     <img
                       src={
                         comment.photo_url
-                          ? `${comment.photo_url}`
+                          ? `http://localhost:5000${comment.photo_url}`
                           : "Avatar.png"
                       }
                       alt="User Avatar"
@@ -750,7 +782,12 @@ function StatsFighterFan() {const location = useLocation();
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
@@ -1027,25 +1064,25 @@ function StatsFighterFan() {const location = useLocation();
                           <div className={styles.donateButtonsGrid}>
                             <button
                               className={`${styles.donateButton} ${
-                                selectedDate === 100 ? styles.selected : ""
+                                selectedDate === 7 ? styles.selected : ""
                               }`}
-                              onClick={() => setSelectedDate(100)}
+                              onClick={() => setSelectedDate(7)}
                             >
                               неделя
                             </button>
                             <button
                               className={`${styles.donateButton} ${
-                                selectedDate === 300 ? styles.selected : ""
+                                selectedDate === 14 ? styles.selected : ""
                               }`}
-                              onClick={() => setSelectedDate(300)}
+                              onClick={() => setSelectedDate(14)}
                             >
                               2 недели
                             </button>
                             <button
                               className={`${styles.donateButton} ${
-                                selectedDate === 500 ? styles.selected : ""
+                                selectedDate === 28 ? styles.selected : ""
                               }`}
-                              onClick={() => setSelectedDate(500)}
+                              onClick={() => setSelectedDate(28)}
                             >
                               4 недели
                             </button>

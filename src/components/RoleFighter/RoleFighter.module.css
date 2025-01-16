@@ -29,7 +29,7 @@ input:focus {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -50,7 +50,7 @@ input:focus {
 .authForm input,
 .authForm button {
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
 }
 .authForm button {
   width: 94%;
@@ -68,7 +68,7 @@ input:focus {
   margin-top: 7vw;
 }
 .authForm h2 {
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;
@@ -103,10 +103,10 @@ input:focus {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-left: 10px;
-  /* max-width: 343px; */
+  max-width: 357px;
   width: 94%;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   margin-bottom: -8px;
   appearance: none;
   -webkit-appearance: none;

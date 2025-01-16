@@ -37,7 +37,7 @@ img {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -144,7 +144,6 @@ img {
   width: 96px;
   height: 96px;
   border-radius: 100px;
-  padding-right: 0;
 }
 .greyText {
   font-family: Inter;
@@ -444,7 +443,9 @@ img {
 }
 .profileImage {
   width: 40px;
-  padding-right: 12px;
+  padding-right: 0;
+  height: 40px;
+  margin-right: 9px;
 }
 .userInfo p {
   margin: 0;
@@ -850,4 +851,7 @@ img {
 .selected {
   border: 2px solid #000;
   border-radius: 4px;
+}
+.notification {
+  padding-right: 2vw;
 }

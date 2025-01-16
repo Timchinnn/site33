@@ -12,7 +12,7 @@ function StatsFighter() {
   const handleSaveDonation = async () => {
     try {
       const response = await fetch(
-        `/api/fighter/donation/${fighterData.userData.id}`,
+        `http://localhost:5000/api/fighter/donation/${fighterData.userData.fighter_id}`,
         {
           method: "PUT",
           headers: {
@@ -40,14 +40,14 @@ function StatsFighter() {
   };
   const handleMessageButtonClick = async () => {
     try {
-      const response = await fetch("/api/messages", {
+      const response = await fetch("http://localhost:5000/api/messages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           senderId: localStorage.getItem("userId"),
-          receiverId: fighterData.userData.id,
+          receiverId: fighterData.userData.fighter_id,
           content: messageText,
           userType: userType,
         }),
@@ -88,9 +88,9 @@ function StatsFighter() {
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `/api/comments/${
+              `http://localhost:5000/api/comments/${
                 comment.id
-              }/likes/${localStorage.getItem("userId")}`
+              }/likes/${localStorage.getItem("userId")}?userType=${userType}`
             );
             if (response.ok) {
               const data = await response.json();
@@ -107,12 +107,12 @@ function StatsFighter() {
     if (Object.keys(comments).length > 0) {
       fetchCommentLikeStatuses();
     }
-  }, [comments]);
+  }, [comments, userType]);
 
   const handleCommentLike = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/like`,
+        `http://localhost:5000/api/comments/${commentId}/like`,
         {
           method: "POST",
           headers: {
@@ -145,7 +145,7 @@ function StatsFighter() {
   async function fetchRepliesCount(commentId) {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
+        `http://localhost:5000/api/comments/${commentId}/repliesCount`
       );
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
@@ -160,7 +160,7 @@ function StatsFighter() {
   const handleDeletePost = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}`,
+        `http://localhost:5000/api/posts/${postId}`,
         {
           method: "DELETE",
           headers: {
@@ -189,7 +189,7 @@ function StatsFighter() {
   const fetchPosts = async () => {
     try {
       const response = await fetch(
-        `/api/posts/${fighterData.userData.id}`
+        `http://localhost:5000/api/posts/${fighterData.userData.fighter_id}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -214,7 +214,7 @@ function StatsFighter() {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          `/api/posts/${fighterData.userData.id}`
+          `http://localhost:5000/api/posts/${fighterData.userData.fighter_id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -228,6 +228,7 @@ function StatsFighter() {
               return { ...post, totalLikes, comments, likeStatus };
             })
           );
+          console.log(postsWithDetails);
 
           setPosts(postsWithDetails);
         }
@@ -236,7 +237,7 @@ function StatsFighter() {
       }
     };
     fetchPosts();
-  }, [fighterData.userData.id]);
+  }, [fighterData.userData.fighter_id]);
   useEffect(() => {
     const loadCommentLikesAndReplies = async () => {
       for (const postId in comments) {
@@ -270,7 +271,7 @@ function StatsFighter() {
   const fetchTotalLikes = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes`
+        `http://localhost:5000/api/posts/${postId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -287,10 +288,11 @@ function StatsFighter() {
     const fetchLikeStatus = async (postId) => {
       try {
         const response = await fetch(
-          `/api/posts/${postId}/likes/${localStorage.getItem(
+          `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
             "userId"
-          )}`
+          )}?userType=${localStorage.getItem("userType")}`
         );
+
         if (response.ok) {
           const data = await response.json();
           setLikedPosts((prev) => ({
@@ -308,7 +310,7 @@ function StatsFighter() {
 
   const handleSubmitPost = async () => {
     try {
-      const response = await fetch("/api/posts", {
+      const response = await fetch("http://localhost:5000/api/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -316,7 +318,7 @@ function StatsFighter() {
         body: JSON.stringify({
           content: postContent,
           userId: localStorage.getItem("userId"),
-          fighterId: fighterData.userData.id,
+          fighterId: fighterData.userData.fighter_id,
         }),
       });
 
@@ -334,7 +336,7 @@ function StatsFighter() {
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes/${localStorage.getItem(
+        `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
           "userId"
         )}`
       );
@@ -362,7 +364,7 @@ function StatsFighter() {
   const fetchComments = async (postId) => {
     try {
       const response = await fetch(
-        `/api/comments/${postId}`
+        `http://localhost:5000/api/comments/${postId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -379,7 +381,7 @@ function StatsFighter() {
   const fetchCommentLikes = async (commentId) => {
     try {
       const response = await fetch(
-        `/api/comments/${commentId}/likes`
+        `http://localhost:5000/api/comments/${commentId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -395,7 +397,7 @@ function StatsFighter() {
   const handleLike = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/like`,
+        `http://localhost:5000/api/posts/${postId}/like`,
         {
           method: "POST",
           headers: {
@@ -403,6 +405,7 @@ function StatsFighter() {
           },
           body: JSON.stringify({
             userId: localStorage.getItem("userId"),
+            userType: localStorage.getItem("userType"), // Добавляем userType
           }),
         }
       );
@@ -437,6 +440,9 @@ function StatsFighter() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -450,13 +456,13 @@ function StatsFighter() {
         <div className={styles.contentAbout}>
           <div className={styles.contentAboutImg}>
             {/* <img
-              src={`${fighterData.userData.photo_url}`}
+              src={`http://localhost:5000${fighterData.userData.photo_url}`}
               alt="#"
             /> */}
             <img
               src={
                 fighterData.userData.photo_url
-                  ? `${fighterData.userData.photo_url}`
+                  ? `http://localhost:5000${fighterData.userData.photo_url}`
                   : "Avatar.png"
               }
               alt="User Avatar"
@@ -605,7 +611,7 @@ function StatsFighter() {
                   <img
                     src={
                       fighterData.userData.photo_url
-                        ? `${fighterData.userData.photo_url}`
+                        ? `http://localhost:5000${fighterData.userData.photo_url}`
                         : "Avatar.png"
                     }
                     alt="User Avatar"
@@ -661,9 +667,10 @@ function StatsFighter() {
                 <div className={styles.cardHeaders}>
                   <div className={styles.cardHeader}>
                     <img
+                      onClick={console.log(comment)}
                       src={
                         comment.photo_url
-                          ? `${comment.photo_url}`
+                          ? `http://localhost:5000${comment.photo_url}`
                           : "Avatar.png"
                       }
                       alt="User Avatar"
@@ -739,7 +746,12 @@ function StatsFighter() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>

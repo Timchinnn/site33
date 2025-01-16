@@ -6,6 +6,8 @@ function ChooseRole() {
   const location = useLocation();
   const emailFromRegister = location.state?.email;
   const passwordFromRegister = location.state?.password; // Добавьте эту строку
+  const referralCode = location.state?.referralCode;
+  console.log(referralCode);
 
   const [email, setEmail] = useState(emailFromRegister || "");
   // console.log("Password in ChooseRole:", passwordFromRegister);
@@ -19,7 +21,8 @@ function ChooseRole() {
     navigate("/rolefighter", {
       state: {
         email: email,
-        password: passwordFromRegister, // Добавьте передачу пароля
+        password: passwordFromRegister,
+        referralCode: referralCode, // Добавьте передачу пароля
       },
     });
   };
@@ -27,7 +30,8 @@ function ChooseRole() {
     navigate("/rolefan", {
       state: {
         email: email,
-        password: passwordFromRegister, // Добавьте передачу пароля
+        password: passwordFromRegister,
+        referralCode: referralCode, // Добавьте передачу пароля
       },
     });
   };

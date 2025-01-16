@@ -23,7 +23,7 @@ input:focus {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   padding-bottom: 0.4vh;
@@ -40,7 +40,7 @@ input:focus {
 }
 
 .authorization {
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;
@@ -60,7 +60,7 @@ input:focus {
   max-width: 343px;
   width: 92%;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
 }
 
 .passwordInputContainer {
@@ -81,7 +81,7 @@ input:focus {
   padding-left: 13px;
   width: 100%;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
 }
 
 .eyeoff {
@@ -98,7 +98,7 @@ input:focus {
 }
 .consentBlock p {
   font-family: Inter;
-  font-size: clamp(12px, 3vw, 35px);
+  font-size: 12px;
   font-weight: 400;
   /* line-height: 15px; */
   letter-spacing: -0.04em;
@@ -119,7 +119,7 @@ input:focus {
   width: 92%;
   max-width: 343px;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   border: none;
   font-family: Inter;
   font-weight: 500;
@@ -129,7 +129,7 @@ input:focus {
   text-decoration-skip-ink: none;
 }
 .referralLink {
-  font-size: clamp(12px, 3vw, 35px);
+  font-size: 12px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;

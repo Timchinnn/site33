@@ -37,7 +37,7 @@ img {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -204,7 +204,7 @@ img {
   justify-content: space-between; /* Распределяет элементы по доступному пространству */
 }
 .referralProgram {
-  height: 24vw;
+  /* height: 24vw; */
   background-color: #e8e7ed;
   display: flex;
   align-items: center;
@@ -239,6 +239,7 @@ img {
 }
 .topFightersSection img {
   width: 40px;
+  height: 40px;
 }
 .fighterItem {
   display: flex;

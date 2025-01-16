@@ -28,7 +28,7 @@ function Voting() {
     try {
       // Отправляем запрос на сервер
       const response = await fetch(
-        `/api/fighter/${trimmedName}`
+        `http://localhost:5000/api/fighter/${trimmedName}`
       );
 
       if (response.ok) {
@@ -65,7 +65,7 @@ function Voting() {
     const fetchUserVotes = async () => {
       try {
         const response = await fetch(
-          `/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
+          `http://localhost:5000/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -87,12 +87,13 @@ function Voting() {
 
   // Модифицируем функцию голосования
   // В handleVote функции
+  // In Voting.jsx
   const handleVote = async (fighterId) => {
     if (!selectedCategories.length) return;
 
     try {
-      // Проверяем голоса с учетом userType
-      const response = await fetch("/api/check-votes", {
+      // Check votes with userType
+      const response = await fetch("http://localhost:5000/api/check-votes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,13 +102,11 @@ function Voting() {
           userId,
           tournamentId: tournament.id,
           categories: selectedCategories,
-          userType: localStorage.getItem("userType"), // Добавляем userType
+          userType: localStorage.getItem("userType"),
         }),
       });
 
       const { votedCategories } = await response.json();
-
-      // Фильтруем категории только для текущего userType
       const newCategories = selectedCategories.filter(
         (cat) => !votedCategories.includes(cat)
       );
@@ -117,41 +116,90 @@ function Voting() {
         return;
       }
 
-      // Сохраняем голос с userType
-      await fetch("/api/vote", {
+      // Add matchId to the request body
+      await fetch("http://localhost:5000/api/vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-
         body: JSON.stringify({
           userId,
           tournamentId: tournament.id,
           categories: newCategories,
           fighterId,
+          matchId: matches.find(
+            (m) =>
+              m.competitor_1 === selectedFighter ||
+              m.competitor_2 === selectedFighter
+          )?.id,
           userType: localStorage.getItem("userType"),
         }),
       });
 
-      // Обновляем UI
       const newVotes = { ...userVotes };
       newCategories.forEach((cat) => {
         newVotes[cat] = fighterId;
       });
       setUserVotes(newVotes);
-
       setShowModal(false);
       setSelectedCategories([]);
     } catch (error) {
       console.error("Error voting:", error);
     }
   };
+  const [voteResults, setVoteResults] = useState({});
+  console.log(matches);
+  useEffect(() => {
+    const fetchVoteResults = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/tournament-votes/${tournament.id}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          const results = {};
+          data.forEach((vote) => {
+            // Используем fighter_id вместо name и surname
+            results[vote.category_id] = vote.fighter_id;
+          });
+          setVoteResults(results);
+        }
+      } catch (error) {
+        console.error("Error fetching vote results:", error);
+      }
+    };
+
+    if (tournament) {
+      fetchVoteResults();
+    }
+  }, [tournament]);
+  const [topDonations, setTopDonations] = useState([]);
+  useEffect(() => {
+    const fetchTopDonations = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/tournament/${tournament.id}/top-donations`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setTopDonations(data);
+        }
+      } catch (error) {
+        console.error("Error fetching top donations:", error);
+      }
+    };
+
+    if (tournament) {
+      fetchTopDonations();
+    }
+  }, [tournament]);
+  // console.log(topDonations);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" />
+            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
             <h1>SportDonation</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -159,6 +207,9 @@ function Voting() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -201,27 +252,29 @@ function Voting() {
         <div className={styles.currentVotings}>
           <div>
             <p>Топ донатов</p>
-            <p>Таверас Р.</p>
+            <p>
+              {topDonations[0]?.surname} {topDonations[0]?.name[0]}.
+            </p>
           </div>
           <div>
             <p>Выбор фанатов</p>
-            <p>Куарантилло Б.</p>
+            <p>{voteResults["fan"]}</p>
           </div>
           <div>
             <p>Лучший бой турнира</p>
-            <p>Свонсон К.</p>
+            <p>{voteResults["best-fight"]}</p>
           </div>
           <div>
             <p>Лучший боец турнира</p>
-            <p>Куарантилло Б.</p>
+            <p>{voteResults["best-fighter"]}</p>
           </div>
           <div>
             <p>Лучший нокаут турнира</p>
-            <p>Свонсон К.</p>
+            <p>{voteResults["best-knockout"]}</p>
           </div>
           <div>
             <p>Велосипед турнира</p>
-            <p>Куарантилло Б.</p>
+            <p>{voteResults["best-bicycle"]}</p>
           </div>
         </div>
         <p className={styles.currentVoting}>Топ донатов турнира</p>
@@ -302,7 +355,12 @@ function Voting() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
@@ -325,7 +383,7 @@ function Voting() {
           <div className={styles.modalContent}>
             <div className={styles.topModalHead}>
               <div>
-                <img src="arrow.png" alt="#" />
+                <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
                 <h2>UFC Fight Night</h2>
               </div>
               <img src="x-circle.png" alt="#" onClick={toggleModal} />

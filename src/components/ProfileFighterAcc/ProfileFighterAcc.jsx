@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./ProfileFighterAcc.module.css";
 import { useNavigate } from "react-router-dom";
 
 function ProfileFighterAcc() {
   // const userType = localStorage.getItem("userType");
+  const navigate = useNavigate();
+  const userType = localStorage.getItem("userType");
+
   const countries = {
     Россия: [
       "Центральный ФО",
@@ -31,13 +34,17 @@ function ProfileFighterAcc() {
       "Могилёвская область",
     ],
   };
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userType");
+    navigate("/");
+  }, [navigate]);
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
     setSelectedRegion("");
   };
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
-  const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(
     localStorage.getItem("profilePhotoUrl") || null
   );
@@ -65,7 +72,7 @@ function ProfileFighterAcc() {
       formData.append("userId", localStorage.getItem("userId"));
       try {
         const response = await fetch(
-          "/api/fighter/upload-photo",
+          "http://localhost:5000/api/fighter/upload-photo",
           {
             method: "POST",
             body: formData,
@@ -73,7 +80,7 @@ function ProfileFighterAcc() {
         );
         if (response.ok) {
           const data = await response.json();
-          const fullPhotoUrl = `${data.photoUrl}`;
+          const fullPhotoUrl = `http://localhost:5000${data.photoUrl}`;
           setProfilePhoto(fullPhotoUrl);
         }
       } catch (error) {
@@ -91,40 +98,51 @@ function ProfileFighterAcc() {
     discipline: "",
     record: "",
   });
+  const [error, setError] = useState(null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
+      if (!userId) {
+        handleLogout();
+        return;
+      }
 
       try {
         const response = await fetch(
-          `/api/fighter/profile/${userId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+          `http://localhost:5000/api/fighter/profile/${userId}`
         );
 
         if (response.ok) {
           const data = await response.json();
+          if (!data.userData) {
+            setError("User data not found");
+            handleLogout();
+            return;
+          }
           setUserData(data.userData);
-          console.log(data.userData);
         } else {
-          console.error("Failed to fetch user data");
+          setError("Failed to fetch user data");
+          handleLogout();
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setError("Error fetching data");
+        handleLogout();
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [handleLogout]);
+
+  // Add error handling in render
+  if (error) {
+    return <p>иди на</p>;
+  }
   const handleSaveForSelect = async () => {
     try {
       // Обновляем страну
       const countryResponse = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -141,7 +159,7 @@ function ProfileFighterAcc() {
       // Если обновление страны прошло успешно, обновляем регион
       if (countryResponse.ok) {
         const regionResponse = await fetch(
-          `/api/user/profile/${userId}`,
+          `http://localhost:5000/api/user/profile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -175,7 +193,7 @@ function ProfileFighterAcc() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -200,14 +218,7 @@ function ProfileFighterAcc() {
       console.error("Error updating profile:", error);
     }
   };
-  const handleLogout = () => {
-    // Очищаем данные пользователя из localStorage
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userType");
 
-    // Перенаправляем на страницу входа
-    navigate("/");
-  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -225,6 +236,9 @@ function ProfileFighterAcc() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -345,11 +359,25 @@ function ProfileFighterAcc() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            if (userType === "fan") {
+              navigate("/profileuser");
+            } else {
+              navigate("/profilefighter");
+            }
+          }}
+        >
           <img src="person.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Профиль</p>
         </div>

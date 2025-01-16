@@ -3,6 +3,8 @@ import styles from "./ProfileUser.module.css";
 import { useNavigate } from "react-router-dom";
 
 function ProfileUser() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
@@ -14,14 +16,14 @@ function ProfileUser() {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `/api/user/profile/${userId}`
+          `http://localhost:5000/api/user/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
           console.log(data);
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
           // console.log("Profile photo:", data.userData.photo_url);
-          const fullPhotoUrl = `${data.userData.photo_url}`;
+          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
           setUserName(data.userData.profile_name);
           setBalance(data.userData.balance);
           localStorage.setItem("profilePhotoUrl", fullPhotoUrl);
@@ -46,6 +48,9 @@ function ProfileUser() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -96,15 +101,29 @@ function ProfileUser() {
           <div className={styles.balanceInfo}>
             <div>
               <img src="cash-stack.png" alt="" />
-              <p>Баланс</p>
+              <p
+                onClick={() => {
+                  navigate("/Balance");
+                }}
+              >
+                Баланс
+              </p>
             </div>{" "}
             <p className="subscriptions-amount">{balance}₽ </p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/Subscriptions");
+            }}
+          >
             <img src="lucide_tickets.png" alt="" />
             <p>Подписки</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/Referal");
+            }}
+          >
             <img src="gift (1).png" alt="" />
             <p>Реферальная программа</p>
           </div>
@@ -145,11 +164,25 @@ function ProfileUser() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            if (userType === "fan") {
+              navigate("/profileuser");
+            } else {
+              navigate("/profilefighter");
+            }
+          }}
+        >
           <img src="person.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Профиль</p>
         </div>

@@ -13,7 +13,7 @@ function AllTournaments() {
   const handleSportClick = async (sportName) => {
     try {
       const response = await fetch(
-        `/api/tournaments/${sportName}`
+        `http://localhost:5000/api/tournaments/${sportName}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -32,7 +32,7 @@ function AllTournaments() {
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" />
+            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
             <h1>SportDonation</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -40,6 +40,9 @@ function AllTournaments() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -71,10 +74,10 @@ function AllTournaments() {
           </div>
           <div
             className={styles.kickbox}
-            onClick={() => handleSportClick("Кикбокс")}
+            onClick={() => handleSportClick("Кикбоксинг")}
           >
             <img src="/img/kickbox.png" alt="" />
-            <p>Кикбокс</p>
+            <p>Кикбоксинг</p>
           </div>
           <div
             className={styles.muayThai}
@@ -174,7 +177,12 @@ function AllTournaments() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>

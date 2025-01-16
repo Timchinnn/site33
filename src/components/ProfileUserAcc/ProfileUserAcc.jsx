@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./ProfileUserAcc.module.css";
 import { useNavigate } from "react-router-dom";
 
 function ProfileUserAcc() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [selectedField, setSelectedField] = useState("");
-
+  const [error, setError] = useState(null);
+  console.log(error);
   const toggleModal = (field) => {
     setSelectedField(field);
     setEditedValue(userData[field]);
@@ -30,7 +33,7 @@ function ProfileUserAcc() {
     try {
       // Обновляем страну
       const countryResponse = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -46,7 +49,7 @@ function ProfileUserAcc() {
       // Если обновление страны прошло успешно, обновляем регион
       if (countryResponse.ok) {
         const regionResponse = await fetch(
-          `/api/user/profile/${userId}`,
+          `http://localhost:5000/api/user/profile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -80,7 +83,7 @@ function ProfileUserAcc() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `/api/user/profile/${userId}`,
+        `http://localhost:5000/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -159,7 +162,7 @@ function ProfileUserAcc() {
       formData.append("userId", localStorage.getItem("userId"));
       try {
         const response = await fetch(
-          "/api/user/upload-photo",
+          "http://localhost:5000/api/user/upload-photo",
           {
             method: "POST",
             body: formData,
@@ -167,7 +170,7 @@ function ProfileUserAcc() {
         );
         if (response.ok) {
           const data = await response.json();
-          const fullPhotoUrl = `${data.photoUrl}`;
+          const fullPhotoUrl = `http://localhost:5000${data.photoUrl}`;
           setProfilePhoto(fullPhotoUrl);
         }
       } catch (error) {
@@ -175,14 +178,11 @@ function ProfileUserAcc() {
       }
     }
   };
-  const handleLogout = () => {
-    // Очищаем данные пользователя из localStorage
+  const handleLogout = useCallback(() => {
     localStorage.removeItem("userId");
     localStorage.removeItem("userType");
-
-    // Перенаправляем на страницу входа
     navigate("/");
-  };
+  }, [navigate]);
   const handleSavePassword = async () => {
     if (newPassword !== confirmNewPassword) {
       alert("Новые пароли не совпадают");
@@ -191,7 +191,7 @@ function ProfileUserAcc() {
 
     try {
       const response = await fetch(
-        `/api/user/password/${userId}`,
+        `http://localhost:5000/api/user/password/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -223,35 +223,67 @@ function ProfileUserAcc() {
       alert("Произошла ошибка при соединении с сервером");
     }
   };
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     const userId = localStorage.getItem("userId");
+
+  //     try {
+  //       const response = await fetch(
+  //         `http://localhost:5000/api/user/profile/${userId}`,
+  //         {
+  //           method: "GET",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //         }
+  //       );
+
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setUserData(data.userData);
+  //       } else {
+  //         console.error("Failed to fetch user data");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fet error");
+  //     }
+  //   };
+
+  //   fetchUserData();
+  // }, []);
   useEffect(() => {
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
+      if (!userId) {
+        handleLogout();
+        return;
+      }
 
       try {
         const response = await fetch(
-          `/api/user/profile/${userId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
+          `http://localhost:5000/api/user/profile/${userId}`
         );
 
         if (response.ok) {
           const data = await response.json();
+          if (!data.userData) {
+            setError("User data not found");
+            handleLogout();
+            return;
+          }
           setUserData(data.userData);
         } else {
-          console.error("Failed to fetch user data");
+          setError("Failed to fetch user data");
+          handleLogout();
         }
       } catch (error) {
-        console.error("Error fet error");
+        setError("Error fetching data");
+        handleLogout();
       }
     };
 
     fetchUserData();
-  }, []);
-
+  }, [handleLogout]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -269,6 +301,9 @@ function ProfileUserAcc() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -377,11 +412,25 @@ function ProfileUserAcc() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            if (userType === "fan") {
+              navigate("/profileuser");
+            } else {
+              navigate("/profilefighter");
+            }
+          }}
+        >
           <img src="person.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Профиль</p>
         </div>

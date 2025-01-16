@@ -13,6 +13,7 @@ function RoleFighter() {
   const [lastName, setLastName] = useState("");
   const [record, setRecord] = useState("");
   const [selectedDiscipline, setSelectedDiscipline] = useState("");
+  const referralCode = location.state?.referralCode;
 
   const countries = {
     Россия: [
@@ -53,40 +54,64 @@ function RoleFighter() {
     navigate("/chooserole");
   };
 
-  const handleSave = () => {
-    const userData = {
-      email,
-      firstName,
-      lastName,
-      selectedCountry,
-      selectedRegion,
-      selectedDiscipline,
-      record,
-      passwordFromRegister, // получаем из location.state
-    };
-
-    fetch("/api/rolefighter", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+  const handleSave = async () => {
+    if (!email.includes("@") || !email.includes(".")) {
+      alert("Пожалуйста, введите корректный email адрес");
+      return;
+    }
+    try {
+      // Сначала проверяем существование email
+      const checkResponse = await fetch(
+        "http://localhost:5000/api/check-user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
+      );
+
+      if (!checkResponse.ok) {
+        const data = await checkResponse.json();
+        alert(data.message); // Покажет "Email уже зарегистрирован"
+        return;
+      }
+
+      // Если email не существует, продолжаем регистрацию
+      const userData = {
+        email,
+        firstName,
+        lastName,
+        selectedCountry,
+        selectedRegion,
+        selectedDiscipline,
+        record,
+        passwordFromRegister,
+        referralCode,
+      };
+
+      const registerResponse = await fetch(
+        "http://localhost:5000/api/rolefighter",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
+
+      if (registerResponse.ok) {
+        const data = await registerResponse.json();
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userType", data.userType);
         navigate("/main");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Произошла ошибка при регистрации");
+    }
   };
 
   const isFormValid =

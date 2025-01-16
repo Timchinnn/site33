@@ -1,0 +1,404 @@
+@font-face {
+  font-family: "Bebas Neue Cyrillic";
+  src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
+}
+
+img {
+  width: 28px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.container {
+  width: 91vw;
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+}
+.backArrow {
+  display: flex;
+  align-items: center;
+}
+.backArrow h1 {
+  margin: 0;
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 0.4vh;
+  padding-left: 1vw;
+}
+.search {
+  width: 19px;
+  height: 19px;
+  padding-bottom: 4px;
+}
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottomNav button {
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.container {
+  padding-bottom: 82px;
+}
+.bottomNav p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+.bottomNav img {
+  /* padding-left: 8px; */
+}
+.catalogItem {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+}
+
+.catalogImage {
+  margin-bottom: 8px; /* Отступ между изображением и текстом */
+}
+
+.catalogText {
+  margin: 0; /* Убираем стандартные отступы */
+}
+.content h1 {
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.06em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.button {
+  width: 135px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: black;
+  color: white;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0; /* Добавлено для покрытия всей страницы */
+  background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  max-height: 80vh;
+  /* overflow-y: auto; */
+}
+/* .topModalHead div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+  } */
+.modalContent input {
+  width: 94%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f0f;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 16px;
+}
+.modalContent button {
+  width: 99%;
+  height: 40px;
+  border: none;
+  background: #0f0f0f;
+  color: white;
+  margin-top: 9px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+/* .namesBut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donateButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.donateButton {
+  padding: 10px;
+  border: 1px solid #e8e7ed;
+  background: grey;
+  border-radius: 5px;
+}
+
+.donateButton.selected {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.customAmountButton {
+  width: 100%;
+  padding: 12px;
+  background: #0f0f0f0f !important;
+  color: black !important;
+  border: none;
+  border-radius: 5px;
+}
+
+.customAmountButton.selected {
+  background: black !important;
+  color: white !important;
+  border: none;
+} */
+.votings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.votingReit .votingDonat {
+  width: 44vw;
+  height: 52px;
+}
+.votingReit p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 23vw;
+  min-width: 82px;
+}
+.votingDonat p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: white;
+  width: 23vw;
+}
+.votingDonat {
+  background-color: black;
+  width: 44vw;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.votingReit {
+  background: #e8e7ed;
+  width: 44vw;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.choose {
+  display: flex;
+  justify-content: space-between;
+  width: 101%;
+  margin-right: 1vw;
+}
+.choosesTp {
+  width: 38vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0f0f0f0f;
+  padding: 14px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.categorySelected {
+  background: white;
+  color: #808080;
+}
+
+.modalContent p {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.selectionContent {
+  width: 100%;
+}
+.namesBut {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.donateButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.donateButtonsGrid button {
+  background: #0f0f0f0f;
+  color: black;
+}
+.donateButton {
+  padding: 10px;
+  border: 1px solid #e8e7ed;
+  background: grey;
+  border-radius: 5px;
+}
+
+.donateButton.selected {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.customAmountButton {
+  width: 100%;
+  padding: 12px;
+  background: #0f0f0f0f !important;
+  color: black !important;
+  border: none;
+  border-radius: 5px;
+}
+.customAmountButton.selected {
+  background: black !important;
+  color: white !important;
+  border: none;
+}
+.donateCounts p {
+  text-align: left;
+}
+.donateCount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.balanceNow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f0f0f0f;
+  padding: 0 8px;
+}
+.visa {
+  width: 58px;
+  height: 31px;
+}
+.master {
+  width: 51px;
+  height: 41px;
+}
+.mir {
+  width: 58px;
+  height: 36px;
+}
+.sbp {
+  width: 66px;
+  height: 36px;
+}
+.halva {
+  width: 69px;
+  height: 29px;
+}
+.banks img {
+  padding-right: 2px;
+}
+.banks img :last-child {
+  padding-right: 0px;
+}
+.notification {
+  padding-right: 2vw;
+}

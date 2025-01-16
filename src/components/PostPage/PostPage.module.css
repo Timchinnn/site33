@@ -38,7 +38,7 @@ img {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -115,9 +115,13 @@ img {
 
 .profileImage {
   width: 40px;
-  padding-right: 12px;
+  height: 40px;
+  padding-right: 0;
+  margin-right: 9px;
 }
-
+.notification {
+  padding-right: 2vw;
+}
 .userInfo {
   display: flex;
   flex-direction: column;

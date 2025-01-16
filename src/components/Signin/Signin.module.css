@@ -29,7 +29,7 @@ input:focus {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -67,7 +67,7 @@ input:focus {
 .authForm input,
 .authForm button {
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
 }
 .authForm button {
   width: 94%;
@@ -85,7 +85,7 @@ input:focus {
 }
 
 .authForm h2 {
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;
@@ -95,7 +95,7 @@ input:focus {
   text-decoration-skip-ink: none;
 }
 .authForm p {
-  font-size: clamp(12px, 3vw, 35px);
+  font-size: 12px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;
@@ -159,7 +159,7 @@ input:focus {
   width: 92%;
   max-width: 343px;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   border: none;
   font-family: Inter;
   font-weight: 500;
@@ -170,7 +170,7 @@ input:focus {
 }
 
 .registrationPrompt p {
-  font-size: clamp(12px, 3vw, 35px);
+  font-size: 12px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;

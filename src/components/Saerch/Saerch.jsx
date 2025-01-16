@@ -14,9 +14,10 @@ function Saerch() {
   useEffect(() => {
     const fetchFighters = async () => {
       try {
-        const response = await fetch("/api/fighters");
+        const response = await fetch("http://localhost:5000/api/fighters");
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           setFighters(data);
           // setFilteredFighters(data);
         }
@@ -27,11 +28,13 @@ function Saerch() {
 
     fetchFighters();
   }, []);
+  // В Search.jsx изменить функцию handleFighterClick:
   const handleFighterClick = async (fighter) => {
     try {
       navigate("/StatsFighterFan", {
         state: {
-          fighterData: fighter,
+          fighterName: fighter.name, // Добавляем имя бойца
+          fighterData: fighter, // Передаем все данные о бойце
         },
       });
     } catch (error) {
@@ -72,6 +75,9 @@ function Saerch() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -147,7 +153,12 @@ function Saerch() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>

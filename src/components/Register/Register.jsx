@@ -1,5 +1,5 @@
 import styles from "./Register.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -17,6 +17,8 @@ function Register() {
     backgroundColor: "rgba(232, 231, 237, 1)",
     color: "rgba(149, 149, 155, 1)",
   });
+  const [referralCode, setReferralCode] = useState("");
+  console.log(referralCode);
 
   const togglePasswordVisibility1 = () => {
     setShowPassword1(!showPassword1);
@@ -40,19 +42,49 @@ function Register() {
     });
   };
 
-  const handleRegisterClick = () => {
+  const handleRegisterClick = async () => {
     if (buttonStyle.backgroundColor !== "rgba(232, 231, 237, 1)") {
+      if (!email.includes("@") || !email.includes(".")) {
+        alert("Пожалуйста, введите корректный email адрес");
+        return;
+      }
       if (password !== confirmPassword) {
         alert("Пароли не совпадают. Пожалуйста, попробуйте снова.");
-        return; // Прекращаем выполнение функции, если пароли не совпадают
+        return;
       }
 
-      navigate("/chooserole", {
-        state: {
-          email: email,
-          password: password,
-        },
-      });
+      try {
+        // Проверяем существование пользователя в обеих таблицах
+        const checkResponse = await fetch(
+          "http://localhost:5000/api/check-user",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          }
+        );
+
+        const data = await checkResponse.json();
+
+        if (!checkResponse.ok) {
+          alert(data.message || "Этот email уже зарегистрирован");
+          return;
+        }
+
+        // Если email не существует, продолжаем регистрацию
+        navigate("/chooserole", {
+          state: {
+            email: email,
+            password: password,
+            referralCode: referralCode,
+          },
+        });
+      } catch (error) {
+        console.error("Ошибка при проверке email:", error);
+        alert("Произошла ошибка при проверке email");
+      }
     }
   };
 
@@ -64,6 +96,24 @@ function Register() {
     navigate("/");
   };
 
+  // В Register.jsx
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const refCode = urlParams.get("ref");
+
+    console.log(refCode);
+    if (refCode) {
+      // Сохраняем реферальный код
+      setReferralCode(refCode);
+    }
+  }, []);
+  const handleReferralInput = (e) => {
+    const input = e.target.value;
+    const refCode = new URL(input).searchParams.get("ref");
+    if (refCode) {
+      setReferralCode(refCode);
+    }
+  };
   return (
     <div>
       <div className={styles.titleblock}>
@@ -150,6 +200,7 @@ function Register() {
             type="text"
             placeholder="Введите реферальную ссылку"
             className={styles.email}
+            onChange={handleReferralInput}
           />
         )}
       </div>

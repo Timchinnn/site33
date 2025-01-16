@@ -14,6 +14,9 @@ function RoleFan() {
   const emailFromRegister = location.state?.email;
   const passwordFromRegister = location.state?.password;
   const [email, setEmail] = useState(emailFromRegister || "");
+  const referralCode = location.state?.referralCode;
+  console.log(referralCode);
+
   // console.log("Location state:", location.state);
   // console.log(passwordFromRegister);
   const countries = {
@@ -70,38 +73,59 @@ function RoleFan() {
     selectedCountry &&
     selectedRegion &&
     selectedCurrency;
-  const handleSave = () => {
-    const userData = {
-      email,
-      profileName,
-      selectedCountry,
-      selectedRegion,
-      selectedCurrency,
-      passwordFromRegister,
-    };
-
-    fetch("/api/rolefan", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
+  const handleSave = async () => {
+    if (!email.includes("@") || !email.includes(".")) {
+      alert("Пожалуйста, введите корректный email адрес");
+      return;
+    }
+    try {
+      // First check if email exists
+      const checkResponse = await fetch(
+        "http://localhost:5000/api/check-user",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
+      );
+
+      if (!checkResponse.ok) {
+        const data = await checkResponse.json();
+        alert(data.message); // Will show "Email уже зарегистрирован"
+        return;
+      }
+
+      // If email doesn't exist, proceed with registration
+      const userData = {
+        email,
+        profileName,
+        selectedCountry,
+        selectedRegion,
+        selectedCurrency,
+        passwordFromRegister,
+        referralCode,
+      };
+
+      const response = await fetch("http://localhost:5000/api/rolefan", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userType", data.userType);
         navigate("/main");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Произошла ошибка при регистрации");
+    }
   };
   return (
     <div>

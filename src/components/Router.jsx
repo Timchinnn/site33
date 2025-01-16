@@ -20,6 +20,12 @@ import PostPage from "./PostPage/PostPage";
 import Notifications from "./Notifications/Notifications";
 import StatsFighterFan from "./StatsFighterFan/StatsFighterFan";
 import Saerch from "./Saerch/Saerch";
+import AdminPanel from "./AdminPanel/AdminPanel";
+import Balance from "./Balance/Balance";
+import Referal from "./Referal/Referal";
+import Subscriptions from "./Subscriptions/Subscriptions";
+import SubscriptionDetails from "./SubscriptionDetails/SubscriptionDetails";
+import SubscriptionEdit from "./SubscriptionEdit/SubscriptionEdit";
 
 const Router = () => {
   const ProtectedSignin = () => {
@@ -55,6 +61,12 @@ const Router = () => {
         <Route element={<Notifications />} path="/Notifications" />
         <Route element={<StatsFighterFan />} path="/StatsFighterFan" />
         <Route element={<Saerch />} path="/Saerch" />
+        <Route element={<AdminPanel />} path="/AdminPanel" />
+        <Route element={<Balance />} path="/Balance" />
+        <Route element={<Referal />} path="/Referal" />
+        <Route element={<Subscriptions />} path="/Subscriptions" />
+        <Route element={<SubscriptionDetails />} path="/SubscriptionDetails" />
+        <Route element={<SubscriptionEdit />} path="/SubscriptionEdit" />
       </Routes>
     </BrowserRouter>
   );

@@ -18,7 +18,7 @@
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   padding-bottom: 0.4vh;
@@ -46,11 +46,11 @@
   line-height: 18px;
   letter-spacing: -0.03em;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
 }
 
 .authForm h2 {
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   text-align: center;
   font-family: Inter;
   font-weight: 500;

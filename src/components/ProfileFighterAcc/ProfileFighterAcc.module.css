@@ -14,7 +14,9 @@ img {
   font-family: "Bebas Neue Cyrillic";
   src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
 }
-
+.notification {
+  padding-right: 2vw;
+}
 img {
   width: 28px;
 }
@@ -49,7 +51,7 @@ img {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -197,7 +199,7 @@ label:active:after {
   margin: 0;
   font-family: "Krona One", sans-serif;
   font-weight: 400;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   line-height: 20px;
   letter-spacing: -0.04em;
   text-underline-position: from-font;
@@ -384,7 +386,7 @@ label:active:after {
   padding-left: 10px;
   width: 99%;
   height: 40px;
-  font-size: clamp(16px, 3vw, 35px);
+  font-size: 16px;
   margin-bottom: -8px;
   appearance: none;
   -webkit-appearance: none;

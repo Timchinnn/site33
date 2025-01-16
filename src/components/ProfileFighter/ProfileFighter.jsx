@@ -3,6 +3,8 @@ import styles from "./ProfileFighter.module.css";
 import { useNavigate } from "react-router-dom";
 
 function ProfileFighter() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
@@ -17,7 +19,7 @@ function ProfileFighter() {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `/api/fighter/profile/${userId}`
+          `http://localhost:5000/api/fighter/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -25,7 +27,7 @@ function ProfileFighter() {
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
           console.log("Profile photo:", data.userData.photo_url);
           console.log("Profile photo:", data);
-          const fullPhotoUrl = `${data.userData.photo_url}`;
+          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
           console.log(data);
           setUserName(`${data.userData.name} ${data.userData.surname}`);
           setFighterName(
@@ -56,6 +58,9 @@ function ProfileFighter() {
               src="Notification.png"
               alt=""
               className={styles.notification}
+              onClick={() => {
+                navigate("/Notifications");
+              }}
             />
             <img
               src="search.png"
@@ -118,15 +123,29 @@ function ProfileFighter() {
           <div className={styles.balanceInfo}>
             <div>
               <img src="cash-stack.png" alt="" />
-              <p>Баланс</p>
+              <p
+                onClick={() => {
+                  navigate("/Balance");
+                }}
+              >
+                Баланс
+              </p>
             </div>{" "}
             <p class="subscriptions-amount">{balance}₽ </p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/Subscriptions");
+            }}
+          >
             <img src="lucide_tickets.png" alt="" />
             <p>Подписки</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/Referal");
+            }}
+          >
             <img src="gift (1).png" alt="" />
             <p>Реферальная программа</p>
           </div>
@@ -138,6 +157,16 @@ function ProfileFighter() {
             <img src="layout-text-window.png" alt="" />
             <p>Помощь</p>
           </div>
+          {!fighterData?.userData?.fighter_id && (
+            <div className={styles.achievement}>
+              <h3>Пройти верификацию</h3>
+              <img
+                src="forward.png"
+                alt=""
+                onClick={() => navigate("/verification")} // Добавить соответствующий роут
+              />
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.bottomNav}>
@@ -167,11 +196,25 @@ function ProfileFighter() {
           />
           <p className={styles.catalogText}>Турниры</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/Referal");
+          }}
+        >
           <img src="gift.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Рефералы</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            if (userType === "fan") {
+              navigate("/profileuser");
+            } else {
+              navigate("/profilefighter");
+            }
+          }}
+        >
           <img src="person.png" alt="" className={styles.catalogImage} />
           <p className={styles.catalogText}>Профиль</p>
         </div>
