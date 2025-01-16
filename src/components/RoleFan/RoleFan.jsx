@@ -81,7 +81,7 @@ function RoleFan() {
     try {
       // First check if email exists
       const checkResponse = await fetch(
-        "http://localhost:5000/api/check-user",
+        "/api/check-user",
         {
           method: "POST",
           headers: {
@@ -108,7 +108,7 @@ function RoleFan() {
         referralCode,
       };
 
-      const response = await fetch("http://localhost:5000/api/rolefan", {
+      const response = await fetch("/api/rolefan", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

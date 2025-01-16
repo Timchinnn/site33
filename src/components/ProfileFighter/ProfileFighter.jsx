@@ -19,7 +19,7 @@ function ProfileFighter() {
       const userId = localStorage.getItem("userId");
       try {
         const response = await fetch(
-          `http://localhost:5000/api/fighter/profile/${userId}`
+          `/api/fighter/profile/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -27,7 +27,7 @@ function ProfileFighter() {
           setProfilePhoto(data.userData.photo_url); // Предполагая, что фото приходит в этом поле
           console.log("Profile photo:", data.userData.photo_url);
           console.log("Profile photo:", data);
-          const fullPhotoUrl = `http://localhost:5000${data.userData.photo_url}`;
+          const fullPhotoUrl = `${data.userData.photo_url}`;
           console.log(data);
           setUserName(`${data.userData.name} ${data.userData.surname}`);
           setFighterName(

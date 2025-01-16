@@ -26,7 +26,7 @@ function Tournament() {
   const handleSportClick = async (sportName) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/tournaments/${sportName}`
+        `/api/tournaments/${sportName}`
       );
       if (response.ok) {
         const data = await response.json();

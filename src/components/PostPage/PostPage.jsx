@@ -29,12 +29,12 @@ const PostPage = () => {
       for (const comment of comments) {
         try {
           // const response = await fetch(
-          //   `http://localhost:5000/api/comments/${
+          //   `/api/comments/${
           //     comment.id
           //   }/likes/${localStorage.getItem("userId")}`
           // );
           const response = await fetch(
-            `http://localhost:5000/api/comments/${
+            `/api/comments/${
               comment.id
             }/likes/${localStorage.getItem("userId")}?userType=${userType}`
           );
@@ -57,7 +57,7 @@ const PostPage = () => {
     const fetchLikeStatus = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/posts/${
+          `/api/posts/${
             post.id
           }/likes/${localStorage.getItem("userId")}?userType=${userType}`
         );
@@ -78,7 +78,7 @@ const PostPage = () => {
   };
   const sendNotification = async (commentId, recipientId, messageContent) => {
     try {
-      const response = await fetch("http://localhost:5000/api/notifications", {
+      const response = await fetch("/api/notifications", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -102,7 +102,7 @@ const PostPage = () => {
   const handleDeleteComment = async (commentId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}`,
+        `/api/comments/${commentId}`,
         {
           method: "DELETE",
           headers: {
@@ -125,7 +125,7 @@ const PostPage = () => {
   };
   const fetchComments = async (postId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/comments/${id}`);
+      const response = await fetch(`/api/comments/${id}`);
       if (response.ok) {
         const data = await response.json();
         setComments(data); // Просто устанавливаем массив данных
@@ -137,7 +137,7 @@ const PostPage = () => {
   async function fetchRepliesCount(commentId) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/repliesCount`
+        `/api/comments/${commentId}/repliesCount`
       );
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
@@ -152,7 +152,7 @@ const PostPage = () => {
   const fetchTotalLikes = async (postId, userType) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/likes${
+        `/api/posts/${postId}/likes${
           userType ? `?userType=${userType}` : ""
         }`
       );
@@ -169,7 +169,7 @@ const PostPage = () => {
   const handlePostLike = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${post.id}/like`,
+        `/api/posts/${post.id}/like`,
         {
           method: "POST",
           headers: {
@@ -194,7 +194,7 @@ const PostPage = () => {
   const fetchCommentLikes = async (commentId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/likes`
+        `/api/comments/${commentId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -210,7 +210,7 @@ const PostPage = () => {
   const handleCommentLike = async (commentId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/like`,
+        `/api/comments/${commentId}/like`,
         {
           method: "POST",
           headers: {
@@ -238,7 +238,7 @@ const PostPage = () => {
     const fetchComments = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/comments/${post.id}`
+          `/api/comments/${post.id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -271,7 +271,7 @@ const PostPage = () => {
       : newComment;
 
     try {
-      const response = await fetch("http://localhost:5000/api/comments", {
+      const response = await fetch("/api/comments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -350,7 +350,7 @@ const PostPage = () => {
             <img
               src={
                 fighterData.photo_url
-                  ? `http://localhost:5000${fighterData.photo_url}`
+                  ? `${fighterData.photo_url}`
                   : "/Avatar.png"
               }
               alt="User Avatar"
@@ -393,7 +393,7 @@ const PostPage = () => {
                   <img
                     src={
                       comment.photo_url
-                        ? `http://localhost:5000${comment.photo_url}`
+                        ? `${comment.photo_url}`
                         : "/Avatar.png"
                     }
                     alt="User Avatar"

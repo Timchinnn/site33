@@ -12,7 +12,7 @@ function Notifications() {
     const fetchNotifications = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/notifications/${userId}`
+          `/api/notifications/${userId}`
         );
         if (response.ok) {
           const data = await response.json();

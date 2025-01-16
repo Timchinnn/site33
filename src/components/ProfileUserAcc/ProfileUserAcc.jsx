@@ -33,7 +33,7 @@ function ProfileUserAcc() {
     try {
       // Обновляем страну
       const countryResponse = await fetch(
-        `http://localhost:5000/api/user/profile/${userId}`,
+        `/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -49,7 +49,7 @@ function ProfileUserAcc() {
       // Если обновление страны прошло успешно, обновляем регион
       if (countryResponse.ok) {
         const regionResponse = await fetch(
-          `http://localhost:5000/api/user/profile/${userId}`,
+          `/api/user/profile/${userId}`,
           {
             method: "PUT",
             headers: {
@@ -83,7 +83,7 @@ function ProfileUserAcc() {
   const handleSave = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/profile/${userId}`,
+        `/api/user/profile/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -162,7 +162,7 @@ function ProfileUserAcc() {
       formData.append("userId", localStorage.getItem("userId"));
       try {
         const response = await fetch(
-          "http://localhost:5000/api/user/upload-photo",
+          "/api/user/upload-photo",
           {
             method: "POST",
             body: formData,
@@ -170,7 +170,7 @@ function ProfileUserAcc() {
         );
         if (response.ok) {
           const data = await response.json();
-          const fullPhotoUrl = `http://localhost:5000${data.photoUrl}`;
+          const fullPhotoUrl = `${data.photoUrl}`;
           setProfilePhoto(fullPhotoUrl);
         }
       } catch (error) {
@@ -191,7 +191,7 @@ function ProfileUserAcc() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/password/${userId}`,
+        `/api/user/password/${userId}`,
         {
           method: "PUT",
           headers: {
@@ -229,7 +229,7 @@ function ProfileUserAcc() {
 
   //     try {
   //       const response = await fetch(
-  //         `http://localhost:5000/api/user/profile/${userId}`,
+  //         `/api/user/profile/${userId}`,
   //         {
   //           method: "GET",
   //           headers: {
@@ -261,7 +261,7 @@ function ProfileUserAcc() {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user/profile/${userId}`
+          `/api/user/profile/${userId}`
         );
 
         if (response.ok) {

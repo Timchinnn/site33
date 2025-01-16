@@ -28,7 +28,7 @@ function AdminPanel() {
     const fetchUsersFighters = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/users-fighters"
+          "/api/admin/users-fighters"
         );
         if (response.ok) {
           const data = await response.json();
@@ -49,7 +49,7 @@ function AdminPanel() {
     const fetchUnverifiedFighters = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/unverified-fighters"
+          "/api/admin/unverified-fighters"
         );
         if (response.ok) {
           const data = await response.json();
@@ -67,7 +67,7 @@ function AdminPanel() {
     const fetchAllFighters = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/all-fighters"
+          "/api/admin/all-fighters"
         );
         if (response.ok) {
           const data = await response.json();
@@ -100,7 +100,7 @@ function AdminPanel() {
         return;
       }
       const response = await fetch(
-        "http://localhost:5000/api/admin/verify-fighter",
+        "/api/admin/verify-fighter",
         {
           method: "POST",
           headers: {
@@ -129,8 +129,8 @@ function AdminPanel() {
     const fetchDisciplinesAndTournaments = async () => {
       try {
         const [disciplinesResponse, tournamentsResponse] = await Promise.all([
-          fetch("http://localhost:5000/api/admin/disciplines"),
-          fetch("http://localhost:5000/api/admin/tournaments"),
+          fetch("/api/admin/disciplines"),
+          fetch("/api/admin/tournaments"),
         ]);
 
         const disciplinesData = await disciplinesResponse.json();
@@ -150,16 +150,16 @@ function AdminPanel() {
       let response;
       switch (selectedSection) {
         case "users":
-          response = await fetch("http://localhost:5000/api/admin/users");
+          response = await fetch("/api/admin/users");
           break;
         case "fighters":
-          response = await fetch("http://localhost:5000/api/admin/fighters");
+          response = await fetch("/api/admin/fighters");
           break;
         case "tournaments":
-          response = await fetch("http://localhost:5000/api/admin/tournaments");
+          response = await fetch("/api/admin/tournaments");
           break;
         case "matches":
-          response = await fetch("http://localhost:5000/api/admin/matches");
+          response = await fetch("/api/admin/matches");
           break;
         default:
           return;
@@ -189,7 +189,7 @@ function AdminPanel() {
   // useEffect(() => {
   //   const fetchUsers = async () => {
   //     try {
-  //       const response = await fetch("http://localhost:5000/api/admin/users");
+  //       const response = await fetch("/api/admin/users");
   //       if (response.ok) {
   //         const data = await response.json();
   //         // Убедитесь, что data - это массив
@@ -217,7 +217,7 @@ function AdminPanel() {
       }
 
       // Отправляем запрос на удаление с fighter_id
-      await fetch(`http://localhost:5000/api/admin/${type}/${id}`, {
+      await fetch(`/api/admin/${type}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -231,7 +231,7 @@ function AdminPanel() {
       const fetchUsersFighters = async () => {
         try {
           const response = await fetch(
-            "http://localhost:5000/api/admin/users-fighters"
+            "/api/admin/users-fighters"
           );
           if (response.ok) {
             const data = await response.json();
@@ -270,7 +270,7 @@ function AdminPanel() {
 
         try {
           const response = await fetch(
-            "http://localhost:5000/api/admin/matches",
+            "/api/admin/matches",
             {
               method: "POST",
               headers: {
@@ -305,7 +305,7 @@ function AdminPanel() {
       }
       if (selectedSection === "tournaments") {
         const response = await fetch(
-          `http://localhost:5000/api/admin/${selectedSection}`,
+          `/api/admin/${selectedSection}`,
           {
             method: "POST",
             headers: {
@@ -338,7 +338,7 @@ function AdminPanel() {
         formData.append("record", newItemData.record);
 
         const response = await fetch(
-          `http://localhost:5000/api/admin/${selectedSection}`,
+          `/api/admin/${selectedSection}`,
           {
             method: "POST",
             body: formData,

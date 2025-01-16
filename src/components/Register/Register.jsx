@@ -56,7 +56,7 @@ function Register() {
       try {
         // Проверяем существование пользователя в обеих таблицах
         const checkResponse = await fetch(
-          "http://localhost:5000/api/check-user",
+          "/api/check-user",
           {
             method: "POST",
             headers: {

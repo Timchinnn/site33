@@ -10,7 +10,7 @@ function Main() {
   const handleSportClick = async (sportName) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/tournaments/${sportName}`
+        `/api/tournaments/${sportName}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -27,7 +27,7 @@ function Main() {
   useEffect(() => {
     const fetchTopFighters = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/top-fighters");
+        const response = await fetch("/api/top-fighters");
         if (response.ok) {
           const data = await response.json();
           setTopFighters(data);
@@ -44,7 +44,7 @@ function Main() {
     const fetchTopVotedFighters = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/top-voted-fighters"
+          "/api/top-voted-fighters"
         );
         if (response.ok) {
           const data = await response.json();
@@ -61,7 +61,7 @@ function Main() {
   useEffect(() => {
     const fetchTopMatches = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/top-matches");
+        const response = await fetch("/api/top-matches");
         if (response.ok) {
           const data = await response.json();
           setTopMatches(data);
@@ -192,7 +192,7 @@ function Main() {
                 <img
                   src={
                     fighter.photo_url
-                      ? `http://localhost:5000${fighter.photo_url}`
+                      ? `${fighter.photo_url}`
                       : "Avatar.png"
                   }
                   alt={fighter.name}
@@ -216,7 +216,7 @@ function Main() {
                 <img
                   src={
                     fighter.photo_url
-                      ? `http://localhost:5000${fighter.photo_url}`
+                      ? `${fighter.photo_url}`
                       : "Avatar.png"
                   }
                   alt={fighter.name}

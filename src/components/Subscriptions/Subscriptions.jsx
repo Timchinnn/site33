@@ -14,7 +14,7 @@ function Subscriptions() {
       try {
         const userId = localStorage.getItem("userId");
         const response = await fetch(
-          `http://localhost:5000/api/subscriptions/${userId}`
+          `/api/subscriptions/${userId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -72,7 +72,7 @@ function Subscriptions() {
             <div key={subscription.id} className={styles.referralProgram}>
               <div className={styles.fighterInfo}>
                 <img
-                  src={`http://localhost:5000${subscription.fighter_photo}`}
+                  src={`${subscription.fighter_photo}`}
                   alt=""
                   className={styles.avatar}
                 />

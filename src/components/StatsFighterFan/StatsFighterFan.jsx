@@ -47,7 +47,7 @@ function StatsFighterFan() {
   };
   const handleRatingEnd = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/fighter-vote", {
+      const response = await fetch("/api/fighter-vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function StatsFighterFan() {
     if (selectedPayment === "balance") {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/balance/deduct`,
+          `/api/balance/deduct`,
           {
             method: "POST",
             headers: {
@@ -108,7 +108,7 @@ function StatsFighterFan() {
     if (isToggleOn && selectedDate) {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/subscriptions",
+          "/api/subscriptions",
           {
             method: "POST",
             headers: {
@@ -136,7 +136,7 @@ function StatsFighterFan() {
   const checkVoteStatus = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/check-fighter-vote`,
+        `/api/check-fighter-vote`,
         {
           method: "POST",
           headers: {
@@ -183,7 +183,7 @@ function StatsFighterFan() {
         const userId = localStorage.getItem("userId");
 
         const response = await fetch(
-          `http://localhost:5000/api/balance/${userId}?userType=${userType}`
+          `/api/balance/${userId}?userType=${userType}`
         );
 
         if (response.ok) {
@@ -203,7 +203,7 @@ function StatsFighterFan() {
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `http://localhost:5000/api/comments/${
+              `/api/comments/${
                 comment.id
               }/likes/${localStorage.getItem("userId")}?userType=${userType}`
             );
@@ -227,7 +227,7 @@ function StatsFighterFan() {
   const handleCommentLike = async (commentId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/like`,
+        `/api/comments/${commentId}/like`,
         {
           method: "POST",
           headers: {
@@ -260,7 +260,7 @@ function StatsFighterFan() {
   async function fetchRepliesCount(commentId) {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/repliesCount`
+        `/api/comments/${commentId}/repliesCount`
       );
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
@@ -275,7 +275,7 @@ function StatsFighterFan() {
   const handleDeletePost = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}`,
+        `/api/posts/${postId}`,
         {
           method: "DELETE",
           headers: {
@@ -307,7 +307,7 @@ function StatsFighterFan() {
       console.log(fighterData);
       try {
         const response = await fetch(
-          `http://localhost:5000/api/posts/${fighterData.id}`
+          `/api/posts/${fighterData.id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -363,7 +363,7 @@ function StatsFighterFan() {
   const fetchTotalLikes = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/likes`
+        `/api/posts/${postId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -380,7 +380,7 @@ function StatsFighterFan() {
     const fetchLikeStatus = async (postId) => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
+          `/api/posts/${postId}/likes/${localStorage.getItem(
             "userId"
           )}?userType=${localStorage.getItem("userType")}`
         );
@@ -403,7 +403,7 @@ function StatsFighterFan() {
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/likes/${localStorage.getItem(
+        `/api/posts/${postId}/likes/${localStorage.getItem(
           "userId"
         )}`
       );
@@ -431,7 +431,7 @@ function StatsFighterFan() {
   const fetchComments = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${postId}`
+        `/api/comments/${postId}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -448,7 +448,7 @@ function StatsFighterFan() {
   const fetchCommentLikes = async (commentId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/comments/${commentId}/likes`
+        `/api/comments/${commentId}/likes`
       );
       if (response.ok) {
         const data = await response.json();
@@ -464,7 +464,7 @@ function StatsFighterFan() {
   const handleLike = async (postId) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/posts/${postId}/like`,
+        `/api/posts/${postId}/like`,
         {
           method: "POST",
           headers: {
@@ -525,7 +525,7 @@ function StatsFighterFan() {
             <img
               src={
                 fighterData.photo_url
-                  ? `http://localhost:5000${fighterData.photo_url}`
+                  ? `${fighterData.photo_url}`
                   : "Avatar.png"
               }
               alt="User Avatar"
@@ -650,7 +650,7 @@ function StatsFighterFan() {
                   <img
                     src={
                       fighterData.photo_url
-                        ? `http://localhost:5000${fighterData.photo_url}`
+                        ? `${fighterData.photo_url}`
                         : "Avatar.png"
                     }
                     alt="User Avatar"
@@ -706,7 +706,7 @@ function StatsFighterFan() {
                     <img
                       src={
                         comment.photo_url
-                          ? `http://localhost:5000${comment.photo_url}`
+                          ? `${comment.photo_url}`
                           : "Avatar.png"
                       }
                       alt="User Avatar"

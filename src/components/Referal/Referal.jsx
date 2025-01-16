@@ -30,7 +30,7 @@ function Referal() {
     const checkReferralStatus = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/referral/status/${userId}?userType=${userType}`
+          `/api/referral/status/${userId}?userType=${userType}`
         );
         if (response.ok) {
           const data = await response.json();

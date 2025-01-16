@@ -19,7 +19,7 @@ function SubscriptionDetails() {
     try {
       const userId = localStorage.getItem("userId");
       const response = await fetch(
-        `http://localhost:5000/api/subscriptions/${userId}`
+        `/api/subscriptions/${userId}`
       );
       if (response.ok) {
         // Обновление списка подписок после успешного запроса
@@ -32,7 +32,7 @@ function SubscriptionDetails() {
   const handleCancel = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/subscriptions/${subscription.id}`,
+        `/api/subscriptions/${subscription.id}`,
         {
           method: "DELETE",
           headers: {
@@ -82,7 +82,7 @@ function SubscriptionDetails() {
         <div key={subscription.id} className={styles.referralProgram}>
           <div className={styles.fighterInfo}>
             <img
-              src={`http://localhost:5000${subscription.fighter_photo}`}
+              src={`${subscription.fighter_photo}`}
               alt=""
               className={styles.avatar}
             />

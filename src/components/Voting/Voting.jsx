@@ -28,7 +28,7 @@ function Voting() {
     try {
       // Отправляем запрос на сервер
       const response = await fetch(
-        `http://localhost:5000/api/fighter/${trimmedName}`
+        `/api/fighter/${trimmedName}`
       );
 
       if (response.ok) {
@@ -65,7 +65,7 @@ function Voting() {
     const fetchUserVotes = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
+          `/api/user-votes/${userId}/${tournament.id}?userType=${userType}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -93,7 +93,7 @@ function Voting() {
 
     try {
       // Check votes with userType
-      const response = await fetch("http://localhost:5000/api/check-votes", {
+      const response = await fetch("/api/check-votes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function Voting() {
       }
 
       // Add matchId to the request body
-      await fetch("http://localhost:5000/api/vote", {
+      await fetch("/api/vote", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +153,7 @@ function Voting() {
     const fetchVoteResults = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/tournament-votes/${tournament.id}`
+          `/api/tournament-votes/${tournament.id}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -178,7 +178,7 @@ function Voting() {
     const fetchTopDonations = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/tournament/${tournament.id}/top-donations`
+          `/api/tournament/${tournament.id}/top-donations`
         );
         if (response.ok) {
           const data = await response.json();

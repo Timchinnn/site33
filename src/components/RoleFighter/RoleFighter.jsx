@@ -62,7 +62,7 @@ function RoleFighter() {
     try {
       // Сначала проверяем существование email
       const checkResponse = await fetch(
-        "http://localhost:5000/api/check-user",
+        "/api/check-user",
         {
           method: "POST",
           headers: {
@@ -92,7 +92,7 @@ function RoleFighter() {
       };
 
       const registerResponse = await fetch(
-        "http://localhost:5000/api/rolefighter",
+        "/api/rolefighter",
         {
           method: "POST",
           headers: {
