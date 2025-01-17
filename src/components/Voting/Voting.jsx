@@ -260,30 +260,30 @@ function Voting() {
           >
             <p>Топ донатов</p>
             {topDonations[0]?.surname && topDonations[0]?.name && (
-              <p>
+              <p className={styles.nameFigh}>
                 {topDonations[0].surname} {topDonations[0].name[0]}.
               </p>
             )}
           </div>
           <div>
             <p>Выбор фанатов</p>
-            <p>{voteResults["fan"]}</p>
+            <p className={styles.nameFigh}>{voteResults["fan"]}</p>
           </div>
           <div>
             <p>Лучший бой турнира</p>
-            <p>{voteResults["best-fight"]}</p>
+            <p className={styles.nameFigh}>{voteResults["best-fight"]}</p>
           </div>
           <div>
             <p>Лучший боец турнира</p>
-            <p>{voteResults["best-fighter"]}</p>
+            <p className={styles.nameFigh}>{voteResults["best-fighter"]}</p>
           </div>
           <div>
             <p>Лучший нокаут турнира</p>
-            <p>{voteResults["best-knockout"]}</p>
+            <p className={styles.nameFigh}>{voteResults["best-knockout"]}</p>
           </div>
           <div>
             <p>Велосипед турнира</p>
-            <p>{voteResults["best-bicycle"]}</p>
+            <p className={styles.nameFigh}>{voteResults["best-bicycle"]}</p>
           </div>
         </div>
         <p className={styles.currentVoting}>Топ донатов турнира</p>
