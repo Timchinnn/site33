@@ -15,6 +15,48 @@ function Voting() {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+  const [isThankYouMessage, setIsThankYouMessage] = useState(false);
+  const [showDonateInput, setShowDonateInput] = useState(false);
+  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [selectedPayment, setSelectedPayment] = useState(null);
+  const [isToggleOn, setIsToggleOn] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [donateAmount, setDonateAmount] = useState(0);
+  const [userBalance, setUserBalance] = useState(0);
+  const handleDonateSelect = (amount) => {
+    setSelectedAmount(amount);
+    setDonateAmount(amount);
+  };
+
+  const handlePaymentSelect = (type) => {
+    setSelectedPayment(type);
+  };
+
+  const handleDonateNext = () => {
+    setShowDonateInput(true);
+  };
+
+  const handleDonateEnd = async () => {
+    setIsThankYouMessage(true);
+  };
+  useEffect(() => {
+    const fetchUserBalance = async () => {
+      try {
+        const userType = localStorage.getItem("userType");
+        const userId = localStorage.getItem("userId");
+        const response = await fetch(
+          `/api/balance/${userId}?userType=${userType}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setUserBalance(data.balance);
+        }
+      } catch (error) {
+        console.error("Error fetching user balance:", error);
+      }
+    };
+    fetchUserBalance();
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
     if (showModal && matches.length > 0) {
