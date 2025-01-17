@@ -282,21 +282,69 @@ function Voting() {
               <p className={styles.nameFigh}>{voteResults["fan"]}</p>
             )}
           </div>
-          <div>
+          <div
+            style={
+              !voteResults["best-fight"]
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                : null
+            }
+          >
             <p>Лучший бой турнира</p>
-            <p className={styles.nameFigh}>{voteResults["best-fight"]}</p>
+            {voteResults["best-fight"] && (
+              <p className={styles.nameFigh}>{voteResults["best-fight"]}</p>
+            )}
           </div>
-          <div>
+          <div
+            style={
+              !voteResults["best-fighter"]
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                : null
+            }
+          >
             <p>Лучший боец турнира</p>
-            <p className={styles.nameFigh}>{voteResults["best-fighter"]}</p>
+            {voteResults["best-fighter"] && (
+              <p className={styles.nameFigh}>{voteResults["best-fighter"]}</p>
+            )}
           </div>
-          <div>
+          <div
+            style={
+              !voteResults["best-knockout"]
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                : null
+            }
+          >
             <p>Лучший нокаут турнира</p>
-            <p className={styles.nameFigh}>{voteResults["best-knockout"]}</p>
+            {voteResults["best-knockout"] && (
+              <p className={styles.nameFigh}>{voteResults["best-knockout"]}</p>
+            )}
           </div>
-          <div>
+          <div
+            style={
+              !voteResults["best-bicycle"]
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                : null
+            }
+          >
             <p>Велосипед турнира</p>
-            <p className={styles.nameFigh}>{voteResults["best-bicycle"]}</p>
+            {voteResults["best-bicycle"] && (
+              <p className={styles.nameFigh}>{voteResults["best-bicycle"]}</p>
+            )}
           </div>
         </div>
         <p className={styles.currentVoting}>Топ донатов турнира</p>
