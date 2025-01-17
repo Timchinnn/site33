@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Tournament.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -23,11 +23,12 @@ function Tournament() {
       },
     });
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleSportClick = async (sportName) => {
     try {
-      const response = await fetch(
-        `/api/tournaments/${sportName}`
-      );
+      const response = await fetch(`/api/tournaments/${sportName}`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);

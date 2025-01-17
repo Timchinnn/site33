@@ -15,12 +15,11 @@ function ProfileFighter() {
 
   console.log(profilePhoto);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const response = await fetch(
-          `/api/fighter/profile/${userId}`
-        );
+        const response = await fetch(`/api/fighter/profile/${userId}`);
         if (response.ok) {
           const data = await response.json();
 

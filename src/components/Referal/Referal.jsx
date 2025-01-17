@@ -19,6 +19,7 @@ function Referal() {
   //   setReferralLink(`${baseUrl}${userId}`);
   // }, []);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const userId = localStorage.getItem("userId");
     const userType = localStorage.getItem("userType");
 

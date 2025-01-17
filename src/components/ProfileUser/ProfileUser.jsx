@@ -12,12 +12,11 @@ function ProfileUser() {
 
   console.log(profilePhoto);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const response = await fetch(
-          `/api/user/profile/${userId}`
-        );
+        const response = await fetch(`/api/user/profile/${userId}`);
         if (response.ok) {
           const data = await response.json();
           console.log(data);

@@ -71,13 +71,10 @@ function ProfileFighterAcc() {
       formData.append("photo", file);
       formData.append("userId", localStorage.getItem("userId"));
       try {
-        const response = await fetch(
-          "/api/fighter/upload-photo",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const response = await fetch("/api/fighter/upload-photo", {
+          method: "POST",
+          body: formData,
+        });
         if (response.ok) {
           const data = await response.json();
           const fullPhotoUrl = `${data.photoUrl}`;
@@ -101,6 +98,7 @@ function ProfileFighterAcc() {
   const [error, setError] = useState(null);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
       if (!userId) {
@@ -109,9 +107,7 @@ function ProfileFighterAcc() {
       }
 
       try {
-        const response = await fetch(
-          `/api/fighter/profile/${userId}`
-        );
+        const response = await fetch(`/api/fighter/profile/${userId}`);
 
         if (response.ok) {
           const data = await response.json();
@@ -141,36 +137,30 @@ function ProfileFighterAcc() {
   const handleSaveForSelect = async () => {
     try {
       // Обновляем страну
-      const countryResponse = await fetch(
-        `/api/user/profile/${userId}`,
-        {
+      const countryResponse = await fetch(`/api/user/profile/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          field: "country",
+          value: selectedCountry,
+          userType: localStorage.getItem("userType"),
+        }),
+      });
+
+      // Если обновление страны прошло успешно, обновляем регион
+      if (countryResponse.ok) {
+        const regionResponse = await fetch(`/api/user/profile/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            field: "country",
-            value: selectedCountry,
-            userType: localStorage.getItem("userType"),
+            field: "region",
+            value: selectedRegion,
           }),
-        }
-      );
-
-      // Если обновление страны прошло успешно, обновляем регион
-      if (countryResponse.ok) {
-        const regionResponse = await fetch(
-          `/api/user/profile/${userId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              field: "region",
-              value: selectedRegion,
-            }),
-          }
-        );
+        });
 
         // Если оба запроса успешны, обновляем состояние
         if (regionResponse.ok) {
@@ -192,20 +182,17 @@ function ProfileFighterAcc() {
   };
   const handleSave = async () => {
     try {
-      const response = await fetch(
-        `/api/user/profile/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            field: selectedField,
-            value: editedValue,
-            userType: localStorage.getItem("userType"), // Добавляем userType
-          }),
-        }
-      );
+      const response = await fetch(`/api/user/profile/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          field: selectedField,
+          value: editedValue,
+          userType: localStorage.getItem("userType"), // Добавляем userType
+        }),
+      });
 
       if (response.ok) {
         setUserData((prev) => ({

@@ -9,11 +9,10 @@ function Notifications() {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchNotifications = async () => {
       try {
-        const response = await fetch(
-          `/api/notifications/${userId}`
-        );
+        const response = await fetch(`/api/notifications/${userId}`);
         if (response.ok) {
           const data = await response.json();
           setNotifications(data);

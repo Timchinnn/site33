@@ -32,35 +32,29 @@ function ProfileUserAcc() {
   const handleSaveForSelect = async () => {
     try {
       // Обновляем страну
-      const countryResponse = await fetch(
-        `/api/user/profile/${userId}`,
-        {
+      const countryResponse = await fetch(`/api/user/profile/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          field: "country",
+          value: selectedCountry,
+        }),
+      });
+
+      // Если обновление страны прошло успешно, обновляем регион
+      if (countryResponse.ok) {
+        const regionResponse = await fetch(`/api/user/profile/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            field: "country",
-            value: selectedCountry,
+            field: "region",
+            value: selectedRegion,
           }),
-        }
-      );
-
-      // Если обновление страны прошло успешно, обновляем регион
-      if (countryResponse.ok) {
-        const regionResponse = await fetch(
-          `/api/user/profile/${userId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              field: "region",
-              value: selectedRegion,
-            }),
-          }
-        );
+        });
 
         // Если оба запроса успешны, обновляем состояние
         if (regionResponse.ok) {
@@ -82,19 +76,16 @@ function ProfileUserAcc() {
   };
   const handleSave = async () => {
     try {
-      const response = await fetch(
-        `/api/user/profile/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            field: selectedField, // Добавить состояние для отслеживания редактируемого поля
-            value: editedValue,
-          }),
-        }
-      );
+      const response = await fetch(`/api/user/profile/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          field: selectedField, // Добавить состояние для отслеживания редактируемого поля
+          value: editedValue,
+        }),
+      });
 
       if (response.ok) {
         // Обновляем локальное состояние
@@ -161,13 +152,10 @@ function ProfileUserAcc() {
       formData.append("photo", file);
       formData.append("userId", localStorage.getItem("userId"));
       try {
-        const response = await fetch(
-          "/api/user/upload-photo",
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const response = await fetch("/api/user/upload-photo", {
+          method: "POST",
+          body: formData,
+        });
         if (response.ok) {
           const data = await response.json();
           const fullPhotoUrl = `${data.photoUrl}`;
@@ -190,19 +178,16 @@ function ProfileUserAcc() {
     }
 
     try {
-      const response = await fetch(
-        `/api/user/password/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            currentPassword,
-            newPassword,
-          }),
-        }
-      );
+      const response = await fetch(`/api/user/password/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          currentPassword,
+          newPassword,
+        }),
+      });
 
       if (response.status === 401) {
         alert("Старый пароль неправильный");
@@ -252,6 +237,7 @@ function ProfileUserAcc() {
   //   fetchUserData();
   // }, []);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
       if (!userId) {
@@ -260,9 +246,7 @@ function ProfileUserAcc() {
       }
 
       try {
-        const response = await fetch(
-          `/api/user/profile/${userId}`
-        );
+        const response = await fetch(`/api/user/profile/${userId}`);
 
         if (response.ok) {
           const data = await response.json();

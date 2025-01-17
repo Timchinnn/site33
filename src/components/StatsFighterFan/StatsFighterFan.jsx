@@ -80,20 +80,17 @@ function StatsFighterFan() {
     // Add balance deduction logic for current balance
     if (selectedPayment === "balance") {
       try {
-        const response = await fetch(
-          `/api/balance/deduct`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userId: localStorage.getItem("userId"),
-              amount: donateAmount,
-              userType: localStorage.getItem("userType"),
-            }),
-          }
-        );
+        const response = await fetch(`/api/balance/deduct`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            amount: donateAmount,
+            userType: localStorage.getItem("userType"),
+          }),
+        });
         if (!response.ok) {
           alert("Недостаточно средств на балансе");
           return;
@@ -107,21 +104,18 @@ function StatsFighterFan() {
     // Добавляем логику создания подписки
     if (isToggleOn && selectedDate) {
       try {
-        const response = await fetch(
-          "/api/subscriptions",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userId: localStorage.getItem("userId"),
-              fighterId: fighterData.id,
-              duration: selectedDate,
-              amount: donateAmount,
-            }),
-          }
-        );
+        const response = await fetch("/api/subscriptions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            fighterId: fighterData.id,
+            duration: selectedDate,
+            amount: donateAmount,
+          }),
+        });
 
         if (!response.ok) {
           throw new Error("Ошибка при создании подписки");
@@ -135,20 +129,17 @@ function StatsFighterFan() {
   };
   const checkVoteStatus = async () => {
     try {
-      const response = await fetch(
-        `/api/check-fighter-vote`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            fighterId: fighterData.id,
-            userType: localStorage.getItem("userType"),
-          }),
-        }
-      );
+      const response = await fetch(`/api/check-fighter-vote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          fighterId: fighterData.id,
+          userType: localStorage.getItem("userType"),
+        }),
+      });
 
       const data = await response.json();
       return data.hasVoted;
@@ -177,6 +168,7 @@ function StatsFighterFan() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchUserBalance = async () => {
       try {
         const userType = localStorage.getItem("userType"); // Получаем тип пользователя
@@ -203,9 +195,9 @@ function StatsFighterFan() {
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `/api/comments/${
-                comment.id
-              }/likes/${localStorage.getItem("userId")}?userType=${userType}`
+              `/api/comments/${comment.id}/likes/${localStorage.getItem(
+                "userId"
+              )}?userType=${userType}`
             );
             if (response.ok) {
               const data = await response.json();
@@ -226,19 +218,16 @@ function StatsFighterFan() {
 
   const handleCommentLike = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType, // Добавляем userType
-          }),
-        }
-      );
+      const response = await fetch(`/api/comments/${commentId}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType, // Добавляем userType
+        }),
+      });
 
       if (response.ok) {
         setLikedComments((prev) => ({
@@ -259,9 +248,7 @@ function StatsFighterFan() {
   };
   async function fetchRepliesCount(commentId) {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
-      );
+      const response = await fetch(`/api/comments/${commentId}/repliesCount`);
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
       }
@@ -274,20 +261,17 @@ function StatsFighterFan() {
   }
   const handleDeletePost = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Добавить токен авторизации
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType,
-          }),
-        }
-      );
+      const response = await fetch(`/api/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Добавить токен авторизации
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
 
       if (response.status === 403) {
         alert("У вас нет прав для удаления этого поста");
@@ -306,9 +290,7 @@ function StatsFighterFan() {
     const fetchPosts = async () => {
       console.log(fighterData);
       try {
-        const response = await fetch(
-          `/api/posts/${fighterData.id}`
-        );
+        const response = await fetch(`/api/posts/${fighterData.id}`);
         if (response.ok) {
           const data = await response.json();
           const postsWithDetails = await Promise.all(
@@ -362,9 +344,7 @@ function StatsFighterFan() {
   }, [comments]);
   const fetchTotalLikes = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}/likes`
-      );
+      const response = await fetch(`/api/posts/${postId}/likes`);
       if (response.ok) {
         const data = await response.json();
         // console.log(data);
@@ -403,9 +383,7 @@ function StatsFighterFan() {
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes/${localStorage.getItem(
-          "userId"
-        )}`
+        `/api/posts/${postId}/likes/${localStorage.getItem("userId")}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -430,9 +408,7 @@ function StatsFighterFan() {
   };
   const fetchComments = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${postId}`
-      );
+      const response = await fetch(`/api/comments/${postId}`);
       if (response.ok) {
         const data = await response.json();
         // console.log(data);
@@ -447,9 +423,7 @@ function StatsFighterFan() {
   };
   const fetchCommentLikes = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/likes`
-      );
+      const response = await fetch(`/api/comments/${commentId}/likes`);
       if (response.ok) {
         const data = await response.json();
         return data.totalLikes;
@@ -463,19 +437,16 @@ function StatsFighterFan() {
 
   const handleLike = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: localStorage.getItem("userType"), // Добавляем userType
-          }),
-        }
-      );
+      const response = await fetch(`/api/posts/${postId}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: localStorage.getItem("userType"), // Добавляем userType
+        }),
+      });
 
       if (response.ok) {
         setLikedPosts((prev) => ({

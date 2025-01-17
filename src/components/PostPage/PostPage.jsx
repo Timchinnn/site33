@@ -24,6 +24,7 @@ const PostPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchCommentLikeStatuses = async () => {
       const statuses = {};
       for (const comment of comments) {
@@ -34,9 +35,9 @@ const PostPage = () => {
           //   }/likes/${localStorage.getItem("userId")}`
           // );
           const response = await fetch(
-            `/api/comments/${
-              comment.id
-            }/likes/${localStorage.getItem("userId")}?userType=${userType}`
+            `/api/comments/${comment.id}/likes/${localStorage.getItem(
+              "userId"
+            )}?userType=${userType}`
           );
           if (response.ok) {
             const data = await response.json();
@@ -57,9 +58,9 @@ const PostPage = () => {
     const fetchLikeStatus = async () => {
       try {
         const response = await fetch(
-          `/api/posts/${
-            post.id
-          }/likes/${localStorage.getItem("userId")}?userType=${userType}`
+          `/api/posts/${post.id}/likes/${localStorage.getItem(
+            "userId"
+          )}?userType=${userType}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -101,19 +102,16 @@ const PostPage = () => {
   };
   const handleDeleteComment = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType,
-          }),
-        }
-      );
+      const response = await fetch(`/api/comments/${commentId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
 
       if (response.ok) {
         // Обновляем список комментариев после удаления
@@ -136,9 +134,7 @@ const PostPage = () => {
   };
   async function fetchRepliesCount(commentId) {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
-      );
+      const response = await fetch(`/api/comments/${commentId}/repliesCount`);
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
       }
@@ -152,9 +148,7 @@ const PostPage = () => {
   const fetchTotalLikes = async (postId, userType) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes${
-          userType ? `?userType=${userType}` : ""
-        }`
+        `/api/posts/${postId}/likes${userType ? `?userType=${userType}` : ""}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -168,19 +162,16 @@ const PostPage = () => {
   // Лайк поста
   const handlePostLike = async () => {
     try {
-      const response = await fetch(
-        `/api/posts/${post.id}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: localStorage.getItem("userType"), // Добавляем userType
-          }),
-        }
-      );
+      const response = await fetch(`/api/posts/${post.id}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: localStorage.getItem("userType"), // Добавляем userType
+        }),
+      });
       if (response.ok) {
         setIsLiked(!isLiked);
         fetchTotalLikes(post.id);
@@ -193,9 +184,7 @@ const PostPage = () => {
   // Получение лайков комментария
   const fetchCommentLikes = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/likes`
-      );
+      const response = await fetch(`/api/comments/${commentId}/likes`);
       if (response.ok) {
         const data = await response.json();
         setCommentLikes((prev) => ({ ...prev, [commentId]: data.totalLikes }));
@@ -209,19 +198,16 @@ const PostPage = () => {
 
   const handleCommentLike = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType,
-          }),
-        }
-      );
+      const response = await fetch(`/api/comments/${commentId}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
 
       if (response.ok) {
         setLikedComments((prev) => ({
@@ -237,9 +223,7 @@ const PostPage = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(
-          `/api/comments/${post.id}`
-        );
+        const response = await fetch(`/api/comments/${post.id}`);
         if (response.ok) {
           const data = await response.json();
           setComments(data);
@@ -392,9 +376,7 @@ const PostPage = () => {
                 <div className={styles.cardHeader}>
                   <img
                     src={
-                      comment.photo_url
-                        ? `${comment.photo_url}`
-                        : "/Avatar.png"
+                      comment.photo_url ? `${comment.photo_url}` : "/Avatar.png"
                     }
                     alt="User Avatar"
                     className={styles.profileImage}

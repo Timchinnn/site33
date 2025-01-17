@@ -82,15 +82,16 @@ function StatsFighter() {
     target: fighterData.userData.donat, // Target donation amount
   });
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchCommentLikeStatuses = async () => {
       const statuses = {};
       for (const postId in comments) {
         for (const comment of comments[postId]) {
           try {
             const response = await fetch(
-              `/api/comments/${
-                comment.id
-              }/likes/${localStorage.getItem("userId")}?userType=${userType}`
+              `/api/comments/${comment.id}/likes/${localStorage.getItem(
+                "userId"
+              )}?userType=${userType}`
             );
             if (response.ok) {
               const data = await response.json();
@@ -111,19 +112,16 @@ function StatsFighter() {
 
   const handleCommentLike = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType,
-          }),
-        }
-      );
+      const response = await fetch(`/api/comments/${commentId}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
 
       if (response.ok) {
         setLikedComments((prev) => ({
@@ -144,9 +142,7 @@ function StatsFighter() {
   };
   async function fetchRepliesCount(commentId) {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/repliesCount`
-      );
+      const response = await fetch(`/api/comments/${commentId}/repliesCount`);
       if (!response.ok) {
         throw new Error("Ошибка при получении количества ответов");
       }
@@ -159,20 +155,17 @@ function StatsFighter() {
   }
   const handleDeletePost = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // Добавить токен авторизации
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: userType,
-          }),
-        }
-      );
+      const response = await fetch(`/api/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Добавить токен авторизации
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
 
       if (response.status === 403) {
         alert("У вас нет прав для удаления этого поста");
@@ -270,9 +263,7 @@ function StatsFighter() {
   }, [comments]);
   const fetchTotalLikes = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}/likes`
-      );
+      const response = await fetch(`/api/posts/${postId}/likes`);
       if (response.ok) {
         const data = await response.json();
         // console.log(data);
@@ -336,9 +327,7 @@ function StatsFighter() {
   const fetchLikeStatus = async (postId) => {
     try {
       const response = await fetch(
-        `/api/posts/${postId}/likes/${localStorage.getItem(
-          "userId"
-        )}`
+        `/api/posts/${postId}/likes/${localStorage.getItem("userId")}`
       );
       if (response.ok) {
         const data = await response.json();
@@ -363,9 +352,7 @@ function StatsFighter() {
   };
   const fetchComments = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${postId}`
-      );
+      const response = await fetch(`/api/comments/${postId}`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -380,9 +367,7 @@ function StatsFighter() {
   };
   const fetchCommentLikes = async (commentId) => {
     try {
-      const response = await fetch(
-        `/api/comments/${commentId}/likes`
-      );
+      const response = await fetch(`/api/comments/${commentId}/likes`);
       if (response.ok) {
         const data = await response.json();
         return data.totalLikes;
@@ -396,19 +381,16 @@ function StatsFighter() {
 
   const handleLike = async (postId) => {
     try {
-      const response = await fetch(
-        `/api/posts/${postId}/like`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-            userType: localStorage.getItem("userType"), // Добавляем userType
-          }),
-        }
-      );
+      const response = await fetch(`/api/posts/${postId}/like`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: localStorage.getItem("userType"), // Добавляем userType
+        }),
+      });
 
       if (response.ok) {
         setLikedPosts((prev) => ({

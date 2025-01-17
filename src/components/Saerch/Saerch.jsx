@@ -12,6 +12,7 @@ function Saerch() {
 
   // Fetch all fighters
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchFighters = async () => {
       try {
         const response = await fetch("/api/fighters");

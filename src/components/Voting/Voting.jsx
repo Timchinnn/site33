@@ -15,6 +15,7 @@ function Voting() {
     setShowModal(!showModal);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (showModal && matches.length > 0) {
       setSelectedFighter(matches[0].competitor_1);
     }
@@ -27,9 +28,7 @@ function Voting() {
 
     try {
       // Отправляем запрос на сервер
-      const response = await fetch(
-        `/api/fighter/${trimmedName}`
-      );
+      const response = await fetch(`/api/fighter/${trimmedName}`);
 
       if (response.ok) {
         const fighterData = await response.json();
@@ -152,9 +151,7 @@ function Voting() {
   useEffect(() => {
     const fetchVoteResults = async () => {
       try {
-        const response = await fetch(
-          `/api/tournament-votes/${tournament.id}`
-        );
+        const response = await fetch(`/api/tournament-votes/${tournament.id}`);
         if (response.ok) {
           const data = await response.json();
           const results = {};
