@@ -9,9 +9,7 @@ function Main() {
   const navigate = useNavigate();
   const handleSportClick = async (sportName) => {
     try {
-      const response = await fetch(
-        `/api/tournaments/${sportName}`
-      );
+      const response = await fetch(`/api/tournaments/${sportName}`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -25,6 +23,7 @@ function Main() {
   };
   const [topFighters, setTopFighters] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchTopFighters = async () => {
       try {
         const response = await fetch("/api/top-fighters");
@@ -43,9 +42,7 @@ function Main() {
   useEffect(() => {
     const fetchTopVotedFighters = async () => {
       try {
-        const response = await fetch(
-          "/api/top-voted-fighters"
-        );
+        const response = await fetch("/api/top-voted-fighters");
         if (response.ok) {
           const data = await response.json();
           setTopVotedFighters(data);
@@ -72,11 +69,12 @@ function Main() {
     };
 
     fetchTopMatches();
-  }, []);const handleFighterClick = (fighter) => {
+  }, []);
+  const handleFighterClick = (fighter) => {
     navigate("/StatsFighterFan", {
       state: {
-        fighterData: fighter
-      }
+        fighterData: fighter,
+      },
     });
   };
   return (
@@ -194,12 +192,14 @@ function Main() {
           </div>
           <div className={styles.fightersList}>
             {topFighters.map((fighter) => (
-              <div key={fighter.id} className={styles.fighterItem} onClick={() => handleFighterClick(fighter)}>
+              <div
+                key={fighter.id}
+                className={styles.fighterItem}
+                onClick={() => handleFighterClick(fighter)}
+              >
                 <img
                   src={
-                    fighter.photo_url
-                      ? `${fighter.photo_url}`
-                      : "Avatar.png"
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
                   }
                   alt={fighter.name}
                 />
@@ -218,12 +218,14 @@ function Main() {
           </div>
           <div className={styles.fightersList}>
             {topVotedFighters.map((fighter) => (
-              <div key={fighter.id} className={styles.fighterItem} onClick={() => handleFighterClick(fighter)}>
+              <div
+                key={fighter.id}
+                className={styles.fighterItem}
+                onClick={() => handleFighterClick(fighter)}
+              >
                 <img
                   src={
-                    fighter.photo_url
-                      ? `${fighter.photo_url}`
-                      : "Avatar.png"
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
                   }
                   alt={fighter.name}
                 />
