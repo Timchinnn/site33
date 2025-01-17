@@ -481,3 +481,21 @@ hr {
 .selectionContent select:focus {
   outline: none;
 }
+.donateButtonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.donateButton {
+  padding: 10px;
+  border: 1px solid #e8e7ed;
+  background: #0f0f0f0f;
+  border-radius: 5px;
+}
+
+.donateButton.selected {
+  background: black;
+  color: white;
+}

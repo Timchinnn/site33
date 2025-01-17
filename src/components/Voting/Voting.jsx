@@ -6,7 +6,11 @@ function Voting() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const [selectedFighter, setSelectedFighter] = useState("");
-
+  const [showDonateModal, setShowDonateModal] = useState(false);
+  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [donateAmount, setDonateAmount] = useState(0);
+  const [selectedPayment, setSelectedPayment] = useState(null);
+  const [userBalance, setUserBalance] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { tournament, matches } = location.state || {};
@@ -393,7 +397,10 @@ function Voting() {
         </div>
         <div className={styles.vote}>
           <button onClick={toggleModal}>Голосовать</button>
-          <div className={styles.imgDonateBlack}>
+          <div
+            className={styles.imgDonateBlack}
+            onClick={() => setShowDonateModal(true)}
+          >
             <img src="hands-helping.png" alt="" />
           </div>
         </div>
@@ -454,7 +461,7 @@ function Voting() {
             <div className={styles.topModalHead}>
               <div>
                 <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
-                <h2>UFC Fight Night</h2>
+                <h2>{tournament.name}</h2>
               </div>
               <img src="x-circle.png" alt="#" onClick={toggleModal} />
             </div>
@@ -529,6 +536,49 @@ function Voting() {
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      )}
+      {showDonateModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.topModalHead}>
+              <div className={styles.namesBut}>
+                <h2>Донат</h2>
+                <img
+                  src="x-circle.png"
+                  alt="#"
+                  onClick={() => setShowDonateModal(false)}
+                />
+              </div>
+            </div>
+            <div className={styles.donateButtonsGrid}>
+              {[100, 300, 500, 1000, 3000, 5000].map((amount) => (
+                <button
+                  key={amount}
+                  className={`${styles.donateButton} ${
+                    selectedAmount === amount ? styles.selected : ""
+                  }`}
+                  onClick={() => {
+                    setSelectedAmount(amount);
+                    setDonateAmount(amount);
+                  }}
+                >
+                  {amount} ₽
+                </button>
+              ))}
+            </div>
+            {/* Add payment methods section */}
+            <div className={styles.paymentMethods}>
+              <div
+                className={styles.balanceNow}
+                onClick={() => handlePaymentSelect("balance")}
+              >
+                <p>Текущий баланс</p>
+                <p>{userBalance}₽</p>
+              </div>
+              {/* Add bank card options */}
+            </div>
           </div>
         </div>
       )}
