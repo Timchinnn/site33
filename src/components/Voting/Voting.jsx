@@ -265,7 +265,18 @@ function Voting() {
               </p>
             )}
           </div>
-          <div>
+          <div
+            style={
+              !voteResults["fan"]
+                ? {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                : null
+            }
+          >
+            {" "}
             <p>Выбор фанатов</p>
             <p className={styles.nameFigh}>{voteResults["fan"]}</p>
           </div>
