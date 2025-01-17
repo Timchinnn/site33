@@ -18,6 +18,9 @@ function Voting() {
   const toggleModal = () => {
     setShowModal(!showModal);
   };
+  const handlePaymentSelect = (type) => {
+    setSelectedPayment(type);
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
     if (showModal && matches.length > 0) {
