@@ -249,9 +249,11 @@ function Voting() {
         <div className={styles.currentVotings}>
           <div>
             <p>Топ донатов</p>
-            <p>
-              {topDonations[0]?.surname} {topDonations[0]?.name[0]}.
-            </p>
+            {topDonations[0]?.surname && topDonations[0]?.name && (
+              <p>
+                {topDonations[0].surname} {topDonations[0].name[0]}.
+              </p>
+            )}
           </div>
           <div>
             <p>Выбор фанатов</p>
