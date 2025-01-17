@@ -278,7 +278,9 @@ function Voting() {
           >
             {" "}
             <p>Выбор фанатов</p>
-            <p className={styles.nameFigh}>{voteResults["fan"]}</p>
+            {voteResults["fan"] && (
+              <p className={styles.nameFigh}>{voteResults["fan"]}</p>
+            )}
           </div>
           <div>
             <p>Лучший бой турнира</p>
