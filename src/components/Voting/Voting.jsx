@@ -7,19 +7,13 @@ function Voting() {
   const userType = localStorage.getItem("userType");
   const [selectedFighter, setSelectedFighter] = useState("");
   const [showDonateModal, setShowDonateModal] = useState(false);
-  const [selectedAmount, setSelectedAmount] = useState(null);
-  const [donateAmount, setDonateAmount] = useState(0);
-  const [selectedPayment, setSelectedPayment] = useState(null);
-  const [userBalance, setUserBalance] = useState(0);
+
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { tournament, matches } = location.state || {};
   // console.log(matches);
   const toggleModal = () => {
     setShowModal(!showModal);
-  };
-  const handlePaymentSelect = (type) => {
-    setSelectedPayment(type);
   };
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -545,43 +539,249 @@ function Voting() {
       {showDonateModal && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
-            <div className={styles.topModalHead}>
-              <div className={styles.namesBut}>
-                <h2>Донат</h2>
-                <img
-                  src="x-circle.png"
-                  alt="#"
-                  onClick={() => setShowDonateModal(false)}
-                />
-              </div>
-            </div>
-            <div className={styles.donateButtonsGrid}>
-              {[100, 300, 500, 1000, 3000, 5000].map((amount) => (
+            {isThankYouMessage ? (
+              <div>
+                {" "}
+                <p>Спасибо!</p>
+                <p>
+                  Ваш донат успешно отправлен! Сумма отобразится в статистике в
+                  течение несольких минут
+                </p>
                 <button
-                  key={amount}
-                  className={`${styles.donateButton} ${
-                    selectedAmount === amount ? styles.selected : ""
-                  }`}
                   onClick={() => {
-                    setSelectedAmount(amount);
-                    setDonateAmount(amount);
+                    setIsThankYouMessage(false);
+                    setShowDonateModal(false);
+                    setShowDonateInput(false);
                   }}
                 >
-                  {amount} ₽
+                  Назад в профиль
                 </button>
-              ))}
-            </div>
-            {/* Add payment methods section */}
-            <div className={styles.paymentMethods}>
-              <div
-                className={styles.balanceNow}
-                onClick={() => handlePaymentSelect("balance")}
-              >
-                <p>Текущий баланс</p>
-                <p>{userBalance}₽</p>
               </div>
-              {/* Add bank card options */}
-            </div>
+            ) : (
+              <div>
+                {" "}
+                <div className={styles.topModalHead}>
+                  <div className={styles.namesBut}>
+                    <h2>Донат</h2>
+                    <img
+                      src="x-circle.png"
+                      alt="#"
+                      onClick={() => {
+                        setShowDonateModal(false);
+                        setShowDonateInput(false); // Сброс состояния при закрытии
+                      }}
+                    />
+                  </div>
+                </div>
+                {!showDonateInput ? (
+                  // Текущий контент с кнопками
+                  <>
+                    <div className={styles.donateButtonsGrid}>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 100 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(100)}
+                      >
+                        100 ₽
+                      </button>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 300 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(300)}
+                      >
+                        300 ₽
+                      </button>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 500 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(500)}
+                      >
+                        500 ₽
+                      </button>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 1000 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(1000)}
+                      >
+                        1000 ₽
+                      </button>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 3000 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(3000)}
+                      >
+                        3000 ₽
+                      </button>
+                      <button
+                        className={`${styles.donateButton} ${
+                          selectedAmount === 5000 ? styles.selected : ""
+                        }`}
+                        onClick={() => handleDonateSelect(5000)}
+                      >
+                        5000 ₽
+                      </button>
+                    </div>
+                    <button
+                      className={`${styles.customAmountButton} ${
+                        selectedAmount === 1 ? styles.selected : ""
+                      }`}
+                      onClick={() => setSelectedAmount(1)}
+                    >
+                      Ввести другую сумму
+                    </button>
+                    {selectedAmount > 0 && (
+                      <div
+                        className={`${styles.selectionBlock} ${styles.visible}`}
+                      >
+                        <div className={styles.selectionContent}>
+                          <button onClick={handleDonateNext}>Далее</button>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  // Новый контент с input и p
+                  <>
+                    <div className={styles.donateCounts}>
+                      <div className={styles.donateCount}>
+                        <p>Сумма доната</p>
+                        <p>{donateAmount}₽</p>
+                      </div>
+                      <input
+                        type="text"
+                        placeholder="Введите сообщение"
+                        className={styles.donateInput}
+                      />
+                      <p className={styles.donateMessage}>Способ платежа</p>
+                      <div
+                        className={`${styles.balanceNow} ${
+                          selectedPayment === "balance" ? styles.selected : ""
+                        }`}
+                        onClick={() => handlePaymentSelect("balance")}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <p>Текущий баланс</p>
+                        <p>{userBalance}₽</p>
+                      </div>
+                      <p>или</p>
+                      <div className={styles.banks}>
+                        <img
+                          src="visa.png"
+                          alt="visa"
+                          className={`${styles.visa} ${
+                            selectedPayment === "visa" ? styles.selected : ""
+                          }`}
+                          onClick={() => handlePaymentSelect("visa")}
+                          style={{ cursor: "pointer" }}
+                        />
+                        <img
+                          src="master.png"
+                          alt="mastercard"
+                          className={`${styles.master} ${
+                            selectedPayment === "mastercard"
+                              ? styles.selected
+                              : ""
+                          }`}
+                          onClick={() => handlePaymentSelect("mastercard")}
+                          style={{ cursor: "pointer" }}
+                        />
+                        <img
+                          src="mir.png"
+                          alt="mir"
+                          className={`${styles.mir} ${
+                            selectedPayment === "mir" ? styles.selected : ""
+                          }`}
+                          onClick={() => handlePaymentSelect("mir")}
+                          style={{ cursor: "pointer" }}
+                        />
+                        <img
+                          src="sbp.png"
+                          alt="sbp"
+                          className={`${styles.sbp} ${
+                            selectedPayment === "sbp" ? styles.selected : ""
+                          }`}
+                          onClick={() => handlePaymentSelect("sbp")}
+                          style={{ cursor: "pointer" }}
+                        />
+                        <img
+                          src="halva.png"
+                          alt="halva"
+                          className={`${styles.halva} ${
+                            selectedPayment === "halva" ? styles.selected : ""
+                          }`}
+                          onClick={() => handlePaymentSelect("halva")}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </div>
+                      <div className={styles.autoSupport}>
+                        <div className={styles.autoSupportToggleInput}>
+                          <input
+                            type="checkbox"
+                            id="notificationSwitch"
+                            className={styles.noneInput}
+                            onChange={() => setIsToggleOn(!isToggleOn)}
+                            checked={isToggleOn}
+                          />
+                          <label htmlFor="notificationSwitch">Toggle</label>
+                        </div>
+                        <p>Братская автоподдержка</p>
+                      </div>
+                      {isToggleOn && (
+                        <div>
+                          <div className={styles.donateButtonsGrid}>
+                            <button
+                              className={`${styles.donateButton} ${
+                                selectedDate === 7 ? styles.selected : ""
+                              }`}
+                              onClick={() => setSelectedDate(7)}
+                            >
+                              неделя
+                            </button>
+                            <button
+                              className={`${styles.donateButton} ${
+                                selectedDate === 14 ? styles.selected : ""
+                              }`}
+                              onClick={() => setSelectedDate(14)}
+                            >
+                              2 недели
+                            </button>
+                            <button
+                              className={`${styles.donateButton} ${
+                                selectedDate === 28 ? styles.selected : ""
+                              }`}
+                              onClick={() => setSelectedDate(28)}
+                            >
+                              4 недели
+                            </button>
+                          </div>
+                          <button
+                            className={`${styles.customAmountButton} ${
+                              selectedDate === 1 ? styles.selected : ""
+                            }`}
+                            onClick={() => setSelectedDate(1)}
+                          >
+                            Свой вариант в днях
+                          </button>
+                          {selectedDate > 0 && (
+                            <div
+                              className={`${styles.selectionBlock} ${styles.visible}`}
+                            ></div>
+                          )}
+                        </div>
+                      )}
+                      <div className={styles.selectionContent}>
+                        <button onClick={handleDonateEnd}>Далее</button>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}
