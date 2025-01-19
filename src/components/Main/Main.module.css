@@ -71,12 +71,13 @@ img {
 .viewersBlock {
   background: linear-gradient(291.04deg, #ff0033 0%, #99001f 101.64%);
   width: 31.6vw;
-  height: 14.7vh;
+  height: 18vh;
   border-radius: 8px;
   margin-right: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 4px 4px 0px #0000001a;
 }
 
 .navigationMenu {
@@ -102,9 +103,9 @@ img {
 }
 .leadersBlock {
   background: #e8e7ed;
-  box-shadow: 0px 4px 15px 0px #ff003333 inset;
+  box-shadow: 0px 4px 4px 0px #0000001a;
   width: 31.6vw;
-  height: 14.7vh;
+  height: 18vh;
   border-radius: 8px;
   /* margin-right: 3vw; */
   display: flex;
@@ -112,12 +113,13 @@ img {
   align-items: center;
 }
 .votingBlock {
+  box-shadow: 0px 4px 4px 0px #0000001a;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 31.6vw;
-  height: 14.7vh;
+  height: 18vh;
   background-image: url("fire-fon.png");
   background-size: cover; /* Изображение будет масштабироваться, чтобы покрыть весь блок */
   background-position: center; /* Центрирует изображение внутри блока */
