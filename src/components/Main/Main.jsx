@@ -104,7 +104,7 @@ function Main() {
         </div>
         <div className={styles.navigationMenu}>
           <div className={styles.viewersBlock}>
-            <p className={styles.viewersDecide}>ЗРИТЕЛИ РЕШАЮТ</p>
+            <p className={styles.viewersDecide}>ПОДДЕРЖАТЬ СПОРТСМЕНА</p>
           </div>
 
           <div className={styles.votingBlock}>
