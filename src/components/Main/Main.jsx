@@ -209,7 +209,7 @@ function Main() {
             }}
           />
         </div>
-        <div>
+        <div className={styles.allSection}>
           {" "}
           <div className={styles.topFightersSection}>
             <div className={styles.headerSection}>
