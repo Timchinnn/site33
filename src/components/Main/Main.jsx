@@ -213,18 +213,18 @@ function Main() {
           <div className={styles.headerSection}>
             <h2>Топ бойцов</h2>
             <div className={styles.toggleButtons}>
-              <button
+              <p
                 className={activeSection === "donations" ? styles.active : ""}
                 onClick={() => setActiveSection("donations")}
               >
                 По сборам
-              </button>
-              <button
+              </p>
+              <p
                 className={activeSection === "votes" ? styles.active : ""}
                 onClick={() => setActiveSection("votes")}
               >
                 По голосованию
-              </button>
+              </p>
             </div>
           </div>
           <div className={styles.fightersList}>
