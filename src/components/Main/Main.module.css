@@ -298,8 +298,9 @@ img {
 }
 .fightersList {
   display: flex;
-  flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  padding-left: 6px;
 }
 .fighterItem {
   /* flex: 0 1 calc(50% - 10px); Каждый элемент занимает 50% ширины минус отступы */
@@ -421,4 +422,6 @@ img {
 .toggleButtons {
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: space-around;
 }
