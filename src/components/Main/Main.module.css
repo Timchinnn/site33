@@ -61,7 +61,7 @@ img {
 .viewersDecide {
   color: rgba(255, 255, 255, 1);
   font-family: "Bebas Neue Cyrillic", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 22px;
   text-align: center;
@@ -209,11 +209,12 @@ img {
 .referralProgram {
   background-image: url("ddf319705c92007d5b303c720af7dca7.png");
   background-size: cover; /* Для корректного масштабирования изображения */
-  background-position: center; /* Центрирование изображения */
+  background-position: center; /* SЦентрирование изображения */
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 11px;
+  border-radius: 12px;
 }
 .referralText {
 }
@@ -226,6 +227,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  color: white;
 }
 .referralProgram p {
   font-family: Inter;
@@ -237,6 +239,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   width: 297px;
+  color: white;
 }
 .referralProgramimg {
   background-color: #0f0f0f0f;
