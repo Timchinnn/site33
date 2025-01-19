@@ -301,6 +301,7 @@ img {
   display: flex;
   flex-direction: column;
   padding-left: 8px;
+  padding-top: 9px;
 }
 .fighterItem {
   /* flex: 0 1 calc(50% - 10px); Каждый элемент занимает 50% ширины минус отступы */
@@ -424,4 +425,5 @@ img {
   align-items: center;
   width: 100%;
   justify-content: space-around;
+  border-bottom: 1px solid #0f0f0f0f;
 }
