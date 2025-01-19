@@ -178,7 +178,7 @@ function Main() {
             <p>Приглашай друзей и получай %% с каждого доната</p>
           </div>
           <img
-            src="forward.png"
+            src="forward-white.png"
             alt=""
             onClick={() => {
               navigate("/Referal");
