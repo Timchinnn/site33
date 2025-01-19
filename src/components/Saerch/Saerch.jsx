@@ -101,7 +101,7 @@ function Saerch() {
               type="text"
               value={searchQuery}
               onChange={handleSearch}
-              placeholder="Поиск бойцов..."
+              placeholder="Поиск по турниру или имени"
               className={styles.passwordinput}
             />
             <img

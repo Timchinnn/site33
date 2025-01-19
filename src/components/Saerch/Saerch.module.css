@@ -136,6 +136,8 @@ img {
   padding-right: 0px;
   margin-right: 0px;
   padding-left: 13px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 8px;
 }
 .authForm input {
   height: 40px;
