@@ -80,12 +80,12 @@ function Saerch() {
                 navigate("/Notifications");
               }}
             />
-            <img
+            {/* <img
               src="search.png"
               alt=""
               className={styles.search}
               onClick={() => navigate("/Saerch")}
-            />
+            /> */}
           </div>
         </div>{" "}
         <div className={styles.authForm}>
