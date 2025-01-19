@@ -102,6 +102,21 @@ function Main() {
             /> */}
           </div>
         </div>
+        <div className={styles.passwordInputContainer}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Поиск по турниру или имени"
+            className={styles.passwordinput}
+          />
+          <img
+            src="search.png"
+            alt="#"
+            className={styles.eyeoff}
+            style={{ cursor: "pointer", pointerEvents: "auto" }}
+          />
+        </div>
         <div className={styles.navigationMenu}>
           <div className={styles.viewersBlock}>
             <p className={styles.viewersDecide}>ПОДДЕРЖАТЬ СПОРТСМЕНА</p>

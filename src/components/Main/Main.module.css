@@ -367,3 +367,37 @@ img {
   -ms-user-select: none;
   user-select: none;
 }
+.passwordInputContainer {
+  position: relative;
+  width: 100%;
+}
+.passwordInputContainer input {
+  width: -webkit-fill-available;
+}
+.passwordinput {
+  border: none;
+  background-color: rgba(15, 15, 15, 0.06);
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 10px;
+  /* max-width: 343px; */
+  width: 80%;
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-left: 13px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 8px;
+}
+.eyeoff {
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  /* удалить или закомментировать pointer-events: none; */
+}
