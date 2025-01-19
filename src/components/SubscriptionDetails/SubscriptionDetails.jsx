@@ -18,9 +18,7 @@ function SubscriptionDetails() {
   const fetchSubscriptions = async () => {
     try {
       const userId = localStorage.getItem("userId");
-      const response = await fetch(
-        `/api/subscriptions/${userId}`
-      );
+      const response = await fetch(`/api/subscriptions/${userId}`);
       if (response.ok) {
         // Обновление списка подписок после успешного запроса
         navigate(-1); // Возврат на предыдущую страницу после отмены подписки
@@ -31,18 +29,15 @@ function SubscriptionDetails() {
   };
   const handleCancel = async () => {
     try {
-      const response = await fetch(
-        `/api/subscriptions/${subscription.id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: localStorage.getItem("userId"),
-          }),
-        }
-      );
+      const response = await fetch(`/api/subscriptions/${subscription.id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+        }),
+      });
 
       if (response.ok) {
         // Обновляем список подписок после удаления
@@ -58,7 +53,7 @@ function SubscriptionDetails() {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "}
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

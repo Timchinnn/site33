@@ -46,7 +46,7 @@ function ChooseRole() {
           alt="#"
           onClick={handleBackClick}
         ></img>
-        <h1 className={styles.title}>SportDonation</h1>
+        <h1 className={styles.title}>BroDonate</h1>
       </div>
       <div className={styles.authForm}>
         {" "}

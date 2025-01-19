@@ -17,20 +17,17 @@ function SubscriptionEdit() {
 
   const handleEdit = async () => {
     try {
-      const response = await fetch(
-        `/api/subscriptions/${subscription.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: selectedAmount,
-            subscription_period: selectedPeriod,
-            userId: localStorage.getItem("userId"),
-          }),
-        }
-      );
+      const response = await fetch(`/api/subscriptions/${subscription.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: selectedAmount,
+          subscription_period: selectedPeriod,
+          userId: localStorage.getItem("userId"),
+        }),
+      });
 
       if (response.ok) {
         navigate(-1);
@@ -46,7 +43,7 @@ function SubscriptionEdit() {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "}
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

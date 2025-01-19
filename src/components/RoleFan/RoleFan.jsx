@@ -80,16 +80,13 @@ function RoleFan() {
     }
     try {
       // First check if email exists
-      const checkResponse = await fetch(
-        "/api/check-user",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const checkResponse = await fetch("/api/check-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
       if (!checkResponse.ok) {
         const data = await checkResponse.json();
@@ -136,7 +133,7 @@ function RoleFan() {
           alt="#"
           onClick={handleBackClick}
         />
-        <h1 className={styles.title}>SportDonation</h1>
+        <h1 className={styles.title}>BroDonate</h1>
       </div>
 
       <div className={styles.authForm}>

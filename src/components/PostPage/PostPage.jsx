@@ -309,7 +309,7 @@ const PostPage = () => {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="/arrow.png" alt="#" onClick={handleBackClick} />
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

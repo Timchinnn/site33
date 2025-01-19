@@ -55,16 +55,13 @@ function Register() {
 
       try {
         // Проверяем существование пользователя в обеих таблицах
-        const checkResponse = await fetch(
-          "/api/check-user",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-          }
-        );
+        const checkResponse = await fetch("/api/check-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
 
         const data = await checkResponse.json();
 
@@ -123,7 +120,7 @@ function Register() {
           alt="#"
           onClick={handleBackClick}
         />
-        <h1 className={styles.title}>SportDonation</h1>
+        <h1 className={styles.title}>BroDonate</h1>
       </div>
       <div className={styles.authForm}>
         <h2 className={styles.authorization}>Регистрация</h2>

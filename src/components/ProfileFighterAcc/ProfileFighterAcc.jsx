@@ -216,7 +216,7 @@ function ProfileFighterAcc() {
               alt="#"
               onClick={() => navigate("/ProfileFighter")}
             />
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

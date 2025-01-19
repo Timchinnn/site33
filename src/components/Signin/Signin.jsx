@@ -65,7 +65,7 @@ function Signin() {
         "
           alt="#"
         ></img>
-        <h1 className={styles.title}>SportDonation</h1>
+        <h1 className={styles.title}>BroDonate</h1>
       </div>
       <div className={styles.authForm}>
         <h2 className={styles.authorization}>Авторизация</h2>

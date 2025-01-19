@@ -278,7 +278,7 @@ function ProfileUserAcc() {
               alt="#"
               onClick={() => navigate("/ProfileUser")}
             />
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

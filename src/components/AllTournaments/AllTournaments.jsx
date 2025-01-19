@@ -12,9 +12,7 @@ function AllTournaments() {
 
   const handleSportClick = async (sportName) => {
     try {
-      const response = await fetch(
-        `/api/tournaments/${sportName}`
-      );
+      const response = await fetch(`/api/tournaments/${sportName}`);
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -33,7 +31,7 @@ function AllTournaments() {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img

@@ -61,16 +61,13 @@ function RoleFighter() {
     }
     try {
       // Сначала проверяем существование email
-      const checkResponse = await fetch(
-        "/api/check-user",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const checkResponse = await fetch("/api/check-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
       if (!checkResponse.ok) {
         const data = await checkResponse.json();
@@ -91,16 +88,13 @@ function RoleFighter() {
         referralCode,
       };
 
-      const registerResponse = await fetch(
-        "/api/rolefighter",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+      const registerResponse = await fetch("/api/rolefighter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
       if (registerResponse.ok) {
         const data = await registerResponse.json();
@@ -132,7 +126,7 @@ function RoleFighter() {
           alt="#"
           onClick={handleBackClick}
         />
-        <h1 className={styles.title}>SportDonation</h1>
+        <h1 className={styles.title}>BroDonate</h1>
       </div>
 
       <div className={styles.authForm}>

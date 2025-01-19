@@ -13,9 +13,7 @@ function Subscriptions() {
     const fetchSubscriptions = async () => {
       try {
         const userId = localStorage.getItem("userId");
-        const response = await fetch(
-          `/api/subscriptions/${userId}`
-        );
+        const response = await fetch(`/api/subscriptions/${userId}`);
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -40,7 +38,7 @@ function Subscriptions() {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "}
-            <h1>SportDonation</h1>
+            <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
             <img
