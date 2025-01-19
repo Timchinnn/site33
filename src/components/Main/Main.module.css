@@ -309,12 +309,12 @@ img {
 .topFightersSection {
   /* height: 157px; */
   background-color: #0f0f0f0f;
-  padding: 11px;
-  padding-top: 3px;
+  /* padding: 11px; */
+  /* padding-top: 3px; */
   margin-top: 12px;
   border: 1px solid #0f0f0f0f;
   border-radius: 12px;
-  width: 41%;
+  width: 48%;
 }
 .bottomNav {
   position: fixed;
