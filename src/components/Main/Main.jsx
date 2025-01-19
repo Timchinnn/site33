@@ -82,7 +82,7 @@ function Main() {
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
+            {/* <img src="arrow.png" alt="#" onClick={() => navigate(-1)} /> */}
             <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -94,12 +94,12 @@ function Main() {
                 navigate("/Notifications");
               }}
             />
-            <img
+            {/* <img
               src="search.png"
               alt=""
               className={styles.search}
               onClick={() => navigate("/Saerch")}
-            />
+            /> */}
           </div>
         </div>
         <div className={styles.navigationMenu}>
