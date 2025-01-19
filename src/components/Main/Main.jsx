@@ -21,6 +21,13 @@ function Main() {
   //     console.error("Error fetching tournament data:", error);
   //   }
   // };
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    if (query.trim()) {
+      // если пользователь что-то ввел
+      navigate("/Saerch"); // переход на страницу поиска
+    }
+  };
   const [topFighters, setTopFighters] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,7 +112,7 @@ function Main() {
         <div className={styles.passwordInputContainer}>
           <input
             type="text"
-            value={searchQuery}
+            // value={searchQuery}
             onChange={handleSearch}
             placeholder="Поиск по турниру или имени"
             className={styles.passwordinput}
