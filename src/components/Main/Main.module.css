@@ -207,10 +207,12 @@ img {
   justify-content: space-between; /* Распределяет элементы по доступному пространству */
 }
 .referralProgram {
-  /* height: 24vw; */
-  background-color: #e8e7ed;
+  background-image: url("ddf319705c92007d5b303c720af7dca7.png");
+  background-size: cover; /* Для корректного масштабирования изображения */
+  background-position: center; /* Центрирование изображения */
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 11px;
 }
 .referralText {
