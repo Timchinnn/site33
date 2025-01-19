@@ -370,6 +370,7 @@ img {
 .passwordInputContainer {
   position: relative;
   width: 100%;
+  margin-top: 20px;
 }
 .passwordInputContainer input {
   width: -webkit-fill-available;
