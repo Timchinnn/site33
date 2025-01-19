@@ -273,7 +273,7 @@ function Main() {
           </div>
           <div className={styles.topFightersSection}>
             <div className={styles.headerSection}>
-              <h2>Топ бойцов</h2>
+              <h2>Топ фанатов</h2>
               <div className={styles.toggleButtons}>
                 <p
                   className={activeSection === "donations" ? styles.active : ""}

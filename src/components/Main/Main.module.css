@@ -304,7 +304,7 @@ img {
 }
 .fighterItem {
   /* flex: 0 1 calc(50% - 10px); Каждый элемент занимает 50% ширины минус отступы */
-  margin-bottom: 20px; /* Отступ между рядами */
+  margin-bottom: 6px; /* Отступ между рядами */
   box-sizing: border-box;
 }
 .topFightersSection {
