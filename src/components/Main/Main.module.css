@@ -84,6 +84,7 @@ img {
   display: flex;
   align-items: center;
   padding-top: 4vh;
+  margin-bottom: 13px;
 }
 
 .donateLeaders {
