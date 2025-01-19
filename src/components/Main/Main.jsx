@@ -209,64 +209,127 @@ function Main() {
             }}
           />
         </div>
-        <div className={styles.topFightersSection}>
-          <div className={styles.headerSection}>
-            <h2>Топ бойцов</h2>
-            <div className={styles.toggleButtons}>
-              <p
-                className={activeSection === "donations" ? styles.active : ""}
-                onClick={() => setActiveSection("donations")}
-              >
-                По сборам
-              </p>
-              <p
-                className={activeSection === "votes" ? styles.active : ""}
-                onClick={() => setActiveSection("votes")}
-              >
-                По голосованию
-              </p>
+        <div>
+          {" "}
+          <div className={styles.topFightersSection}>
+            <div className={styles.headerSection}>
+              <h2>Топ бойцов</h2>
+              <div className={styles.toggleButtons}>
+                <p
+                  className={activeSection === "donations" ? styles.active : ""}
+                  onClick={() => setActiveSection("donations")}
+                >
+                  По сборам
+                </p>
+                <p
+                  className={activeSection === "votes" ? styles.active : ""}
+                  onClick={() => setActiveSection("votes")}
+                >
+                  По голосованию
+                </p>
+              </div>
+            </div>
+            <div className={styles.fightersList}>
+              {activeSection === "donations"
+                ? topFighters.map((fighter) => (
+                    <div
+                      key={fighter.id}
+                      className={styles.fighterItem}
+                      onClick={() => handleFighterClick(fighter)}
+                    >
+                      <img
+                        src={
+                          fighter.photo_url
+                            ? `${fighter.photo_url}`
+                            : "Avatar.png"
+                        }
+                        alt={fighter.name}
+                      />
+                      <p>
+                        {fighter.name} {fighter.surname[0]}.
+                      </p>
+                    </div>
+                  ))
+                : topVotedFighters.map((fighter) => (
+                    <div
+                      key={fighter.id}
+                      className={styles.fighterItem}
+                      onClick={() => handleFighterClick(fighter)}
+                    >
+                      <img
+                        src={
+                          fighter.photo_url
+                            ? `${fighter.photo_url}`
+                            : "Avatar.png"
+                        }
+                        alt={fighter.name}
+                      />
+                      <p>
+                        {fighter.name} {fighter.surname[0]}.
+                      </p>
+                    </div>
+                  ))}
             </div>
           </div>
-          <div className={styles.fightersList}>
-            {activeSection === "donations"
-              ? topFighters.map((fighter) => (
-                  <div
-                    key={fighter.id}
-                    className={styles.fighterItem}
-                    onClick={() => handleFighterClick(fighter)}
-                  >
-                    <img
-                      src={
-                        fighter.photo_url
-                          ? `${fighter.photo_url}`
-                          : "Avatar.png"
-                      }
-                      alt={fighter.name}
-                    />
-                    <p>
-                      {fighter.name} {fighter.surname[0]}.
-                    </p>
-                  </div>
-                ))
-              : topVotedFighters.map((fighter) => (
-                  <div
-                    key={fighter.id}
-                    className={styles.fighterItem}
-                    onClick={() => handleFighterClick(fighter)}
-                  >
-                    <img
-                      src={
-                        fighter.photo_url
-                          ? `${fighter.photo_url}`
-                          : "Avatar.png"
-                      }
-                      alt={fighter.name}
-                    />
-                    <p>
-                      {fighter.name} {fighter.surname[0]}.
-                    </p>
-                  </div>
-                ))}
+          <div className={styles.topFightersSection}>
+            <div className={styles.headerSection}>
+              <h2>Топ бойцов</h2>
+              <div className={styles.toggleButtons}>
+                <p
+                  className={activeSection === "donations" ? styles.active : ""}
+                  onClick={() => setActiveSection("donations")}
+                >
+                  По сборам
+                </p>
+                <p
+                  className={activeSection === "votes" ? styles.active : ""}
+                  onClick={() => setActiveSection("votes")}
+                >
+                  По голосованию
+                </p>
+              </div>
+            </div>
+            <div className={styles.fightersList}>
+              {activeSection === "donations"
+                ? topFighters.map((fighter) => (
+                    <div
+                      key={fighter.id}
+                      className={styles.fighterItem}
+                      onClick={() => handleFighterClick(fighter)}
+                    >
+                      <img
+                        src={
+                          fighter.photo_url
+                            ? `${fighter.photo_url}`
+                            : "Avatar.png"
+                        }
+                        alt={fighter.name}
+                      />
+                      <p>
+                        {fighter.name} {fighter.surname[0]}.
+                      </p>
+                    </div>
+                  ))
+                : topVotedFighters.map((fighter) => (
+                    <div
+                      key={fighter.id}
+                      className={styles.fighterItem}
+                      onClick={() => handleFighterClick(fighter)}
+                    >
+                      <img
+                        src={
+                          fighter.photo_url
+                            ? `${fighter.photo_url}`
+                            : "Avatar.png"
+                        }
+                        alt={fighter.name}
+                      />
+                      <p>
+                        {fighter.name} {fighter.surname[0]}.
+                      </p>
+                    </div>
+                  ))}
+            </div>
           </div>
         </div>
       </div>
