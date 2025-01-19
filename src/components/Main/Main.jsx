@@ -7,20 +7,20 @@ function Main() {
   const userType = localStorage.getItem("userType");
   console.log(userId);
   const navigate = useNavigate();
-  const handleSportClick = async (sportName) => {
-    try {
-      const response = await fetch(`/api/tournaments/${sportName}`);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        navigate("/tournament", {
-          state: { sportData: data, sportName: sportName },
-        });
-      }
-    } catch (error) {
-      console.error("Error fetching tournament data:", error);
-    }
-  };
+  // const handleSportClick = async (sportName) => {
+  //   try {
+  //     const response = await fetch(`/api/tournaments/${sportName}`);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       console.log(data);
+  //       navigate("/tournament", {
+  //         state: { sportData: data, sportName: sportName },
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching tournament data:", error);
+  //   }
+  // };
   const [topFighters, setTopFighters] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -114,7 +114,7 @@ function Main() {
             <p className={styles.donateLeaders}>ЛИДЕРЫ ДОНАТОВ</p>
           </div>
         </div>
-        <h2>Дисциплины</h2>
+        {/* <h2>Дисциплины</h2>
         <div className={styles.sportsContainer}>
           <div className={styles.mma} onClick={() => handleSportClick("ММА")}>
             <img src="/img/mma.png" alt="" />
@@ -155,7 +155,7 @@ function Main() {
             <img src="/img/mma.png" alt="" />
             <p>Борьба</p>
           </div>
-        </div>
+        </div> */}
         <div className={styles.topMatchesHeader}>
           <h2>Топовые матчи</h2>
           <img src="forward.png" alt="" />
