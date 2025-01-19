@@ -116,7 +116,9 @@ img {
   right: 0%;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
+  /* width: 28px; */
+  padding-right: 10px;
+  width: 20px;
   /* удалить или закомментировать pointer-events: none; */
 }
 
@@ -138,6 +140,8 @@ img {
   padding-left: 13px;
   border: 1px solid #0f0f0f0f;
   border-radius: 8px;
+  font-size: 16px;
+  height: 40px;
 }
 .authForm input {
   height: 40px;
