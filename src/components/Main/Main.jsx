@@ -3,6 +3,8 @@ import styles from "./Main.module.css";
 
 import { useNavigate } from "react-router-dom";
 function Main() {
+  const [activeSection, setActiveSection] = useState("donations"); // 'donations' или 'votes'
+
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("userType");
   console.log(userId);
@@ -209,53 +211,62 @@ function Main() {
         </div>
         <div className={styles.topFightersSection}>
           <div className={styles.headerSection}>
-            <h2>Топ бойцов по сборам</h2>
-            <p>Показать всех</p>
+            <h2>Топ бойцов</h2>
+            <div className={styles.toggleButtons}>
+              <button
+                className={activeSection === "donations" ? styles.active : ""}
+                onClick={() => setActiveSection("donations")}
+              >
+                По сборам
+              </button>
+              <button
+                className={activeSection === "votes" ? styles.active : ""}
+                onClick={() => setActiveSection("votes")}
+              >
+                По голосованию
+              </button>
+            </div>
           </div>
           <div className={styles.fightersList}>
-            {topFighters.map((fighter) => (
-              <div
-                key={fighter.id}
-                className={styles.fighterItem}
-                onClick={() => handleFighterClick(fighter)}
-              >
-                <img
-                  src={
-                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
-                  }
-                  alt={fighter.name}
-                />
-                <p>
-                  {fighter.name} {fighter.surname[0]}.
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.topFightersSection}>
-          <div className={styles.headerSection}>
-            <h2>Топ бойцов по голосованию</h2>
-            <p>Показать всех</p>
-          </div>
-          <div className={styles.fightersList}>
-            {topVotedFighters.map((fighter) => (
-              <div
-                key={fighter.id}
-                className={styles.fighterItem}
-                onClick={() => handleFighterClick(fighter)}
-              >
-                <img
-                  src={
-                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
-                  }
-                  alt={fighter.name}
-                />
-                <p>
-                  {fighter.name} {fighter.surname[0]}.
-                </p>
-              </div>
-            ))}
+            {activeSection === "donations"
+              ? topFighters.map((fighter) => (
+                  <div
+                    key={fighter.id}
+                    className={styles.fighterItem}
+                    onClick={() => handleFighterClick(fighter)}
+                  >
+                    <img
+                      src={
+                        fighter.photo_url
+                          ? `${fighter.photo_url}`
+                          : "Avatar.png"
+                      }
+                      alt={fighter.name}
+                    />
+                    <p>
+                      {fighter.name} {fighter.surname[0]}.
+                    </p>
+                  </div>
+                ))
+              : topVotedFighters.map((fighter) => (
+                  <div
+                    key={fighter.id}
+                    className={styles.fighterItem}
+                    onClick={() => handleFighterClick(fighter)}
+                  >
+                    <img
+                      src={
+                        fighter.photo_url
+                          ? `${fighter.photo_url}`
+                          : "Avatar.png"
+                      }
+                      alt={fighter.name}
+                    />
+                    <p>
+                      {fighter.name} {fighter.surname[0]}.
+                    </p>
+                  </div>
+                ))}
           </div>
         </div>
       </div>
