@@ -116,9 +116,8 @@ img {
   right: 0%;
   top: 50%;
   transform: translateY(-50%);
-  /* width: 28px; */
-  padding-right: 10px;
-  width: 20px;
+  width: 28px;
+
   /* удалить или закомментировать pointer-events: none; */
 }
 
