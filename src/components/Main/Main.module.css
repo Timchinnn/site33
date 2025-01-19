@@ -299,18 +299,19 @@ img {
   justify-content: space-between;
 }
 .fighterItem {
-  flex: 0 1 calc(50% - 10px); /* Каждый элемент занимает 50% ширины минус отступы */
+  /* flex: 0 1 calc(50% - 10px); Каждый элемент занимает 50% ширины минус отступы */
   margin-bottom: 20px; /* Отступ между рядами */
   box-sizing: border-box;
 }
 .topFightersSection {
-  height: 157px;
+  /* height: 157px; */
   background-color: #0f0f0f0f;
   padding: 11px;
   padding-top: 3px;
   margin-top: 12px;
   border: 1px solid #0f0f0f0f;
   border-radius: 12px;
+  width: 41%;
 }
 .bottomNav {
   position: fixed;
@@ -412,4 +413,5 @@ img {
 .allSection {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
