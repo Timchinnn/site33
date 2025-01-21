@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TopMatches.module.css";
 import { useNavigate } from "react-router-dom";
 
 function TopMatches() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
-  const { sportData, setsportData } = {};
-  useEffect(async () => {
-    try {
-      const response = await fetch(`/api/tournaments/${sportName}`);
-      if (response.ok) {
-        const data = await response.json();
-        setsportData(data);
-        console.log(sportData);
+  const [sportData, setsportData] = useState({});
+  const sports = [
+    "ММА",
+    "Кулачные бои",
+    "Кикбоксинг",
+    "Тайский бокс",
+    "Бокс",
+    "Борьба",
+  ];
 
-        //
+  useEffect(() => {
+    const fetchAllSportsData = async () => {
+      try {
+        for (const sportName of sports) {
+          const response = await fetch(`/api/tournaments/${sportName}`);
+          if (response.ok) {
+            const data = await response.json();
+            setsportData((prevData) => ({
+              ...prevData,
+              [sportName]: data,
+            }));
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching tournament");
       }
-    } catch (error) {
-      console.error("Error fetching tournament data:", error);
-    }
-  });
+    };
+
+    fetchAllSportsData();
+  }, []);
 
   return (
     <div className={styles.header}>
