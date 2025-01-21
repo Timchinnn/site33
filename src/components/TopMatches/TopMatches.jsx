@@ -120,41 +120,42 @@ function TopMatches() {
               onClick={() => navigate("/Saerch")}
             />
           </div>
-        </div>
-      </div>
-      {tournaments.map((tournament) => (
-        <div key={tournament.id}>
-          <div className={styles.competitions}>
-            <div className={styles.competitionsText}>
-              <p>{tournament.name}</p>
+        </div>{" "}
+        {tournaments.map((tournament) => (
+          <div key={tournament.id}>
+            <div className={styles.competitions}>
+              <div className={styles.competitionsText}>
+                <p>{tournament.name}</p>
+              </div>
+              <img
+                src={isOpen[tournament.id] ? "up.png" : "down.png"}
+                alt=""
+                onClick={() => toggleOpen(tournament.id)}
+                style={{ cursor: "pointer" }}
+              />
             </div>
-            <img
-              src={isOpen[tournament.id] ? "up.png" : "down.png"}
-              alt=""
-              onClick={() => toggleOpen(tournament.id)}
-              style={{ cursor: "pointer" }}
-            />
-          </div>
-          {isOpen[tournament.id] && (
-            <div
-              onClick={() => handleMatchClick(tournament)}
-              style={{ cursor: "pointer" }}
-            >
-              {matches
-                .filter((match) => match.tournament_id === tournament.id)
-                .map((match) => (
-                  <div key={match.id} className={styles.dropdownContent}>
-                    <p className={styles.name}>{match.competitor_1}</p>
-                    <div className={styles.timeDate}>
-                      <p>{match.match_date}</p>
+            {isOpen[tournament.id] && (
+              <div
+                onClick={() => handleMatchClick(tournament)}
+                style={{ cursor: "pointer" }}
+              >
+                {matches
+                  .filter((match) => match.tournament_id === tournament.id)
+                  .map((match) => (
+                    <div key={match.id} className={styles.dropdownContent}>
+                      <p className={styles.name}>{match.competitor_1}</p>
+                      <div className={styles.timeDate}>
+                        <p>{match.match_date}</p>
+                      </div>
+                      <p className={styles.name}>{match.competitor_2}</p>
                     </div>
-                    <p className={styles.name}>{match.competitor_2}</p>
-                  </div>
-                ))}
-            </div>
-          )}
-        </div>
-      ))}
+                  ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className={styles.bottomNav}>
         <div
           className={styles.catalogItem}
