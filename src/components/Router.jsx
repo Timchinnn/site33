@@ -26,6 +26,9 @@ import Referal from "./Referal/Referal";
 import Subscriptions from "./Subscriptions/Subscriptions";
 import SubscriptionDetails from "./SubscriptionDetails/SubscriptionDetails";
 import SubscriptionEdit from "./SubscriptionEdit/SubscriptionEdit";
+import TopFighters from "./TopFighters/TopFighters";
+import TopFan from "./TopFan/TopFan";
+import SupportFighters from "./SupportFighters/SupportFighters";
 
 const Router = () => {
   const ProtectedSignin = () => {
@@ -67,6 +70,9 @@ const Router = () => {
         <Route element={<Subscriptions />} path="/Subscriptions" />
         <Route element={<SubscriptionDetails />} path="/SubscriptionDetails" />
         <Route element={<SubscriptionEdit />} path="/SubscriptionEdit" />
+        <Route element={<TopFighters />} path="/TopFighters" />
+        <Route element={<TopFan />} path="/TopFan" />
+        <Route element={<SupportFighters />} path="/SupportFighters" />
       </Routes>
     </BrowserRouter>
   );
