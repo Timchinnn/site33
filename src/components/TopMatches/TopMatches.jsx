@@ -35,8 +35,8 @@ function TopMatches() {
               [sportName]: data,
             }));
 
-            setTournaments(tournaments);
-            setMatches(matches);
+            if (data.tournaments) setTournaments(data.tournaments);
+            if (data.matches) setMatches(data.matches);
           }
         }
       } catch (error) {
