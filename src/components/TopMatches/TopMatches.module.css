@@ -103,3 +103,281 @@ img {
 .notification {
   padding-right: 2vw;
 }
+@font-face {
+  font-family: "Bebas Neue Cyrillic";
+  src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
+}
+
+img {
+  width: 28px;
+}
+.header {
+  display: flex;
+  justify-content: center;
+}
+.header h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.container {
+  width: 91vw;
+}
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+}
+.backArrow {
+  display: flex;
+  align-items: center;
+}
+.backArrow h1 {
+  margin: 0;
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 0.4vh;
+  padding-left: 1vw;
+}
+.iconsContainer {
+  display: flex;
+}
+.notification {
+  padding-right: 2vw;
+}
+.search {
+  width: 19px;
+  height: 19px;
+  padding-top: 4px;
+}
+/*  */
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.bottomNav button {
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.container {
+  padding-bottom: 82px;
+}
+.bottomNav p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+}
+.bottomNav img {
+  /* padding-left: 8px; */
+}
+.catalogItem {
+  display: flex;
+  flex-direction: column; /* Размещаем элементы по вертикали */
+  align-items: center; /* Выравнивание по центру по горизонтали */
+  justify-content: center; /* Выравнивание по центру по вертикали */
+}
+
+.catalogImage {
+  margin-bottom: 4px; /* Отступ между изображением и текстом */
+}
+
+.catalogText {
+  margin: 0; /* Убираем стандартные отступы */
+}
+/*  */
+.referralProgram {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Изменено с flex-start */
+  padding: 11px;
+  background: linear-gradient(291.04deg, #ff0033 0%, #99001f 101.64%);
+  margin-top: 10px;
+}
+
+.forwardWhite {
+  width: 28px;
+  height: auto;
+  margin-left: auto; /* Добавлено */
+}
+.referralText {
+}
+.referralProgram h2 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.08em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: white;
+  width: 78vw;
+}
+.referralProgram p {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 297px;
+  color: white;
+  width: 74vw;
+}
+.forwardWhite {
+  padding-left: 8vw;
+}
+.sportsContainer img {
+  width: 72px;
+}
+.sportsContainer p {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-top: 1vh;
+}
+
+.sportsContainer {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-x: hidden;
+}
+.sportsContainer::-webkit-scrollbar {
+  display: none;
+}
+.sportsContainer div {
+  margin-right: 3vw;
+}
+.competitionsText {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  display: flex;
+  align-items: center;
+}
+.competitions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  background-color: #e8e7ed;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.competitionsText p:first-child {
+  padding-right: 10px;
+}
+.competitions {
+  position: relative;
+}
+
+.dropdownContent {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background: #e8e7ed4d;
+  margin-bottom: 1vh;
+  height: 8vh;
+  border-top-width: 1px; /* Задаем ширину границы */
+  border-style: solid; /* Задаем стиль границы */
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ef5050 50.5%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-image-slice: 1; /* Указываем, как изображение должно быть нарезано */
+  border-bottom: none;
+}
+.name {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.time {
+  width: 4vw;
+  height: 4vw;
+  padding: 8px;
+  border-radius: 50px;
+  background: #ff003326;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #ff0033;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 27px;
+  min-height: 27px;
+}
+.timeDate {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #95959b;
+  width: 62px;
+}
+.mdiFire {
+  position: absolute;
+}
