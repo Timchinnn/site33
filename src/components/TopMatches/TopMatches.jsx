@@ -33,7 +33,7 @@ function TopMatches() {
           </div>
         </div>
       </div>
-      BroDonate{" "}
+
       <div className={styles.bottomNav}>
         <div
           className={styles.catalogItem}
