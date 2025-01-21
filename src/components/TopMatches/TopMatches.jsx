@@ -9,6 +9,7 @@ function TopMatches() {
   const [tournaments, setTournaments] = useState([]);
   const [matches, setMatches] = useState([]);
   const [isOpen, setIsOpen] = useState({});
+  console.log(sportData);
 
   const sports = useMemo(
     () => [
