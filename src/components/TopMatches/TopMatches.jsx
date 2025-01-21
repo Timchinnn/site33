@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import styles from "./TopMatches.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -6,14 +6,17 @@ function TopMatches() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
   const [sportData, setsportData] = useState({});
-  const sports = [
-    "ММА",
-    "Кулачные бои",
-    "Кикбоксинг",
-    "Тайский бокс",
-    "Бокс",
-    "Борьба",
-  ];
+  const sports = useMemo(
+    () => [
+      "ММА",
+      "Кулачные бои",
+      "Кикбоксинг",
+      "Тайский бокс",
+      "Бокс",
+      "Борьба",
+    ],
+    []
+  );
 
   useEffect(() => {
     const fetchAllSportsData = async () => {
