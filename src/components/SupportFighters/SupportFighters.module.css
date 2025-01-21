@@ -100,3 +100,6 @@ img {
 .catalogText {
   margin: 0; /* Убираем стандартные отступы */
 }
+.notification {
+  padding-right: 2vw;
+}
