@@ -8,6 +8,7 @@ function TopMatches() {
   const [sportData, setsportData] = useState({});
   const tournaments = sportData.tournaments;
   const matches = sportData.matches;
+  const [isOpen, setIsOpen] = useState({});
 
   const sports = useMemo(
     () => [
@@ -41,7 +42,24 @@ function TopMatches() {
 
     fetchAllSportsData();
   }, [sports]);
+  const toggleOpen = (tournamentId) => {
+    setIsOpen((prev) => ({
+      ...prev,
+      [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
+    }));
+  };
+  const handleMatchClick = (tournament) => {
+    const tournamentMatches = matches.filter(
+      (match) => match.tournament_id === tournament.id
+    );
 
+    navigate("/voting", {
+      state: {
+        tournament: tournament,
+        matches: tournamentMatches,
+      },
+    });
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
