@@ -29,6 +29,7 @@ import SubscriptionEdit from "./SubscriptionEdit/SubscriptionEdit";
 import TopFighters from "./TopFighters/TopFighters";
 import TopFan from "./TopFan/TopFan";
 import SupportFighters from "./SupportFighters/SupportFighters";
+import TopMatches from "./TopMatches/TopMatches";
 
 const Router = () => {
   const ProtectedSignin = () => {
@@ -73,6 +74,7 @@ const Router = () => {
         <Route element={<TopFighters />} path="/TopFighters" />
         <Route element={<TopFan />} path="/TopFan" />
         <Route element={<SupportFighters />} path="/SupportFighters" />
+        <Route element={<TopMatches />} path="/TopMatches" />
       </Routes>
     </BrowserRouter>
   );

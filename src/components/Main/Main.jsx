@@ -127,7 +127,12 @@ function Main() {
           />
         </div>
         <div className={styles.navigationMenu}>
-          <div className={styles.viewersBlock}>
+          <div
+            className={styles.viewersBlock}
+            onClick={() => {
+              navigate("/SupportFighters");
+            }}
+          >
             <p className={styles.viewersDecide}>ПОДДЕРЖАТЬ СПОРТСМЕНА</p>
           </div>
 
@@ -180,7 +185,12 @@ function Main() {
             <p>Борьба</p>
           </div>
         </div> */}
-        <div className={styles.topMatchesHeader}>
+        <div
+          className={styles.topMatchesHeader}
+          onClick={() => {
+            navigate("/TopMatches");
+          }}
+        >
           <h2>Топовые матчи</h2>
           <img src="forward.png" alt="" />
         </div>
@@ -270,7 +280,12 @@ function Main() {
                     </div>
                   ))}
             </div>
-            <div className={styles.watchAll}>
+            <div
+              className={styles.watchAll}
+              onClick={() => {
+                navigate("/TopFighters");
+              }}
+            >
               <p>Показать всех</p>
             </div>
           </div>
@@ -333,7 +348,12 @@ function Main() {
                     </div>
                   ))}
             </div>
-            <div className={styles.watchAll}>
+            <div
+              className={styles.watchAll}
+              onClick={() => {
+                navigate("/TopFan");
+              }}
+            >
               <p>Показать всех</p>
             </div>
           </div>
