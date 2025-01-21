@@ -29,7 +29,6 @@ function TopMatches() {
               ...prevData,
               [sportName]: data,
             }));
-            console.log(sportData);
           }
         }
       } catch (error) {
@@ -38,7 +37,7 @@ function TopMatches() {
     };
 
     fetchAllSportsData();
-  }, [sports, sportData]);
+  }, [sports]);
 
   return (
     <div className={styles.header}>
