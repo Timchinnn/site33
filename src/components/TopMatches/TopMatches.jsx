@@ -26,6 +26,7 @@ function TopMatches() {
               ...prevData,
               [sportName]: data,
             }));
+            console.log(sportData);
           }
         }
       } catch (error) {
