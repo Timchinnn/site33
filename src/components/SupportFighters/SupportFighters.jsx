@@ -3,6 +3,8 @@ import styles from "./SupportFighters.module.css";
 import { useNavigate } from "react-router-dom";
 
 function SupportFighters() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
 
   return (

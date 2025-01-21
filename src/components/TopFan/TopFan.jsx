@@ -3,6 +3,8 @@ import styles from "./TopFan.module.css";
 import { useNavigate } from "react-router-dom";
 
 function TopFan() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
 
   return (

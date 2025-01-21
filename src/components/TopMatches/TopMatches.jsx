@@ -3,6 +3,8 @@ import styles from "./TopMatches.module.css";
 import { useNavigate } from "react-router-dom";
 
 function TopMatches() {
+  const userType = localStorage.getItem("userType");
+
   const navigate = useNavigate();
 
   return (
