@@ -1,66 +1,15 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./TopMatches.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function TopMatches() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
-  const [sportData, setsportData] = useState({});
-  const [tournaments, setTournaments] = useState([]);
-  const [matches, setMatches] = useState([]);
+  const location = useLocation();
+  const { sportData } = location.state || {};
+  const tournaments = sportData.tournaments;
+  const matches = sportData.matches;
   const [isOpen, setIsOpen] = useState({});
-  console.log(sportData);
-
-  const sports = useMemo(
-    () => [
-      "ММА",
-      "Кулачные бои",
-      "Кикбоксинг",
-      "Тайский бокс",
-      "Бокс",
-      "Борьба",
-    ],
-    []
-  );
-
-  useEffect(() => {
-    const fetchAllSportsData = async () => {
-      try {
-        for (const sportName of sports) {
-          const response = await fetch(`/api/tournaments/${sportName}`);
-          if (response.ok) {
-            const data = await response.json();
-            setsportData((prevData) => ({
-              ...prevData,
-              [sportName]: data,
-            }));
-
-            // For tournaments
-            setTournaments((prevData) => ({
-              ...prevData,
-              [sportName]: data.tournaments,
-            }));
-
-            // For matches
-            setMatches((prevData) => ({
-              ...prevData,
-              [sportName]: data.matches,
-            }));
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching tournament");
-      }
-    };
-
-    fetchAllSportsData();
-  }, [sports]);
-  const toggleOpen = (tournamentId) => {
-    setIsOpen((prev) => ({
-      ...prev,
-      [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
-    }));
-  };
   const handleMatchClick = (tournament) => {
     const tournamentMatches = matches.filter(
       (match) => match.tournament_id === tournament.id
@@ -73,6 +22,80 @@ function TopMatches() {
       },
     });
   };
+  const toggleOpen = (tournamentId) => {
+    setIsOpen((prev) => ({
+      ...prev,
+      [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
+    }));
+  };
+  // const [sportData, setsportData] = useState({});
+  // const [tournaments, setTournaments] = useState([]);
+  // const [matches, setMatches] = useState([]);
+  // const [isOpen, setIsOpen] = useState({});
+  // console.log(sportData);
+
+  // const sports = useMemo(
+  //   () => [
+  //     "ММА",
+  //     "Кулачные бои",
+  //     "Кикбоксинг",
+  //     "Тайский бокс",
+  //     "Бокс",
+  //     "Борьба",
+  //   ],
+  //   []
+  // );
+
+  // useEffect(() => {
+  //   const fetchAllSportsData = async () => {
+  //     try {
+  //       for (const sportName of sports) {
+  //         const response = await fetch(`/api/tournaments/${sportName}`);
+  //         if (response.ok) {
+  //           const data = await response.json();
+  //           setsportData((prevData) => ({
+  //             ...prevData,
+  //             [sportName]: data,
+  //           }));
+
+  //           // For tournaments
+  //           setTournaments((prevData) => ({
+  //             ...prevData,
+  //             [sportName]: data.tournaments,
+  //           }));
+
+  //           // For matches
+  //           setMatches((prevData) => ({
+  //             ...prevData,
+  //             [sportName]: data.matches,
+  //           }));
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching tournament");
+  //     }
+  //   };
+
+  //   fetchAllSportsData();
+  // }, [sports]);
+  // const toggleOpen = (tournamentId) => {
+  //   setIsOpen((prev) => ({
+  //     ...prev,
+  //     [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
+  //   }));
+  // };
+  // const handleMatchClick = (tournament) => {
+  //   const tournamentMatches = matches.filter(
+  //     (match) => match.tournament_id === tournament.id
+  //   );
+
+  //   navigate("/voting", {
+  //     state: {
+  //       tournament: tournament,
+  //       matches: tournamentMatches,
+  //     },
+  //   });
+  // };
   return (
     <div className={styles.header}>
       <div className={styles.container}>

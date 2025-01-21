@@ -86,6 +86,20 @@ function Main() {
       },
     });
   };
+  const handleSportClick = async (sportName) => {
+    try {
+      const response = await fetch(`/api/tournaments/${sportName}`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        navigate("/TopMatches", {
+          state: { sportData: data, sportName: sportName },
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching tournament data:", error);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -188,7 +202,7 @@ function Main() {
         <div
           className={styles.topMatchesHeader}
           onClick={() => {
-            navigate("/TopMatches");
+            handleSportClick("ММА");
           }}
         >
           <h2>Топовые матчи</h2>
