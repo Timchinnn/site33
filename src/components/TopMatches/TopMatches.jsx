@@ -6,8 +6,8 @@ function TopMatches() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
   const [sportData, setsportData] = useState({});
-  const tournaments = sportData.tournaments;
-  const matches = sportData.matches;
+  const [tournaments, setTournaments] = useState([]);
+  const [matches, setMatches] = useState([]);
   const [isOpen, setIsOpen] = useState({});
 
   const sports = useMemo(
@@ -33,6 +33,9 @@ function TopMatches() {
               ...prevData,
               [sportName]: data,
             }));
+
+            setTournaments(tournaments);
+            setMatches(matches);
           }
         }
       } catch (error) {
