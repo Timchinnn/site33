@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./TopFighters.module.css";
+import { useNavigate } from "react-router-dom";
+
 function TopFighters() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>

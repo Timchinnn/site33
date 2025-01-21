@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./TopFan.module.css";
+import { useNavigate } from "react-router-dom";
+
 function TopFan() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>

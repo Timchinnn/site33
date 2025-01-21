@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./TopMatches.module.css";
+import { useNavigate } from "react-router-dom";
+
 function TopMatches() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>

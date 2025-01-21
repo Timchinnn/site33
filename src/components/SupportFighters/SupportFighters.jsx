@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./SupportFighters.module.css";
+import { useNavigate } from "react-router-dom";
+
 function SupportFighters() {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>
