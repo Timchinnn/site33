@@ -89,6 +89,7 @@ function StatsFighterFan() {
             userId: localStorage.getItem("userId"),
             amount: donateAmount,
             userType: localStorage.getItem("userType"),
+            fighterId: fighterData.id,
           }),
         });
         if (!response.ok) {
