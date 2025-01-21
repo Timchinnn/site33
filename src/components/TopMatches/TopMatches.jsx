@@ -35,8 +35,17 @@ function TopMatches() {
               [sportName]: data,
             }));
 
-            if (data.tournaments) setTournaments(data.tournaments);
-            if (data.matches) setMatches(data.matches);
+            // For tournaments
+            setTournaments((prevData) => ({
+              ...prevData,
+              [sportName]: data.tournaments,
+            }));
+
+            // For matches
+            setMatches((prevData) => ({
+              ...prevData,
+              [sportName]: data.matches,
+            }));
           }
         }
       } catch (error) {
