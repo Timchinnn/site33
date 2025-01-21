@@ -4,8 +4,22 @@ import { useNavigate } from "react-router-dom";
 
 function TopMatches() {
   const userType = localStorage.getItem("userType");
-
   const navigate = useNavigate();
+  const { sportData, setsportData } = {};
+  useEffect(async () => {
+    try {
+      const response = await fetch(`/api/tournaments/${sportName}`);
+      if (response.ok) {
+        const data = await response.json();
+        setsportData(data);
+        console.log(sportData);
+
+        //
+      }
+    } catch (error) {
+      console.error("Error fetching tournament data:", error);
+    }
+  });
 
   return (
     <div className={styles.header}>

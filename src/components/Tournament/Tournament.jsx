@@ -6,10 +6,8 @@ function Tournament() {
   const navigate = useNavigate();
   const location = useLocation();
   const { sportData } = location.state || {};
-
   const tournaments = sportData.tournaments;
   const matches = sportData.matches;
-
   const [isOpen, setIsOpen] = useState({});
   const handleMatchClick = (tournament) => {
     const tournamentMatches = matches.filter(
