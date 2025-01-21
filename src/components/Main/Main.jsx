@@ -333,6 +333,9 @@ function Main() {
                     </div>
                   ))}
             </div>
+            <div className={styles.watchAll}>
+              <p>Показать всех</p>
+            </div>
           </div>
         </div>
       </div>
