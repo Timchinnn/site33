@@ -35,7 +35,7 @@ function TopMatches() {
     };
 
     fetchAllSportsData();
-  }, []);
+  }, [sports, sportData]);
 
   return (
     <div className={styles.header}>
