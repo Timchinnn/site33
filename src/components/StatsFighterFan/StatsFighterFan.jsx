@@ -539,7 +539,13 @@ function StatsFighterFan() {
                 </div>
               </div>
               <div className={styles.donationProgressText}>
-                <span>{donationProgress.current.toLocaleString()} ₽</span>
+                <span
+                  onClick={console.log(
+                    donationProgress.current.toLocaleString()
+                  )}
+                >
+                  {donationProgress.current.toLocaleString()} ₽
+                </span>
                 <span>{donationProgress.target.toLocaleString()} ₽</span>
               </div>
             </div>
