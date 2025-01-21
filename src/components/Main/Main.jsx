@@ -270,7 +270,9 @@ function Main() {
                     </div>
                   ))}
             </div>
-            <p>Показать всех</p>
+            <div className={styles.watchAll}>
+              <p>Показать всех</p>
+            </div>
           </div>
           <div className={styles.topFightersSection}>
             <div className={styles.headerSection}>

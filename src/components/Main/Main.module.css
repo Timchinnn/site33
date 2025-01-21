@@ -427,3 +427,9 @@ img {
   justify-content: space-around;
   border-bottom: 1px solid #0f0f0f0f;
 }
+.watchAll {
+  color: #95959b;
+  font-size: 12px;
+  letter-spacing: -0.05em;
+  line-height: 12px;
+}
