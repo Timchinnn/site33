@@ -190,12 +190,12 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
 }
 .competitions {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
   background-color: #e8e7ed;
