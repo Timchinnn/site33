@@ -86,7 +86,6 @@ function Main() {
       },
     });
   };
-  jsx;
   // В Main.jsx
   const handleSportClick = async () => {
     try {
