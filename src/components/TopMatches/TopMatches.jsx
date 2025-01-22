@@ -81,7 +81,7 @@ function TopMatches() {
                         <p>{match.match_date}</p>
                       </div>
                       <div className={styles.fightersNames}>
-                        <div className={styles.fighterNames}>
+                        <div className={styles.fighterName}>
                           <img
                             className={styles.Avatar}
                             src={
@@ -93,7 +93,7 @@ function TopMatches() {
                           />
                           <p className={styles.name}>{match.competitor_1}</p>{" "}
                         </div>
-                        <div className={styles.fighterNames}>
+                        <div className={styles.fighterName}>
                           <img
                             className={styles.Avatar}
                             src={
