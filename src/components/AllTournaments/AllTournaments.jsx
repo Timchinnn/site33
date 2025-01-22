@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styles from "./TopMatches.module.css";
+import styles from "./AllTournaments.module.css";
 import { useNavigate } from "react-router-dom";
 
-function TopMatches() {
+function AllTournaments() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
   const [sportData, setSportData] = useState({
@@ -203,4 +203,4 @@ function TopMatches() {
   );
 }
 
-export default TopMatches;
+export default AllTournaments;
