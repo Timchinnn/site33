@@ -86,18 +86,34 @@ function Main() {
       },
     });
   };
-  const handleSportClick = async (sportName) => {
+  jsx;
+  // В Main.jsx
+  const handleSportClick = async () => {
     try {
-      const response = await fetch(`/api/tournaments/${sportName}`);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        navigate("/TopMatches", {
-          state: { sportData: data, sportName: sportName },
-        });
-      }
+      const disciplines = [
+        "ММА",
+        "Кулачные бои",
+        "Кикбоксинг",
+        "Тайский бокс",
+        "Бокс",
+        "Борьба",
+      ];
+      const responses = await Promise.all(
+        disciplines.map((discipline) =>
+          fetch(`/api/tournaments/${discipline}`).then((res) => res.json())
+        )
+      );
+
+      const allData = responses.reduce((acc, data, index) => {
+        acc[disciplines[index]] = data;
+        return acc;
+      }, {});
+
+      navigate("/TopMatches", {
+        state: { sportData: allData },
+      });
     } catch (error) {
-      console.error("Error fetching tournament data:", error);
+      console.error("Error fetching tournament");
     }
   };
   return (
