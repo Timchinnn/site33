@@ -212,9 +212,9 @@ img {
 .dropdownContent {
   align-items: center;
   background: #e8e7ed4d;
-  border-image-slice: 1;
+  /* border-image-slice: 1;
   border-image-source: linear-gradient(90deg, #fff0, #ef5050 50.5%, #fff0);
-  border-style: solid;
+  border-style: solid; */
   border-bottom: none;
   border-top-width: 1px;
   box-shadow: 0 2px 4px #0000001a;
