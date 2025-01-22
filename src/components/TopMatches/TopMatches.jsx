@@ -79,6 +79,7 @@ function TopMatches() {
                     <div key={match.id} className={styles.dropdownContent}>
                       <p className={styles.name}>{match.competitor_1}</p>
                       <img
+                        className={styles.Avatar}
                         src={
                           match.fighter1_photo
                             ? match.fighter1_photo
@@ -91,6 +92,7 @@ function TopMatches() {
                       </div>
                       <p className={styles.name}>{match.competitor_2}</p>
                       <img
+                        className={styles.Avatar}
                         src={
                           match.fighter2_photo
                             ? match.fighter2_photo
