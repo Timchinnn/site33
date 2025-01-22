@@ -191,6 +191,7 @@ img {
   text-decoration-skip-ink: none;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 .competitions {
   display: flex;
@@ -204,11 +205,21 @@ img {
 }
 .competitionsText p:first-child {
   padding-right: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }
 .competitions {
   position: relative;
 }
-
+.competitionsText p {
+  margin: 0;
+}
 .dropdownContent {
   align-items: center;
   background: #e8e7ed4d;
