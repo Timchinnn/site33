@@ -190,6 +190,7 @@ function Voting() {
     }
   };
   const [voteResults, setVoteResults] = useState({});
+  console.log(voteResults);
   console.log(matches);
   useEffect(() => {
     const fetchVoteResults = async () => {
@@ -213,7 +214,9 @@ function Voting() {
       fetchVoteResults();
     }
   }, [tournament]);
+
   const [topDonations, setTopDonations] = useState([]);
+  console.log(topDonations);
   useEffect(() => {
     const fetchTopDonations = async () => {
       try {
