@@ -428,7 +428,7 @@ function Voting() {
                 src="chevron-down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expanded ? styles.expanded : ""
+                  expandedVoting ? styles.expanded : ""
                 }`}
               />
             </div>
