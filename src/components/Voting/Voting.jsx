@@ -263,7 +263,7 @@ function Voting() {
         <h1>{tournament.name}</h1>
         <p className={styles.date}>15 декабря 2024, воскресенье</p>
         <div>
-          <img src="mdi_fire.png" alt="" className={styles.mdiFire} />
+          {/* <img src="mdi_fire.png" alt="" className={styles.mdiFire} /> */}
 
           {matches
             .filter((match) => match.tournament_id === tournament.id)
