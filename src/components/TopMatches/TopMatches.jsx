@@ -28,7 +28,7 @@ function TopMatches() {
       [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
     }));
   };
-  console.log(matches);
+  console.log(sportData);
 
   return (
     <div className={styles.header}>
