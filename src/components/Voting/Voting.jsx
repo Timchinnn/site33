@@ -268,23 +268,35 @@ function Voting() {
             .filter((match) => match.tournament_id === tournament.id)
             .map((match) => (
               <div key={match.id} className={styles.dropdownContent}>
-                <p
-                  className={styles.name}
-                  onClick={() => handleFighterClick(match.competitor_1)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {match.competitor_1}
-                </p>
                 <div className={styles.timeDate}>
                   <p>{match.match_date}</p>
                 </div>
-                <p
-                  className={styles.name}
-                  onClick={() => handleFighterClick(match.competitor_2)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {match.competitor_2}
-                </p>
+                <div className={styles.fightersNames}>
+                  <div className={styles.fighterName}>
+                    <img
+                      className={styles.Avatar}
+                      src={
+                        match.fighter1_photo
+                          ? match.fighter1_photo
+                          : "Avatar.png"
+                      }
+                      alt=""
+                    />
+                    <p className={styles.name}>{match.competitor_1}</p>{" "}
+                  </div>
+                  <div className={styles.fighterName}>
+                    <img
+                      className={styles.Avatar}
+                      src={
+                        match.fighter2_photo
+                          ? match.fighter2_photo
+                          : "Avatar.png"
+                      }
+                      alt=""
+                    />
+                    <p className={styles.name}>{match.competitor_2}</p>{" "}
+                  </div>
+                </div>
               </div>
             ))}
         </div>
