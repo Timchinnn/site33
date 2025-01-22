@@ -80,7 +80,7 @@ function TopMatches() {
                       <div className={styles.timeDate}>
                         <p>{match.match_date}</p>
                       </div>
-                      <div>
+                      <div className={styles.fightersNames}>
                         <img
                           className={styles.Avatar}
                           src={
