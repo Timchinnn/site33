@@ -78,12 +78,26 @@ function TopMatches() {
                   .map((match) => (
                     <div key={match.id} className={styles.dropdownContent}>
                       <p className={styles.name}>{match.competitor_1}</p>
-                      <img src={match.fighter1_photo} alt="" />
+                      <img
+                        src={
+                          match.fighter1_photo
+                            ? match.fighter1_photo
+                            : "Avatar.png"
+                        }
+                        alt=""
+                      />{" "}
                       <div className={styles.timeDate}>
                         <p>{match.match_date}</p>
                       </div>
                       <p className={styles.name}>{match.competitor_2}</p>
-                      <img src={match.fighter2_photo} alt="" />
+                      <img
+                        src={
+                          match.fighter2_photo
+                            ? match.fighter2_photo
+                            : "Avatar.png"
+                        }
+                        alt=""
+                      />{" "}
                     </div>
                   ))}
               </div>
