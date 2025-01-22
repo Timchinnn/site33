@@ -77,29 +77,31 @@ function TopMatches() {
                   .filter((match) => match.tournament_id === tournament.id)
                   .map((match) => (
                     <div key={match.id} className={styles.dropdownContent}>
-                      <p className={styles.name}>{match.competitor_1}</p>
-                      <img
-                        className={styles.Avatar}
-                        src={
-                          match.fighter1_photo
-                            ? match.fighter1_photo
-                            : "Avatar.png"
-                        }
-                        alt=""
-                      />{" "}
                       <div className={styles.timeDate}>
                         <p>{match.match_date}</p>
                       </div>
-                      <p className={styles.name}>{match.competitor_2}</p>
-                      <img
-                        className={styles.Avatar}
-                        src={
-                          match.fighter2_photo
-                            ? match.fighter2_photo
-                            : "Avatar.png"
-                        }
-                        alt=""
-                      />{" "}
+                      <div>
+                        <img
+                          className={styles.Avatar}
+                          src={
+                            match.fighter1_photo
+                              ? match.fighter1_photo
+                              : "Avatar.png"
+                          }
+                          alt=""
+                        />
+                        <p className={styles.name}>{match.competitor_1}</p>{" "}
+                        <img
+                          className={styles.Avatar}
+                          src={
+                            match.fighter2_photo
+                              ? match.fighter2_photo
+                              : "Avatar.png"
+                          }
+                          alt=""
+                        />
+                        <p className={styles.name}>{match.competitor_2}</p>{" "}
+                      </div>
                     </div>
                   ))}
               </div>
