@@ -28,74 +28,8 @@ function TopMatches() {
       [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
     }));
   };
-  // const [sportData, setsportData] = useState({});
-  // const [tournaments, setTournaments] = useState([]);
-  // const [matches, setMatches] = useState([]);
-  // const [isOpen, setIsOpen] = useState({});
-  // console.log(sportData);
+  console.log(matches);
 
-  // const sports = useMemo(
-  //   () => [
-  //     "ММА",
-  //     "Кулачные бои",
-  //     "Кикбоксинг",
-  //     "Тайский бокс",
-  //     "Бокс",
-  //     "Борьба",
-  //   ],
-  //   []
-  // );
-
-  // useEffect(() => {
-  //   const fetchAllSportsData = async () => {
-  //     try {
-  //       for (const sportName of sports) {
-  //         const response = await fetch(`/api/tournaments/${sportName}`);
-  //         if (response.ok) {
-  //           const data = await response.json();
-  //           setsportData((prevData) => ({
-  //             ...prevData,
-  //             [sportName]: data,
-  //           }));
-
-  //           // For tournaments
-  //           setTournaments((prevData) => ({
-  //             ...prevData,
-  //             [sportName]: data.tournaments,
-  //           }));
-
-  //           // For matches
-  //           setMatches((prevData) => ({
-  //             ...prevData,
-  //             [sportName]: data.matches,
-  //           }));
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching tournament");
-  //     }
-  //   };
-
-  //   fetchAllSportsData();
-  // }, [sports]);
-  // const toggleOpen = (tournamentId) => {
-  //   setIsOpen((prev) => ({
-  //     ...prev,
-  //     [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
-  //   }));
-  // };
-  // const handleMatchClick = (tournament) => {
-  //   const tournamentMatches = matches.filter(
-  //     (match) => match.tournament_id === tournament.id
-  //   );
-
-  //   navigate("/voting", {
-  //     state: {
-  //       tournament: tournament,
-  //       matches: tournamentMatches,
-  //     },
-  //   });
-  // };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
