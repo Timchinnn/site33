@@ -8,6 +8,7 @@ function Voting() {
   const [selectedFighter, setSelectedFighter] = useState("");
   const [showDonateModal, setShowDonateModal] = useState(false);
 
+  const [expandedVoting, setExpandedVoting] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { tournament, matches } = location.state || {};
@@ -413,9 +414,43 @@ function Voting() {
           </div>
         </div> */}
         <div className={styles.currentVotings}>
-          <div className={styles.voting}>
-            <p>Лучший бой турнира</p>
+          <div
+            className={styles.voting}
+            onClick={() =>
+              setExpandedVoting((prev) =>
+                prev === "best-fight" ? null : "best-fight"
+              )
+            }
+          >
+            <div className={styles.votingHeader}>
+              <p>Лучший бой турнира</p>
+              <img
+                src="chevron-down.png"
+                alt="expand"
+                className={`${styles.expandIcon} ${
+                  expanded ? styles.expanded : ""
+                }`}
+              />
+            </div>
+
+            {expandedVoting === "best-fight" && (
+              <div className={styles.votingDetails}>
+                {matches.map((match) => (
+                  <div key={match.id} className={styles.matchVotes}>
+                    <div className={styles.fighters}>
+                      <p>{match.competitor_1}</p>
+                      <p>{match.competitor_2}</p>
+                    </div>
+                    <div className={styles.voteCount}>
+                      <p>{match.votes_1 || 0} голосов</p>
+                      <p>{match.votes_2 || 0} голосов</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+
           <div className={styles.voting}>
             <p>Лучший боец турнира</p>
           </div>

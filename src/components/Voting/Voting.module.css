@@ -627,3 +627,43 @@ hr {
   padding-left: 13px;
   margin: 0;
 }
+.voting {
+  cursor: pointer;
+  background: #e8e7ed;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.votingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expandIcon {
+  transition: transform 0.3s ease;
+}
+
+.expanded {
+  transform: rotate(180deg);
+}
+
+.votingDetails {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.matchVotes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.fighters,
+.voteCount {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
