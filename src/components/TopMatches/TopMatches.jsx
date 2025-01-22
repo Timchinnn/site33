@@ -59,6 +59,7 @@ function TopMatches() {
           <div key={tournament.id}>
             <div className={styles.competitions}>
               <div className={styles.competitionsText}>
+                <p>{tournament.discipline_name}</p>
                 <p>{tournament.name}</p>
               </div>
               <img
