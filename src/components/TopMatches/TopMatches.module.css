@@ -195,7 +195,7 @@ img {
 }
 .competitions {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   margin-bottom: 10px;
   background-color: #e8e7ed;
@@ -213,6 +213,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  padding-bottom: 10px;
 }
 .competitions {
   position: relative;
