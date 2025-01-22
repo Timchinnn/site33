@@ -86,38 +86,18 @@ function Main() {
       },
     });
   };
-  // В Main.jsx
-  const handleSportClick = async () => {
+  const handleSportClick = async (sportName) => {
     try {
-      const disciplines = [
-        "ММА",
-        "Кулачные бои",
-        "Кикбоксинг",
-        "Тайский бокс",
-        "Бокс",
-        "Борьба",
-      ];
-
-      const responses = await Promise.all(
-        disciplines.map(async (discipline) => {
-          const response = await fetch(`/api/tournaments/${discipline}`);
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-      );
-
-      const allData = responses.reduce((acc, data, index) => {
-        acc[disciplines[index]] = data;
-        return acc;
-      }, {});
-
-      navigate("/TopMatches", {
-        state: { sportData: allData },
-      });
+      const response = await fetch(`/api/tournaments/${sportName}`);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        navigate("/TopMatches", {
+          state: { sportData: data, sportName: sportName },
+        });
+      }
     } catch (error) {
-      console.error(" Добавить обработку ошибки для пользователя");
+      console.error("Error fetching tournament data:", error);
     }
   };
   return (
