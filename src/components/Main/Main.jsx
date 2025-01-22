@@ -9,20 +9,7 @@ function Main() {
   const userType = localStorage.getItem("userType");
   console.log(userId);
   const navigate = useNavigate();
-  // const handleSportClick = async (sportName) => {
-  //   try {
-  //     const response = await fetch(`/api/tournaments/${sportName}`);
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       console.log(data);
-  //       navigate("/tournament", {
-  //         state: { sportData: data, sportName: sportName },
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching tournament data:", error);
-  //   }
-  // };
+
   const handleSearch = (e) => {
     const query = e.target.value;
     if (query.trim()) {
