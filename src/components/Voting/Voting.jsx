@@ -425,7 +425,7 @@ function Voting() {
             <div className={styles.votingHeader}>
               <p>Лучший бой турнира</p>
               <img
-                src="chevron-down.png"
+                src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
                   expandedVoting ? styles.expanded : ""
