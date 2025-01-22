@@ -574,3 +574,66 @@ hr {
   width: 0px !important;
   height: 0px !important;
 }
+.dropdownContent {
+  align-items: center;
+  background: #e8e7ed4d;
+  /* border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #fff0, #ef5050 50.5%, #fff0);
+  border-style: solid; */
+  border-bottom: none;
+  border-top-width: 1px;
+  box-shadow: 0 2px 4px #0000001a;
+  display: flex;
+  height: 76px;
+  justify-content: space-evenly;
+  margin-bottom: 1vh;
+  /* position: relative; */
+  width: 100%;
+  flex-direction: column;
+}
+.timeDate {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #95959b;
+  /* width: 62px; */
+  width: 95%;
+  display: flex;
+}
+.timeDate p {
+  margin: 0;
+}
+.fightersNames {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+}
+.fighterName {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  width: 50%;
+}
+.Avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.name {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 13px;
+  margin: 0;
+}
