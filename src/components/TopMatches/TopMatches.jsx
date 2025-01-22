@@ -81,26 +81,30 @@ function TopMatches() {
                         <p>{match.match_date}</p>
                       </div>
                       <div className={styles.fightersNames}>
-                        <img
-                          className={styles.Avatar}
-                          src={
-                            match.fighter1_photo
-                              ? match.fighter1_photo
-                              : "Avatar.png"
-                          }
-                          alt=""
-                        />
-                        <p className={styles.name}>{match.competitor_1}</p>{" "}
-                        <img
-                          className={styles.Avatar}
-                          src={
-                            match.fighter2_photo
-                              ? match.fighter2_photo
-                              : "Avatar.png"
-                          }
-                          alt=""
-                        />
-                        <p className={styles.name}>{match.competitor_2}</p>{" "}
+                        <div>
+                          <img
+                            className={styles.Avatar}
+                            src={
+                              match.fighter1_photo
+                                ? match.fighter1_photo
+                                : "Avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{match.competitor_1}</p>{" "}
+                        </div>
+                        <div>
+                          <img
+                            className={styles.Avatar}
+                            src={
+                              match.fighter2_photo
+                                ? match.fighter2_photo
+                                : "Avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{match.competitor_2}</p>{" "}
+                        </div>
                       </div>
                     </div>
                   ))}
