@@ -199,13 +199,26 @@ function Main() {
             <p>Борьба</p>
           </div>
         </div> */}
-        <div
-          className={styles.topMatchesHeader}
-          onClick={() => {
-            handleSportClick("ММА");
-          }}
-        >
+        <div className={styles.topMatchesHeader}>
           <h2>Топовые матчи</h2>
+          <div className={styles.disciplineLinks}>
+            {[
+              "ММА",
+              "Кулачные бои",
+              "Кикбоксинг",
+              "Тайский бокс",
+              "Бокс",
+              "Борьба",
+            ].map((discipline) => (
+              <div
+                key={discipline}
+                onClick={() => handleSportClick(discipline)}
+                className={styles.disciplineLink}
+              >
+                {discipline}
+              </div>
+            ))}
+          </div>
           <img src="forward.png" alt="" />
         </div>
         <div className={styles.games}>
