@@ -205,11 +205,11 @@ img {
   text-decoration-skip-ink: none;
 }
 .currentVotings div {
-  width: 43.8vw;
+  /* width: 43.8vw; */
   /* height: 74px; */
   background-color: #e8e7ed;
   border-radius: 12px;
-  display: inline-table;
+  /* display: inline-table; */
 }
 
 .currentVotings div :first-child {
@@ -252,16 +252,13 @@ img {
   padding-bottom: 7px;
 }
 .currentVotings {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 10px; */
 }
 
 .currentVotings > div {
   /* flex: 1 1 50%; Каждый элемент будет занимать 50% ширины контейнера */
-  box-sizing: border-box; /* Учитывать отступы и границы в ширине элемента */
-  /* padding: 10px; Добавить отступы для элементов */
-  margin-bottom: 0px;
 }
 .topTournamentDonations {
   display: flex;
