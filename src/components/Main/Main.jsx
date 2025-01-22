@@ -86,18 +86,36 @@ function Main() {
       },
     });
   };
-  const handleSportClick = async (sportName) => {
+  // В Main.jsx
+  const handleSportClick = async () => {
     try {
-      const response = await fetch(`/api/tournaments/${sportName}`);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        navigate("/TopMatches", {
-          state: { sportData: data, sportName: sportName },
-        });
-      }
+      // Получаем матчи для всех дисциплин одновременно
+      const responses = await Promise.all(
+        [
+          "ММА",
+          "Кулачные бои",
+          "Кикбоксинг",
+          "Тайский бокс",
+          "Бокс",
+          "Борьба",
+        ].map((sport) => fetch(`/api/tournaments/${sport}`))
+      );
+
+      const allData = await Promise.all(responses.map((r) => r.json()));
+
+      // Объединяем данные всех дисциплин
+      const combinedData = {
+        tournaments: allData.flatMap((d) => d.tournaments),
+        matches: allData.flatMap((d) => d.matches),
+      };
+
+      navigate("/TopMatches", {
+        state: {
+          sportData: combinedData,
+        },
+      });
     } catch (error) {
-      console.error("Error fetching tournament data:", error);
+      console.error("Error");
     }
   };
   return (
@@ -199,26 +217,13 @@ function Main() {
             <p>Борьба</p>
           </div>
         </div> */}
-        <div className={styles.topMatchesHeader}>
+        <div
+          className={styles.topMatchesHeader}
+          onClick={() => {
+            handleSportClick;
+          }}
+        >
           <h2>Топовые матчи</h2>
-          <div className={styles.disciplineLinks}>
-            {[
-              "ММА",
-              "Кулачные бои",
-              "Кикбоксинг",
-              "Тайский бокс",
-              "Бокс",
-              "Борьба",
-            ].map((discipline) => (
-              <div
-                key={discipline}
-                onClick={() => handleSportClick(discipline)}
-                className={styles.disciplineLink}
-              >
-                {discipline}
-              </div>
-            ))}
-          </div>
           <img src="forward.png" alt="" />
         </div>
         <div className={styles.games}>
