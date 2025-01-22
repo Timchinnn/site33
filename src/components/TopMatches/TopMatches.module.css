@@ -235,7 +235,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
-
+  padding-left: 13px;
   margin: 0;
 }
 .time {
@@ -290,6 +290,6 @@ img {
 .fighterName {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   width: 50%;
 }
