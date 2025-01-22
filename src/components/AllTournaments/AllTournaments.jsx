@@ -1,36 +1,75 @@
 import React, { useState } from "react";
-import styles from "./AllTournaments.module.css";
-import { useNavigate } from "react-router-dom";
+import styles from "./TopMatches.module.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function AllTournaments() {
-  const navigate = useNavigate();
-
-  const [isOpen1, setIsOpen1] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(false);
+function TopMatches() {
   const userType = localStorage.getItem("userType");
-  // const [selectedSport, setSelectedSport] = useState(null);
+  const navigate = useNavigate();
+  const [sportData, setSportData] = useState({
+    tournaments: [],
+    matches: [],
+  });
 
-  const handleSportClick = async (sportName) => {
-    try {
-      const response = await fetch(`/api/tournaments/${sportName}`);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        navigate("/tournament", {
-          state: { sportData: data, sportName: sportName },
-        });
+  useEffect(() => {
+    const fetchAllTournaments = async () => {
+      try {
+        // Получаем матчи для всех дисциплин одновременно
+        const responses = await Promise.all(
+          [
+            "ММА",
+            "Кулачные бои",
+            "Кикбоксинг",
+            "Тайский бокс",
+            "Бокс",
+            "Борьба",
+          ].map((sport) => fetch(`/api/tournaments/${sport}`))
+        );
+
+        const allData = await Promise.all(responses.map((r) => r.json()));
+
+        // Объединяем данные всех дисциплин
+        const combinedData = {
+          tournaments: allData.flatMap((d) => d.tournaments),
+          matches: allData.flatMap((d) => d.matches),
+        };
+
+        setSportData(combinedData);
+      } catch (error) {
+        console.error("Error fetching tournaments data:", error);
       }
-    } catch (error) {
-      console.error("Error fetching tournament data:", error);
-    }
+    };
+
+    fetchAllTournaments();
+  }, []);
+  const tournaments = sportData.tournaments;
+  const matches = sportData.matches;
+  const [isOpen, setIsOpen] = useState({});
+  const handleMatchClick = (tournament) => {
+    const tournamentMatches = matches.filter(
+      (match) => match.tournament_id === tournament.id
+    );
+
+    navigate("/voting", {
+      state: {
+        tournament: tournament,
+        matches: tournamentMatches,
+      },
+    });
   };
+  const toggleOpen = (tournamentId) => {
+    setIsOpen((prev) => ({
+      ...prev,
+      [tournamentId]: !prev[tournamentId], // Переключаем состояние конкретного турнира
+    }));
+  };
+  console.log(sportData);
 
   return (
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
+            <img src="arrow.png" alt="#" onClick={() => navigate("/main")} />
             <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -49,110 +88,67 @@ function AllTournaments() {
               onClick={() => navigate("/Saerch")}
             />
           </div>
-        </div>
-        <div className={styles.referralProgram}>
-          <div className={styles.referralText}>
-            <h2>Реферальная программа</h2>
-            <p>Приглашай друзей и получай %% с каждого доната</p>
-          </div>
-          <img src="forward-white.png" alt="" className="forwardWhite" />
-        </div>
-        <h2>Турниры</h2>
-        <div className={styles.sportsContainer}>
-          <div className={styles.mma} onClick={() => handleSportClick("ММА")}>
-            <img src="/img/mma.png" alt="" />
-            <p>ММА</p>
-          </div>
-          <div
-            className={styles.fisticuffs}
-            onClick={() => handleSportClick("Кулачные бои")}
-          >
-            <img src="/img/Fisticuffs.png" alt="" />
-            <p>Кулачные бои</p>
-          </div>
-          <div
-            className={styles.kickbox}
-            onClick={() => handleSportClick("Кикбоксинг")}
-          >
-            <img src="/img/kickbox.png" alt="" />
-            <p>Кикбоксинг</p>
-          </div>
-          <div
-            className={styles.muayThai}
-            onClick={() => handleSportClick("Тайский бокс")}
-          >
-            <img src="/img/MuayThai.png" alt="" />
-            <p>Тайский бокс</p>
-          </div>
-          <div
-            className={styles.boxing}
-            onClick={() => handleSportClick("Бокс")}
-          >
-            <img src="/img/kickbox.png" alt="" />
-            <p>Бокс</p>
-          </div>
-          <div
-            className={styles.wrestling}
-            onClick={() => handleSportClick("Борьба")}
-          >
-            <img src="/img/mma.png" alt="" />
-            <p>Борьба</p>
-          </div>
-        </div>
-        <div className={styles.competitions}>
-          <div className={styles.competitionsText}>
-            <p>Бокс</p>
-            <p>Международные бои</p>
-          </div>
-          <img
-            src={isOpen1 ? "up.png" : "down.png"}
-            alt=""
-            onClick={() => setIsOpen1(!isOpen1)}
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-        {isOpen1 && (
-          <div className={styles.dropdownContent}>
-            <p className={styles.name}>Андерсон А.</p>
-            <div className={styles.time}>
-              <p>04:15</p>
-            </div>
-            <p className={styles.name}>Неераж Г.</p>
-          </div>
-        )}
-
-        <div className={styles.competitions}>
-          <div className={styles.competitionsText}>
-            <p>Бокс</p>
-            <p>Международные бои</p>
-          </div>
-          <img
-            src={isOpen2 ? "up.png" : "down.png"}
-            alt=""
-            onClick={() => setIsOpen2(!isOpen2)}
-            style={{ cursor: "pointer" }}
-          />
-        </div>
-        {isOpen2 && (
-          <div>
-            <img src="mdi_fire.png" alt="" className={styles.mdiFire} />
-            <div className={styles.dropdownContent}>
-              <p className={styles.name}>Андерсон А.</p>
-              <div className={styles.timeDate}>
-                <p>15 декабря 14:00</p>
+        </div>{" "}
+        {tournaments.map((tournament) => (
+          <div key={tournament.id}>
+            <div className={styles.competitions}>
+              <div className={styles.competitionsText}>
+                <p>{tournament.discipline_name}</p>
+                <p>{tournament.name}</p>
               </div>
-              <p className={styles.name}>Неераж Г.</p>
+              <img
+                src={isOpen[tournament.id] ? "up.png" : "down.png"}
+                alt=""
+                onClick={() => toggleOpen(tournament.id)}
+                style={{ cursor: "pointer" }}
+              />
             </div>
-            <div className={styles.dropdownContent}>
-              <p className={styles.name}>Андерсон А.</p>
-              <div className={styles.timeDate}>
-                <p>15 декабря 14:00</p>
+            {isOpen[tournament.id] && (
+              <div
+                onClick={() => handleMatchClick(tournament)}
+                style={{ cursor: "pointer" }}
+              >
+                {matches
+                  .filter((match) => match.tournament_id === tournament.id)
+                  .map((match) => (
+                    <div key={match.id} className={styles.dropdownContent}>
+                      <div className={styles.timeDate}>
+                        <p>{match.match_date}</p>
+                      </div>
+                      <div className={styles.fightersNames}>
+                        <div className={styles.fighterName}>
+                          <img
+                            className={styles.Avatar}
+                            src={
+                              match.fighter1_photo
+                                ? match.fighter1_photo
+                                : "Avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{match.competitor_1}</p>{" "}
+                        </div>
+                        <div className={styles.fighterName}>
+                          <img
+                            className={styles.Avatar}
+                            src={
+                              match.fighter2_photo
+                                ? match.fighter2_photo
+                                : "Avatar.png"
+                            }
+                            alt=""
+                          />
+                          <p className={styles.name}>{match.competitor_2}</p>{" "}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
-              <p className={styles.name}>Неераж Г.</p>
-            </div>
+            )}
           </div>
-        )}
+        ))}
       </div>
+
       <div className={styles.bottomNav}>
         <div
           className={styles.catalogItem}
@@ -167,7 +163,12 @@ function AllTournaments() {
           />
           <p className={styles.catalogText}>Каталог</p>
         </div>
-        <div className={styles.catalogItem}>
+        <div
+          className={styles.catalogItem}
+          onClick={() => {
+            navigate("/alltournaments");
+          }}
+        >
           <img
             src="lightning-charge.png"
             alt=""
@@ -202,4 +203,4 @@ function AllTournaments() {
   );
 }
 
-export default AllTournaments;
+export default TopMatches;

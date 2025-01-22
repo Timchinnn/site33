@@ -190,7 +190,8 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  flex-direction: column;
 }
 .competitions {
   display: flex;
@@ -204,41 +205,50 @@ img {
 }
 .competitionsText p:first-child {
   padding-right: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-bottom: 10px;
 }
 .competitions {
   position: relative;
 }
-
+.competitionsText p {
+  margin: 0;
+}
 .dropdownContent {
-  width: 100%;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
   align-items: center;
-  justify-content: space-evenly;
   background: #e8e7ed4d;
-  margin-bottom: 1vh;
-  height: 8vh;
-  border-top-width: 1px; /* Задаем ширину границы */
-  border-style: solid; /* Задаем стиль границы */
-  border-image-source: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    #ef5050 50.5%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  border-image-slice: 1; /* Указываем, как изображение должно быть нарезано */
+  /* border-image-slice: 1;
+  border-image-source: linear-gradient(90deg, #fff0, #ef5050 50.5%, #fff0);
+  border-style: solid; */
   border-bottom: none;
+  border-top-width: 1px;
+  box-shadow: 0 2px 4px #0000001a;
+  display: flex;
+  height: 76px;
+  justify-content: space-evenly;
+  margin-bottom: 1vh;
+  /* position: relative; */
+  width: 100%;
+  flex-direction: column;
 }
 .name {
   font-family: Inter;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
   letter-spacing: -0.03em;
-  text-align: center;
+  text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  padding-left: 13px;
+  margin: 0;
 }
 .time {
   width: 4vw;
@@ -271,8 +281,30 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: #95959b;
-  width: 62px;
+  /* width: 62px; */
+  width: 95%;
+  display: flex;
 }
 .mdiFire {
   position: absolute;
+}
+.Avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.fightersNames {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+}
+.fighterName {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  width: 50%;
+}
+.timeDate p {
+  margin: 0;
 }
