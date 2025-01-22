@@ -97,10 +97,15 @@ function Main() {
         "Бокс",
         "Борьба",
       ];
+
       const responses = await Promise.all(
-        disciplines.map((discipline) =>
-          fetch(`/api/tournaments/${discipline}`).then((res) => res.json())
-        )
+        disciplines.map(async (discipline) => {
+          const response = await fetch(`/api/tournaments/${discipline}`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
       );
 
       const allData = responses.reduce((acc, data, index) => {
@@ -112,7 +117,7 @@ function Main() {
         state: { sportData: allData },
       });
     } catch (error) {
-      console.error("Error fetching tournament");
+      console.error(" Добавить обработку ошибки для пользователя");
     }
   };
   return (
