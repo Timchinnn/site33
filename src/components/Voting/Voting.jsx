@@ -264,6 +264,7 @@ function Voting() {
         <p className={styles.date}>15 декабря 2024, воскресенье</p>
         <div>
           <img src="mdi_fire.png" alt="" className={styles.mdiFire} />
+
           {matches
             .filter((match) => match.tournament_id === tournament.id)
             .map((match) => (
@@ -272,7 +273,10 @@ function Voting() {
                   <p>{match.match_date}</p>
                 </div>
                 <div className={styles.fightersNames}>
-                  <div className={styles.fighterName}>
+                  <div
+                    className={styles.fighterName}
+                    onClick={() => handleFighterClick(match.competitor_1)}
+                  >
                     <img
                       className={styles.Avatar}
                       src={
@@ -284,7 +288,10 @@ function Voting() {
                     />
                     <p className={styles.name}>{match.competitor_1}</p>{" "}
                   </div>
-                  <div className={styles.fighterName}>
+                  <div
+                    className={styles.fighterName}
+                    onClick={() => handleFighterClick(match.competitor_2)}
+                  >
                     <img
                       className={styles.Avatar}
                       src={
