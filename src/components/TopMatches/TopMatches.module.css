@@ -270,6 +270,8 @@ img {
   text-decoration-skip-ink: none;
   color: #95959b;
   /* width: 62px; */
+  width: 100%;
+  display: flex;
 }
 .mdiFire {
   position: absolute;
