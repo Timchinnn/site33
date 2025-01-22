@@ -217,12 +217,7 @@ function Main() {
             <p>Борьба</p>
           </div>
         </div> */}
-        <div
-          className={styles.topMatchesHeader}
-          onClick={() => {
-            handleSportClick;
-          }}
-        >
+        <div className={styles.topMatchesHeader} onClick={handleSportClick}>
           <h2>Топовые матчи</h2>
           <img src="forward.png" alt="" />
         </div>
