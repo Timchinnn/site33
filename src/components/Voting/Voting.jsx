@@ -308,7 +308,7 @@ function Voting() {
             ))}
         </div>
         <p className={styles.currentVoting}>Текущее голосование</p>
-        <div className={styles.currentVotings}>
+        {/* <div className={styles.currentVotings}>
           <div
             style={
               !topDonations[0]?.surname && !topDonations[0]?.name
@@ -407,6 +407,14 @@ function Voting() {
             {voteResults["best-bicycle"] && (
               <p className={styles.nameFigh}>{voteResults["best-bicycle"]}</p>
             )}
+          </div>
+        </div> */}
+        <div className={styles.currentVotings}>
+          <div className={styles.voting}>
+            <p>Лучший бой турнира</p>
+          </div>
+          <div className={styles.voting}>
+            <p>Лучший боец турнира</p>
           </div>
         </div>
         <p className={styles.currentVoting}>Топ донатов турнира</p>
