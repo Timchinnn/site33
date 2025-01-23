@@ -443,41 +443,26 @@ function Voting() {
           </div>
         </div> */}
         <div className={styles.currentVotings}>
-          <div
-            className={styles.voting}
-            onClick={() =>
-              setExpandedVoting((prev) =>
-                prev === "best-fight" ? null : "best-fight"
-              )
-            }
-          >
+          <div className={styles.voting}>
             <div className={styles.votingHeader}>
               <p>Лучший бой турнира</p>
-              <img
-                src="/down.png"
-                alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting ? styles.expanded : ""
-                }`}
-              />
+              {percentages["best-fight"] && (
+                <div className={styles.votingDetails}>
+                  {Object.entries(percentages["best-fight"]).map(
+                    ([fighterId, percent]) => (
+                      <div key={fighterId} className={styles.matchVotes}>
+                        <div className={styles.fighters}>
+                          <p>{fighterId}</p>
+                        </div>
+                        <div className={styles.voteCount}>
+                          <p>{percent}%</p>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </div>
+              )}
             </div>
-
-            {expandedVoting === "best-fight" && (
-              <div className={styles.votingDetails}>
-                {matches.map((match) => (
-                  <div key={match.id} className={styles.matchVotes}>
-                    <div className={styles.fighters}>
-                      <p>{match.competitor_1}</p>
-                      <p>{match.competitor_2}</p>
-                    </div>
-                    <div className={styles.voteCount}>
-                      <p>{match.votes_1 || 0} голосов</p>
-                      <p>{match.votes_2 || 0} голосов</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
 
           <div className={styles.voting}>
