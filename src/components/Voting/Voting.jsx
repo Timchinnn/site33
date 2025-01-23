@@ -234,52 +234,54 @@ function Voting() {
     }
   }, [tournament]);
   // console.log(topDonations);
-  function calculateVotePercentages(voteResults, matches) {
+  function calculateVotePercentages(voteResults) {
     const percentages = {};
-    const categories = [
-      "best-bicycle",
-      "best-fight",
-      "best-fighter",
-      "best-knockout",
-      "fan",
-    ];
 
-    // Получаем список всех бойцов из matches
-    const allFighters = new Set();
-    matches.forEach((match) => {
-      allFighters.add(match.competitor_1);
-      allFighters.add(match.competitor_2);
-    });
+    // Обрабатываем каждую категорию отдельно
+    Object.entries(voteResults).forEach(([category, fighters]) => {
+      // Находим сумму голосов в текущей категории
+      const totalVotes = fighters.reduce(
+        (sum, fighter) => sum + fighter.votes,
+        0
+      );
 
-    // Обрабатываем каждую категорию
-    categories.forEach((category) => {
-      percentages[category] = {};
-
-      // Сначала устанавливаем 0% для всех бойцов
-      allFighters.forEach((fighter) => {
-        percentages[category][fighter] = 0;
+      // Считаем процент для каждого бойца в категории
+      fighters.forEach((fighter) => {
+        if (!percentages[category]) {
+          percentages[category] = {};
+        }
+        const percentage =
+          totalVotes > 0 ? (fighter.votes / totalVotes) * 100 : 0;
+        percentages[category][fighter.fighter_id] = Math.round(percentage);
       });
-
-      // Если есть результаты голосования для категории, обновляем проценты
-      if (voteResults[category]) {
-        const totalVotes = Object.values(voteResults[category]).reduce(
-          (a, b) => a + b,
-          0
-        );
-
-        Object.entries(voteResults[category]).forEach(([fighter, votes]) => {
-          percentages[category][fighter] = Math.round(
-            (votes / totalVotes) * 100
-          );
-        });
-      }
     });
 
     return percentages;
   }
+  function compareFighters(votePercentages, matches) {
+    // Создаем список всех бойцов из матчей
+    const activeFighters = matches.reduce((acc, match) => {
+      acc.push(match.competitor_1);
+      acc.push(match.competitor_2);
+      return acc;
+    }, []);
+
+    // Проверяем каждую категорию голосования
+    Object.entries(votePercentages).forEach(([category, fighters]) => {
+      Object.keys(fighters).forEach((fighter) => {
+        if (!activeFighters.includes(fighter)) {
+          console.warn(
+            `Боец ${fighter} из голосования не найден в актуальном списке матчей`
+          );
+        }
+      });
+    });
+  }
   // Пример использования:
-  const updatedPercentages = calculateVotePercentages(voteResults, matches);
-  console.log(updatedPercentages);
+  const percentages = calculateVotePercentages(voteResults);
+  console.log(percentages);
+  compareFighters(percentages, matches);
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>
