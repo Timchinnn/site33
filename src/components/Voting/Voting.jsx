@@ -8,7 +8,7 @@ function Voting() {
   const [selectedFighter, setSelectedFighter] = useState("");
   const [showDonateModal, setShowDonateModal] = useState(false);
 
-  const [expandedVoting, setExpandedVoting] = useState(null);
+  // const [expandedVoting, setExpandedVoting] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { tournament, matches } = location.state || {};
