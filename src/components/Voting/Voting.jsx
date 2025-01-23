@@ -234,7 +234,36 @@ function Voting() {
     }
   }, [tournament]);
   // console.log(topDonations);
+  function calculateVotePercentages(voteResults) {
+    // Находим максимальное количество голосов среди всех категорий
+    let maxVotes = 0;
+    Object.values(voteResults).forEach((category) => {
+      category.forEach((fighter) => {
+        maxVotes = Math.max(maxVotes, fighter.votes);
+      });
+    });
 
+    // Создаем объект для хранения процентов по каждому бойцу
+    const percentages = {};
+
+    // Проходим по всем категориям и бойцам
+    Object.values(voteResults).forEach((category) => {
+      category.forEach((fighter) => {
+        if (!percentages[fighter.fighter_id]) {
+          // Если боец встречается впервые, вычисляем его процент
+          const percentage =
+            maxVotes > 0 ? (fighter.votes / maxVotes) * 100 : 0;
+          percentages[fighter.fighter_id] = Math.round(percentage);
+        }
+      });
+    });
+
+    return percentages;
+  }
+
+  // Пример использования:
+  const percentages = calculateVotePercentages(voteResults);
+  console.log(percentages);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
