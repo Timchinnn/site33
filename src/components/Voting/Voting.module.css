@@ -326,7 +326,7 @@ hr {
   align-items: center;
   justify-content: space-between;
 }
-*/ .choose {
+.choose {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
