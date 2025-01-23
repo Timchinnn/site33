@@ -258,31 +258,10 @@ function Voting() {
 
     return percentages;
   }
-  function compareFighters(votePercentages, matches) {
-    // Создаем список всех бойцов из матчей
-    const activeFighters = matches.reduce((acc, match) => {
-      acc.push(match.competitor_1);
-      acc.push(match.competitor_2);
-      return acc;
-    }, []);
 
-    // Проверяем каждую категорию голосования
-    Object.entries(votePercentages).forEach(([category, fighters]) => {
-      Object.keys(fighters).forEach((fighter) => {
-        if (!activeFighters.includes(fighter)) {
-          console.warn(
-            `Боец ${fighter} из голосования не найден в актуальном списке матчей`
-          );
-        }
-      });
-    });
-  }
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
-
-  console.log(compareFighters(percentages, matches));
-
   return (
     <div className={styles.header}>
       <div className={styles.container}>
