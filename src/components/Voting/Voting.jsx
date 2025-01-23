@@ -235,32 +235,29 @@ function Voting() {
   }, [tournament]);
   // console.log(topDonations);
   function calculateVotePercentages(voteResults) {
-    // Находим максимальное количество голосов среди всех категорий
-    let maxVotes = 0;
-    Object.values(voteResults).forEach((category) => {
-      category.forEach((fighter) => {
-        maxVotes = Math.max(maxVotes, fighter.votes);
-      });
-    });
-
-    // Создаем объект для хранения процентов по каждому бойцу
     const percentages = {};
 
-    // Проходим по всем категориям и бойцам
-    Object.values(voteResults).forEach((category) => {
-      category.forEach((fighter) => {
-        if (!percentages[fighter.fighter_id]) {
-          // Если боец встречается впервые, вычисляем его процент
-          const percentage =
-            maxVotes > 0 ? (fighter.votes / maxVotes) * 100 : 0;
-          percentages[fighter.fighter_id] = Math.round(percentage);
+    // Обрабатываем каждую категорию отдельно
+    Object.entries(voteResults).forEach(([category, fighters]) => {
+      // Находим сумму голосов в текущей категории
+      const totalVotes = fighters.reduce(
+        (sum, fighter) => sum + fighter.votes,
+        0
+      );
+
+      // Считаем процент для каждого бойца в категории
+      fighters.forEach((fighter) => {
+        if (!percentages[category]) {
+          percentages[category] = {};
         }
+        const percentage =
+          totalVotes > 0 ? (fighter.votes / totalVotes) * 100 : 0;
+        percentages[category][fighter.fighter_id] = Math.round(percentage);
       });
     });
 
     return percentages;
   }
-
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
