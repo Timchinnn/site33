@@ -635,3 +635,33 @@ hr {
   flex-direction: column;
   gap: 4px;
 }
+.header select {
+  border: none;
+  background-color: rgba(15, 15, 15, 0.06);
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 10px;
+  max-width: 343px;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  margin-bottom: -8px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom: 1vh;
+
+  /* Добавляем свою стрелку через background-image */
+  background-image: url("./chevron-down.png");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+
+  /* Добавляем отступ справа чтобы стрелка не накладывалась на текст */
+  padding-right: 30px;
+}
