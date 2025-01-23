@@ -280,7 +280,8 @@ function Voting() {
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
-  compareFighters(percentages, matches);
+
+  console.log(compareFighters(percentages, matches));
 
   return (
     <div className={styles.header}>
