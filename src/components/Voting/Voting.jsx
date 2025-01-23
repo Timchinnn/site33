@@ -199,14 +199,7 @@ function Voting() {
         const response = await fetch(`/api/tournament-votes/${tournament.id}`);
         if (response.ok) {
           const data = await response.json();
-          // const results = {};
-          // // Поскольку data — это объект, используем Object.entries для итерации
-          // Object.entries(data).forEach(([categoryId, votes]) => {
-          //   // Предполагаем, что votes — это массив, берем первого бойца (с наибольшим количеством голосов)
-          //   if (votes.length > 0) {
-          //     results[categoryId] = votes[0].fighter_id;
-          //   }
-          // });
+
           setVoteResults(data);
           console.log(data);
         }
@@ -241,6 +234,32 @@ function Voting() {
     }
   }, [tournament]);
   // console.log(topDonations);
+  const calculateVotePercentages = (voteResults) => {
+    const result = {};
+
+    // Находим максимальное количество голосов среди всех категорий
+    let maxVotes = 0;
+    Object.values(voteResults).forEach((categoryVotes) => {
+      categoryVotes.forEach((vote) => {
+        if (vote.votes > maxVotes) maxVotes = vote.votes;
+      });
+    });
+
+    // Для каждой категории голосования
+    Object.keys(voteResults).forEach((category) => {
+      result[category] = {};
+
+      // Для каждого бойца в категории
+      voteResults[category].forEach((fighter) => {
+        // Вычисляем процент от максимального количества голосов
+        const percentage = maxVotes > 0 ? (fighter.votes / maxVotes) * 100 : 0;
+        result[category][fighter.fighter_id] = Math.round(percentage);
+      });
+    });
+    console.log(result);
+
+    return result;
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -426,7 +445,7 @@ function Voting() {
             }
           >
             <div className={styles.votingHeader}>
-              <p>Лучший бой турнира</p>
+              <p onClick={calculateVotePercentages}>Лучший бой турнира</p>
               <img
                 src="/down.png"
                 alt="expand"
