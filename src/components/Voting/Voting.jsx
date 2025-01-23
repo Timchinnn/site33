@@ -200,9 +200,12 @@ function Voting() {
         if (response.ok) {
           const data = await response.json();
           const results = {};
-          data.forEach((vote) => {
-            // Используем fighter_id вместо name и surname
-            results[vote.category_id] = vote.fighter_id;
+          // Поскольку data — это объект, используем Object.entries для итерации
+          Object.entries(data).forEach(([categoryId, votes]) => {
+            // Предполагаем, что votes — это массив, берем первого бойца (с наибольшим количеством голосов)
+            if (votes.length > 0) {
+              results[categoryId] = votes[0].fighter_id;
+            }
           });
           setVoteResults(results);
           console.log(results);
@@ -211,7 +214,6 @@ function Voting() {
         console.error("Error fetching vote results:", error);
       }
     };
-
     if (tournament) {
       fetchVoteResults();
     }
