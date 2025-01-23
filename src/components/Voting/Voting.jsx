@@ -234,33 +234,52 @@ function Voting() {
     }
   }, [tournament]);
   // console.log(topDonations);
-  function calculateVotePercentages(voteResults) {
+  function calculateVotePercentages(voteResults, matches) {
     const percentages = {};
+    const categories = [
+      "best-bicycle",
+      "best-fight",
+      "best-fighter",
+      "best-knockout",
+      "fan",
+    ];
 
-    // Обрабатываем каждую категорию отдельно
-    Object.entries(voteResults).forEach(([category, fighters]) => {
-      // Находим сумму голосов в текущей категории
-      const totalVotes = fighters.reduce(
-        (sum, fighter) => sum + fighter.votes,
-        0
-      );
+    // Получаем список всех бойцов из matches
+    const allFighters = new Set();
+    matches.forEach((match) => {
+      allFighters.add(match.competitor_1);
+      allFighters.add(match.competitor_2);
+    });
 
-      // Считаем процент для каждого бойца в категории
-      fighters.forEach((fighter) => {
-        if (!percentages[category]) {
-          percentages[category] = {};
-        }
-        const percentage =
-          totalVotes > 0 ? (fighter.votes / totalVotes) * 100 : 0;
-        percentages[category][fighter.fighter_id] = Math.round(percentage);
+    // Обрабатываем каждую категорию
+    categories.forEach((category) => {
+      percentages[category] = {};
+
+      // Сначала устанавливаем 0% для всех бойцов
+      allFighters.forEach((fighter) => {
+        percentages[category][fighter] = 0;
       });
+
+      // Если есть результаты голосования для категории, обновляем проценты
+      if (voteResults[category]) {
+        const totalVotes = Object.values(voteResults[category]).reduce(
+          (a, b) => a + b,
+          0
+        );
+
+        Object.entries(voteResults[category]).forEach(([fighter, votes]) => {
+          percentages[category][fighter] = Math.round(
+            (votes / totalVotes) * 100
+          );
+        });
+      }
     });
 
     return percentages;
   }
   // Пример использования:
-  const percentages = calculateVotePercentages(voteResults);
-  console.log(percentages);
+  const updatedPercentages = calculateVotePercentages(voteResults, matches);
+  console.log(updatedPercentages);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
