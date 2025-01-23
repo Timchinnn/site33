@@ -205,7 +205,7 @@ function Voting() {
             results[vote.category_id] = vote.fighter_id;
           });
           setVoteResults(results);
-          console.log;
+          console.log(results);
         }
       } catch (error) {
         console.error("Error fetching vote results:", error);
