@@ -199,16 +199,16 @@ function Voting() {
         const response = await fetch(`/api/tournament-votes/${tournament.id}`);
         if (response.ok) {
           const data = await response.json();
-          const results = {};
-          // Поскольку data — это объект, используем Object.entries для итерации
-          Object.entries(data).forEach(([categoryId, votes]) => {
-            // Предполагаем, что votes — это массив, берем первого бойца (с наибольшим количеством голосов)
-            if (votes.length > 0) {
-              results[categoryId] = votes[0].fighter_id;
-            }
-          });
-          setVoteResults(results);
-          console.log(results);
+          // const results = {};
+          // // Поскольку data — это объект, используем Object.entries для итерации
+          // Object.entries(data).forEach(([categoryId, votes]) => {
+          //   // Предполагаем, что votes — это массив, берем первого бойца (с наибольшим количеством голосов)
+          //   if (votes.length > 0) {
+          //     results[categoryId] = votes[0].fighter_id;
+          //   }
+          // });
+          setVoteResults(data);
+          console.log(data);
         }
       } catch (error) {
         console.error("Error fetching vote results:", error);
