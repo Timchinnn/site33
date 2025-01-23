@@ -234,37 +234,30 @@ function Voting() {
     }
   }, [tournament]);
   // console.log(topDonations);
-  // В компоненте Voting.jsx
-  const calculateVotePercentages = (voteResults, allFighters) => {
+  function calculateVotePercentages(voteResults) {
     const percentages = {};
 
-    // Обрабатываем каждую категорию голосования
+    // Обрабатываем каждую категорию отдельно
     Object.entries(voteResults).forEach(([category, fighters]) => {
-      percentages[category] = {};
-
-      // Считаем общее количество голосов в категории
+      // Находим сумму голосов в текущей категории
       const totalVotes = fighters.reduce(
         (sum, fighter) => sum + fighter.votes,
         0
       );
 
-      // Добавляем проценты для проголосованных бойцов
+      // Считаем процент для каждого бойца в категории
       fighters.forEach((fighter) => {
+        if (!percentages[category]) {
+          percentages[category] = {};
+        }
         const percentage =
           totalVotes > 0 ? (fighter.votes / totalVotes) * 100 : 0;
         percentages[category][fighter.fighter_id] = Math.round(percentage);
       });
-
-      // Добавляем отсутствующих бойцов с 0%
-      allFighters.forEach((fighter) => {
-        if (!percentages[category][fighter.id]) {
-          percentages[category][fighter.id] = 0;
-        }
-      });
     });
 
     return percentages;
-  };
+  }
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
