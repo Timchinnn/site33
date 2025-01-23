@@ -563,7 +563,7 @@ function Voting() {
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
             <div className={styles.topModalHead}>
-              <div>
+              <div className={styles.headerVoting}>
                 <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
                 <h2>{tournament.name}</h2>
               </div>
