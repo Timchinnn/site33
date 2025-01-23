@@ -8,7 +8,7 @@ function Voting() {
   const [selectedFighter, setSelectedFighter] = useState("");
   const [showDonateModal, setShowDonateModal] = useState(false);
 
-  // const [expandedVoting, setExpandedVoting] = useState(null);
+  const [expandedVoting, setExpandedVoting] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { tournament, matches } = location.state || {};
@@ -443,26 +443,45 @@ function Voting() {
           </div>
         </div> */}
         <div className={styles.currentVotings}>
-          <div className={styles.voting}>
+          <div
+            className={styles.voting}
+            onClick={() =>
+              setExpandedVoting((prev) =>
+                prev === "best-fight" ? null : "best-fight"
+              )
+            }
+          >
             <div className={styles.votingHeader}>
               <p>Лучший бой турнира</p>
-              {percentages["best-fight"] && (
-                <div className={styles.votingDetails}>
-                  {Object.entries(percentages["best-fight"]).map(
-                    ([fighterId, percent]) => (
-                      <div key={fighterId} className={styles.matchVotes}>
-                        <div className={styles.fighters}>
-                          <p>{fighterId}</p>
-                        </div>
-                        <div className={styles.voteCount}>
-                          <p>{percent}%</p>
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
-              )}
+              <img
+                src="/down.png"
+                alt="expand"
+                className={`${styles.expandIcon} ${
+                  expandedVoting ? styles.expanded : ""
+                }`}
+              />
             </div>
+
+            {expandedVoting === "best-fight" && (
+              <div className={styles.votingDetails}>
+                {matches.map((match) => (
+                  <div key={match.id} className={styles.matchVotes}>
+                    <div className={styles.fighters}>
+                      <p>{match.competitor_1}</p>
+                      <p>{match.competitor_2}</p>
+                    </div>
+                    <div className={styles.voteCount}>
+                      <p>
+                        {percentages["best-fight"][match.competitor_1] || 0}%
+                      </p>
+                      <p>
+                        {percentages["best-fight"][match.competitor_2] || 0}%
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className={styles.voting}>
