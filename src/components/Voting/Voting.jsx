@@ -237,22 +237,27 @@ function Voting() {
   function calculateVotePercentages(voteResults) {
     const percentages = {};
 
-    // Обрабатываем каждую категорию отдельно
     Object.entries(voteResults).forEach(([category, fighters]) => {
-      // Находим сумму голосов в текущей категории
-      const totalVotes = fighters.reduce(
-        (sum, fighter) => sum + fighter.votes,
+      // Группируем голоса по fighter_id
+      const votesMap = {};
+      fighters.forEach((fighter) => {
+        if (!votesMap[fighter.fighter_id]) {
+          votesMap[fighter.fighter_id] = 0;
+        }
+        votesMap[fighter.fighter_id] += fighter.votes;
+      });
+
+      // Считаем общую сумму
+      const totalVotes = Object.values(votesMap).reduce(
+        (sum, votes) => sum + votes,
         0
       );
 
-      // Считаем процент для каждого бойца в категории
-      fighters.forEach((fighter) => {
-        if (!percentages[category]) {
-          percentages[category] = {};
-        }
-        const percentage =
-          totalVotes > 0 ? (fighter.votes / totalVotes) * 100 : 0;
-        percentages[category][fighter.fighter_id] = Math.round(percentage);
+      // Вычисляем проценты
+      percentages[category] = {};
+      Object.entries(votesMap).forEach(([fighterId, votes]) => {
+        percentages[category][fighterId] =
+          totalVotes > 0 ? Math.round((votes / totalVotes) * 100) : 0;
       });
     });
 
