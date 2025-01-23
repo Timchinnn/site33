@@ -211,7 +211,7 @@ img {
   border-radius: 12px;
   /* display: inline-table; */
 }
-
+/* 
 .currentVotings div :first-child {
   font-family: Inter;
   font-size: 18px;
@@ -224,8 +224,7 @@ img {
   margin: 0;
   padding-top: 7px;
   padding-bottom: 7px;
-  /* width: 164px; */
-}
+} */
 
 /* .currentVotings div :last-child {
   font-family: Inter;
