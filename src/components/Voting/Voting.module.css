@@ -316,7 +316,7 @@ hr {
   /* max-height: 80vh; */
   /* overflow-y: auto; */
 }
-/* .topModalHead {
+.topModalHead {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -325,8 +325,8 @@ hr {
   display: flex;
   align-items: center;
   justify-content: space-between;
-} */
-.choose {
+}
+*/ .choose {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
