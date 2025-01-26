@@ -142,7 +142,25 @@ function Main() {
 
     fetchUsers();
   }, []);
-  // console.log(users);
+  const [sortedUsers, setSortedUsers] = useState([]);
+
+  // Add this useEffect to fetch sorted users
+  useEffect(() => {
+    const fetchSortedUsers = async () => {
+      try {
+        const response = await fetch("/api/users/sorted-by-votes");
+        if (response.ok) {
+          const data = await response.json();
+          setSortedUsers(data);
+        }
+      } catch (error) {
+        console.error("Error fetching sorted users:", error);
+      }
+    };
+
+    fetchSortedUsers();
+  }, []);
+  console.log(sortedUsers);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
