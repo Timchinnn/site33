@@ -206,7 +206,7 @@ function Main() {
               onClick={() => {
                 navigate("/TopFighters", {
                   state: {
-                    fighters: topVotedFighters,
+                    fighters: topFighters,
                     activeSection: activeSection,
                   },
                 });
