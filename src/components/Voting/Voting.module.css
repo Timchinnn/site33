@@ -637,6 +637,14 @@ hr {
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }
 .header select {
   border: none;
