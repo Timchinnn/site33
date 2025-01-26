@@ -487,9 +487,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                  expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(category)}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -571,9 +571,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                  expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(category)}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -659,9 +659,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                  expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(category)}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -749,9 +749,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                  expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(category)}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
