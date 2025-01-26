@@ -314,24 +314,22 @@ img {
 .statisticReit {
 }
 .statistic {
-  background-color: #e8e7ed4d;
-  width: 164px;
-  height: 58px;
-  padding: 12px;
-  border: 1px;
-  margin: 6px;
-  margin-top: 0;
-  margin-bottom: 0;
-  border-top-width: 1px;
-  border-style: solid;
-  border-image-source: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    #ef5050 50.5%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  border-image-slice: 1;
+  background-color: #e8e7ed;
   border-bottom: none;
+  height: 62px;
+  margin: 0 6px;
+  padding: 12px;
+  width: 164px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 12px;
+  background-color: #e8e7ed;
+  border-bottom: none;
+  height: 62px;
+  margin: 0 6px;
+  padding: 12px;
+  width: 164px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 12px;
 }
 .community {
   display: flex;
