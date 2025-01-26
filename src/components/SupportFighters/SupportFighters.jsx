@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SupportFighters.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function SupportFighters() {
   const userType = localStorage.getItem("userType");
@@ -45,14 +45,6 @@ function SupportFighters() {
                 {fighter.name} {fighter.surname[0]}.
               </p>
             </div>
-
-            <p className={styles.money}>
-              {activeSection === "donations" ? (
-                <>{fighter.donat_now} ₽</>
-              ) : (
-                <>{fighter.vote_fan}</>
-              )}
-            </p>
           </div>
         ))}
       </div>
