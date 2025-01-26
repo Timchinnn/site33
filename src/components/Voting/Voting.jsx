@@ -494,6 +494,7 @@ function Voting() {
                       <p>
                         {percentages["best-fight"][match.competitor_1] || 0}%
                       </p>
+                      <p></p>
                       <p>
                         {percentages["best-fight"][match.competitor_2] || 0}%
                       </p>
