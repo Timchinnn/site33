@@ -407,13 +407,13 @@ function Main() {
               <div className={styles.toggleButtons}>
                 <p
                   className={activeSection === "donat" ? styles.active : ""}
-                  onClick={() => setActiveSection("donations")}
+                  onClick={() => setActiveSection("donat")}
                 >
                   По донатам
                 </p>
                 <p
                   className={activeSection === "vote" ? styles.active : ""}
-                  onClick={() => setActiveSection("votes")}
+                  onClick={() => setActiveSection("vote")}
                 >
                   По голосам
                 </p>
