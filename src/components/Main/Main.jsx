@@ -462,7 +462,12 @@ function Main() {
             <div
               className={styles.watchAll}
               onClick={() => {
-                navigate("/TopFan");
+                navigate("/TopFan", {
+                  state: {
+                    users: activeSectionUser === "donat" ? users : sortedUsers,
+                    activeSectionUser: activeSectionUser,
+                  },
+                });
               }}
             >
               <p>Показать всех</p>
