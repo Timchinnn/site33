@@ -519,9 +519,233 @@ function Voting() {
               </div>
             )}
           </div>
+          <div
+            className={styles.voting}
+            style={{
+              paddingBottom: expandedVoting === "best-fight" ? undefined : 0,
+            }}
+            onClick={() =>
+              setExpandedVoting((prev) =>
+                prev === "best-fight" ? null : "best-fight"
+              )
+            }
+          >
+            <div className={styles.votingHeader}>
+              <p>Лучший бой турнира</p>
+              <img
+                src="/down.png"
+                alt="expand"
+                className={`${styles.expandIcon} ${
+                  expandedVoting ? styles.expanded : ""
+                }`}
+              />
+            </div>
 
-          <div className={styles.voting}>
-            <p>Лучший боец турнира</p>
+            {expandedVoting === "best-fight" && (
+              <div className={styles.votingDetails}>
+                {matches.map((match) => (
+                  <div key={match.id} className={styles.matchVotes}>
+                    <div className={styles.fighters}>
+                      <p>{match.competitor_1}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_1] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_1] || 0}%
+                        </p>
+                      </div>
+
+                      <p>{match.competitor_2}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_2] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_2] || 0}%
+                        </p>
+                      </div>
+                    </div>
+                    {/* <div className={styles.voteCount}>
+                      <p>
+                        {percentages["best-fight"][match.competitor_1] || 0}%
+                      </p>
+                      <p>
+                        {percentages["best-fight"][match.competitor_2] || 0}%
+                      </p>
+                    </div> */}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div
+            className={styles.voting}
+            style={{
+              paddingBottom: expandedVoting === "best-fight" ? undefined : 0,
+            }}
+            onClick={() =>
+              setExpandedVoting((prev) =>
+                prev === "best-fight" ? null : "best-fight"
+              )
+            }
+          >
+            <div className={styles.votingHeader}>
+              <p>Лучший бой турнира</p>
+              <img
+                src="/down.png"
+                alt="expand"
+                className={`${styles.expandIcon} ${
+                  expandedVoting ? styles.expanded : ""
+                }`}
+              />
+            </div>
+
+            {expandedVoting === "best-fight" && (
+              <div className={styles.votingDetails}>
+                {matches.map((match) => (
+                  <div key={match.id} className={styles.matchVotes}>
+                    <div className={styles.fighters}>
+                      <p>{match.competitor_1}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_1] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_1] || 0}%
+                        </p>
+                      </div>
+
+                      <p>{match.competitor_2}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_2] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_2] || 0}%
+                        </p>
+                      </div>
+                    </div>
+                    {/* <div className={styles.voteCount}>
+                      <p>
+                        {percentages["best-fight"][match.competitor_1] || 0}%
+                      </p>
+                      <p>
+                        {percentages["best-fight"][match.competitor_2] || 0}%
+                      </p>
+                    </div> */}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div
+            className={styles.voting}
+            style={{
+              paddingBottom: expandedVoting === "best-fight" ? undefined : 0,
+            }}
+            onClick={() =>
+              setExpandedVoting((prev) =>
+                prev === "best-fight" ? null : "best-fight"
+              )
+            }
+          >
+            <div className={styles.votingHeader}>
+              <p>Лучший бой турнира</p>
+              <img
+                src="/down.png"
+                alt="expand"
+                className={`${styles.expandIcon} ${
+                  expandedVoting ? styles.expanded : ""
+                }`}
+              />
+            </div>
+
+            {expandedVoting === "best-fight" && (
+              <div className={styles.votingDetails}>
+                {matches.map((match) => (
+                  <div key={match.id} className={styles.matchVotes}>
+                    <div className={styles.fighters}>
+                      <p>{match.competitor_1}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_1] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_1] || 0}%
+                        </p>
+                      </div>
+
+                      <p>{match.competitor_2}</p>
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_2] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_2] || 0}%
+                        </p>
+                      </div>
+                    </div>
+                    {/* <div className={styles.voteCount}>
+                      <p>
+                        {percentages["best-fight"][match.competitor_1] || 0}%
+                      </p>
+                      <p>
+                        {percentages["best-fight"][match.competitor_2] || 0}%
+                      </p>
+                    </div> */}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <p className={styles.currentVoting}>Топ донатов турнира</p>
