@@ -470,11 +470,11 @@ function Voting() {
             <div className={styles.votingHeader}>
               <p>Лучший бой турнира</p>
               <img
-                src="/down.png"
+                src={expandedVotings["best-fight"] ? "/up.png" : "/down.png"}
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVotings["best-fight"] ? styles.expanded : ""
-                }`}
+                // className={`${styles.expandIcon} ${
+                //   expandedVotings["best-fight"] ? styles.expanded : ""
+                // }`}
                 onClick={() => toggleVoting("best-fight")}
               />
             </div>
@@ -547,11 +547,11 @@ function Voting() {
             <div className={styles.votingHeader}>
               <p>Лучший боец турнира</p>
               <img
-                src="/down.png"
+                src={expandedVotings["best-fighter"] ? "/up.png" : "/down.png"}
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVotings["best-fighter"] ? styles.expanded : ""
-                }`}
+                // className={`${styles.expandIcon} ${
+                //   expandedVotings["best-fighter"] ? styles.expanded : ""
+                // }`}
                 onClick={() => toggleVoting("best-fighter")}
               />
             </div>
@@ -628,11 +628,11 @@ function Voting() {
             <div className={styles.votingHeader}>
               <p>Лучший нокаут турнира</p>
               <img
-                src="/down.png"
+                src={expandedVotings["best-knockout"] ? "/up.png" : "/down.png"}
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVotings["best-knockout"] ? styles.expanded : ""
-                }`}
+                // className={`${styles.expandIcon} ${
+                //   expandedVotings["best-knockout"] ? styles.expanded : ""
+                // }`}
                 onClick={() => toggleVoting("best-knockout")}
               />
             </div>
@@ -711,12 +711,13 @@ function Voting() {
             <div className={styles.votingHeader}>
               <p>Велосипед турнира</p>
               <img
-                src="/down.png"
+                // src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVotings["best-bicycle"] ? styles.expanded : ""
-                }`}
+                // className={`${styles.expandIcon} ${
+                //   expandedVotings["best-bicycle"] ? styles.expanded : ""
+                // }`}
                 onClick={() => toggleVoting("best-bicycle")}
+                src={expandedVotings["best-bicycle"] ? "/up.png" : "/down.png"}
               />
             </div>
 
