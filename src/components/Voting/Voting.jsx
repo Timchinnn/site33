@@ -486,10 +486,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                className={`${styles.expandIcon1} ${
+                  expandedVoting === "best-fight" ? styles.expanded1 : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-fight")}
               />
             </div>
 
@@ -570,10 +570,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                className={`${styles.expandIcon2} ${
+                  expandedVoting === "best-fighter" ? styles.expanded2 : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-fighter")}
               />
             </div>
 
@@ -658,10 +658,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                className={`${styles.expandIcon2} ${
+                  expandedVoting === "best-knockout" ? styles.expanded2 : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-knockout")}
               />
             </div>
 
@@ -748,10 +748,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting === category ? styles.expanded : ""
+                className={`${styles.expandIcon2} ${
+                  expandedVoting === "best-bicycle" ? styles.expanded2 : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-bicycle")}
               />
             </div>
 

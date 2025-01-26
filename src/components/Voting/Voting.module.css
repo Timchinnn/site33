@@ -704,3 +704,39 @@ hr {
 .fighters p {
   margin: 0;
 }
+/* В Voting.module.css */
+.expandIcon1 {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.expandIcon2 {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.expandIcon3 {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.expandIcon4 {
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.expanded1 {
+  transform: rotate(180deg);
+}
+
+.expanded2 {
+  transform: rotate(180deg);
+}
+
+.expanded3 {
+  transform: rotate(180deg);
+}
+
+.expanded4 {
+  transform: rotate(180deg);
+}
