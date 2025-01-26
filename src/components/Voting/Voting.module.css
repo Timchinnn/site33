@@ -665,3 +665,21 @@ hr {
   /* Добавляем отступ справа чтобы стрелка не накладывалась на текст */
   padding-right: 30px;
 }
+.matchVotes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.voteProgressBar {
+  width: 100%;
+  height: 4px;
+  background: #e8e7ed;
+  margin: 4px 0;
+}
+
+.voteProgressFill {
+  height: 100%;
+  background: black;
+  transition: width 0.3s ease;
+}
