@@ -403,7 +403,7 @@ function Main() {
             </div>
             <div className={styles.fightersList}>
               {activeSection === "donations"
-                ? users.map((fighter) => (
+                ? users.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
@@ -420,7 +420,7 @@ function Main() {
                       <p>{fighter.name}</p>
                     </div>
                   ))
-                : users.map((fighter) => (
+                : users.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
