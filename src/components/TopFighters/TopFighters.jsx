@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./TopFighters.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function TopFighters() {
   const userType = localStorage.getItem("userType");
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const { fighters } = location.state || {};
+  console.log(fighters);
   return (
     <div className={styles.header}>
       <div className={styles.container}>

@@ -297,7 +297,14 @@ function Main() {
             <div
               className={styles.watchAll}
               onClick={() => {
-                navigate("/TopFighters");
+                navigate("/TopFighters", {
+                  state: {
+                    fighters:
+                      activeSection === "donations"
+                        ? topFighters
+                        : topVotedFighters,
+                  },
+                });
               }}
             >
               <p>Показать всех</p>
