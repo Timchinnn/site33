@@ -6,7 +6,8 @@ function SupportFighters() {
   const userType = localStorage.getItem("userType");
 
   const navigate = useNavigate();
-
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredFighters, setFilteredFighters] = useState([]);
   const location = useLocation();
   const { fighters } = location.state || {};
   const handleSearch = (e) => {
