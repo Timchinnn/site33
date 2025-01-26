@@ -468,26 +468,39 @@ function Voting() {
                   <div key={match.id} className={styles.matchVotes}>
                     <div className={styles.fighters}>
                       <p>{match.competitor_1}</p>
-                      <div className={styles.voteProgressBar}>
-                        <div
-                          className={styles.voteProgressFill}
-                          style={{
-                            width: `${
-                              percentages["best-fight"][match.competitor_1] || 0
-                            }%`,
-                          }}
-                        />
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_1] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_1] || 0}%
+                        </p>
                       </div>
+
                       <p>{match.competitor_2}</p>
-                      <div className={styles.voteProgressBar}>
-                        <div
-                          className={styles.voteProgressFill}
-                          style={{
-                            width: `${
-                              percentages["best-fight"][match.competitor_2] || 0
-                            }%`,
-                          }}
-                        />
+                      <div className={styles.progressContainer}>
+                        <div className={styles.voteProgressBar}>
+                          <div
+                            className={styles.voteProgressFill}
+                            style={{
+                              width: `${
+                                percentages["best-fight"][match.competitor_2] ||
+                                0
+                              }%`,
+                            }}
+                          />
+                        </div>
+                        <p className={styles.percentage}>
+                          {percentages["best-fight"][match.competitor_2] || 0}%
+                        </p>
                       </div>
                     </div>
                     <div className={styles.voteCount}>

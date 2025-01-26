@@ -683,3 +683,13 @@ hr {
   background: black;
   transition: width 0.3s ease;
 }
+.progressContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.percentage {
+  min-width: 40px;
+}
