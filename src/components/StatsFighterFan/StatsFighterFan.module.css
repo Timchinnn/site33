@@ -661,11 +661,23 @@ img {
   justify-content: center;
 }
 .votingReit {
-  background: #e8e7ed;
-  width: 44vw;
-  height: 52px;
-  display: flex;
+  width: 230px;
+  height: 42px;
+  padding: 12px 16px 12px 16px;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  background: black;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
   align-items: center;
+  display: flex;
   justify-content: center;
 }
 .choose {
