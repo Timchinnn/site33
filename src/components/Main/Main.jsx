@@ -407,7 +407,7 @@ function Main() {
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
-                      onClick={() => handleFighterClick(fighter)}
+                      // onClick={() => handleFighterClick(fighter)}
                     >
                       <img
                         src={
@@ -424,7 +424,7 @@ function Main() {
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
-                      onClick={() => handleFighterClick(fighter)}
+                      // onClick={() => handleFighterClick(fighter)}
                     >
                       <img
                         src={
