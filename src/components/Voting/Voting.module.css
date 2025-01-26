@@ -204,12 +204,6 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
-.currentVotings div {
-  /* width: 43.8vw; */
-  /* height: 74px; */
-  /* background-color: #e8e7ed; */
-  border-radius: 12px;
-}
 
 .nameFigh {
   font-family: Inter;
