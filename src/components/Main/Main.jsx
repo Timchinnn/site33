@@ -125,6 +125,24 @@ function Main() {
       setFilteredFighters([]);
     }
   };
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        if (response.ok) {
+          const data = await response.json();
+          setUsers(data);
+        }
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+  console.log(users);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
