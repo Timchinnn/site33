@@ -9,6 +9,8 @@ function TopFighters() {
 
   const location = useLocation();
   const { fighters, activeSection } = location.state || {};
+  console.log(fighters);
+  console.log(activeSection);
   const handleFighterClick = (fighter) => {
     navigate("/StatsFighterFan", {
       state: {
