@@ -308,3 +308,38 @@ img {
 .timeDate p {
   margin: 0;
 }
+.referralProgram {
+  background-image: url("ddf319705c92007d5b303c720af7dca7.png");
+  background-size: cover; /* Для корректного масштабирования изображения */
+  background-position: center; /* SЦентрирование изображения */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px;
+  border-radius: 12px;
+  height: 104px;
+}
+
+.referralProgram h2 {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: -0.08em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: white;
+}
+.referralProgram p {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: 297px;
+  color: white;
+}
