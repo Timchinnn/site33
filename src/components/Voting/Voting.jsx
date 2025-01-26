@@ -479,7 +479,7 @@ function Voting() {
               />
             </div>
 
-            {expandedVoting === "best-fight" && (
+            {expandedVotings["best-fight"] && (
               <div className={styles.votingDetails}>
                 {matches.map((match) => (
                   <div key={match.id} className={styles.matchVotes}>
@@ -556,7 +556,7 @@ function Voting() {
               />
             </div>
 
-            {expandedVoting === "best-fighter" && (
+            {expandedVotings["best-fighter"] && (
               <div className={styles.votingDetails}>
                 {matches.map((match) => (
                   <div key={match.id} className={styles.matchVotes}>
@@ -637,7 +637,7 @@ function Voting() {
               />
             </div>
 
-            {expandedVoting === "best-knockout" && (
+            {expandedVotings["best-knockout"] && (
               <div className={styles.votingDetails}>
                 {matches.map((match) => (
                   <div key={match.id} className={styles.matchVotes}>
@@ -721,7 +721,7 @@ function Voting() {
               />
             </div>
 
-            {expandedVoting === "best-bicycle" && (
+            {expandedVotings["best-bicycle"] && (
               <div className={styles.votingDetails}>
                 {matches.map((match) => (
                   <div key={match.id} className={styles.matchVotes}>
