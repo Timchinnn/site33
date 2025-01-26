@@ -19,6 +19,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .container {
   width: 91vw;
@@ -117,7 +118,8 @@ img {
 }
 .nameFlag {
   display: flex;
-  justify-content: stretch;
+  justify-content: space-between;
+  width: 48%;
   align-items: center;
 }
 .competitions {
@@ -139,6 +141,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .contentAboutImg img {
   width: 96px;
@@ -154,6 +157,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .greyText {
   padding-right: 8px;
