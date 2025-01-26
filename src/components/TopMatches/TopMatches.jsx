@@ -55,6 +55,7 @@ function TopMatches() {
             />
           </div>
         </div>{" "}
+        <h2>Топовые события</h2>
         {tournaments.map((tournament) => (
           <div key={tournament.id}>
             <div className={styles.competitions}>
