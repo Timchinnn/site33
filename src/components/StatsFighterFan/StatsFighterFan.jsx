@@ -585,14 +585,14 @@ function StatsFighterFan() {
             <p>{fighterData.rating} %</p>
           </div>
         </div>
-        <div className={styles.votings}>
+        {/* <div className={styles.votings}>
           <div className={styles.votingReit} onClick={handleRatingClick}>
             <p>Повлиять на рейтинг</p>
           </div>
           <div className={styles.votingDonat} onClick={handleDonateClick}>
             <p>Братская поддержка</p>
           </div>
-        </div>
+        </div> */}
         <h3>Статистика</h3>
         <div className={styles.statistics}>
           <div className={styles.statistic}>
