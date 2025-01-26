@@ -9,14 +9,15 @@ function Main() {
   const userType = localStorage.getItem("userType");
   console.log(userId);
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    if (query.trim()) {
-      // если пользователь что-то ввел
-      navigate("/Saerch"); // переход на страницу поиска
-    }
-  };
+  // const handleSearch = (e) => {
+  //   const query = e.target.value;
+  //   if (query.trim()) {
+  //     // если пользователь что-то ввел
+  //     navigate("/Saerch"); // переход на страницу поиска
+  //   }
+  // };
   const [topFighters, setTopFighters] = useState([]);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,6 +106,24 @@ function Main() {
       console.error("Error");
     }
   };
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    // Показывать бойцов только если есть поисковый запрос
+    if (query.trim()) {
+      const filtered = fighters.filter(
+        (fighter) =>
+          fighter.name.toLowerCase().includes(query) ||
+          fighter.surname.toLowerCase().includes(query) ||
+          fighter.nick.toLowerCase().includes(query)
+      );
+      setFilteredFighters(filtered);
+    } else {
+      // Очищаем список отфильтрованных бойцов когда поиск пустой
+      setFilteredFighters([]);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -133,7 +152,7 @@ function Main() {
         <div className={styles.passwordInputContainer}>
           <input
             type="text"
-            // value={searchQuery}
+            value={searchQuery}
             onChange={handleSearch}
             placeholder="Поиск по турниру или имени"
             className={styles.passwordinput}
