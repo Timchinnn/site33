@@ -486,10 +486,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon1} ${
-                  expandedVoting === "best-fight" ? styles.expanded1 : ""
+                className={`${styles.expandIcon} ${
+                  expandedVoting === expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-fight")}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -570,10 +570,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon2} ${
-                  expandedVoting === "best-fighter" ? styles.expanded2 : ""
+                className={`${styles.expandIcon} ${
+                  expandedVoting === expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-fighter")}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -658,10 +658,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon2} ${
-                  expandedVoting === "best-knockout" ? styles.expanded2 : ""
+                className={`${styles.expandIcon} ${
+                  expandedVoting === expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-knockout")}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
@@ -748,10 +748,10 @@ function Voting() {
               <img
                 src="/down.png"
                 alt="expand"
-                className={`${styles.expandIcon2} ${
-                  expandedVoting === "best-bicycle" ? styles.expanded2 : ""
+                className={`${styles.expandIcon} ${
+                  expandedVoting === expandedVoting ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-bicycle")}
+                onClick={() => toggleVoting(expandedVoting)}
               />
             </div>
 
