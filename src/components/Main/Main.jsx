@@ -391,13 +391,13 @@ function Main() {
                   className={activeSection === "donations" ? styles.active : ""}
                   onClick={() => setActiveSection("donations")}
                 >
-                  По сборам
+                  По донатам
                 </p>
                 <p
                   className={activeSection === "votes" ? styles.active : ""}
                   onClick={() => setActiveSection("votes")}
                 >
-                  По голосованию
+                  По голосам
                 </p>
               </div>
             </div>
