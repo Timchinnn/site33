@@ -196,7 +196,9 @@ function Main() {
           </div>
 
           <div className={styles.votingBlock}>
-            <p className={styles.hotVoting}>ГОРЯЧИЕ ГОЛОСОВАНИЯ</p>
+            <p className={styles.hotVoting} onClick={handleSportClick}>
+              ГОРЯЧИЕ ГОЛОСОВАНИЯ
+            </p>
           </div>
           <div className={styles.leadersBlock}>
             <p className={styles.donateLeaders}>ЛИДЕРЫ ДОНАТОВ</p>
