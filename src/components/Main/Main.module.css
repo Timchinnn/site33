@@ -443,3 +443,40 @@ img {
   display: flex;
   justify-content: center;
 }
+.fighterCard {
+  border: none;
+  background-color: rgba(15, 15, 15, 0.06);
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-left: 10px;
+  max-width: 343px;
+  width: 92%;
+  padding-right: 0px;
+  margin-right: 0px;
+  padding-left: 13px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.fighterCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(128, 128, 128, 0) 0%,
+    rgba(128, 128, 128, 0.3) 30%,
+    rgba(128, 128, 128, 0.3) 70%,
+    rgba(128, 128, 128, 0) 100%
+  );
+}
