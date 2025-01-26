@@ -28,7 +28,13 @@ function Voting() {
     setSelectedAmount(amount);
     setDonateAmount(amount);
   };
-
+  const toggleVoting = (category) => {
+    if (expandedVoting === category) {
+      setExpandedVoting(null);
+    } else {
+      setExpandedVoting(category);
+    }
+  };
   const handlePaymentSelect = (type) => {
     setSelectedPayment(type);
   };
@@ -267,20 +273,20 @@ function Voting() {
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
-  const [expandedVotings, setExpandedVotings] = useState({
-    "best-fight": false,
-    "best-fighter": false,
-    "best-knockout": false,
-    "best-bicycle": false,
-  });
+  // const [expandedVotings, setExpandedVotings] = useState({
+  //   "best-fight": false,
+  //   "best-fighter": false,
+  //   "best-knockout": false,
+  //   "best-bicycle": false,
+  // });
 
-  // Update the click handler for each voting section
-  const toggleVoting = (category) => {
-    setExpandedVotings((prev) => ({
-      ...prev,
-      [category]: !prev[category],
-    }));
-  };
+  // // Update the click handler for each voting section
+  // const toggleVoting = (category) => {
+  //   setExpandedVotings((prev) => ({
+  //     ...prev,
+  //     [category]: !prev[category],
+  //   }));
+  // };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -481,9 +487,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings["best-fight"] ? styles.expanded : ""
+                  expandedVoting === category ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-fight")}
+                onClick={() => toggleVoting(category)}
               />
             </div>
 
@@ -565,9 +571,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings["best-fighter"] ? styles.expanded : ""
+                  expandedVoting === category ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-fighter")}
+                onClick={() => toggleVoting(category)}
               />
             </div>
 
@@ -653,9 +659,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings["best-knockout"] ? styles.expanded : ""
+                  expandedVoting === category ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-knockout")}
+                onClick={() => toggleVoting(category)}
               />
             </div>
 
@@ -743,9 +749,9 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings["best-bicycle"] ? styles.expanded : ""
+                  expandedVoting === category ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting("best-bicycle")}
+                onClick={() => toggleVoting(category)}
               />
             </div>
 
