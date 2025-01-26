@@ -445,6 +445,9 @@ function Voting() {
         <div className={styles.currentVotings}>
           <div
             className={styles.voting}
+            style={{
+              paddingBottom: expandedVoting === "best-fight" ? 0 : undefined,
+            }}
             onClick={() =>
               setExpandedVoting((prev) =>
                 prev === "best-fight" ? null : "best-fight"
