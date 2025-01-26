@@ -4,6 +4,7 @@ import styles from "./Main.module.css";
 import { useNavigate } from "react-router-dom";
 function Main() {
   const [activeSection, setActiveSection] = useState("donations"); // 'donations' или 'votes'
+  const [activeSectionUser, setActiveSectionUser] = useState("donat"); // 'donations' или 'votes'
 
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("userType");
@@ -406,21 +407,21 @@ function Main() {
               <h2>Топ фанатов</h2>
               <div className={styles.toggleButtons}>
                 <p
-                  className={activeSection === "donat" ? styles.active : ""}
-                  onClick={() => setActiveSection("donat")}
+                  className={activeSectionUser === "donat" ? styles.active : ""}
+                  onClick={() => setActiveSectionUser("donat")}
                 >
                   По донатам
                 </p>
                 <p
-                  className={activeSection === "vote" ? styles.active : ""}
-                  onClick={() => setActiveSection("vote")}
+                  className={activeSectionUser === "vote" ? styles.active : ""}
+                  onClick={() => setActiveSectionUser("vote")}
                 >
                   По голосам
                 </p>
               </div>
             </div>
             <div className={styles.fightersList}>
-              {activeSection === "donat"
+              {activeSectionUser === "donat"
                 ? users.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
