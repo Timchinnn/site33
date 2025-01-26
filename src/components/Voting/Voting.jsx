@@ -503,14 +503,14 @@ function Voting() {
                         </p>
                       </div>
                     </div>
-                    <div className={styles.voteCount}>
+                    {/* <div className={styles.voteCount}>
                       <p>
                         {percentages["best-fight"][match.competitor_1] || 0}%
                       </p>
                       <p>
                         {percentages["best-fight"][match.competitor_2] || 0}%
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 ))}
               </div>
