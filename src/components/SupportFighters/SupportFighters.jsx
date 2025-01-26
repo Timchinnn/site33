@@ -9,6 +9,21 @@ function SupportFighters() {
 
   const location = useLocation();
   const { fighters } = location.state || {};
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    if (query.trim()) {
+      const filtered = fighters.filter(
+        (fighter) =>
+          fighter.name.toLowerCase().includes(query) ||
+          fighter.surname.toLowerCase().includes(query)
+      );
+      setFilteredFighters(filtered);
+    } else {
+      setFilteredFighters(fighters);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -34,7 +49,22 @@ function SupportFighters() {
             />
           </div>
         </div>
-        {fighters.map((fighter) => (
+        <div className={styles.passwordInputContainer}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Поиск по турниру или имени"
+            className={styles.passwordinput}
+          />
+          <img
+            src="search.png"
+            alt="#"
+            className={styles.eyeoff}
+            style={{ cursor: "pointer", pointerEvents: "auto" }}
+          />
+        </div>
+        {(searchQuery ? filteredFighters : fighters).map((fighter) => (
           <div key={fighter.id} className={styles.fighterItem}>
             <div className={styles.fighterAbout}>
               <img
