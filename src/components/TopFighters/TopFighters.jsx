@@ -8,8 +8,8 @@ function TopFighters() {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const { fighters } = location.state || {};
-  console.log(fighters);
+  const { fighters, activeSection } = location.state || {};
+  console.log(activeSection);
   return (
     <div className={styles.header}>
       <div className={styles.container}>

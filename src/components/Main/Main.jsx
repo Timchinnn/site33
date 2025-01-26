@@ -303,6 +303,7 @@ function Main() {
                       activeSection === "donations"
                         ? topFighters
                         : topVotedFighters,
+                    activeSection: activeSection,
                   },
                 });
               }}
