@@ -121,4 +121,4 @@ function TopFan() {
   );
 }
 
-export default Topusers;
+export default TopFan;
