@@ -327,7 +327,7 @@ function Main() {
             </div>
             <div className={styles.fightersList}>
               {activeSection === "donations"
-                ? topFighters.map((fighter) => (
+                ? topFighters.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
@@ -346,7 +346,7 @@ function Main() {
                       </p>
                     </div>
                   ))
-                : topVotedFighters.map((fighter) => (
+                : topVotedFighters.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
