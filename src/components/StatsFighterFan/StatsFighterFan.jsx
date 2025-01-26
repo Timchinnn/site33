@@ -585,6 +585,9 @@ function StatsFighterFan() {
             <p>{fighterData.rating} %</p>
           </div>
         </div>
+        <button className={styles.votingReit} onClick={handleRatingClick}>
+          Голосовать
+        </button>
         {/* <div className={styles.votings}>
           <div className={styles.votingReit} onClick={handleRatingClick}>
             <p>Повлиять на рейтинг</p>
