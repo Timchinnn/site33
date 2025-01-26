@@ -37,7 +37,7 @@ function TopFighters() {
         </div>
         {fighters.map((fighter) => (
           <div key={fighter.id} className={styles.fighterItem}>
-            <div>
+            <div className={styles.fighterAbout}>
               <img
                 src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
                 alt={fighter.name}

@@ -103,3 +103,19 @@ img {
 .notification {
   padding-right: 2vw;
 }
+.fighterItem img {
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+}
+
+.fighterItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fighterAbout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
