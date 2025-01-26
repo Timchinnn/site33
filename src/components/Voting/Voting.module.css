@@ -706,3 +706,6 @@ hr {
 .percentage {
   min-width: 40px;
 }
+.fighters p {
+  margin: 0;
+}
