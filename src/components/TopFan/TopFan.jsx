@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./TopFan.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function TopFan() {
   const userType = localStorage.getItem("userType");
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const { users, activeSectionUser } = location.state || {};
+  console.log(users);
+  console.log(activeSectionUser);
 
   return (
     <div className={styles.header}>
@@ -32,6 +37,34 @@ function TopFan() {
             />
           </div>
         </div>
+        <h2>
+          {activeSectionUser === "donat" ? (
+            <>Топ бойцов по сборам</>
+          ) : (
+            <>Топ бойцов по голосованию</>
+          )}
+        </h2>
+        {users.map((user) => (
+          <div key={user.id} className={styles.userItem}>
+            <div className={styles.userAbout}>
+              <img
+                src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
+                alt={user.name}
+              />
+              <p>
+                {user.name} {user.surname[0]}.
+              </p>
+            </div>
+
+            <p className={styles.money}>
+              {activeSectionUser === "donat" ? (
+                <>{user.donat_now} ₽</>
+              ) : (
+                <>{user.vote_fan}</>
+              )}
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className={styles.bottomNav}>
@@ -76,7 +109,7 @@ function TopFan() {
             if (userType === "fan") {
               navigate("/profileuser");
             } else {
-              navigate("/profilefighter");
+              navigate("/profileuser");
             }
           }}
         >
@@ -88,4 +121,4 @@ function TopFan() {
   );
 }
 
-export default TopFan;
+export default Topusers;
