@@ -9,7 +9,7 @@ function TopFighters() {
 
   const location = useLocation();
   const { fighters, activeSection } = location.state || {};
-  console.log(activeSection);
+  // console.log(activeSection);
   return (
     <div className={styles.header}>
       <div className={styles.container}>

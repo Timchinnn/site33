@@ -7,6 +7,8 @@ function SupportFighters() {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const { fighters } = location.state || {};
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -32,6 +34,27 @@ function SupportFighters() {
             />
           </div>
         </div>
+        {fighters.map((fighter) => (
+          <div key={fighter.id} className={styles.fighterItem}>
+            <div className={styles.fighterAbout}>
+              <img
+                src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
+                alt={fighter.name}
+              />
+              <p>
+                {fighter.name} {fighter.surname[0]}.
+              </p>
+            </div>
+
+            <p className={styles.money}>
+              {activeSection === "donations" ? (
+                <>{fighter.donat_now} ₽</>
+              ) : (
+                <>{fighter.vote_fan}</>
+              )}
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className={styles.bottomNav}>

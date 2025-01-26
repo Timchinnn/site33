@@ -181,8 +181,15 @@ function Main() {
         <div className={styles.navigationMenu}>
           <div
             className={styles.viewersBlock}
+            // onClick={() => {
+            //   navigate("/SupportFighters");
+            // }}
             onClick={() => {
-              navigate("/SupportFighters");
+              navigate("/SupportFighters", {
+                state: {
+                  fighters: topVotedFighters,
+                },
+              });
             }}
           >
             <p className={styles.viewersDecide}>ПОДДЕРЖАТЬ СПОРТСМЕНА</p>
