@@ -56,7 +56,7 @@ function TopFan() {
 
             <p className={styles.money}>
               {activeSectionUser === "donat" ? (
-                <>{user.donat_now} ₽</>
+                <>{user.total_donations} ₽</>
               ) : (
                 <>{user.vote_fan}</>
               )}
