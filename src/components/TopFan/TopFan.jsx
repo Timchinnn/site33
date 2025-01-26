@@ -51,9 +51,7 @@ function TopFan() {
                 src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
                 alt={user.name}
               />
-              <p>
-                {user.name} {user.surname[0]}.
-              </p>
+              <p>{user.name}</p>
             </div>
 
             <p className={styles.money}>
