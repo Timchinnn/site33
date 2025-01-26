@@ -130,3 +130,13 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.container h2 {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}

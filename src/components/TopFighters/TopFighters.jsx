@@ -35,6 +35,13 @@ function TopFighters() {
             />
           </div>
         </div>
+        <h2>
+          {activeSection === "donations" ? (
+            <>Топ бойцов по сборам</>
+          ) : (
+            <>Топ бойцов по голосованию</>
+          )}
+        </h2>
         {fighters.map((fighter) => (
           <div key={fighter.id} className={styles.fighterItem}>
             <div className={styles.fighterAbout}>
