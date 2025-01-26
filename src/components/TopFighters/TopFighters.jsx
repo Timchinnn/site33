@@ -47,7 +47,13 @@ function TopFighters() {
               </p>
             </div>
 
-            <p className={styles.money}>{fighter.donat_now} ₽</p>
+            <p className={styles.money}>
+              {activeSection === "donations" ? (
+                <>{fighter.donat_now} ₽</>
+              ) : (
+                <>{fighter.vote_fan}</>
+              )}
+            </p>
           </div>
         ))}
       </div>
