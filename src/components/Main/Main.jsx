@@ -142,7 +142,7 @@ function Main() {
 
     fetchUsers();
   }, []);
-  console.log(users);
+  // console.log(users);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -403,7 +403,7 @@ function Main() {
             </div>
             <div className={styles.fightersList}>
               {activeSection === "donations"
-                ? topFighters.map((fighter) => (
+                ? users.map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
@@ -417,12 +417,10 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <p>
-                        {fighter.name} {fighter.surname[0]}.
-                      </p>
+                      <p>{fighter.name}</p>
                     </div>
                   ))
-                : topVotedFighters.map((fighter) => (
+                : users.map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
@@ -436,9 +434,7 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <p>
-                        {fighter.name} {fighter.surname[0]}.
-                      </p>
+                      <p>{fighter.name}</p>
                     </div>
                   ))}
             </div>
