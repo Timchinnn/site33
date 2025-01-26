@@ -35,6 +35,17 @@ function TopFighters() {
             />
           </div>
         </div>
+        {fighters.map((fighter) => (
+          <div key={fighter.id} className={styles.fighterItem}>
+            <img
+              src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
+              alt={fighter.name}
+            />
+            <p>
+              {fighter.name} {fighter.surname[0]}.
+            </p>
+          </div>
+        ))}
       </div>
 
       <div className={styles.bottomNav}>
