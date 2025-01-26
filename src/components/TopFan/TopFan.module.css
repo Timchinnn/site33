@@ -103,24 +103,24 @@ img {
 .notification {
   padding-right: 2vw;
 }
-.fighterItem img {
+.userItem img {
   border-radius: 8px;
   height: 40px;
   width: 40px;
   margin-right: 11px;
 }
 
-.fighterItem {
+.userItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.fighterAbout {
+.userAbout {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.fighterItem p {
+.userItem p {
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
