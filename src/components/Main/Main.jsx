@@ -10,6 +10,7 @@ function Main() {
   console.log(userId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [filteredFighters, setFilteredFighters] = useState([]);
 
   // const handleSearch = (e) => {
   //   const query = e.target.value;
@@ -112,7 +113,7 @@ function Main() {
 
     // Показывать бойцов только если есть поисковый запрос
     if (query.trim()) {
-      const filtered = fighters.filter(
+      const filtered = topFighters.filter(
         (fighter) =>
           fighter.name.toLowerCase().includes(query) ||
           fighter.surname.toLowerCase().includes(query) ||
@@ -164,6 +165,19 @@ function Main() {
             style={{ cursor: "pointer", pointerEvents: "auto" }}
           />
         </div>
+        {filteredFighters.map((fighter) => (
+          <div
+            key={fighter.id}
+            className={styles.fighterCard}
+            onClick={() => handleFighterClick(fighter)}
+          >
+            <div>
+              <p>
+                {fighter.name} {fighter.surname}
+              </p>
+            </div>
+          </div>
+        ))}
         <div className={styles.navigationMenu}>
           <div
             className={styles.viewersBlock}
