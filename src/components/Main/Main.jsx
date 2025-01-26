@@ -201,7 +201,19 @@ function Main() {
             </p>
           </div>
           <div className={styles.leadersBlock}>
-            <p className={styles.donateLeaders}>ЛИДЕРЫ ДОНАТОВ</p>
+            <p
+              className={styles.donateLeaders}
+              onClick={() => {
+                navigate("/TopFighters", {
+                  state: {
+                    fighters: topVotedFighters,
+                    activeSection: activeSection,
+                  },
+                });
+              }}
+            >
+              ЛИДЕРЫ ДОНАТОВ
+            </p>
           </div>
         </div>
         {/* <h2>Дисциплины</h2>
