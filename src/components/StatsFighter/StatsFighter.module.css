@@ -144,7 +144,7 @@ img {
 .contentAboutImg img {
   width: 96px;
   height: 96px;
-  border-radius: 100px;
+  border-radius: 12px;
 }
 .greyText {
   font-family: Inter;
