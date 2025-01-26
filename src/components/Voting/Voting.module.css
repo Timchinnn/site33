@@ -263,7 +263,7 @@ hr {
   justify-content: space-between;
 }
 .vote button {
-  width: 83%;
+  width: 40%;
   max-width: 357px;
   border: none;
   background-color: black;
@@ -276,6 +276,7 @@ hr {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   height: 42px;
+  border-radius: 8px;
 }
 .vote img {
   width: 23px;
@@ -596,6 +597,7 @@ hr {
   padding: 12px;
   margin-bottom: 8px;
   padding-top: 0;
+  border: 1px solid #0f0f0f0f;
 }
 
 .votingHeader {

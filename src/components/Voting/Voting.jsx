@@ -826,12 +826,15 @@ function Voting() {
         </div>
         <div className={styles.vote}>
           <button onClick={toggleModal}>Голосовать</button>
-          <div
+          <button onClick={() => setShowDonateModal(true)}>
+            Отправить донат
+          </button>
+          {/* <div
             className={styles.imgDonateBlack}
             onClick={() => setShowDonateModal(true)}
           >
             <img src="hands-helping.png" alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={styles.bottomNav}>
