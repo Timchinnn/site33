@@ -732,13 +732,13 @@ function Voting() {
           >
             <div className={styles.votingHeader}>
               <p>Велосипед турнира</p>
-              <img
+              {/* <img
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
                   expandedVoting ? styles.expanded : ""
                 }`}
-              />
+              /> */}
               <img
                 src="/down.png"
                 alt="expand"
