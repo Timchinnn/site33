@@ -94,13 +94,7 @@ function AllTournaments() {
             <h2>Реферальная программа</h2>
             <p>Приглашай друзей и получай %% с каждого доната</p>
           </div>
-          <img
-            src="forward-white.png"
-            alt=""
-            onClick={() => {
-              navigate("/Referal");
-            }}
-          />
+          <img src="forward-white.png" alt="" />
         </div>
         {tournaments.map((tournament) => (
           <div key={tournament.id}>
