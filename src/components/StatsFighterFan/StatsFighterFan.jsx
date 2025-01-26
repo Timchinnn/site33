@@ -554,6 +554,9 @@ function StatsFighterFan() {
           {fighterData.msg && (
             <button className={styles.inputButton}>{fighterData.msg}</button>
           )}
+          <button className={styles.votingDonat} onClick={handleDonateClick}>
+            Поддержать донатом
+          </button>
           <div className={styles.donations}>
             <div>
               <p>Донаты</p>
