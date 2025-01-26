@@ -28,13 +28,7 @@ function Voting() {
     setSelectedAmount(amount);
     setDonateAmount(amount);
   };
-  const toggleVoting = (category) => {
-    if (expandedVoting === category) {
-      setExpandedVoting(null);
-    } else {
-      setExpandedVoting(category);
-    }
-  };
+
   const handlePaymentSelect = (type) => {
     setSelectedPayment(type);
   };
@@ -273,20 +267,19 @@ function Voting() {
   // Пример использования:
   const percentages = calculateVotePercentages(voteResults);
   console.log(percentages);
-  // const [expandedVotings, setExpandedVotings] = useState({
-  //   "best-fight": false,
-  //   "best-fighter": false,
-  //   "best-knockout": false,
-  //   "best-bicycle": false,
-  // });
+  const [expandedVotings, setExpandedVotings] = useState({
+    "best-fight": false,
+    "best-fighter": false,
+    "best-knockout": false,
+    "best-bicycle": false,
+  });
 
-  // // Update the click handler for each voting section
-  // const toggleVoting = (category) => {
-  //   setExpandedVotings((prev) => ({
-  //     ...prev,
-  //     [category]: !prev[category],
-  //   }));
-  // };
+  const toggleVoting = (category) => {
+    setExpandedVotings((prev) => ({
+      ...prev,
+      [category]: !prev[category],
+    }));
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -476,20 +469,13 @@ function Voting() {
           >
             <div className={styles.votingHeader}>
               <p>Лучший бой турнира</p>
-              {/* <img
-                src="/down.png"
-                alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting ? styles.expanded : ""
-                }`}
-              /> */}
               <img
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === expandedVoting ? styles.expanded : ""
+                  expandedVotings[category] ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-fight")}
               />
             </div>
 
@@ -560,20 +546,13 @@ function Voting() {
           >
             <div className={styles.votingHeader}>
               <p>Лучший боец турнира</p>
-              {/* <img
-                src="/down.png"
-                alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting ? styles.expanded : ""
-                }`}
-              /> */}
               <img
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === expandedVoting ? styles.expanded : ""
+                  expandedVotings[category] ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-fighter")}
               />
             </div>
 
@@ -648,20 +627,13 @@ function Voting() {
           >
             <div className={styles.votingHeader}>
               <p>Лучший нокаут турнира</p>
-              {/* <img
-                src="/down.png"
-                alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting ? styles.expanded : ""
-                }`}
-              /> */}
               <img
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === expandedVoting ? styles.expanded : ""
+                  expandedVotings[category] ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-knockout")}
               />
             </div>
 
@@ -738,20 +710,13 @@ function Voting() {
           >
             <div className={styles.votingHeader}>
               <p>Велосипед турнира</p>
-              {/* <img
-                src="/down.png"
-                alt="expand"
-                className={`${styles.expandIcon} ${
-                  expandedVoting ? styles.expanded : ""
-                }`}
-              /> */}
               <img
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVoting === expandedVoting ? styles.expanded : ""
+                  expandedVotings[category] ? styles.expanded : ""
                 }`}
-                onClick={() => toggleVoting(expandedVoting)}
+                onClick={() => toggleVoting("best-bicycle")}
               />
             </div>
 
