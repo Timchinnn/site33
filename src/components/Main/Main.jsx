@@ -29,6 +29,7 @@ function Main() {
         if (response.ok) {
           const data = await response.json();
           setTopFighters(data);
+          console.log(data);
         }
       } catch (error) {
         console.error("Error fetching top fighters:", error);
@@ -45,6 +46,7 @@ function Main() {
         if (response.ok) {
           const data = await response.json();
           setTopVotedFighters(data);
+          console.log(data);
         }
       } catch (error) {
         console.error("Error fetching top voted fighters:", error);
