@@ -25,6 +25,13 @@ function SupportFighters() {
       setFilteredFighters(fighters);
     }
   };
+  const handleFighterClick = (fighter) => {
+    navigate("/StatsFighterFan", {
+      state: {
+        fighterData: fighter,
+      },
+    });
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -66,7 +73,11 @@ function SupportFighters() {
           />
         </div>
         {(searchQuery ? filteredFighters : fighters).map((fighter) => (
-          <div key={fighter.id} className={styles.fighterItem}>
+          <div
+            key={fighter.id}
+            className={styles.fighterItem}
+            onClick={() => handleFighterClick(fighter)}
+          >
             <div className={styles.fighterAbout}>
               <img
                 src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
