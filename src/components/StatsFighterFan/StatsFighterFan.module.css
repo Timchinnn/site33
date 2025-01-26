@@ -357,6 +357,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin-right: 10px;
+  border-radius: 4px;
 }
 .buttonPopular {
   width: 114px;
@@ -374,6 +375,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 4px;
 }
 .buttonsPopular {
   display: flex;
@@ -498,6 +500,7 @@ img {
   background: #e8e7ed;
   margin-top: 12px;
   padding: 10px;
+  border-radius: 8px;
 }
 
 /* Стиль для комментариев */
