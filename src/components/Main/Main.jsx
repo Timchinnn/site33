@@ -406,13 +406,13 @@ function Main() {
               <h2>Топ фанатов</h2>
               <div className={styles.toggleButtons}>
                 <p
-                  className={activeSection === "donations" ? styles.active : ""}
+                  className={activeSection === "donat" ? styles.active : ""}
                   onClick={() => setActiveSection("donations")}
                 >
                   По донатам
                 </p>
                 <p
-                  className={activeSection === "votes" ? styles.active : ""}
+                  className={activeSection === "vote" ? styles.active : ""}
                   onClick={() => setActiveSection("votes")}
                 >
                   По голосам
@@ -420,7 +420,7 @@ function Main() {
               </div>
             </div>
             <div className={styles.fightersList}>
-              {activeSection === "donations"
+              {activeSection === "donat"
                 ? users.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
@@ -438,7 +438,7 @@ function Main() {
                       <p>{fighter.name}</p>
                     </div>
                   ))
-                : users.slice(0, 4).map((fighter) => (
+                : sortedUsers.slice(0, 4).map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
