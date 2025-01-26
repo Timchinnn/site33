@@ -47,7 +47,7 @@ function TopFighters() {
               </p>
             </div>
 
-            <p>{fighter.donat_now}</p>
+            <p className={styles.money}>{fighter.donat_now}</p>
           </div>
         ))}
       </div>
