@@ -473,7 +473,7 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings[category] ? styles.expanded : ""
+                  expandedVotings["best-fight"] ? styles.expanded : ""
                 }`}
                 onClick={() => toggleVoting("best-fight")}
               />
@@ -550,7 +550,7 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings[category] ? styles.expanded : ""
+                  expandedVotings["best-fighter"] ? styles.expanded : ""
                 }`}
                 onClick={() => toggleVoting("best-fighter")}
               />
@@ -631,7 +631,7 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings[category] ? styles.expanded : ""
+                  expandedVotings["best-knockout"] ? styles.expanded : ""
                 }`}
                 onClick={() => toggleVoting("best-knockout")}
               />
@@ -714,7 +714,7 @@ function Voting() {
                 src="/down.png"
                 alt="expand"
                 className={`${styles.expandIcon} ${
-                  expandedVotings[category] ? styles.expanded : ""
+                  expandedVotings["best-bicycle"] ? styles.expanded : ""
                 }`}
                 onClick={() => toggleVoting("best-bicycle")}
               />
