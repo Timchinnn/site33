@@ -191,7 +191,7 @@ function ProfileFighter() {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 

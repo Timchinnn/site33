@@ -145,7 +145,7 @@ function SubscriptionEdit() {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 

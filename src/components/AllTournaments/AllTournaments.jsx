@@ -178,7 +178,7 @@ function AllTournaments() {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 

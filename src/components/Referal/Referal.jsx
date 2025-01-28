@@ -173,7 +173,7 @@ function Referal() {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 

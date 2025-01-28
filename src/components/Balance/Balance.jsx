@@ -91,7 +91,7 @@ function Balance() {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 

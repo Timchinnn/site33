@@ -500,7 +500,7 @@ const PostPage = () => {
               activeTab === "catalog" ? styles.activeText : ""
             }`}
           >
-            Каталог
+            Главная
           </p>
         </div>
 
