@@ -13,7 +13,24 @@ function Main() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFighters, setFilteredFighters] = useState([]);
+  const [disciplinesWithTournaments, setDisciplinesWithTournaments] = useState(
+    {}
+  );
+  useEffect(() => {
+    const fetchDisciplinesAndTournaments = async () => {
+      try {
+        const response = await fetch("/api/disciplines-with-tournaments");
+        if (response.ok) {
+          const data = await response.json();
+          setDisciplinesWithTournaments(data);
+        }
+      } catch (error) {
+        console.error("Error fetching disciplines and tournaments:", error);
+      }
+    };
 
+    fetchDisciplinesAndTournaments();
+  }, []);
   // const handleSearch = (e) => {
   //   const query = e.target.value;
   //   if (query.trim()) {
@@ -299,19 +316,23 @@ function Main() {
           </div>
         </div> */}
         <div className={styles.topMatchesHeader} onClick={handleSportClick}>
-          <h2>Топовые матчи</h2>
+          <h2>Топовые события</h2>
           <img src="forward.png" alt="" />
         </div>
         <div className={styles.games}>
-          {topMatches.slice(0, 4).map((match, index) => (
-            <div key={index} className={styles.game}>
-              <img src="lightning.png" alt="" />
-              <div className={styles.participants}>
-                <p>{match.competitor_1}</p>
-                <p>{match.competitor_2}</p>
+          {Object.entries(disciplinesWithTournaments)
+            .slice(0, 4)
+            .map(([id, data]) => (
+              <div key={id} className={styles.game}>
+                <img src="lightning.png" alt="" />
+                <div className={styles.participants}>
+                  <p>{data.discipline_name}</p>
+                  {data.tournaments.length > 0 && (
+                    <p>{data.tournaments[0].name}</p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
         <div className={styles.referralProgram}>
