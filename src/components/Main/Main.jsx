@@ -6,6 +6,7 @@ function Main() {
   const [activeSection, setActiveSection] = useState("donations"); // 'donations' или 'votes'
   const [activeSectionUser, setActiveSectionUser] = useState("donat"); // 'donations' или 'votes'
   const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [displayedUsers, setDisplayedUsers] = useState([]);
 
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("userType");
@@ -165,6 +166,14 @@ function Main() {
     fetchSortedUsers();
   }, []);
   console.log(sortedUsers);
+
+  useEffect(() => {
+    if (activeSectionUser === "donat") {
+      setDisplayedUsers(users.slice(0, 4));
+    } else {
+      setDisplayedUsers(sortedUsers.slice(0, 4));
+    }
+  }, [activeSectionUser, users, sortedUsers]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -425,7 +434,7 @@ function Main() {
             </div>
             <div className={styles.fightersList}>
               {activeSectionUser === "donat"
-                ? users.slice(0, 4).map((fighter) => (
+                ? displayedUsers.map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
@@ -442,7 +451,7 @@ function Main() {
                       <p>{fighter.name}</p>
                     </div>
                   ))
-                : sortedUsers.slice(0, 4).map((fighter) => (
+                : displayedUsers.map((fighter) => (
                     <div
                       key={fighter.id}
                       className={styles.fighterItem}
