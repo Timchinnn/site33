@@ -200,18 +200,28 @@ function Main() {
     fetchSortedUsers();
   }, []);
   console.log(sortedUsers);
-  const handleMatchClick = (tournament) => {
-    // Получаем матчи для конкретного турнира
-    const tournamentMatches = matches.filter(
-      (match) => match.tournament_id === tournament.id
-    );
+  const handleMatchClick = async (tournament) => {
+    try {
+      // Fetch matches for the specific tournament
+      const response = await fetch(`/api/tournaments/${tournament}`);
+      if (response.ok) {
+        const data = await response.json();
+        // Filter matches for this specific tournament
+        const tournamentMatches = data.matches.filter(
+          (match) => match.tournament_id === tournament.id
+        );
 
-    navigate("/voting", {
-      state: {
-        tournament: tournament,
-        matches: tournamentMatches,
-      },
-    });
+        // Navigate to voting page with tournament and matches data
+        navigate("/voting", {
+          state: {
+            tournament: tournament,
+            matches: tournamentMatches,
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching tournament matches:", error);
+    }
   };
   return (
     <div className={styles.header}>
@@ -377,12 +387,7 @@ function Main() {
                 key={`${id}-${tournamentIndex}`}
                 className={styles.game}
                 onClick={() => {
-                  navigate("/voting", {
-                    state: {
-                      tournament: data.tournaments[tournamentIndex],
-                      matches: data.tournaments[tournamentIndex].matches || [],
-                    },
-                  });
+                  handleMatchClick(data.tournaments[tournamentIndex].id);
                 }}
               >
                 <img src="lightning.png" alt="" />
