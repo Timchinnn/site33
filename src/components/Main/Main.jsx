@@ -168,6 +168,7 @@ function Main() {
   console.log(sortedUsers);
 
   useEffect(() => {
+    setDisplayedUsers([]);
     if (activeSectionUser === "donat") {
       setDisplayedUsers(users.slice(0, 4));
     } else {
