@@ -96,6 +96,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin: 0;
+  color: #95959b;
 }
 .bottomNav img {
   /* padding-left: 8px; */
@@ -244,6 +245,7 @@ label:active:after {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin: 0;
+  color: #95959b;
 }
 .bottomNav img {
   /* padding-left: 8px; */
