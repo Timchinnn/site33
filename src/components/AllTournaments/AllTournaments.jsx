@@ -10,6 +10,23 @@ function AllTournaments() {
     tournaments: [],
     matches: [],
   });
+  useEffect(() => {
+    const images = [
+      "ui-checks-grid-black.png",
+      "ui-checks-grid.png",
+      "lightning-charge-black.png",
+      "lightning-charge.png",
+      "gift-black.png",
+      "gift.png",
+      "person-black.png",
+      "person.png",
+    ];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   const handleFighterClick = async (fighterName) => {
     // Убираем последние 3 символа из имени бойца
     const trimmedName = fighterName.slice(0, -3);

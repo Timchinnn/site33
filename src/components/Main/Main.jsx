@@ -17,6 +17,23 @@ function Main() {
     {}
   );
   useEffect(() => {
+    const images = [
+      "ui-checks-grid-black.png",
+      "ui-checks-grid.png",
+      "lightning-charge-black.png",
+      "lightning-charge.png",
+      "gift-black.png",
+      "gift.png",
+      "person-black.png",
+      "person.png",
+    ];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+  useEffect(() => {
     const fetchDisciplinesAndTournaments = async () => {
       try {
         const response = await fetch("/api/disciplines-with-tournaments");

@@ -10,7 +10,23 @@ function ProfileUser() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
   const [balance, setBalance] = useState(0);
+  useEffect(() => {
+    const images = [
+      "ui-checks-grid-black.png",
+      "ui-checks-grid.png",
+      "lightning-charge-black.png",
+      "lightning-charge.png",
+      "gift-black.png",
+      "gift.png",
+      "person-black.png",
+      "person.png",
+    ];
 
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   console.log(profilePhoto);
   useEffect(() => {
     window.scrollTo(0, 0);

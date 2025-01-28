@@ -9,6 +9,40 @@ function Referal() {
   const userType = localStorage.getItem("userType");
   const [showRatingModal, setShowRatingModal] = useState(false);
   console.log(referralStatus);
+  useEffect(() => {
+    const images = [
+      "ui-checks-grid-black.png",
+      "ui-checks-grid.png",
+      "lightning-charge-black.png",
+      "lightning-charge.png",
+      "gift-black.png",
+      "gift.png",
+      "person-black.png",
+      "person.png",
+    ];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+  useEffect(() => {
+    const images = [
+      "ui-checks-grid-black.png",
+      "ui-checks-grid.png",
+      "lightning-charge-black.png",
+      "lightning-charge.png",
+      "gift-black.png",
+      "gift.png",
+      "person-black.png",
+      "person.png",
+    ];
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
   };
