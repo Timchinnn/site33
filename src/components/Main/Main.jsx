@@ -200,6 +200,19 @@ function Main() {
     fetchSortedUsers();
   }, []);
   console.log(sortedUsers);
+  const handleMatchClick = (tournament) => {
+    // Получаем матчи для конкретного турнира
+    const tournamentMatches = matches.filter(
+      (match) => match.tournament_id === tournament.id
+    );
+
+    navigate("/voting", {
+      state: {
+        tournament: tournament,
+        matches: tournamentMatches,
+      },
+    });
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>

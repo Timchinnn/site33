@@ -89,6 +89,8 @@ function AllTournaments() {
     const tournamentMatches = matches.filter(
       (match) => match.tournament_id === tournament.id
     );
+    console.log(tournamentMatches);
+    console.log(tournament);
 
     navigate("/voting", {
       state: {
