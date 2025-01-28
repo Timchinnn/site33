@@ -423,7 +423,7 @@ function Main() {
                 </p>
               </div>
             </div>
-            jsx
+
             <div className={styles.fightersList}>
               {/* Очищаем список перед отображением */}
               <div key={activeSectionUser}>
