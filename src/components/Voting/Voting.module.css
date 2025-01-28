@@ -73,9 +73,9 @@ img {
   background-color: #f0f0f0;
   cursor: pointer;
 }
-.container {
+/* .container {
   padding-bottom: 82px;
-}
+} */
 .bottomNav p {
   font-family: Inter;
   font-size: 13px;
@@ -260,17 +260,20 @@ hr {
   border-color: #0f0f0f0f;
 }
 .vote {
-  position: fixed;
-  bottom: 60px; /* Отступ от нижнего края */
-  left: 0;
-  right: 0;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: white;
-  z-index: 999;
+  background-color: #f4f4f7;
   border-top: 1px solid #e8e7ed;
+  bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 999;
+  padding-bottom: 12px;
+  padding-right: 2.6vw;
+  padding-left: 2.6vw;
+  border: none;
 }
 
 .vote button {
