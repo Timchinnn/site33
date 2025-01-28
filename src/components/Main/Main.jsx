@@ -221,9 +221,7 @@ function Main() {
       console.log(sportData);
 
       // Находим турнир по имени
-      const tournament = combinedData.tournaments.find(
-        (t) => t.name === tournamentName
-      );
+      const tournament = combinedData.tournaments.find((t) => t.name === name);
 
       if (tournament) {
         // Фильтруем матчи для данного турнира
@@ -231,8 +229,8 @@ function Main() {
           (match) => match.tournament_id === tournament.id
         );
 
-        console.log(tournamentMatches);
-        console.log(tournament);
+        // console.log(tournamentMatches);
+        // console.log(tournament);
 
         // Переходим на страницу голосования
         navigate("/voting", {
