@@ -22,6 +22,7 @@ function Main() {
         const response = await fetch("/api/disciplines-with-tournaments");
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           setDisciplinesWithTournaments(data);
         }
       } catch (error) {
