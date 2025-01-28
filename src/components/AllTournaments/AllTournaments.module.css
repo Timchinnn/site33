@@ -345,3 +345,8 @@ img {
   width: 297px;
   color: white;
 } */
+@media (max-width: 336px) {
+  .referralProgram h2 {
+    font-size: 22px;
+  }
+}
