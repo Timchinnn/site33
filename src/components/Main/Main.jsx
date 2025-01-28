@@ -424,41 +424,36 @@ function Main() {
               </div>
             </div>
             <div className={styles.fightersList}>
-              {activeSectionUser === "donat"
-                ? users.slice(0, 4).map((fighter) => (
-                    <div
-                      key={fighter.id}
-                      className={styles.fighterItem}
-                      // onClick={() => handleFighterClick(fighter)}
-                    >
-                      <img
-                        src={
-                          fighter.photo_url
-                            ? `${fighter.photo_url}`
-                            : "Avatar.png"
-                        }
-                        alt={fighter.name}
-                      />
-                      <p>{fighter.name}</p>
-                    </div>
-                  ))
-                : sortedUsers.slice(0, 4).map((fighter) => (
-                    <div
-                      key={fighter.id}
-                      className={styles.fighterItem}
-                      // onClick={() => handleFighterClick(fighter)}
-                    >
-                      <img
-                        src={
-                          fighter.photo_url
-                            ? `${fighter.photo_url}`
-                            : "Avatar.png"
-                        }
-                        alt={fighter.name}
-                      />
-                      <p>{fighter.name}</p>
-                    </div>
-                  ))}
+              {/* Очищаем список перед отображением нового */}
+              <div className={styles.fightersContainer}>
+                {activeSectionUser === "donat"
+                  ? users.slice(0, 4).map((fighter) => (
+                      <div key={fighter.id} className={styles.fighterItem}>
+                        <img
+                          src={
+                            fighter.photo_url
+                              ? `${fighter.photo_url}`
+                              : "Avatar.png"
+                          }
+                          alt={fighter.name}
+                        />
+                        <p>{fighter.name}</p>
+                      </div>
+                    ))
+                  : sortedUsers.slice(0, 4).map((fighter) => (
+                      <div key={fighter.id} className={styles.fighterItem}>
+                        <img
+                          src={
+                            fighter.photo_url
+                              ? `${fighter.photo_url}`
+                              : "Avatar.png"
+                          }
+                          alt={fighter.name}
+                        />
+                        <p>{fighter.name}</p>
+                      </div>
+                    ))}
+              </div>
             </div>
             <div
               className={styles.watchAll}
