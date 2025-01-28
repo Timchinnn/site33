@@ -503,4 +503,7 @@ img {
   .referralProgram h2 {
     font-size: 22px;
   }
+  .referralProgram p {
+    font-size: 13px;
+  }
 }
