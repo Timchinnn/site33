@@ -28,6 +28,7 @@ function StatsFighterFan() {
   const [isThankYouMessageRating, setIsThankYouMessageRating] = useState(false);
   const [donateAmount, setDonateAmount] = useState(0);
   const [userBalance, setUserBalance] = useState(0);
+  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
 
   const handleDonateSelect = (amount) => {
     setSelectedAmount(amount);
@@ -748,37 +749,73 @@ function StatsFighterFan() {
           className={styles.catalogItem}
           onClick={() => {
             navigate("/main");
+            setActiveTab("catalog");
           }}
         >
           <img
-            src="ui-checks-grid.png"
+            src={
+              activeTab === "catalog"
+                ? "ui-checks-grid-black.png"
+                : "ui-checks-grid.png"
+            }
             alt=""
             className={styles.catalogImage}
           />
-          <p className={styles.catalogText}>Каталог</p>
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "catalog" ? styles.activeText : ""
+            }`}
+          >
+            Каталог
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
             navigate("/alltournaments");
+            setActiveTab("tournaments");
           }}
         >
           <img
-            src="lightning-charge.png"
+            src={
+              activeTab === "tournaments"
+                ? "lightning-charge-black.png"
+                : "lightning-charge.png"
+            }
             alt=""
             className={styles.catalogImage}
           />
-          <p className={styles.catalogText}>Турниры</p>
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "tournaments" ? styles.activeText : ""
+            }`}
+          >
+            Турниры
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
             navigate("/Referal");
+            setActiveTab("referrals");
           }}
         >
-          <img src="gift.png" alt="" className={styles.catalogImage} />
-          <p className={styles.catalogText}>Рефералы</p>
+          <img
+            src={activeTab === "referrals" ? "gift-black.png" : "gift.png"}
+            alt=""
+            className={styles.catalogImage}
+          />
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "referrals" ? styles.activeText : ""
+            }`}
+          >
+            Рефералы
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
@@ -787,10 +824,21 @@ function StatsFighterFan() {
             } else {
               navigate("/profilefighter");
             }
+            setActiveTab("profile");
           }}
         >
-          <img src="person.png" alt="" className={styles.catalogImage} />
-          <p className={styles.catalogText}>Профиль</p>
+          <img
+            src={activeTab === "profile" ? "person-black.png" : "person.png"}
+            alt=""
+            className={styles.catalogImage}
+          />
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "profile" ? styles.activeText : ""
+            }`}
+          >
+            Профиль
+          </p>
         </div>
       </div>
       {showRatingModal && (
@@ -851,7 +899,6 @@ function StatsFighterFan() {
           </div>
         </div>
       )}
-
       {showDonateModal && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>

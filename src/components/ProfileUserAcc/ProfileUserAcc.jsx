@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileUserAcc() {
   const userType = localStorage.getItem("userType");
+  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -374,37 +375,73 @@ function ProfileUserAcc() {
           className={styles.catalogItem}
           onClick={() => {
             navigate("/main");
+            setActiveTab("catalog");
           }}
         >
           <img
-            src="ui-checks-grid.png"
+            src={
+              activeTab === "catalog"
+                ? "ui-checks-grid-black.png"
+                : "ui-checks-grid.png"
+            }
             alt=""
             className={styles.catalogImage}
           />
-          <p className={styles.catalogText}>Каталог</p>
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "catalog" ? styles.activeText : ""
+            }`}
+          >
+            Каталог
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
             navigate("/alltournaments");
+            setActiveTab("tournaments");
           }}
         >
           <img
-            src="lightning-charge.png"
+            src={
+              activeTab === "tournaments"
+                ? "lightning-charge-black.png"
+                : "lightning-charge.png"
+            }
             alt=""
             className={styles.catalogImage}
           />
-          <p className={styles.catalogText}>Турниры</p>
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "tournaments" ? styles.activeText : ""
+            }`}
+          >
+            Турниры
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
             navigate("/Referal");
+            setActiveTab("referrals");
           }}
         >
-          <img src="gift.png" alt="" className={styles.catalogImage} />
-          <p className={styles.catalogText}>Рефералы</p>
+          <img
+            src={activeTab === "referrals" ? "gift-black.png" : "gift.png"}
+            alt=""
+            className={styles.catalogImage}
+          />
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "referrals" ? styles.activeText : ""
+            }`}
+          >
+            Рефералы
+          </p>
         </div>
+
         <div
           className={styles.catalogItem}
           onClick={() => {
@@ -413,10 +450,21 @@ function ProfileUserAcc() {
             } else {
               navigate("/profilefighter");
             }
+            setActiveTab("profile");
           }}
         >
-          <img src="person.png" alt="" className={styles.catalogImage} />
-          <p className={styles.catalogText}>Профиль</p>
+          <img
+            src={activeTab === "profile" ? "person-black.png" : "person.png"}
+            alt=""
+            className={styles.catalogImage}
+          />
+          <p
+            className={`${styles.catalogText} ${
+              activeTab === "profile" ? styles.activeText : ""
+            }`}
+          >
+            Профиль
+          </p>
         </div>
       </div>
       {showModal && selectedField !== "password" && (
@@ -437,7 +485,6 @@ function ProfileUserAcc() {
           </div>
         </div>
       )}
-
       {showModal && selectedField === "password" && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>

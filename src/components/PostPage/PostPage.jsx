@@ -4,6 +4,8 @@ import styles from "./PostPage.module.css";
 
 const PostPage = () => {
   const { id } = useParams();
+  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
