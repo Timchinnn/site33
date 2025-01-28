@@ -423,9 +423,10 @@ function Main() {
                 </p>
               </div>
             </div>
+            jsx
             <div className={styles.fightersList}>
-              {/* Очищаем список перед отображением нового */}
-              <div className={styles.fightersContainer}>
+              {/* Очищаем список перед отображением */}
+              <div key={activeSectionUser}>
                 {activeSectionUser === "donat"
                   ? users.slice(0, 4).map((fighter) => (
                       <div key={fighter.id} className={styles.fighterItem}>
