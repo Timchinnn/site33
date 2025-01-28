@@ -451,7 +451,7 @@ function Main() {
                   className={activeSection === "votes" ? styles.active : ""}
                   onClick={() => setActiveSection("votes")}
                 >
-                  по голосам
+                  По голосам
                 </p>
               </div>
             </div>
