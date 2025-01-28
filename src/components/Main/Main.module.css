@@ -412,7 +412,7 @@ img {
   color: black !important;
 }
 .active {
-  color: black;
+  color: black !important;
 }
 .eyeoff {
   position: absolute;
