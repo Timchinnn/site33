@@ -327,14 +327,11 @@ function Main() {
               ([_, data]) => data.tournaments && data.tournaments.length > 0
             )
             .reduce((acc, [id, data]) => {
-              // Находим последний использованный индекс турнира для этой дисциплины
               const lastUsedIndex =
                 acc.find(([accId]) => accId === id)?.[2] || -1;
-
-              // Проверяем есть ли следующий турнир
               const nextTournamentIndex = lastUsedIndex + 1;
+
               if (nextTournamentIndex < data.tournaments.length) {
-                // Проверяем на дубликаты
                 const isDuplicate = acc.some(
                   ([_, existingData, index]) =>
                     existingData.tournaments[index].name ===
