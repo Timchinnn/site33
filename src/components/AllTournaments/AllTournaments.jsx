@@ -13,10 +13,10 @@ function AllTournaments() {
   const handleFighterClick = async (fighterName) => {
     // Убираем последние 3 символа из имени бойца
     console.log(fighterName);
-
+    const encodedName = encodeURIComponent(fighterName);
     try {
       // Отправляем запрос на сервер
-      const response = await fetch(`/api/fighter/${fighterName}`);
+      const response = await fetch(`/api/fighter/${encodedName}`);
 
       if (response.ok) {
         const fighterData = await response.json();
