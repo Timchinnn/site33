@@ -24,8 +24,8 @@ img {
   text-decoration-skip-ink: none;
 }
 .container {
-  width: 91vw;  padding-bottom: 120px; /* Отступ для фиксированных кнопок */
-
+  width: 91vw;
+  padding-bottom: 120px; /* Отступ для фиксированных кнопок */
 }
 .topBar {
   display: flex;
@@ -286,7 +286,6 @@ hr {
   letter-spacing: -0.03em;
   height: 42px;
   border-radius: 8px;
-}order-radius: 8px;
 }
 .vote img {
   width: 23px;
