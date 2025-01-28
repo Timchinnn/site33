@@ -223,6 +223,22 @@ function Main() {
             style={{ cursor: "pointer", pointerEvents: "auto" }}
           />
         </div>
+        <div>
+          {" "}
+          {filteredFighters.map((fighter) => (
+            <div
+              key={fighter.id}
+              className={styles.fighterCard}
+              onClick={() => handleFighterClick(fighter)}
+            >
+              <div>
+                <p>
+                  {fighter.name} {fighter.surname}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
         {filteredFighters.map((fighter) => (
           <div
             key={fighter.id}
