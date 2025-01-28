@@ -473,7 +473,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-left: 10px;
-  max-width: 343px;
+  /* max-width: 343px; */
   width: 92%;
   padding-right: 0px;
   margin-right: 0px;
