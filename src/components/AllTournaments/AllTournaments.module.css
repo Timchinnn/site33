@@ -100,7 +100,9 @@ img {
   align-items: center; /* Выравнивание по центру по горизонтали */
   justify-content: center; /* Выравнивание по центру по вертикали */
 }
-
+.activeText {
+  color: black;
+}
 .catalogImage {
   margin-bottom: 4px; /* Отступ между изображением и текстом */
 }

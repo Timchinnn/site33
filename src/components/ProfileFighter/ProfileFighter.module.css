@@ -6,6 +6,9 @@
 img {
   width: 28px;
 }
+.activeText {
+  color: black;
+}
 .header {
   display: flex;
   justify-content: center;

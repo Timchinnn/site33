@@ -408,6 +408,9 @@ img {
   font-size: 16px;
   height: 40px;
 }
+.activeText {
+  color: black;
+}
 .eyeoff {
   position: absolute;
   right: 0%;

@@ -2,7 +2,9 @@
   font-family: "Bebas Neue Cyrillic";
   src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
 }
-
+.activeText {
+  color: black;
+}
 img {
   width: 28px;
 }

@@ -10,6 +10,9 @@ img {
   display: flex;
   justify-content: center;
 }
+.activeText {
+  color: black;
+}
 .header h2 {
   font-family: Inter;
   font-size: 18px;
