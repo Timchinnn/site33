@@ -411,6 +411,9 @@ img {
 .activeText {
   color: black !important;
 }
+.active {
+  color: black;
+}
 .eyeoff {
   position: absolute;
   right: 0%;
