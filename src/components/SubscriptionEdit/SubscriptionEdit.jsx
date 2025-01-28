@@ -10,6 +10,7 @@ function SubscriptionEdit() {
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
   };
+  const [activeTab, setActiveTab] = useState("catalog");
   const [selectedAmount, setSelectedAmount] = useState(subscription.amount);
   const [selectedPeriod, setSelectedPeriod] = useState(
     subscription.subscription_period
