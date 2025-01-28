@@ -244,6 +244,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: white;
+  width: 89%;
 }
 .referralProgram p {
   font-family: Inter;
@@ -256,6 +257,7 @@ img {
   text-decoration-skip-ink: none;
   width: 297px;
   color: white;
+  width: 96%;
 }
 .referralProgramimg {
   background-color: #0f0f0f0f;
