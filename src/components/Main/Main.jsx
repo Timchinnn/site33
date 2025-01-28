@@ -495,7 +495,7 @@ function Main() {
           />
           <p
             className={`${styles.catalogText} ${
-              activeTab === "catalog" ? styles.activeText : ""
+              activeTab === "catalog" ? styles.activeText : "color:black"
             }`}
           >
             Каталог
