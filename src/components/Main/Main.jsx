@@ -425,7 +425,7 @@ function Main() {
         <div className={styles.referralProgram}>
           <div className={styles.referralText}>
             <h2>Реферальная программа</h2>
-            <p>Приглашай друзей и получай %% с каждого доната</p>
+            <p>Приглашай друзей или спортсменов и получай % с каждого доната</p>
           </div>
           <img
             src="forward-white.png"
