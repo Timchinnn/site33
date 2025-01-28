@@ -205,7 +205,7 @@ function Main() {
     matches: [],
   });
 
-  const handleTournamentClick = async (tournamentName) => {
+  const handleTournamentClick = async (tournamentName, name) => {
     try {
       // Получаем матчи для указанной дисциплины
       const response = await fetch(`/api/tournaments/${tournamentName}`);
@@ -409,7 +409,12 @@ function Main() {
               <div
                 key={`${id}-${tournamentIndex}`}
                 className={styles.game}
-                onClick={() => handleTournamentClick(data.discipline_name)}
+                onClick={() =>
+                  handleTournamentClick(
+                    data.discipline_name,
+                    data.tournaments[tournamentIndex].name
+                  )
+                }
               >
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
