@@ -825,18 +825,18 @@ function Voting() {
             <p> ₽15600.00</p>
           </div>
         </div>
-        <div className={styles.vote}>
-          <button onClick={toggleModal}>Голосовать</button>
-          <button onClick={() => setShowDonateModal(true)}>
-            Отправить донат
-          </button>
-          {/* <div
+      </div>
+      <div className={styles.vote}>
+        <button onClick={toggleModal}>Голосовать</button>
+        <button onClick={() => setShowDonateModal(true)}>
+          Отправить донат
+        </button>
+        {/* <div
             className={styles.imgDonateBlack}
             onClick={() => setShowDonateModal(true)}
           >
             <img src="hands-helping.png" alt="" />
           </div> */}
-        </div>
       </div>
       <div className={styles.bottomNav}>
         <div
