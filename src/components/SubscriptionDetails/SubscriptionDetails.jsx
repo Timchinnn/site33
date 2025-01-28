@@ -7,7 +7,7 @@ function SubscriptionDetails() {
   const navigate = useNavigate();
   const { subscription } = location.state;
   const userType = localStorage.getItem("userType");
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу

@@ -12,7 +12,7 @@ function Referal() {
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
   };
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState("referrals"); // начальное значение зависит от текущей страницы
 
   // useEffect(() => {
   //   const userId = localStorage.getItem("userId");

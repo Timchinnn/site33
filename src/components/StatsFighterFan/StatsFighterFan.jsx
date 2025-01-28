@@ -28,7 +28,7 @@ function StatsFighterFan() {
   const [isThankYouMessageRating, setIsThankYouMessageRating] = useState(false);
   const [donateAmount, setDonateAmount] = useState(0);
   const [userBalance, setUserBalance] = useState(0);
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const handleDonateSelect = (amount) => {
     setSelectedAmount(amount);

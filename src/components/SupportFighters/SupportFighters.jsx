@@ -10,7 +10,7 @@ function SupportFighters() {
   const [filteredFighters, setFilteredFighters] = useState([]);
   const location = useLocation();
   const { fighters } = location.state || {};
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();

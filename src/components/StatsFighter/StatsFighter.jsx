@@ -6,7 +6,7 @@ function StatsFighter() {
   const [showEditDonationModal, setShowEditDonationModal] = useState(false);
   const [editedDream, setEditedDream] = useState("");
   const [editedTarget, setEditedTarget] = useState("");
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const handleDonationClick = () => {
     setShowEditDonationModal(true);

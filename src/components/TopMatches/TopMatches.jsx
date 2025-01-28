@@ -10,7 +10,7 @@ function TopMatches() {
   const tournaments = sportData.tournaments;
   const matches = sportData.matches;
   const [isOpen, setIsOpen] = useState({});
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const handleMatchClick = (tournament) => {
     const tournamentMatches = matches.filter(

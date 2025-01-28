@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function ProfileUser() {
   const userType = localStorage.getItem("userType");
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState("profile"); // начальное значение зависит от текущей страницы
 
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);

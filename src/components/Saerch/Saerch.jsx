@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Saerch() {
   const userType = localStorage.getItem("userType");
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const navigate = useNavigate();
   const [fighters, setFighters] = useState([]);

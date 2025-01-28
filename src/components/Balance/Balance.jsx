@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Balance() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const [isThankYouMessage, setIsThankYouMessage] = useState(false);
   const [showDonateInput, setShowDonateInput] = useState(false);

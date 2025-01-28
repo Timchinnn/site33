@@ -6,7 +6,7 @@ function TopFighters() {
   const userType = localStorage.getItem("userType");
 
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const location = useLocation();
   const { fighters, activeSection } = location.state || {};
