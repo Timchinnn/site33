@@ -98,9 +98,12 @@ function AllTournaments() {
           <img src="forward-white.png" alt="" />
         </div>
         {tournaments.map((tournament) => (
-          <div key={tournament.id} onClick={() => handleMatchClick(tournament)}>
+          <div key={tournament.id}>
             <div className={styles.competitions}>
-              <div className={styles.competitionsText}>
+              <div
+                className={styles.competitionsText}
+                onClick={() => handleMatchClick(tournament)}
+              >
                 <p>{tournament.discipline_name}</p>
                 <p>{tournament.name}</p>
               </div>
