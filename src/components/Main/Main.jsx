@@ -204,7 +204,6 @@ function Main() {
     tournaments: [],
     matches: [],
   });
-  console.log(sportData);
 
   const handleTournamentClick = async (tournamentName) => {
     try {
@@ -219,6 +218,7 @@ function Main() {
       };
 
       setSportData(combinedData);
+      console.log(sportData);
 
       // Находим турнир по имени
       const tournament = combinedData.tournaments.find(
