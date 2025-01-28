@@ -12,6 +12,7 @@ function AllTournaments() {
   });
   const handleFighterClick = async (fighterName) => {
     // Убираем последние 3 символа из имени бойца
+    console.log(fighterName);
 
     try {
       // Отправляем запрос на сервер
