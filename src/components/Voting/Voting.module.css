@@ -24,7 +24,8 @@ img {
   text-decoration-skip-ink: none;
 }
 .container {
-  width: 91vw;
+  width: 91vw;  padding-bottom: 120px; /* Отступ для фиксированных кнопок */
+
 }
 .topBar {
   display: flex;
@@ -259,11 +260,19 @@ hr {
   border-color: #0f0f0f0f;
 }
 .vote {
+  position: fixed;
+  bottom: 60px; /* Отступ от нижнего края */
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  z-index: 999;
+  border-top: 1px solid #e8e7ed;
 }
+
 .vote button {
   width: 48%;
   max-width: 357px;
@@ -275,10 +284,9 @@ hr {
   font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.03em;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   height: 42px;
   border-radius: 8px;
+}order-radius: 8px;
 }
 .vote img {
   width: 23px;
