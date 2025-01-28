@@ -320,6 +320,7 @@ function Main() {
           <h2>Топовые события</h2>
           <img src="forward.png" alt="" />
         </div>
+
         <div className={styles.games}>
           {Object.entries(disciplinesWithTournaments)
             .filter(
@@ -356,7 +357,6 @@ function Main() {
               </div>
             ))}
         </div>
-
         <div className={styles.referralProgram}>
           <div className={styles.referralText}>
             <h2>Реферальная программа</h2>
