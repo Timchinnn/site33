@@ -326,23 +326,32 @@ function Main() {
               ([_, data]) => data.tournaments && data.tournaments.length > 0
             )
             .reduce((acc, [id, data]) => {
-              // Проверяем, есть ли уже турнир с таким названием
-              const isDuplicate = acc.some(
-                ([_, existingData]) =>
-                  existingData.tournaments[0].name === data.tournaments[0].name
-              );
+              // Находим последний использованный индекс турнира для этой дисциплины
+              const lastUsedIndex =
+                acc.find(([accId]) => accId === id)?.[2] || -1;
 
-              if (!isDuplicate && acc.length < 4) {
-                acc.push([id, data]);
+              // Проверяем есть ли следующий турнир
+              const nextTournamentIndex = lastUsedIndex + 1;
+              if (nextTournamentIndex < data.tournaments.length) {
+                // Проверяем на дубликаты
+                const isDuplicate = acc.some(
+                  ([_, existingData, index]) =>
+                    existingData.tournaments[index].name ===
+                    data.tournaments[nextTournamentIndex].name
+                );
+
+                if (!isDuplicate && acc.length < 4) {
+                  acc.push([id, data, nextTournamentIndex]);
+                }
               }
               return acc;
             }, [])
-            .map(([id, data]) => (
-              <div key={id} className={styles.game}>
+            .map(([id, data, tournamentIndex]) => (
+              <div key={`${id}-${tournamentIndex}`} className={styles.game}>
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
                   <p>{data.discipline_name}</p>
-                  <p>{data.tournaments[0].name}</p>
+                  <p>{data.tournaments[tournamentIndex].name}</p>
                 </div>
               </div>
             ))}
