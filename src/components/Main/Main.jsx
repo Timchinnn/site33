@@ -409,9 +409,7 @@ function Main() {
               <div
                 key={`${id}-${tournamentIndex}`}
                 className={styles.game}
-                onClick={() =>
-                  handleTournamentClick(data.tournaments[tournamentIndex].name)
-                }
+                onClick={() => handleTournamentClick(data.discipline_name)}
               >
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
