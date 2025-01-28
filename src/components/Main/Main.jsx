@@ -347,14 +347,12 @@ function Main() {
               const lastUsedIndex =
                 acc.find(([accId]) => accId === id)?.[2] || -1;
               const nextTournamentIndex = lastUsedIndex + 1;
-
               if (nextTournamentIndex < data.tournaments.length) {
                 const isDuplicate = acc.some(
                   ([_, existingData, index]) =>
                     existingData.tournaments[index].name ===
                     data.tournaments[nextTournamentIndex].name
                 );
-
                 if (!isDuplicate && acc.length < 4) {
                   acc.push([id, data, nextTournamentIndex]);
                 }
@@ -362,7 +360,18 @@ function Main() {
               return acc;
             }, [])
             .map(([id, data, tournamentIndex]) => (
-              <div key={`${id}-${tournamentIndex}`} className={styles.game}>
+              <div
+                key={`${id}-${tournamentIndex}`}
+                className={styles.game}
+                onClick={() => {
+                  navigate("/voting", {
+                    state: {
+                      tournament: data.tournaments[tournamentIndex],
+                      matches: data.tournaments[tournamentIndex].matches || [],
+                    },
+                  });
+                }}
+              >
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
                   <p>{data.discipline_name}</p>
