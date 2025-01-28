@@ -73,22 +73,22 @@ function Main() {
 
     fetchTopVotedFighters();
   }, []);
-  const [topMatches, setTopMatches] = useState([]);
-  useEffect(() => {
-    const fetchTopMatches = async () => {
-      try {
-        const response = await fetch("/api/top-matches");
-        if (response.ok) {
-          const data = await response.json();
-          setTopMatches(data);
-        }
-      } catch (error) {
-        console.error("Ошибка при получении топовых матчей:", error);
-      }
-    };
+  // const [topMatches, setTopMatches] = useState([]);
+  // useEffect(() => {
+  //   const fetchTopMatches = async () => {
+  //     try {
+  //       const response = await fetch("/api/top-matches");
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setTopMatches(data);
+  //       }
+  //     } catch (error) {
+  //       console.error("Ошибка при получении топовых матчей:", error);
+  //     }
+  //   };
 
-    fetchTopMatches();
-  }, []);
+  //   fetchTopMatches();
+  // }, []);
   const handleFighterClick = (fighter) => {
     navigate("/StatsFighterFan", {
       state: {
