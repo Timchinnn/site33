@@ -325,7 +325,18 @@ function Main() {
             .filter(
               ([_, data]) => data.tournaments && data.tournaments.length > 0
             )
-            .slice(0, 4)
+            .reduce((acc, [id, data]) => {
+              // Проверяем, есть ли уже турнир с таким названием
+              const isDuplicate = acc.some(
+                ([_, existingData]) =>
+                  existingData.tournaments[0].name === data.tournaments[0].name
+              );
+
+              if (!isDuplicate && acc.length < 4) {
+                acc.push([id, data]);
+              }
+              return acc;
+            }, [])
             .map(([id, data]) => (
               <div key={id} className={styles.game}>
                 <img src="lightning.png" alt="" />
