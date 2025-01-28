@@ -149,20 +149,18 @@ function AllTournaments() {
                       <div className={styles.fightersNames}>
                         <div
                           className={styles.fighterName}
-                          onClick={() =>
-                            handleFighterClick(fighter.competitor_1)
-                          }
+                          onClick={() => handleFighterClick(match.competitor_1)}
                         >
                           <img
                             className={styles.Avatar}
                             src={
-                              fighter.fighter1_photo
-                                ? fighter.fighter1_photo
+                              match.fighter1_photo
+                                ? match.fighter1_photo
                                 : "Avatar.png"
                             }
                             alt=""
                           />
-                          <p className={styles.name}>{fighter.competitor_1}</p>
+                          <p className={styles.name}>{match.competitor_1}</p>
                         </div>
                         <div className={styles.fighterName}>
                           <img
