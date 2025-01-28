@@ -10,12 +10,29 @@ function AllTournaments() {
     tournaments: [],
     matches: [],
   });
-  const handleFighterClick = (fighter) => {
-    navigate("/StatsFighterFan", {
-      state: {
-        fighterData: fighter,
-      },
-    });
+  const handleFighterClick = async (fighterName) => {
+    // Убираем последние 3 символа из имени бойца
+
+    try {
+      // Отправляем запрос на сервер
+      const response = await fetch(`/api/fighter/${fighterName}`);
+
+      if (response.ok) {
+        const fighterData = await response.json();
+
+        // Перенаправляем на страницу статистики с полученными данными
+        navigate("/StatsFighterFan", {
+          state: {
+            fighterName: fighterName,
+            fighterData: fighterData,
+          },
+        });
+      } else {
+        console.error("Failed to fetch fighter data");
+      }
+    } catch (error) {
+      console.error("Error fetching fighter data:", error);
+    }
   };
   useEffect(() => {
     const fetchAllTournaments = async () => {
@@ -132,7 +149,9 @@ function AllTournaments() {
                       <div className={styles.fightersNames}>
                         <div
                           className={styles.fighterName}
-                          onClick={() => handleFighterClick(fighter)}
+                          onClick={() =>
+                            handleFighterClick(fighter.competitor_1)
+                          }
                         >
                           <img
                             className={styles.Avatar}
