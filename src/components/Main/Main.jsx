@@ -200,18 +200,41 @@ function Main() {
     fetchSortedUsers();
   }, []);
   console.log(sortedUsers);
-  const handleMatchClick = async (tournament) => {
+  const [sportData, setSportData] = useState({
+    tournaments: [],
+    matches: [],
+  });
+  console.log(sportData);
+
+  const handleTournamentClick = async (tournamentName) => {
     try {
-      // Fetch matches for the specific tournament
-      const response = await fetch(`/api/tournaments/${tournament}`);
-      if (response.ok) {
-        const data = await response.json();
-        // Filter matches for this specific tournament
-        const tournamentMatches = data.matches.filter(
+      // Получаем матчи для указанной дисциплины
+      const response = await fetch(`/api/tournaments/${tournamentName}`);
+      const data = await response.json();
+
+      // Формируем данные для указанной дисциплины
+      const combinedData = {
+        tournaments: data.tournaments,
+        matches: data.matches,
+      };
+
+      setSportData(combinedData);
+
+      // Находим турнир по имени
+      const tournament = combinedData.tournaments.find(
+        (t) => t.name === tournamentName
+      );
+
+      if (tournament) {
+        // Фильтруем матчи для данного турнира
+        const tournamentMatches = combinedData.matches.filter(
           (match) => match.tournament_id === tournament.id
         );
 
-        // Navigate to voting page with tournament and matches data
+        console.log(tournamentMatches);
+        console.log(tournament);
+
+        // Переходим на страницу голосования
         navigate("/voting", {
           state: {
             tournament: tournament,
@@ -220,7 +243,7 @@ function Main() {
         });
       }
     } catch (error) {
-      console.error("Error fetching tournament matches:", error);
+      console.error("Error fetching tournament data:", error);
     }
   };
   return (
@@ -386,9 +409,9 @@ function Main() {
               <div
                 key={`${id}-${tournamentIndex}`}
                 className={styles.game}
-                onClick={() => {
-                  handleMatchClick(data.tournaments[tournamentIndex].id);
-                }}
+                onClick={() =>
+                  handleTournamentClick(data.tournaments[tournamentIndex].name)
+                }
               >
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
