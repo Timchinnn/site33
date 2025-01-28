@@ -97,7 +97,7 @@ img {
 }
 
 .catalogImage {
-  margin-bottom: 8px; /* Отступ между изображением и текстом */
+  margin-bottom: 4px; /* Отступ между изображением и текстом */
 }
 
 .catalogText {
