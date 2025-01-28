@@ -11,7 +11,7 @@ img {
   justify-content: center;
 }
 .activeText {
-  color: black;
+  color: black !important;
 }
 .header h2 {
   font-family: Inter;

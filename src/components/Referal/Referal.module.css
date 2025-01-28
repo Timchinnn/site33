@@ -3,7 +3,7 @@
   src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
 }
 .activeText {
-  color: black;
+  color: black !important;
 }
 img {
   width: 28px;

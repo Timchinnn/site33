@@ -409,7 +409,7 @@ img {
   height: 40px;
 }
 .activeText {
-  color: black;
+  color: black !important;
 }
 .eyeoff {
   position: absolute;

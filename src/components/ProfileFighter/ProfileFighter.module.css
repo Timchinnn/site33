@@ -7,7 +7,7 @@ img {
   width: 28px;
 }
 .activeText {
-  color: black;
+  color: black !important;
 }
 .header {
   display: flex;

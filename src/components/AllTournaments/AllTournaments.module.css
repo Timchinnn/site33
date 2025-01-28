@@ -101,7 +101,7 @@ img {
   justify-content: center; /* Выравнивание по центру по вертикали */
 }
 .activeText {
-  color: black;
+  color: black !important;
 }
 .catalogImage {
   margin-bottom: 4px; /* Отступ между изображением и текстом */
