@@ -204,6 +204,18 @@ img {
   padding-left: 2vw;
   padding-top: 1vh;
 }
+.participants :last-child {
+  padding-top: 5px;
+
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
 .games {
   display: flex;
   flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку */
