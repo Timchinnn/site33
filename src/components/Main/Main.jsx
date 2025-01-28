@@ -321,15 +321,16 @@ function Main() {
         </div>
         <div className={styles.games}>
           {Object.entries(disciplinesWithTournaments)
+            .filter(
+              ([_, data]) => data.tournaments && data.tournaments.length > 0
+            )
             .slice(0, 4)
             .map(([id, data]) => (
               <div key={id} className={styles.game}>
                 <img src="lightning.png" alt="" />
                 <div className={styles.participants}>
                   <p>{data.discipline_name}</p>
-                  {data.tournaments.length > 0 && (
-                    <p>{data.tournaments[0].name}</p>
-                  )}
+                  <p>{data.tournaments[0].name}</p>
                 </div>
               </div>
             ))}
