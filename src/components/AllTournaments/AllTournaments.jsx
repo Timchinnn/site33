@@ -98,7 +98,7 @@ function AllTournaments() {
           <img src="forward-white.png" alt="" />
         </div>
         {tournaments.map((tournament) => (
-          <div key={tournament.id}>
+          <div key={tournament.id} onClick={() => handleMatchClick(tournament)}>
             <div className={styles.competitions}>
               <div className={styles.competitionsText}>
                 <p>{tournament.discipline_name}</p>
@@ -112,10 +112,7 @@ function AllTournaments() {
               />
             </div>
             {isOpen[tournament.id] && (
-              <div
-                onClick={() => handleMatchClick(tournament)}
-                style={{ cursor: "pointer" }}
-              >
+              <div style={{ cursor: "pointer" }}>
                 {matches
                   .filter((match) => match.tournament_id === tournament.id)
                   .map((match) => (
