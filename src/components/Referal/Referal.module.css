@@ -149,17 +149,20 @@ img {
   margin: 0;
   padding-bottom: 4px;
 }
-/* .earned :last-child {
-  color: black;
+.earned :last-child {
+  color: #000;
   font-family: Inter;
-  font-size: 22px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: -0.06em;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
   margin: 0;
-} */
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 17px;
+  padding-bottom: 4px;
+  text-align: center;
+}
 .earned :nth-child(2) {
   color: black;
   font-family: Inter;
