@@ -239,6 +239,9 @@ img {
   color: white;
   width: 74vw;
 }
+.forwardWhite {
+  width: 36px;
+}
 .earnRef {
   color: black;
   font-family: Inter;
