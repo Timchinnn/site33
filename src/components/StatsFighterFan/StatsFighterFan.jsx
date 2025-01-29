@@ -106,6 +106,12 @@ function StatsFighterFan() {
     // Добавляем логику создания подписки
     if (isToggleOn && selectedDate) {
       try {
+        console.log(
+          localStorage.getItem("userId"),
+          fighterData.id,
+          selectedDate,
+          donateAmount
+        );
         const response = await fetch("/api/subscriptions", {
           method: "POST",
           headers: {
