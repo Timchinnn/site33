@@ -123,7 +123,11 @@ function Referal() {
           <div className={styles.earned}>
             <p>Всего заработано</p>
             <p>62 750 ₽</p>
-            <img src="/solar_download-outline.png" alt="" />
+            <img
+              src="/solar_download-outline.png"
+              alt=""
+              className={styles.solarDownload}
+            />
             <p>Зачислить на текущий счёт</p>
           </div>
           {/* <p className={styles.earn}>

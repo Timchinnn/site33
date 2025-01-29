@@ -147,7 +147,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin: 0;
-  padding-bottom: 4px;
+  padding-bottom: 10px;
 }
 .earned :last-child {
   color: #000;
@@ -162,6 +162,11 @@ img {
   line-height: 17px;
   padding-bottom: 4px;
   text-align: center;
+  padding-bottom: 0;
+}
+.solarDownload {
+  width: 36px;
+  padding-bottom: 5px;
 }
 .earned :nth-child(2) {
   color: black;
@@ -174,6 +179,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin: 0;
+  padding-bottom: 15px;
 }
 .content {
   align-items: center;
