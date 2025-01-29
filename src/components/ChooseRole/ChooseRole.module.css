@@ -47,6 +47,7 @@
   letter-spacing: -0.03em;
   height: 40px;
   font-size: 16px;
+  border-radius: 4px;
 }
 
 .authForm h2 {
