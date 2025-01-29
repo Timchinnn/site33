@@ -232,6 +232,7 @@ label:active:after {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-left: 16px;
+  border-radius: 4px;
 }
 .modalContent button {
   width: 99%;
@@ -248,6 +249,7 @@ label:active:after {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 4px;
 }
 .passwordinput {
   margin-bottom: 5px;
@@ -276,6 +278,7 @@ label:active:after {
   background-size: 26px;
   padding-right: 30px;
   margin-bottom: 7px;
+  border-radius: 4px;
 }
 .modalContent select:focus {
   outline: none;
