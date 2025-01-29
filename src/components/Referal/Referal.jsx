@@ -143,7 +143,7 @@ function Referal() {
           <img
             src="forward-white.png"
             alt=""
-            className="forwardWhite"
+            className={styles.forwardWhite}
             onClick={() => {
               // setIsThankYouMessageRating(false);
               setShowRatingModal(true);
@@ -160,7 +160,7 @@ function Referal() {
           <img
             src="forward-white.png"
             alt=""
-            className="forwardWhite"
+            className={styles.forwardWhite}
             onClick={() => {
               // setIsThankYouMessageRating(false);
               setShowRatingModal(true);
