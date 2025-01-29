@@ -127,6 +127,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 8px;
 }
 .balance {
   display: flex;
