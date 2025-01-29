@@ -311,6 +311,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 4px;
 }
 .namesBut {
   display: flex;
@@ -343,4 +344,5 @@ img {
   border: none;
   height: 40px;
   width: 98%;
+  border-radius: 4px;
 }
