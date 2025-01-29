@@ -357,6 +357,7 @@ hr {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-left: 16px;
+  border-radius: 4px;
 }
 .modalContent button {
   width: 100%;
@@ -373,6 +374,7 @@ hr {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 4px;
 }
 .modalContent p {
   font-family: Inter;
