@@ -9,7 +9,7 @@ function RoleFan() {
   const [selectedRegion, setSelectedRegion] = useState("");
 
   const [profileName, setProfileName] = useState("");
-  const [selectedCurrency, setSelectedCurrency] = useState("");
+  // const [selectedCurrency, setSelectedCurrency] = useState("");
   const location = useLocation();
   const emailFromRegister = location.state?.email;
   const passwordFromRegister = location.state?.password;
@@ -47,13 +47,13 @@ function RoleFan() {
     ],
   };
 
-  const currencies = {
-    RUB: { name: "Российский рубль", image: "./images/rub.png" },
-    USD: { name: "Доллар США", image: "./images/usd.png" },
-    EUR: { name: "Евро", image: "./images/eur.png" },
-    KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
-    BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
-  };
+  // const currencies = {
+  //   RUB: { name: "Российский рубль", image: "./images/rub.png" },
+  //   USD: { name: "Доллар США", image: "./images/usd.png" },
+  //   EUR: { name: "Евро", image: "./images/eur.png" },
+  //   KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
+  //   BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
+  // };
 
   const handleCountryChange = (e) => {
     setSelectedCountry(e.target.value);
@@ -67,12 +67,7 @@ function RoleFan() {
   //   navigate("/main");
   // };
 
-  const isFormValid =
-    email &&
-    profileName &&
-    selectedCountry &&
-    selectedRegion &&
-    selectedCurrency;
+  const isFormValid = email && profileName && selectedCountry && selectedRegion;
   const handleSave = async () => {
     if (!email.includes("@") || !email.includes(".")) {
       alert("Пожалуйста, введите корректный email адрес");
@@ -100,7 +95,7 @@ function RoleFan() {
         profileName,
         selectedCountry,
         selectedRegion,
-        selectedCurrency,
+        // selectedCurrency,
         passwordFromRegister,
         referralCode,
       };
@@ -175,7 +170,7 @@ function RoleFan() {
           </select>
         )}
 
-        <select
+        {/* <select
           value={selectedCurrency}
           onChange={(e) => setSelectedCurrency(e.target.value)}
         >
@@ -185,7 +180,7 @@ function RoleFan() {
               {name}
             </option>
           ))}
-        </select>
+        </select> */}
 
         <button
           onClick={handleSave}
