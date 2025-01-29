@@ -8,6 +8,7 @@ function Referal() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const [showRatingModal, setShowRatingModal] = useState(false);
+  const [showRatingModalFight, setShowRatingModalFight] = useState(false);
   console.log(referralStatus);
   useEffect(() => {
     const images = [
@@ -169,7 +170,7 @@ function Referal() {
             className={styles.forwardWhite}
             onClick={() => {
               // setIsThankYouMessageRating(false);
-              setShowRatingModal(true);
+              setShowRatingModalFight(true);
             }}
           />
         </div>
@@ -301,6 +302,30 @@ function Referal() {
                 />
               </div>
               <p>Скопируйте реферальную ссылку, чтобы пригласить друга</p>
+              <input
+                type="text"
+                value={referralLink}
+                readOnly
+                className={styles.referralInput}
+              />
+              <button onClick={copyReferralLink}>Скопировать ссылку</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showRatingModalFight && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <div className={styles.topModalHead}>
+              <div className={styles.namesBut}>
+                <h2>Пригласить фаната</h2>
+                <img
+                  src="x-circle.png"
+                  alt="#"
+                  onClick={() => setShowRatingModalFight(false)}
+                />
+              </div>
+              <p>Скопируйте реферальную ссылку, чтобы пригласить бойца</p>
               <input
                 type="text"
                 value={referralLink}
