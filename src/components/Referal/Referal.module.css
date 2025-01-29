@@ -212,6 +212,7 @@ img {
   background: linear-gradient(291.04deg, #ff0033 0%, #99001f 101.64%);
   margin-top: 10px;
   height: 84px;
+  border-radius: 10px;
 }
 .referralProgram h2 {
   font-family: Inter;
