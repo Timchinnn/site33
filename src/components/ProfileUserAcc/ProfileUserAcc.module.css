@@ -192,6 +192,7 @@ label:active:after {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-top: 12px;
 }
 .modalOverlay {
   position: fixed;
