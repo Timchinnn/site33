@@ -149,7 +149,18 @@ img {
   margin: 0;
   padding-bottom: 4px;
 }
-.earned :last-child {
+/* .earned :last-child {
+  color: black;
+  font-family: Inter;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: -0.06em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 0;
+} */
+.earned :nth-child(2) {
   color: black;
   font-family: Inter;
   font-size: 22px;
