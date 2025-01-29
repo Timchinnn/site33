@@ -122,6 +122,7 @@ input:focus {
 
   /* Добавляем отступ справа чтобы стрелка не накладывалась на текст */
   padding-right: 30px;
+  border-radius: 4px;
 }
 .authForm select:focus {
   outline: none;
