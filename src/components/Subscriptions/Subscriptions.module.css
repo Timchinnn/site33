@@ -204,6 +204,7 @@ img {
   height: 84px;
   height: 128px;
   flex-direction: column;
+  border-radius: 12px;
 }
 .referralProgram h2 {
   font-family: Inter;
