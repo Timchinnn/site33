@@ -129,6 +129,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-top: 0;
 }
 input[type="checkbox"] {
   height: 0;
@@ -294,7 +295,7 @@ label:active:after {
 .profilePhoto {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  border-radius: 12px;
   object-fit: cover;
   margin-bottom: 10px;
 }
@@ -314,6 +315,7 @@ label:active:after {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-top: 12px;
 }
 .modalOverlay {
   position: fixed;
