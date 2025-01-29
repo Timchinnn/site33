@@ -91,6 +91,7 @@ input:focus {
   max-width: 343px;
   width: 92%;
   margin-bottom: -1vh;
+  border-radius: 4px;
 }
 .authForm select {
   border: none;
