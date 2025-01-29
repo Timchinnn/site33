@@ -123,6 +123,8 @@ function Referal() {
           <div className={styles.earned}>
             <p>Всего заработано</p>
             <p>62 750 ₽</p>
+            <img src="/solar_download-outline.png" alt="" />
+            <p>Зачислить на текущий счёт</p>
           </div>
           <p className={styles.earn}>
             Зарабатывай от 40 000 руб в месяц добавляя новых пользователей и
