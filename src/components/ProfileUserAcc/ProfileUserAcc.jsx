@@ -22,10 +22,10 @@ function ProfileUserAcc() {
   const [editedValue, setEditedValue] = useState("");
   const currencies = {
     RUB: { name: "Российский рубль", image: "./images/rub.png" },
-    USD: { name: "Доллар США", image: "./images/usd.png" },
-    EUR: { name: "Евро", image: "./images/eur.png" },
-    KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
-    BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
+    // USD: { name: "Доллар США", image: "./images/usd.png" },
+    // EUR: { name: "Евро", image: "./images/eur.png" },
+    // KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
+    // BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
   };
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");

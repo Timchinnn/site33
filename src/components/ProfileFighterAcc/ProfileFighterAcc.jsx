@@ -60,10 +60,10 @@ function ProfileFighterAcc() {
   const userId = localStorage.getItem("userId");
   const currencies = {
     RUB: { name: "Российский рубль", image: "./images/rub.png" },
-    USD: { name: "Доллар США", image: "./images/usd.png" },
-    EUR: { name: "Евро", image: "./images/eur.png" },
-    KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
-    BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
+    // USD: { name: "Доллар США", image: "./images/usd.png" },
+    // EUR: { name: "Евро", image: "./images/eur.png" },
+    // KZT: { name: "Казахстанский тенге", image: "./images/kzt.png" },
+    // BYN: { name: "Белорусский рубль", image: "./images/byn.png" },
   };
   const handlePhotoUpload = async (e) => {
     const file = e.target.files[0];
