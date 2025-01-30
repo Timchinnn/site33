@@ -159,7 +159,10 @@ function AllTournaments() {
               />
             </div>
             {isOpen[tournament.id] && (
-              <div style={{ cursor: "pointer" }}>
+              <div
+                style={{ cursor: "pointer" }}
+                className={styles.dropdownContents}
+              >
                 {matches
                   .filter((match) => match.tournament_id === tournament.id)
                   .map((match) => (
