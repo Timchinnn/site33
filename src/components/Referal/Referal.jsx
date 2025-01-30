@@ -318,7 +318,7 @@ function Referal() {
           <div className={styles.modalContent}>
             <div className={styles.topModalHead}>
               <div className={styles.namesBut}>
-                <h2>Пригласить фаната</h2>
+                <h2>Пригласить бойца</h2>
                 <img
                   src="x-circle.png"
                   alt="#"
