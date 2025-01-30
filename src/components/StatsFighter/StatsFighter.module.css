@@ -469,6 +469,7 @@ img {
 .cardHeaders {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .cardFooter {
   display: flex;
