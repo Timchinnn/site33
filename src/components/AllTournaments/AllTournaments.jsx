@@ -135,7 +135,9 @@ function AllTournaments() {
         <div className={styles.referralProgram}>
           <div className={styles.referralText}>
             <h2>Популярные события</h2>
-            <p>Выбирайте фаворитов и участвуйте в активных голосованиях</p>
+            <p>
+              Выбирайте фаворитов и участвуйте <br></br>в активных голосованиях
+            </p>
           </div>
           <img src="forward-white.png" alt="" />
         </div>
