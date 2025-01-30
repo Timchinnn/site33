@@ -284,6 +284,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .statistic :last-child {
   font-family: Inter;
@@ -294,6 +295,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .statisticReit {
   background-color: #e8e7ed4d;
@@ -334,6 +336,10 @@ img {
   width: 164px;
   border: 1px solid #0f0f0f0f;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .community {
   display: flex;
