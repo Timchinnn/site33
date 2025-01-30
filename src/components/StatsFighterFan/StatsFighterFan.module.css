@@ -901,3 +901,12 @@ img {
 .notification {
   padding-right: 2vw;
 }
+.community h3 {
+  cursor: pointer;
+  color: #95959b;
+}
+
+.community h3.active {
+  opacity: 1;
+  color: black;
+}
