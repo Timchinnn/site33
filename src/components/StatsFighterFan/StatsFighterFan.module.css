@@ -322,7 +322,7 @@ img {
   border-bottom: none;
   height: 62px;
   margin: 0 6px;
-  padding: 12px;
+  /* padding: 12px; */
   width: 164px;
   border: 1px solid #0f0f0f0f;
   border-radius: 12px;
