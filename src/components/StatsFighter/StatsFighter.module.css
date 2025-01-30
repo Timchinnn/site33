@@ -9,6 +9,7 @@ img {
 .header {
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
 .header h2 {
   font-family: Inter;
