@@ -354,3 +354,6 @@ img {
     font-size: 13px;
   }
 }
+.dropdownContent :last-child {
+  margin-bottom: 16px;
+}
