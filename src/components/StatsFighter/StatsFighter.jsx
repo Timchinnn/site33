@@ -7,6 +7,7 @@ function StatsFighter() {
   const [editedDream, setEditedDream] = useState("");
   const [editedTarget, setEditedTarget] = useState("");
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
+  const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
 
   const handleDonationClick = () => {
     setShowEditDonationModal(true);
@@ -546,8 +547,18 @@ function StatsFighter() {
           </div>
         </div>
         <div className={styles.community}>
-          <h3>Сообщество</h3>
-          <h3>Донаты</h3>
+          <h3
+            onClick={() => setActiveTab2("community")}
+            className={activeTab2 === "community" ? styles.active : ""}
+          >
+            Сообщество
+          </h3>
+          <h3
+            onClick={() => setActiveTab2("donations")}
+            className={activeTab2 === "donations" ? styles.active : ""}
+          >
+            Донаты
+          </h3>
         </div>
         <div className={styles.buttonsPopular}>
           <button className={styles.buttonAll}>Все</button>
