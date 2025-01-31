@@ -943,3 +943,6 @@ img {
   align-items: flex-start;
   justify-content: space-between;
 }
+.infoModalContent p {
+  color: #95959b;
+}
