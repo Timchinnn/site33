@@ -354,14 +354,14 @@ function ProfileUserAcc() {
           <p>{userData.currency}</p>
         </div>
         <h2>Уведомления</h2>
-        <div>
+        <div className={styles.get}>
           <p>Получать уведомления о новых событиях</p>
           <div>
             <input type="checkbox" id="notificationSwitch" />
             <label htmlFor="notificationSwitch">Toggle</label>
           </div>
         </div>
-        <div>
+        <div className={styles.get}>
           <p>Получать уведомления о результатах голосования</p>
           <div>
             <input type="checkbox" id="votingSwitch" />
