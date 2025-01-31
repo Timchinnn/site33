@@ -627,11 +627,6 @@ function StatsFighterFan() {
               <div className={styles.infoModal}>
                 <div className={styles.infoModalContent}>
                   <p>Текст объяснения</p>
-                  <img
-                    src="x-circle.png"
-                    alt="#"
-                    onClick={() => setShowInfoModal(false)}
-                  />
                 </div>
               </div>
             )}{" "}
