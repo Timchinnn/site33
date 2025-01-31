@@ -931,6 +931,7 @@ img {
   border-radius: 8px;
   box-shadow: 0 2px 4px #0000001a;
   max-width: 200px;
+  width: 200px;
   padding: 10px;
   position: absolute;
   z-index: 1000;
@@ -944,5 +945,5 @@ img {
   justify-content: space-between;
 }
 .infoModalContent p {
-  color: #95959b;
+  color: #95959b !important;
 }
