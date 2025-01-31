@@ -30,6 +30,33 @@ function StatsFighterFan() {
   const [userBalance, setUserBalance] = useState(0);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Проверяем, был ли клик вне модального окна
+      const modalContent = document.querySelector(
+        `.${styles.infoModalContent}`
+      );
+      const infoButton = document.querySelector('[src="lucide_info_20.png"]');
+
+      if (
+        modalContent &&
+        !modalContent.contains(event.target) &&
+        event.target !== infoButton
+      ) {
+        setShowInfoModal(false);
+      }
+    };
+
+    // Добавляем слушатель события при монтировании
+    if (showInfoModal) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Удаляем слушатель события при размонтировании
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInfoModal]);
   const handleInfoClick = (e) => {
     e.stopPropagation(); // Предотвращаем всплытие события
     setShowInfoModal(true);
@@ -476,14 +503,9 @@ function StatsFighterFan() {
       console.error("Error liking post:", error);
     }
   };
-  const handleOverlayClick = (e) => {
-    // Проверяем, что клик был именно по overlay, а не по его содержимому
-    if (e.target.className === styles.modalOverlay) {
-      setShowInfoModal(false);
-    }
-  };
+
   return (
-    <div className={styles.header} onClick={handleOverlayClick}>
+    <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
