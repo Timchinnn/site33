@@ -946,7 +946,7 @@ function Voting() {
               <img src="x-circle.png" alt="#" onClick={toggleModal} />
             </div>
             <h3 className={styles.currentVoting}>Выберите категорию</h3>
-            <div
+            {/* <div
               className={`${styles.chooseFan} ${
                 selectedCategories.includes("fan")
                   ? styles.categorySelected
@@ -959,7 +959,7 @@ function Voting() {
               }}
             >
               <p>Выбор фанатов</p>
-            </div>
+            </div> */}
 
             <div className={styles.choose}>
               {[
