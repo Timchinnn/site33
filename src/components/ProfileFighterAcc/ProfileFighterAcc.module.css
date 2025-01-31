@@ -130,7 +130,6 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin-top: 0;
-  margin-bottom: 0;
 }
 input[type="checkbox"] {
   height: 0;
@@ -411,4 +410,7 @@ label:active:after {
 }
 .get {
   margin-bottom: 16px;
+}
+.getText {
+  margin-bottom: 0 !important;
 }

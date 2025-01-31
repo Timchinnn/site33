@@ -355,14 +355,18 @@ function ProfileUserAcc() {
         </div>
         <h2>Уведомления</h2>
         <div className={styles.get}>
-          <p>Получать уведомления о новых событиях</p>
+          <p className={styles.getText}>
+            Получать уведомления о новых событиях
+          </p>
           <div>
             <input type="checkbox" id="notificationSwitch" />
             <label htmlFor="notificationSwitch">Toggle</label>
           </div>
         </div>
         <div className={styles.get}>
-          <p>Получать уведомления о результатах голосования</p>
+          <p className={styles.getText}>
+            Получать уведомления о результатах голосования
+          </p>
           <div>
             <input type="checkbox" id="votingSwitch" />
             <label htmlFor="votingSwitch">Toggle</label>
