@@ -234,6 +234,7 @@ img {
 .approvalRating {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .approvalRating p {
   padding-left: 10px;
@@ -926,13 +927,15 @@ img {
   text-underline-position: from-font;
 }
 .infoModal {
-  position: absolute;
-  background: white;
-  padding: 10px;
+  background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  box-shadow: 0 2px 4px #0000001a;
   max-width: 200px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1000;
+  top: 42px;
+  left: 31px;
 }
 
 .infoModalContent {
