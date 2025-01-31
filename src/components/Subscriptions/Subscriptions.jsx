@@ -40,7 +40,7 @@ function Subscriptions() {
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
             <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "}
-            <h1>BroDonate</h1>
+            <h4 className={styles.BroDonate}>BroDonate</h4>
           </div>
           <div className={styles.iconsContainer}>
             <img
