@@ -279,7 +279,7 @@ function ProfileFighterAcc() {
         </div>
         <div onClick={() => toggleModal("country")}>
           <p>Регион/Страна</p>
-          <p>
+          <p className={styles.regionCountrty}>
             {userData.country}, {userData.region}
           </p>
         </div>

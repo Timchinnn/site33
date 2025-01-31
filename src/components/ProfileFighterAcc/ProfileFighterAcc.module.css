@@ -414,3 +414,6 @@ label:active:after {
 .getText {
   margin-bottom: 0 !important;
 }
+.regionCountrty {
+  text-align: right !important;
+}
