@@ -16,7 +16,7 @@ function StatsFighterFan() {
   const [commentLikes, setCommentLikes] = useState({});
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState({});
-
+  const [showInfoModal, setShowInfoModal] = useState(false);
   console.log(fighterData);
   const rotation = (fighterData.rating / 100) * 180 - 90;
   const [commentReplies, setCommentReplies] = useState({});
@@ -30,7 +30,10 @@ function StatsFighterFan() {
   const [userBalance, setUserBalance] = useState(0);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
-
+  const handleInfoClick = (e) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
+    setShowInfoModal(true);
+  };
   const handleDonateSelect = (amount) => {
     setSelectedAmount(amount);
     setDonateAmount(amount);
@@ -592,7 +595,19 @@ function StatsFighterFan() {
           </div>
           <p className={styles.heroFans}>Герой фанатов</p>
           <div className={styles.approvalRating}>
-            <img src="lucide_info_20.png" alt="#" />
+            <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
+            {showInfoModal && (
+              <div className={styles.infoModal}>
+                <div className={styles.infoModalContent}>
+                  <p>Текст объяснения</p>
+                  <img
+                    src="x-circle.png"
+                    alt="#"
+                    onClick={() => setShowInfoModal(false)}
+                  />
+                </div>
+              </div>
+            )}{" "}
             <p>Рейтинг одобрения</p>
             <p>{fighterData.rating} %</p>
           </div>
