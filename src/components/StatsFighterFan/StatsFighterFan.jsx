@@ -477,12 +477,13 @@ function StatsFighterFan() {
     }
   };
   const handleOverlayClick = (e) => {
-    if (e.target.className === styles.infoModal) {
+    // Проверяем, что клик был именно по overlay, а не по его содержимому
+    if (e.target.className === styles.modalOverlay) {
       setShowInfoModal(false);
     }
   };
   return (
-    <div className={styles.header}>
+    <div className={styles.header} onClick={handleOverlayClick}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
@@ -601,11 +602,8 @@ function StatsFighterFan() {
           <div className={styles.approvalRating}>
             <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
             {showInfoModal && (
-              <div className={styles.infoModal} onClick={handleOverlayClick}>
-                <div
-                  className={styles.infoModalContent}
-                  onClick={(e) => e.stopPropagation()}
-                >
+              <div className={styles.infoModal}>
+                <div className={styles.infoModalContent}>
                   <p>Текст объяснения</p>
                   <img
                     src="x-circle.png"
