@@ -304,14 +304,14 @@ function ProfileFighterAcc() {
           <img src="forward.png" alt="" />
         </div>
         <h3>Уведомления</h3>
-        <div>
+        <div className={styles.get}>
           <p>Получать уведомления о новых событиях</p>
           <div>
             <input type="checkbox" id="notificationSwitch" />
             <label htmlFor="notificationSwitch">Toggle</label>
           </div>
         </div>
-        <div>
+        <div className={styles.get}>
           <p>Получать уведомления о результатах голосования</p>
           <div>
             <input type="checkbox" id="votingSwitch" />
