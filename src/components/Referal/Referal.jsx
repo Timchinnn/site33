@@ -136,7 +136,7 @@ function Referal() {
             бойцов. Вы получаете процент от каждого доната
           </p> */}
           <p className={styles.accruals}>
-            Приглашай друзей или спортсменов и получай % с каждого доната
+            Приглашай друзей или спортсменов <br />и получай % с каждого доната
           </p>
         </div>
 
@@ -144,7 +144,7 @@ function Referal() {
           <div className={styles.referralText}>
             <h2>Пригласить фаната</h2>
             <p>
-              вам будет начисляться 8% от донатов каждого приглашенного друга
+              Вам будет начисляться 8% от донатов каждого приглашенного друга
             </p>
           </div>
           <img
@@ -161,7 +161,8 @@ function Referal() {
           <div className={styles.referralText}>
             <h2>Пригласить спортсмена</h2>
             <p>
-              вам будет начисляться 5% от донатов каждого приглашенного бойца
+              Вам будет начисляться 5% от донатов каждого приглашенного
+              спортсмена
             </p>
           </div>
           <img
@@ -318,14 +319,14 @@ function Referal() {
           <div className={styles.modalContent}>
             <div className={styles.topModalHead}>
               <div className={styles.namesBut}>
-                <h2>Пригласить бойца</h2>
+                <h2>Пригласить спортсмена</h2>
                 <img
                   src="x-circle.png"
                   alt="#"
                   onClick={() => setShowRatingModalFight(false)}
                 />
               </div>
-              <p>Скопируйте реферальную ссылку, чтобы пригласить бойца</p>
+              <p>Скопируйте реферальную ссылку, чтобы пригласить спортсмена</p>
               <input
                 type="text"
                 value={referralLink}
