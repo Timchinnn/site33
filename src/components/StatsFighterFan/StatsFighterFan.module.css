@@ -912,7 +912,7 @@ img {
   color: black;
 }
 .BroDonate {
-  font-family: Krona One, sans-serif;
+  font-family: Krona One, sans-serif !important;
   font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.04em;
