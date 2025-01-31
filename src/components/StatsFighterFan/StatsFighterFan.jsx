@@ -476,7 +476,11 @@ function StatsFighterFan() {
       console.error("Error liking post:", error);
     }
   };
-
+  const handleOverlayClick = (e) => {
+    if (e.target.className === styles.infoModal) {
+      setShowInfoModal(false);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -597,8 +601,11 @@ function StatsFighterFan() {
           <div className={styles.approvalRating}>
             <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
             {showInfoModal && (
-              <div className={styles.infoModal}>
-                <div className={styles.infoModalContent}>
+              <div className={styles.infoModal} onClick={handleOverlayClick}>
+                <div
+                  className={styles.infoModalContent}
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <p>Текст объяснения</p>
                   <img
                     src="x-circle.png"
