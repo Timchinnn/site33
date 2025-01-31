@@ -930,8 +930,8 @@ img {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px #0000001a;
-  max-width: 200px;
-  width: 200px;
+  max-width: 213px;
+  width: 213px;
   padding: 10px;
   position: absolute;
   z-index: 1000;
@@ -946,4 +946,5 @@ img {
 }
 .infoModalContent p {
   color: #95959b !important;
+  margin: 0;
 }
