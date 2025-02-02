@@ -154,6 +154,7 @@ img {
 .sportsContainer img {
   width: 80px;
   height: 40px;
+  padding-right: 16px;
 }
 .balanceInfo {
   justify-content: space-between;
@@ -197,4 +198,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+}
+.starCoint {
+  padding-left: 16px;
 }

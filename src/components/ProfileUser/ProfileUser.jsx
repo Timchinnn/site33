@@ -97,7 +97,7 @@ function ProfileUser() {
           <img src="forward.png" alt="" />
         </div>
         <div className={styles.sportsContainer}>
-          <div>
+          <div className={styles.starCoint}>
             <p className={styles.stars}>Звезды достижений</p>
             <p className={styles.starsCount}>0</p>
           </div>
