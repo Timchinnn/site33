@@ -6,6 +6,7 @@ function NotReg() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   //   const userId = localStorage.getItem("userId");
+  const [activeTab, setActiveTab] = useState("profile"); // начальное значение зависит от текущей страницы
 
   return (
     <div className={styles.header}>
