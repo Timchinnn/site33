@@ -1351,7 +1351,7 @@ function Voting() {
                         <button
                           onClick={() => handleDonateEnd(selectedFighter)}
                         >
-                          Далее Далее
+                          Далее
                         </button>
                       </div>
                     </div>
