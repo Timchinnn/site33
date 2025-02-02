@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function NotReg() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
-  const userId = localStorage.getItem("userId");
+  //   const userId = localStorage.getItem("userId");
 
   return (
     <div className={styles.header}>
