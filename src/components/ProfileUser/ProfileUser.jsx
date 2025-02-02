@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ProfileUser.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -10,11 +10,6 @@ function ProfileUser() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
   const [balance, setBalance] = useState(0);
-  const handleLogout = useCallback(() => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userType");
-    navigate("/NotReg"); // Изменено с "/" на "/NotReg"
-  }, [navigate]);
   useEffect(() => {
     const images = [
       "ui-checks-grid-black.png",
@@ -37,11 +32,6 @@ function ProfileUser() {
     window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
-
-      if (!userId) {
-        handleLogout();
-        return;
-      }
       try {
         const response = await fetch(`/api/user/profile/${userId}`);
         if (response.ok) {
@@ -60,13 +50,13 @@ function ProfileUser() {
     };
 
     fetchUserData();
-  }, [handleLogout]);
+  }, []);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" onClick={() => navigate("/")} />
+            <img src="arrow.png" alt="#" onClick={() => navigate("/main")} />
             <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -172,7 +162,7 @@ function ProfileUser() {
         <div
           className={styles.catalogItem}
           onClick={() => {
-            navigate("/");
+            navigate("/main");
             setActiveTab("catalog");
           }}
         >

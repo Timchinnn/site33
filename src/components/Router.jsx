@@ -34,7 +34,7 @@ import NotReg from "./NotReg/NotReg";
 
 const Router = () => {
   // const ProtectedSignin = () => {
-  //   const userId = localStorage.getItem("userId");
+  const userId = localStorage.getItem("userId");
   //   const userType = localStorage.getItem("userType");
 
   //   if (userId && userType) {
@@ -61,8 +61,14 @@ const Router = () => {
         <Route element={<Voting />} path="/Voting" />
         <Route element={<ProfileUser />} path="/profileuser" />
         <Route element={<ProfileFighterAcc />} path="/profilefighterAcc" />
-        <Route element={<ProfileFighter />} path="/profilefighter" />
-        <Route element={<ProfileUserAcc />} path="/profileuseracc" />
+        <Route
+          element={userId ? <ProfileFighter /> : <NotReg />}
+          path="/profilefighter"
+        />
+        <Route
+          element={userId ? <ProfileUserAcc /> : <NotReg />}
+          path="/profileuseracc"
+        />
         <Route element={<StatsFighter />} path="/StatsFighter" />
         <Route element={<Notifications />} path="/Notifications" />
         <Route element={<StatsFighterFan />} path="/StatsFighterFan" />

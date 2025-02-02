@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ProfileFighter.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -13,20 +13,12 @@ function ProfileFighter() {
   const [fighterData, setFighterData] = useState([]);
   // fighterData
   const [balance, setBalance] = useState(0);
-  const handleLogout = useCallback(() => {
-    localStorage.removeItem("userId");
-    localStorage.removeItem("userType");
-    navigate("/NotReg"); // Изменено с "/" на "/NotReg"
-  }, [navigate]);
+
   console.log(profilePhoto);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
-      if (!userId) {
-        handleLogout();
-        return;
-      }
       try {
         const response = await fetch(`/api/fighter/profile/${userId}`);
         if (response.ok) {
@@ -52,13 +44,13 @@ function ProfileFighter() {
     };
 
     fetchUserData();
-  }, [handleLogout]);
+  }, []);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" onClick={() => navigate("/")} />
+            <img src="arrow.png" alt="#" onClick={() => navigate("/main")} />
             <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
@@ -181,7 +173,7 @@ function ProfileFighter() {
         <div
           className={styles.catalogItem}
           onClick={() => {
-            navigate("/");
+            navigate("/main");
             setActiveTab("catalog");
           }}
         >
