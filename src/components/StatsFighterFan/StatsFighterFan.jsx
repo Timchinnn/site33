@@ -1071,7 +1071,7 @@ function StatsFighterFan() {
                       type="text"
                       className={`${styles.customAmountInput}`}
                       placeholder="Введите сумму"
-                      value={selectedAmount === 1 ? "" : selectedAmount}
+                      value={selectedAmount || ""}
                       onChange={(e) => {
                         const value = parseInt(e.target.value) || 0;
                         setSelectedAmount(value);
@@ -1207,7 +1207,7 @@ function StatsFighterFan() {
                             type="text"
                             className={`${styles.customAmountInput}`}
                             placeholder="Введите количество дней"
-                            value={selectedDate === 1 ? "" : selectedDate}
+                            value={selectedDate || ""}
                             onChange={(e) => {
                               const value = parseInt(e.target.value) || 0;
                               setSelectedDate(value);
