@@ -42,11 +42,12 @@ const Router = () => {
 
   //   return <Signin />;
   // };
+  // <Route element={<ProtectedSignin />} path="" />
+
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<PostPage />} path="/post/:id" />
-        <Route element={<ProtectedSignin />} path="" />
         <Route element={<Forgotpassword />} path="/forgotpassword" />
         <Route element={<Reset />} path="/Reset" />
         <Route element={<Register />} path="/register" />
