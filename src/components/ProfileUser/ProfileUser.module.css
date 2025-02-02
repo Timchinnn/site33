@@ -178,3 +178,23 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.stars {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.starsCount {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}

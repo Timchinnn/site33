@@ -98,8 +98,8 @@ function ProfileUser() {
         </div>
         <div className={styles.sportsContainer}>
           <div>
-            <p>Звезды достижений</p>
-            <p>0</p>
+            <p className={styles.stars}>Звезды достижений</p>
+            <p className={styles.starsCount}>0</p>
           </div>
           <img src="/Frame 9411.png" alt="" />
           {/* <img src="Frame 9261.png" alt="#" />
