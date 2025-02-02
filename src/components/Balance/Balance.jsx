@@ -282,11 +282,11 @@ function Balance() {
                         <p>Сумма доната</p>
                         <p>{donateAmount}₽</p>
                       </div>
-                      <input
+                      {/* <input
                         type="text"
                         placeholder="Введите сообщение"
                         className={styles.donateInput}
-                      />
+                      /> */}
                       <p className={styles.donateMessage}>Способ платежа</p>
                       <div
                         className={`${styles.balanceNow} ${
@@ -348,7 +348,7 @@ function Balance() {
                           style={{ cursor: "pointer" }}
                         />
                       </div>
-                      <div className={styles.autoSupport}>
+                      {/* <div className={styles.autoSupport}>
                         <div className={styles.autoSupportToggleInput}>
                           <input
                             type="checkbox"
@@ -403,7 +403,7 @@ function Balance() {
                             ></div>
                           )}
                         </div>
-                      )}
+                      )} */}
                       <div className={styles.selectionContent}>
                         <button onClick={handleDonateEnd}>Далее</button>
                       </div>
