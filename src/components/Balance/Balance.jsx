@@ -10,8 +10,8 @@ function Balance() {
   const [showDonateInput, setShowDonateInput] = useState(false);
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [selectedPayment, setSelectedPayment] = useState(null);
-  const [isToggleOn, setIsToggleOn] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(null);
+  // const [isToggleOn, setIsToggleOn] = useState(false);
+  // const [selectedDate, setSelectedDate] = useState(null);
   const [donateAmount, setDonateAmount] = useState(0);
   // eslint-disable-next-line
   const [userBalance, setUserBalance] = useState(0);
