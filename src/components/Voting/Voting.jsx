@@ -1109,14 +1109,17 @@ function Voting() {
                         5000 ₽
                       </button>
                     </div>
-                    <button
-                      className={`${styles.customAmountButton} ${
-                        selectedAmount === 1 ? styles.selected : ""
-                      }`}
-                      onClick={() => setSelectedAmount(1)}
-                    >
-                      Ввести другую сумму
-                    </button>
+                    <input
+                      type="text"
+                      className={`${styles.customAmountInput}`}
+                      placeholder="Введите сумму"
+                      value={selectedAmount === 1 ? "" : selectedAmount}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value) || 0;
+                        setSelectedAmount(value);
+                        setDonateAmount(value);
+                      }}
+                    />
                     {selectedAmount > 0 && (
                       <div
                         className={`${styles.selectionBlock} ${styles.visible}`}
@@ -1242,14 +1245,16 @@ function Voting() {
                               4 недели
                             </button>
                           </div>
-                          <button
-                            className={`${styles.customAmountButton} ${
-                              selectedDate === 1 ? styles.selected : ""
-                            }`}
-                            onClick={() => setSelectedDate(1)}
-                          >
-                            Свой вариант в днях
-                          </button>
+                          <input
+                            type="text"
+                            className={`${styles.customAmountInput}`}
+                            placeholder="Введите количество дней"
+                            value={selectedDate === 1 ? "" : selectedDate}
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value) || 0;
+                              setSelectedDate(value);
+                            }}
+                          />
                           {selectedDate > 0 && (
                             <div
                               className={`${styles.selectionBlock} ${styles.visible}`}
