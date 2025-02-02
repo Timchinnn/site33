@@ -1352,7 +1352,7 @@ function Voting() {
                       <div className={styles.selectionContent}>
                         <button
                           onClick={() =>
-                            handleDonateEnd(selectedFighter, selectedDate)
+                            handleDonateEnd(selectedFighterSub, selectedDate)
                           }
                         >
                           Далее
