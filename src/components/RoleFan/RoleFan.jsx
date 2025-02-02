@@ -64,7 +64,7 @@ function RoleFan() {
     navigate("/chooserole");
   };
   // const handleNavigateToMainPage = () => {
-  //   navigate("/main");
+  //   navigate("/");
   // };
 
   const isFormValid = email && profileName && selectedCountry && selectedRegion;
@@ -112,7 +112,7 @@ function RoleFan() {
         const data = await response.json();
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userType", data.userType);
-        navigate("/main");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);

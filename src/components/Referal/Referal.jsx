@@ -99,9 +99,7 @@ function Referal() {
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            {/* <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "} */}
-            <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
-
+            <img src="/arrow.png" alt="#" onClick={handleBackClick} />{" "}
             <h4 className={styles.BroDonate}>BroDonate</h4>
           </div>
           <div className={styles.iconsContainer}>
@@ -199,7 +197,7 @@ function Referal() {
         <div
           className={styles.catalogItem}
           onClick={() => {
-            navigate("/main");
+            navigate("/");
             setActiveTab("catalog");
           }}
         >

@@ -100,7 +100,7 @@ function RoleFighter() {
         const data = await registerResponse.json();
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userType", data.userType);
-        navigate("/main");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);

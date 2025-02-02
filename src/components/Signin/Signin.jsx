@@ -9,7 +9,7 @@ function Signin() {
   //   const userType = localStorage.getItem("userType");
 
   //   if (userId && userType) {
-  //     navigate("/main");
+  //     navigate("/");
   //   }
   // }, [navigate]);
   const [email, setEmail] = useState("");
@@ -47,7 +47,7 @@ function Signin() {
         // localStorage.setItem("userTable", data.table);
 
         // Перенаправляем на главную страницу
-        navigate("/main");
+        navigate("/");
       } else {
         alert("Неверный email или пароль");
       }

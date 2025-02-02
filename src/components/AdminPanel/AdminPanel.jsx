@@ -27,9 +27,7 @@ function AdminPanel() {
   useEffect(() => {
     const fetchUsersFighters = async () => {
       try {
-        const response = await fetch(
-          "/api/admin/users-fighters"
-        );
+        const response = await fetch("/api/admin/users-fighters");
         if (response.ok) {
           const data = await response.json();
           // Добавьте состояние для хранения данных если необходимо
@@ -48,9 +46,7 @@ function AdminPanel() {
   useEffect(() => {
     const fetchUnverifiedFighters = async () => {
       try {
-        const response = await fetch(
-          "/api/admin/unverified-fighters"
-        );
+        const response = await fetch("/api/admin/unverified-fighters");
         if (response.ok) {
           const data = await response.json();
           // Фильтруем уникальные записи по id
@@ -66,9 +62,7 @@ function AdminPanel() {
 
     const fetchAllFighters = async () => {
       try {
-        const response = await fetch(
-          "/api/admin/all-fighters"
-        );
+        const response = await fetch("/api/admin/all-fighters");
         if (response.ok) {
           const data = await response.json();
           setAllFighters(data);
@@ -99,20 +93,17 @@ function AdminPanel() {
         console.error("Все поля обязательны");
         return;
       }
-      const response = await fetch(
-        "/api/admin/verify-fighter",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            users_fighter_id: parseInt(usersFighterId),
-            selected_fighter_id: parseInt(selectedFighterId),
-            tournament_id: parseInt(tournamentId),
-          }),
-        }
-      );
+      const response = await fetch("/api/admin/verify-fighter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          users_fighter_id: parseInt(usersFighterId),
+          selected_fighter_id: parseInt(selectedFighterId),
+          tournament_id: parseInt(tournamentId),
+        }),
+      });
 
       if (response.ok) {
         setUnverifiedFighters(
@@ -230,9 +221,7 @@ function AdminPanel() {
       fetchData();
       const fetchUsersFighters = async () => {
         try {
-          const response = await fetch(
-            "/api/admin/users-fighters"
-          );
+          const response = await fetch("/api/admin/users-fighters");
           if (response.ok) {
             const data = await response.json();
             // Добавьте состояние для хранения данных если необходимо
@@ -269,21 +258,18 @@ function AdminPanel() {
         }
 
         try {
-          const response = await fetch(
-            "/api/admin/matches",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                competitor_1: newItemData.competitor_1,
-                competitor_2: newItemData.competitor_2,
-                tournament_id: selectedTournament,
-                match_date: newItemData.match_date,
-              }),
-            }
-          );
+          const response = await fetch("/api/admin/matches", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              competitor_1: newItemData.competitor_1,
+              competitor_2: newItemData.competitor_2,
+              tournament_id: selectedTournament,
+              match_date: newItemData.match_date,
+            }),
+          });
 
           if (response.ok) {
             const data = await response.json();
@@ -304,20 +290,17 @@ function AdminPanel() {
         }
       }
       if (selectedSection === "tournaments") {
-        const response = await fetch(
-          `/api/admin/${selectedSection}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: newItemData.name,
-              date: newItemData.date,
-              discipline_id: selectedDiscipline,
-            }),
-          }
-        );
+        const response = await fetch(`/api/admin/${selectedSection}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: newItemData.name,
+            date: newItemData.date,
+            discipline_id: selectedDiscipline,
+          }),
+        });
 
         if (response.ok) {
           fetchData();
@@ -337,13 +320,10 @@ function AdminPanel() {
         formData.append("region", newItemData.region);
         formData.append("record", newItemData.record);
 
-        const response = await fetch(
-          `/api/admin/${selectedSection}`,
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const response = await fetch(`/api/admin/${selectedSection}`, {
+          method: "POST",
+          body: formData,
+        });
 
         if (response.ok) {
           fetchData();
@@ -360,8 +340,8 @@ function AdminPanel() {
     <div className={styles.adminPanel}>
       <div className={styles.header}>
         <h1>Админ панель</h1>
-        {/* <button onClick={() => navigate("/main")}>Назад</button> */}
-        <img src="arrow.png" alt="#" onClick={() => navigate("/main")} />
+        {/* <button onClick={() => navigate("/")}>Назад</button> */}
+        <img src="arrow.png" alt="#" onClick={() => navigate("/")} />
       </div>
       <div className={styles.navigation}>
         <button
