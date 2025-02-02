@@ -54,7 +54,7 @@ const Router = () => {
         <Route element={<ChooseRole />} path="/chooserole" />
         <Route element={<RoleFan />} path="/rolefan" />
         <Route element={<RoleFighter />} path="/rolefighter" />
-        <Route element={<Main />} path="/main" />
+        <Route element={<Main />} path="/" />
         <Route element={<Tournament />} path="/tournament" />
         <Route element={<AllTournaments />} path="/alltournaments" />
         <Route element={<Voting />} path="/Voting" />
