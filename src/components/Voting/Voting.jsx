@@ -38,7 +38,67 @@ function Voting() {
     setShowDonateInput(true);
   };
 
-  const handleDonateEnd = async () => {
+  const handleDonateEnd = async (selectId) => {
+    if (!selectedPayment) {
+      alert("Пожалуйста, выберите способ оплаты");
+      return;
+    }
+
+    // Add balance deduction logic for current balance
+    if (selectedPayment === "balance") {
+      try {
+        const response = await fetch(`/api/balance/deduct`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            amount: donateAmount,
+            userType: localStorage.getItem("userType"),
+            fighterId: selectId,
+          }),
+        });
+        if (!response.ok) {
+          alert("Недостаточно средств на балансе");
+          return;
+        }
+      } catch (error) {
+        console.error("Error deducting balance:", error);
+        return;
+      }
+    }
+
+    // Добавляем логику создания подписки
+    if (isToggleOn && selectedDate) {
+      try {
+        console.log(
+          localStorage.getItem("userId"),
+          fighterData.id,
+          selectedDate,
+          donateAmount
+        );
+        const response = await fetch("/api/subscriptions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            fighterId: fighterData.id,
+            duration: selectedDate,
+            amount: donateAmount,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Ошибка при создании подписки");
+        }
+      } catch (error) {
+        console.error("Ошибка:", error);
+      }
+    }
+
     setIsThankYouMessage(true);
   };
   useEffect(() => {
@@ -1080,9 +1140,9 @@ function Voting() {
                             </option>,
                           ])}
                       </select>
-                      <button onClick={() => handleVote(selectedFighter)}>
+                      {/* <button onClick={() => handleVote(selectedFighter)}>
                         Голосовать
-                      </button>
+                      </button> */}
                     </div>
                     <div className={styles.donateButtonsGrid}>
                       <button
@@ -1288,7 +1348,9 @@ function Voting() {
                         </div>
                       )}
                       <div className={styles.selectionContent}>
-                        <button onClick={handleDonateEnd}>Далее</button>
+                        <button onClick={handleDonateEnd(selectedFighter)}>
+                          Далее
+                        </button>
                       </div>
                     </div>
                   </>
