@@ -1210,9 +1210,7 @@ function Voting() {
                         className={`${styles.selectionBlock} ${styles.visible}`}
                       >
                         <div className={styles.selectionContent}>
-                          <button onClick={() => handleDonateNext()}>
-                            Далее
-                          </button>
+                          <button onClick={handleDonateNext}>Далее</button>
                         </div>
                       </div>
                     )}
@@ -1350,8 +1348,10 @@ function Voting() {
                         </div>
                       )}
                       <div className={styles.selectionContent}>
-                        <button onClick={handleDonateEnd(selectedFighter)}>
-                          Далее
+                        <button
+                          onClick={() => handleDonateEnd(selectedFighter)}
+                        >
+                          Далее Далее
                         </button>
                       </div>
                     </div>
