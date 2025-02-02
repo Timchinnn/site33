@@ -1115,10 +1115,11 @@ function StatsFighterFan() {
                         onClick={() => handlePaymentSelect("balance")}
                         style={{ cursor: "pointer" }}
                       >
-                        <p>Текущий баланс</p>
-                        <p>{userBalance}₽</p>
+                        {userId && <p>Текущий баланс</p>}
+                        {userId && <p>{userBalance}₽</p>}
                       </div>
-                      <p>или</p>
+                      {userId && <p>или</p>}
+
                       <div className={styles.banks}>
                         <img
                           src="visa.png"
@@ -1168,19 +1169,22 @@ function StatsFighterFan() {
                           style={{ cursor: "pointer" }}
                         />
                       </div>
-                      <div className={styles.autoSupport}>
-                        <div className={styles.autoSupportToggleInput}>
-                          <input
-                            type="checkbox"
-                            id="notificationSwitch"
-                            className={styles.noneInput}
-                            onChange={() => setIsToggleOn(!isToggleOn)}
-                            checked={isToggleOn}
-                          />
-                          <label htmlFor="notificationSwitch">Toggle</label>
+
+                      {userId && (
+                        <div className={styles.autoSupport}>
+                          <div className={styles.autoSupportToggleInput}>
+                            <input
+                              type="checkbox"
+                              id="notificationSwitch"
+                              className={styles.noneInput}
+                              onChange={() => setIsToggleOn(!isToggleOn)}
+                              checked={isToggleOn}
+                            />
+                            <label htmlFor="notificationSwitch">Toggle</label>
+                          </div>
+                          <p>Братская автоподдержка</p>
                         </div>
-                        <p>Братская автоподдержка</p>
-                      </div>
+                      )}
                       {isToggleOn && (
                         <div>
                           <div className={styles.donateButtonsGrid}>
