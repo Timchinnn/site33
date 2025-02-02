@@ -144,6 +144,8 @@ img {
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  background: #caafbc;
+  border-radius: 12px;
 }
 .sportsContainer::-webkit-scrollbar {
   display: none;
