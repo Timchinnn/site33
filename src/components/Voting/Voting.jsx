@@ -1059,6 +1059,31 @@ function Voting() {
                 {!showDonateInput ? (
                   // Текущий контент с кнопками
                   <>
+                    <div className={styles.selectionContent}>
+                      <p>Выберите бойца</p>
+                      <select
+                        onChange={(e) => setSelectedFighter(e.target.value)}
+                      >
+                        {matches &&
+                          matches.flatMap((match) => [
+                            <option
+                              key={`${match.id}-1`}
+                              value={match.competitor_1}
+                            >
+                              {match.competitor_1}
+                            </option>,
+                            <option
+                              key={`${match.id}-2`}
+                              value={match.competitor_2}
+                            >
+                              {match.competitor_2}
+                            </option>,
+                          ])}
+                      </select>
+                      <button onClick={() => handleVote(selectedFighter)}>
+                        Голосовать
+                      </button>
+                    </div>
                     <div className={styles.donateButtonsGrid}>
                       <button
                         className={`${styles.donateButton} ${
