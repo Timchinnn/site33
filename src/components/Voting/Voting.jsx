@@ -6,6 +6,7 @@ function Voting() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const [selectedFighter, setSelectedFighter] = useState("");
+  const [selectedFighterSub, setSelectedFighterSub] = useState("");
   const [showDonateModal, setShowDonateModal] = useState(false);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
@@ -1123,19 +1124,19 @@ function Voting() {
                     <div className={styles.selectionContent}>
                       <p>Выберите бойца</p>
                       <select
-                        onChange={(e) => setSelectedFighter(e.target.value)}
+                        onChange={(e) => setSelectedFighterSub(e.target.value)}
                       >
                         {matches &&
                           matches.flatMap((match) => [
                             <option
                               key={`${match.id}-1`}
-                              value={match.competitor_1}
+                              value={match.fighter1_id}
                             >
                               {match.competitor_1}
                             </option>,
                             <option
                               key={`${match.id}-2`}
-                              value={match.competitor_2}
+                              value={match.fighter2_id}
                             >
                               {match.competitor_2}
                             </option>,
