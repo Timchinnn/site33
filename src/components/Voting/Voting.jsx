@@ -38,7 +38,7 @@ function Voting() {
     setShowDonateInput(true);
   };
 
-  const handleDonateEnd = async (selectId) => {
+  const handleDonateEnd = async (selectId, selectedDate) => {
     if (!selectedPayment) {
       alert("Пожалуйста, выберите способ оплаты");
       return;
@@ -1349,7 +1349,9 @@ function Voting() {
                       )}
                       <div className={styles.selectionContent}>
                         <button
-                          onClick={() => handleDonateEnd(selectedFighter)}
+                          onClick={() =>
+                            handleDonateEnd(selectedFighter, selectedDate)
+                          }
                         >
                           Далее
                         </button>
