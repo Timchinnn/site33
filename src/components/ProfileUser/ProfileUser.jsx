@@ -97,11 +97,16 @@ function ProfileUser() {
           <img src="forward.png" alt="" />
         </div>
         <div className={styles.sportsContainer}>
-          <img src="Frame 9261.png" alt="#" />
+          <div>
+            <p>Звезды достижений</p>
+            <p>0</p>
+          </div>
+          <img src="/Frame 9411.png" alt="" />
+          {/* <img src="Frame 9261.png" alt="#" />
           <img src="Frame 9263.png" alt="#" />
           <img src="Frame 9264.png" alt="#" />
           <img src="Frame 9257.png" alt="#" />
-          <img src="Frame 9257.png" alt="#" />
+          <img src="Frame 9257.png" alt="#" /> */}
         </div>
         <div className={styles.accountSection}>
           <div>
