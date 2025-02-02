@@ -32,16 +32,16 @@ import SupportFighters from "./SupportFighters/SupportFighters";
 import TopMatches from "./TopMatches/TopMatches";
 
 const Router = () => {
-  const ProtectedSignin = () => {
-    const userId = localStorage.getItem("userId");
-    const userType = localStorage.getItem("userType");
+  // const ProtectedSignin = () => {
+  //   const userId = localStorage.getItem("userId");
+  //   const userType = localStorage.getItem("userType");
 
-    if (userId && userType) {
-      return <Navigate to="/main" replace />;
-    }
+  //   if (userId && userType) {
+  //     return <Navigate to="/main" replace />;
+  //   }
 
-    return <Signin />;
-  };
+  //   return <Signin />;
+  // };
   return (
     <BrowserRouter>
       <Routes>
