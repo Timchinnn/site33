@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./ProfileFighter.module.css";
 import { useNavigate } from "react-router-dom";
 
