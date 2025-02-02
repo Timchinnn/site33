@@ -74,7 +74,7 @@ function Voting() {
       try {
         console.log(
           localStorage.getItem("userId"),
-          fighterData.id,
+          selectId,
           selectedDate,
           donateAmount
         );
@@ -85,7 +85,7 @@ function Voting() {
           },
           body: JSON.stringify({
             userId: localStorage.getItem("userId"),
-            fighterId: fighterData.id,
+            fighterId: selectId,
             duration: selectedDate,
             amount: donateAmount,
           }),
