@@ -192,7 +192,7 @@ function Balance() {
                 {" "}
                 <div className={styles.topModalHead}>
                   <div className={styles.namesBut}>
-                    <h2>Донат</h2>
+                    <h2>Пополнение</h2>
                     <img
                       src="x-circle.png"
                       alt="#"
@@ -279,7 +279,7 @@ function Balance() {
                   <>
                     <div className={styles.donateCounts}>
                       <div className={styles.donateCount}>
-                        <p>Сумма доната</p>
+                        <p>Сумма пополнения</p>
                         <p>{donateAmount}₽</p>
                       </div>
                       {/* <input
