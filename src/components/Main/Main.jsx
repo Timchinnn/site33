@@ -652,17 +652,17 @@ function Main() {
           </p>
         </div>
 
-        {/* <div
+        <div
           className={styles.catalogItem}
-          onClick={() => {
-            if (userType === "fan") {
-              navigate("/profileuser");
-            } else {
-              navigate("/profilefighter");
-            }
-            setActiveTab("profile");
-          }}
-        > */}
+          // onClick={() => {
+          //   if (userType === "fan") {
+          //     navigate("/profileuser");
+          //   } else {
+          //     navigate("/profilefighter");
+          //   }
+          //   setActiveTab("profile");
+          // }}
+        >
           <img
             src={activeTab === "profile" ? "person-black.png" : "person.png"}
             alt=""
