@@ -13,12 +13,20 @@ function ProfileFighter() {
   const [fighterData, setFighterData] = useState([]);
   // fighterData
   const [balance, setBalance] = useState(0);
-
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userType");
+    navigate("/NotReg"); // Изменено с "/" на "/NotReg"
+  }, [navigate]);
   console.log(profilePhoto);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchUserData = async () => {
       const userId = localStorage.getItem("userId");
+      if (!userId) {
+        handleLogout();
+        return;
+      }
       try {
         const response = await fetch(`/api/fighter/profile/${userId}`);
         if (response.ok) {
@@ -44,7 +52,7 @@ function ProfileFighter() {
     };
 
     fetchUserData();
-  }, []);
+  }, [handleLogout]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
