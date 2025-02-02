@@ -378,22 +378,27 @@ img {
 .visa {
   width: 58px;
   height: 31px;
+  opacity: 0.5;
 }
 .master {
   width: 51px;
   height: 41px;
+  opacity: 0.5;
 }
 .mir {
   width: 58px;
   height: 36px;
+  opacity: 0.5;
 }
 .sbp {
   width: 66px;
   height: 36px;
+  opacity: 0.5;
 }
 .halva {
   width: 69px;
   height: 29px;
+  opacity: 0.5;
 }
 .banks img {
   padding-right: 2px;
@@ -403,4 +408,7 @@ img {
 }
 .notification {
   padding-right: 2vw;
+}
+.selected {
+  opacity: inherit;
 }
