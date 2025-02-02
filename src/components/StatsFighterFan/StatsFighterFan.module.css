@@ -964,3 +964,6 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.donats :last-child {
+  color: #008b18;
+}
