@@ -188,6 +188,12 @@ function StatsFighterFan() {
     }
   };
   const handleRatingClick = async () => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      navigate("/NotReg");
+      return;
+    }
+
     const hasVoted = await checkVoteStatus();
     if (hasVoted) {
       alert("Вы уже голосовали за этого бойца");
