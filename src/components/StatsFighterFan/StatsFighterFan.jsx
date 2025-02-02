@@ -809,7 +809,10 @@ function StatsFighterFan() {
           </div>
         ) : (
           <div>
-            <p>ljy</p>
+            <div className={styles.donats}>
+              <p>Kallen Elden</p>
+              <p>+ 10000₽</p>
+            </div>
           </div>
         )}
       </div>

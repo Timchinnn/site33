@@ -948,3 +948,8 @@ img {
   color: #95959b !important;
   margin: 0;
 }
+.donats {
+  background: #0f0f0f0f;
+  height: 42px;
+  border-radius: 8px;
+}
