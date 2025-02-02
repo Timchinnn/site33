@@ -30,6 +30,7 @@ import TopFighters from "./TopFighters/TopFighters";
 import TopFan from "./TopFan/TopFan";
 import SupportFighters from "./SupportFighters/SupportFighters";
 import TopMatches from "./TopMatches/TopMatches";
+import NotReg from "./NotReg/NotReg";
 
 const Router = () => {
   // const ProtectedSignin = () => {
@@ -76,6 +77,7 @@ const Router = () => {
         <Route element={<TopFan />} path="/TopFan" />
         <Route element={<SupportFighters />} path="/SupportFighters" />
         <Route element={<TopMatches />} path="/TopMatches" />
+        <Route element={<NotReg />} path="/NotReg" />
       </Routes>
     </BrowserRouter>
   );

@@ -5,11 +5,17 @@ import { useNavigate } from "react-router-dom";
 function ProfileUser() {
   const userType = localStorage.getItem("userType");
   const [activeTab, setActiveTab] = useState("profile"); // начальное значение зависит от текущей страницы
+  const userId = localStorage.getItem("userId");
 
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
   const [balance, setBalance] = useState(0);
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userType");
+    navigate("/NotReg"); // Изменено с "/" на "/NotReg"
+  }, [navigate]);
   useEffect(() => {
     const images = [
       "ui-checks-grid-black.png",
@@ -31,7 +37,10 @@ function ProfileUser() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchUserData = async () => {
-      const userId = localStorage.getItem("userId");
+      if (!userId) {
+        handleLogout();
+        return;
+      }
       try {
         const response = await fetch(`/api/user/profile/${userId}`);
         if (response.ok) {
@@ -50,7 +59,7 @@ function ProfileUser() {
     };
 
     fetchUserData();
-  }, []);
+  }, [handleLogout]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
