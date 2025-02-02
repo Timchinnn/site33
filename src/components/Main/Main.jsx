@@ -7,9 +7,9 @@ function Main() {
   const [activeSectionUser, setActiveSectionUser] = useState("donat"); // 'donations' или 'votes'
   const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
 
-  // const userId = localStorage.getItem("userId");
-  // const userType = localStorage.getItem("userType");
-  // console.log(userId);
+  const userId = localStorage.getItem("userId");
+  const userType = localStorage.getItem("userType");
+  console.log(userId);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredFighters, setFilteredFighters] = useState([]);
@@ -654,14 +654,14 @@ function Main() {
 
         <div
           className={styles.catalogItem}
-          // onClick={() => {
-          //   if (userType === "fan") {
-          //     navigate("/profileuser");
-          //   } else {
-          //     navigate("/profilefighter");
-          //   }
-          //   setActiveTab("profile");
-          // }}
+          onClick={() => {
+            if (userType === "fan") {
+              navigate("/profileuser");
+            } else {
+              navigate("/profilefighter");
+            }
+            setActiveTab("profile");
+          }}
         >
           <img
             src={activeTab === "profile" ? "person-black.png" : "person.png"}
