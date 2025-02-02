@@ -288,7 +288,7 @@ function Balance() {
                         className={styles.donateInput}
                       /> */}
                       <p className={styles.donateMessage}>Способ платежа</p>
-                      <div
+                      {/* <div
                         className={`${styles.balanceNow} ${
                           selectedPayment === "balance" ? styles.selected : ""
                         }`}
@@ -298,7 +298,7 @@ function Balance() {
                         <p>Текущий баланс</p>
                         <p>{userBalance}₽</p>
                       </div>
-                      <p>или</p>
+                      <p>или</p> */}
                       <div className={styles.banks}>
                         <img
                           src="visa.png"
