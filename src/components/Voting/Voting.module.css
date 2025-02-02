@@ -503,11 +503,11 @@ hr {
   padding-right: 0px;
 }
 .banks.active {
-  opacity: 1;
+  /* opacity: 1; */
 }
 
 .banks:not(.active) {
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 .visa {
   width: 58px;
