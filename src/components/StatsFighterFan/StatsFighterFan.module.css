@@ -971,3 +971,14 @@ img {
 .donats :first-child {
   padding-left: 16px;
 }
+.noPostsMessage {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-top: 16px;
+}
