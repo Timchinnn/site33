@@ -966,4 +966,8 @@ img {
 }
 .donats :last-child {
   color: #008b18;
+  padding-right: 16px;
+}
+.donats :first-child {
+  padding-left: 16px;
 }
