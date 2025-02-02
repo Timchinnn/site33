@@ -1068,7 +1068,7 @@ function StatsFighterFan() {
                       </button>
                     </div>
                     <input
-                      type="number"
+                      type="text"
                       className={`${styles.customAmountInput}`}
                       placeholder="Введите сумму"
                       value={selectedAmount === 1 ? "" : selectedAmount}
