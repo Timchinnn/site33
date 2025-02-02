@@ -43,7 +43,8 @@ function Voting() {
       alert("Пожалуйста, выберите способ оплаты");
       return;
     }
-
+    console.log(selectedDate);
+    console.log(isToggleOn);
     // Add balance deduction logic for current balance
     if (selectedPayment === "balance") {
       try {
