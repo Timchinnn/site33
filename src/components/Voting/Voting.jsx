@@ -343,6 +343,14 @@ function Voting() {
       [category]: !prev[category],
     }));
   };
+  const handleVoteClick = () => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      navigate("/NotReg");
+      return;
+    }
+    toggleModal();
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -888,7 +896,7 @@ function Voting() {
           </div>
         </div>
         <div className={styles.vote}>
-          <button onClick={toggleModal}>Голосовать</button>
+          <button onClick={handleVoteClick}>Голосовать</button>
           <button onClick={() => setShowDonateModal(true)}>
             Отправить донат
           </button>
