@@ -688,124 +688,130 @@ function StatsFighterFan() {
               </button>
             </div>
 
-            {posts.map((post) => (
-              <React.Fragment key={post.id}>
-                {/* Пост */}
-                <div className={styles.cardFighter}>
-                  <div
-                    className={styles.cardHeaders}
-                    onClick={() => handlePostClick(post)}
-                  >
-                    <div className={styles.cardHeader}>
-                      <img
-                        src={
-                          fighterData.photo_url
-                            ? `${fighterData.photo_url}`
-                            : "Avatar.png"
-                        }
-                        alt="User Avatar"
-                        className={styles.profileImage}
-                      />
-                      <div className={styles.userInfo}>
-                        <p className={styles.userName}>{fighterData.name}</p>
-                        <p className={styles.timestamp}>
-                          {new Date(post.created_at).toLocaleString()}
-                        </p>
-                      </div>
-                    </div>
-                    <img
-                      src="pepicons-pop_dots-y_20.png"
-                      alt="Delete"
-                      onClick={() => handleDeletePost(post.id)}
-                      style={{ cursor: "pointer" }}
-                      className={styles.optionsIcon}
-                    />
-                  </div>
-                  <p className={styles.message}>{post.content}</p>
-                  <div className={styles.cardFooter}>
-                    <img
-                      src={
-                        likedPosts[post.id]
-                          ? "Active=Yes.png"
-                          : "hand-thumbs-up_20.png"
-                      }
-                      alt=""
-                      className={styles.likeIcon}
-                      onClick={() => handleLike(post.id)}
-                      style={{ cursor: "pointer" }}
-                    />
-                    {post.totalLikes > 0 && (
-                      <p className={styles.likeCount}>{post.totalLikes}</p>
-                    )}
-                    <img
-                      src="proicons_comment_20.png"
-                      alt=""
-                      className={styles.commentIcon}
-                    />
-                    {comments[post.id]?.length > 0 && (
-                      <p className={styles.likeCount}>
-                        {comments[post.id].length}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Комментарии */}
-                {comments[post.id]?.slice(0, 2).map((comment) => (
-                  <div key={comment.id} className={styles.commentCard}>
-                    <div className={styles.cardHeaders}>
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <React.Fragment key={post.id}>
+                  {/* Пост */}
+                  <div className={styles.cardFighter}>
+                    <div
+                      className={styles.cardHeaders}
+                      onClick={() => handlePostClick(post)}
+                    >
                       <div className={styles.cardHeader}>
                         <img
                           src={
-                            comment.photo_url
-                              ? `${comment.photo_url}`
+                            fighterData.photo_url
+                              ? `${fighterData.photo_url}`
                               : "Avatar.png"
                           }
                           alt="User Avatar"
                           className={styles.profileImage}
                         />
                         <div className={styles.userInfo}>
-                          <p className={styles.userName}>{comment.user_name}</p>
+                          <p className={styles.userName}>{fighterData.name}</p>
                           <p className={styles.timestamp}>
-                            {new Date(comment.created_at).toLocaleString()}
+                            {new Date(post.created_at).toLocaleString()}
                           </p>
                         </div>
                       </div>
+                      <img
+                        src="pepicons-pop_dots-y_20.png"
+                        alt="Delete"
+                        onClick={() => handleDeletePost(post.id)}
+                        style={{ cursor: "pointer" }}
+                        className={styles.optionsIcon}
+                      />
                     </div>
-                    <p className={styles.message}>{comment.content}</p>
+                    <p className={styles.message}>{post.content}</p>
                     <div className={styles.cardFooter}>
                       <img
                         src={
-                          likedComments[comment.id]
+                          likedPosts[post.id]
                             ? "Active=Yes.png"
                             : "hand-thumbs-up_20.png"
                         }
                         alt=""
                         className={styles.likeIcon}
-                        onClick={() => handleCommentLike(comment.id)}
+                        onClick={() => handleLike(post.id)}
+                        style={{ cursor: "pointer" }}
                       />
-                      {commentLikes[comment.id] > 0 && (
+                      {post.totalLikes > 0 && (
+                        <p className={styles.likeCount}>{post.totalLikes}</p>
+                      )}
+                      <img
+                        src="proicons_comment_20.png"
+                        alt=""
+                        className={styles.commentIcon}
+                      />
+                      {comments[post.id]?.length > 0 && (
                         <p className={styles.likeCount}>
-                          {commentLikes[comment.id]}
+                          {comments[post.id].length}
                         </p>
                       )}
-                      <div className={styles.cardFooter}>
-                        <img
-                          src="proicons_comment_20.png"
-                          alt=""
-                          className={styles.commentIcon}
-                        />
-                        {commentReplies[comment.id] > 0 && (
-                          <p className={styles.likeCount}>
-                            {commentReplies[comment.id]}
-                          </p>
-                        )}
-                      </div>
                     </div>
                   </div>
-                ))}
-              </React.Fragment>
-            ))}
+
+                  {/* Комментарии */}
+                  {comments[post.id]?.slice(0, 2).map((comment) => (
+                    <div key={comment.id} className={styles.commentCard}>
+                      <div className={styles.cardHeaders}>
+                        <div className={styles.cardHeader}>
+                          <img
+                            src={
+                              comment.photo_url
+                                ? `${comment.photo_url}`
+                                : "Avatar.png"
+                            }
+                            alt="User Avatar"
+                            className={styles.profileImage}
+                          />
+                          <div className={styles.userInfo}>
+                            <p className={styles.userName}>
+                              {comment.user_name}
+                            </p>
+                            <p className={styles.timestamp}>
+                              {new Date(comment.created_at).toLocaleString()}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <p className={styles.message}>{comment.content}</p>
+                      <div className={styles.cardFooter}>
+                        <img
+                          src={
+                            likedComments[comment.id]
+                              ? "Active=Yes.png"
+                              : "hand-thumbs-up_20.png"
+                          }
+                          alt=""
+                          className={styles.likeIcon}
+                          onClick={() => handleCommentLike(comment.id)}
+                        />
+                        {commentLikes[comment.id] > 0 && (
+                          <p className={styles.likeCount}>
+                            {commentLikes[comment.id]}
+                          </p>
+                        )}
+                        <div className={styles.cardFooter}>
+                          <img
+                            src="proicons_comment_20.png"
+                            alt=""
+                            className={styles.commentIcon}
+                          />
+                          {commentReplies[comment.id] > 0 && (
+                            <p className={styles.likeCount}>
+                              {commentReplies[comment.id]}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </React.Fragment>
+              ))
+            ) : (
+              <div className={styles.noPostsMessage}>Сообщения отсутствуют</div>
+            )}
           </div>
         ) : (
           <div>
