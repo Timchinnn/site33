@@ -10,6 +10,8 @@ function TopCountries() {
 
   const location = useLocation();
   const { fighters, fightersVoted } = location.state || {};
+  const { users, sortedUsers } = location.state || {};
+
   console.log(fighters);
   //   console.log(activeSection);
   const handleFighterClick = (fighter) => {
@@ -84,6 +86,34 @@ function TopCountries() {
             <p className={styles.money}>
               <>{fighter.vote_fan}</>
             </p>
+          </div>
+        ))}
+        <h2>Топ фанатов по донатам</h2>
+        {users.map((user) => (
+          <div key={user.id} className={styles.userItem}>
+            <div className={styles.userAbout}>
+              <img
+                src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
+                alt={user.name}
+              />
+              <p>{user.name}</p>
+            </div>
+
+            <p className={styles.money}>{user.total_donations} ₽</p>
+          </div>
+        ))}
+        <h2>Топ фанатов по голосам</h2>
+        {sortedUsers.map((user) => (
+          <div key={user.id} className={styles.userItem}>
+            <div className={styles.userAbout}>
+              <img
+                src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
+                alt={user.name}
+              />
+              <p>{user.name}</p>
+            </div>
+
+            <p className={styles.money}>{user.vote_fan}</p>
           </div>
         ))}
       </div>

@@ -603,6 +603,8 @@ function Main() {
               state: {
                 fighters: topFighters,
                 fightersVoted: topVotedFighters,
+                users: users,
+                sortedUsers: sortedUsers,
               },
             });
           }}
