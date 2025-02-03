@@ -150,7 +150,7 @@ function TopCountries() {
                   alt={user.name}
                 />
                 <p className={styles.text}>{user.name}</p>
-                <p className={styles.textGrey}>{users.country}</p>
+                <p className={styles.textGrey}>{user.country}</p>
               </div>
               <p className={styles.money}>{user.total_votes}</p>
             </div>

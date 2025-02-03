@@ -221,3 +221,14 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.textGrey {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #0f0f0f;
+}
