@@ -596,7 +596,17 @@ function Main() {
             </div>
           </div>
         </div>
-        <div className={styles.topCountySection}>
+        <div
+          className={styles.topCountySection}
+          onClick={() => {
+            navigate("/TopCountries", {
+              state: {
+                fighters: topFighters,
+                topVotedFighters,
+              },
+            });
+          }}
+        >
           <div className={styles.headerCountrySection}>
             <h2>Топ стран, участвующих в голосовании</h2>
             {/* <div className={styles.toggleButtons}>
