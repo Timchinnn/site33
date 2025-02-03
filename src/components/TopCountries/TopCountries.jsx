@@ -48,12 +48,13 @@ function TopCountries() {
         </div>
         <h2>Топ бойцов по сборам</h2>
         <div className={styles.objects}>
-          {fighters.map((fighter) => (
+          {fighters.map((fighter, index) => (
             <div
               key={fighter.id}
               className={styles.fighterItem}
               onClick={() => handleFighterClick(fighter)}
             >
+              <p>{index + 1}</p>
               <div className={styles.fighterAbout}>
                 <img
                   src={
@@ -73,12 +74,14 @@ function TopCountries() {
 
         <h2>Топ бойцов по голосованию</h2>
         <div className={styles.objects}>
-          {fightersVoted.map((fighter) => (
+          {fightersVoted.map((fighter, index) => (
             <div
               key={fighter.id}
               className={styles.fighterItem}
               onClick={() => handleFighterClick(fighter)}
             >
+              {" "}
+              <p>{index + 1}</p>
               <div className={styles.fighterAbout}>
                 <img
                   src={
@@ -90,7 +93,6 @@ function TopCountries() {
                   {fighter.name} {fighter.surname[0]}.
                 </p>
               </div>
-
               <p className={styles.money}>
                 <>{fighter.vote_fan}</>
               </p>
@@ -99,8 +101,10 @@ function TopCountries() {
         </div>
         <h2>Топ фанатов по донатам</h2>
         <div className={styles.objects}>
-          {users.map((user) => (
+          {users.map((user, index) => (
             <div key={user.id} className={styles.userItem}>
+              {" "}
+              <p>{index + 1}</p>
               <div className={styles.userAbout}>
                 <img
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
@@ -108,15 +112,16 @@ function TopCountries() {
                 />
                 <p>{user.name}</p>
               </div>
-
               <p className={styles.money}>{user.total_donations} ₽</p>
             </div>
           ))}
         </div>
         <h2>Топ фанатов по голосам</h2>
         <div className={styles.objects}>
-          {sortedUsers.map((user) => (
+          {sortedUsers.map((user, index) => (
             <div key={user.id} className={styles.userItem}>
+              {" "}
+              <p>{index + 1}</p>
               <div className={styles.userAbout}>
                 <img
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
@@ -124,7 +129,6 @@ function TopCountries() {
                 />
                 <p>{user.name}</p>
               </div>
-
               <p className={styles.money}>{user.total_votes}</p>
             </div>
           ))}
