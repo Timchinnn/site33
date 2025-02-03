@@ -154,6 +154,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 }
 .userItem p {
   font-family: Inter;
@@ -169,9 +170,13 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 }
 .objects {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  overflow-x: auto;
+  -ms-overflow-x: hidden;
+  scrollbar-width: none;
 }
