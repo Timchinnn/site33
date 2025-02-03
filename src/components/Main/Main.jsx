@@ -91,6 +91,22 @@ function Main() {
 
     fetchTopVotedFighters();
   }, []);
+  useEffect(() => {
+    const fetchTopVotedCountries = async () => {
+      try {
+        const response = await fetch("/api/votes/by-country");
+        if (response.ok) {
+          const data = await response.json();
+          setTopVotedFighters(data);
+          console.log(data);
+        }
+      } catch (error) {
+        console.error("Error fetching top voted fighters:", error);
+      }
+    };
+
+    fetchTopVotedCountries();
+  }, []);
   // const [topMatches, setTopMatches] = useState([]);
   // useEffect(() => {
   //   const fetchTopMatches = async () => {
