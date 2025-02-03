@@ -11,7 +11,7 @@ function TopCountries() {
   const location = useLocation();
   const { fighters, fightersVoted } = location.state || {};
   console.log(fighters);
-  console.log(activeSection);
+  //   console.log(activeSection);
   const handleFighterClick = (fighter) => {
     navigate("/StatsFighterFan", {
       state: {
