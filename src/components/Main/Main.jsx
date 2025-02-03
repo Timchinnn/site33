@@ -614,7 +614,7 @@ function Main() {
                 </p>
               </div> */}
           </div>
-          <div className={styles.fightersList}>
+          <div className={styles.countyList}>
             {countryVotes.map((country) => (
               <div key={country.country} className={styles.countryItem}>
                 <div className={styles.countryInfo}>
@@ -625,25 +625,9 @@ function Main() {
                   />
                   <span>{country.country}</span>
                 </div>
-                <span>{country.total_votes}</span>
+                {/* <span>{country.total_votes}</span> */}
               </div>
             ))}
-          </div>
-          <div
-            className={styles.watchAll}
-            onClick={() => {
-              navigate("/TopFighters", {
-                state: {
-                  fighters:
-                    activeSection === "donations"
-                      ? topFighters
-                      : topVotedFighters,
-                  activeSection: activeSection,
-                },
-              });
-            }}
-          >
-            <p>Показать всех</p>
           </div>
         </div>
       </div>
