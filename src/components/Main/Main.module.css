@@ -342,7 +342,7 @@ img {
 .countryInfo img {
   width: 40px;
 }
-.countryInfo p {
+.countryInfo span {
   font-family: Inter;
   font-size: 13px;
   font-weight: 400;
