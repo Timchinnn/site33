@@ -605,6 +605,7 @@ function Main() {
                 fightersVoted: topVotedFighters,
                 users: users,
                 sortedUsers: sortedUsers,
+                countryVotes:countryVotes,
               },
             });
           }}

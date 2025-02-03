@@ -46,6 +46,24 @@ function TopCountries() {
             />
           </div>
         </div>
+        <h2>Топ стран по голосованию</h2>
+        <div className={styles.objects}>
+          {countryVotes.map((country, index) => (
+            <div key={country.country} className={styles.countryItem}>
+              {" "}
+              <p>{index + 1}</p>
+              <div className={styles.countryInfo}>
+                <img
+                  src={`/${country.country.toLowerCase()}.png`}
+                  alt={country.country}
+                  className={styles.flag}
+                />
+                <span>{country.country}</span>
+              </div>
+              <span>{country.total_votes}</span>
+            </div>
+          ))}
+        </div>
         <h2>Топ бойцов по сборам</h2>
         <div className={styles.objects}>
           {fighters.map((fighter, index) => (
