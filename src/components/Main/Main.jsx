@@ -602,7 +602,7 @@ function Main() {
             navigate("/TopCountries", {
               state: {
                 fighters: topFighters,
-                topVotedFighters,
+                fightersVoted: topVotedFighters,
               },
             });
           }}
