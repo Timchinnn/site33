@@ -10,7 +10,7 @@ function TopCountries() {
 
   const location = useLocation();
   const { fighters, fightersVoted } = location.state || {};
-  const { users, sortedUsers } = location.state || {};
+  const { users, sortedUsers, countryVotes } = location.state || {};
 
   console.log(fighters);
   //   console.log(activeSection);
