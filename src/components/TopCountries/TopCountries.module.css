@@ -189,3 +189,20 @@ img {
   -ms-overflow-x: hidden;
   scrollbar-width: none;
 }
+.countryItem {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100px;
+  background: #e8e7ed;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+.countryInfo {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100px;
+}
