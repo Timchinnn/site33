@@ -116,6 +116,7 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  width: 100px;
 }
 .fighterAbout {
   display: flex;
@@ -171,6 +172,7 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  width: 100px;
 }
 .objects {
   display: flex;
