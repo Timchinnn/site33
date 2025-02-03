@@ -58,9 +58,9 @@ function TopCountries() {
                   alt={country.country}
                   className={styles.flag}
                 />
-                <span>{country.country}</span>
+                <span className={styles.text}>{country.country}</span>
               </div>
-              <span>{country.total_votes}</span>
+              <span className={styles.text}>{country.total_votes}</span>
             </div>
           ))}
         </div>
@@ -80,7 +80,7 @@ function TopCountries() {
                   }
                   alt={fighter.name}
                 />
-                <p>
+                <p className={styles.text}>
                   {fighter.name} {fighter.surname[0]}.
                 </p>
               </div>
@@ -107,7 +107,7 @@ function TopCountries() {
                   }
                   alt={fighter.name}
                 />
-                <p>
+                <p className={styles.text}>
                   {fighter.name} {fighter.surname[0]}.
                 </p>
               </div>
@@ -128,7 +128,7 @@ function TopCountries() {
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
                   alt={user.name}
                 />
-                <p>{user.name}</p>
+                <p className={styles.text}>{user.name}</p>
               </div>
               <p className={styles.money}>{user.total_donations} ₽</p>
             </div>
@@ -145,7 +145,7 @@ function TopCountries() {
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
                   alt={user.name}
                 />
-                <p>{user.name}</p>
+                <p className={styles.text}>{user.name}</p>
               </div>
               <p className={styles.money}>{user.total_votes}</p>
             </div>
