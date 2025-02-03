@@ -126,6 +126,7 @@ img {
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  width: 100px;
 }
 .fighterItem p {
   font-family: Inter;
