@@ -72,55 +72,63 @@ function TopCountries() {
         </div>
 
         <h2>Топ бойцов по голосованию</h2>
-        {fightersVoted.map((fighter) => (
-          <div
-            key={fighter.id}
-            className={styles.fighterItem}
-            onClick={() => handleFighterClick(fighter)}
-          >
-            <div className={styles.fighterAbout}>
-              <img
-                src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
-                alt={fighter.name}
-              />
-              <p>
-                {fighter.name} {fighter.surname[0]}.
+        <div className={styles.objects}>
+          {fightersVoted.map((fighter) => (
+            <div
+              key={fighter.id}
+              className={styles.fighterItem}
+              onClick={() => handleFighterClick(fighter)}
+            >
+              <div className={styles.fighterAbout}>
+                <img
+                  src={
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
+                  }
+                  alt={fighter.name}
+                />
+                <p>
+                  {fighter.name} {fighter.surname[0]}.
+                </p>
+              </div>
+
+              <p className={styles.money}>
+                <>{fighter.vote_fan}</>
               </p>
             </div>
-
-            <p className={styles.money}>
-              <>{fighter.vote_fan}</>
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
         <h2>Топ фанатов по донатам</h2>
-        {users.map((user) => (
-          <div key={user.id} className={styles.userItem}>
-            <div className={styles.userAbout}>
-              <img
-                src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
-                alt={user.name}
-              />
-              <p>{user.name}</p>
-            </div>
+        <div className={styles.objects}>
+          {users.map((user) => (
+            <div key={user.id} className={styles.userItem}>
+              <div className={styles.userAbout}>
+                <img
+                  src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
+                  alt={user.name}
+                />
+                <p>{user.name}</p>
+              </div>
 
-            <p className={styles.money}>{user.total_donations} ₽</p>
-          </div>
-        ))}
+              <p className={styles.money}>{user.total_donations} ₽</p>
+            </div>
+          ))}
+        </div>
         <h2>Топ фанатов по голосам</h2>
-        {sortedUsers.map((user) => (
-          <div key={user.id} className={styles.userItem}>
-            <div className={styles.userAbout}>
-              <img
-                src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
-                alt={user.name}
-              />
-              <p>{user.name}</p>
-            </div>
+        <div className={styles.objects}>
+          {sortedUsers.map((user) => (
+            <div key={user.id} className={styles.userItem}>
+              <div className={styles.userAbout}>
+                <img
+                  src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
+                  alt={user.name}
+                />
+                <p>{user.name}</p>
+              </div>
 
-            <p className={styles.money}>{user.vote_fan}</p>
-          </div>
-        ))}
+              <p className={styles.money}>{user.vote_fan}</p>
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div
