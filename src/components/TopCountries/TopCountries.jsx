@@ -84,6 +84,7 @@ function TopCountries() {
                 <p className={styles.text}>
                   {fighter.name} {fighter.surname[0]}.
                 </p>
+                <p className={styles.textGrey}>{fighter.discipline}</p>
               </div>
 
               <p className={styles.money}>{fighter.donat_now} ₽</p>
@@ -111,6 +112,7 @@ function TopCountries() {
                 <p className={styles.text}>
                   {fighter.name} {fighter.surname[0]}.
                 </p>
+                <p className={styles.textGrey}>{fighter.discipline}</p>
               </div>
               <p className={styles.money}>
                 <>{fighter.vote_fan}</>
@@ -130,6 +132,7 @@ function TopCountries() {
                   alt={user.name}
                 />
                 <p className={styles.text}>{user.name}</p>
+                <p className={styles.textGrey}>{user.country}</p>
               </div>
               <p className={styles.money}>{user.total_donations} ₽</p>
             </div>
@@ -147,6 +150,7 @@ function TopCountries() {
                   alt={user.name}
                 />
                 <p className={styles.text}>{user.name}</p>
+                <p className={styles.textGrey}>{users.country}</p>
               </div>
               <p className={styles.money}>{user.total_votes}</p>
             </div>
