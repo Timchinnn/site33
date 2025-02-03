@@ -9,7 +9,7 @@ function TopCountries() {
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   const location = useLocation();
-  const { fighters, activeSection } = location.state || {};
+  const { fighters, fightersVoted } = location.state || {};
   console.log(fighters);
   console.log(activeSection);
   const handleFighterClick = (fighter) => {
