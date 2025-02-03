@@ -18,6 +18,8 @@ function StatsFighterFan() {
   const [comments, setComments] = useState({});
   const [showInfoModal, setShowInfoModal] = useState(false);
   console.log(fighterData);
+  const userId = localStorage.getItem("userId");
+
   const rotation = (fighterData.rating / 100) * 180 - 90;
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
