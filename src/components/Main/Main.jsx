@@ -619,7 +619,7 @@ function Main() {
               <div key={country.country} className={styles.countryItem}>
                 <div className={styles.countryInfo}>
                   <img
-                    src={`/flags/${country.country.toLowerCase()}.png`}
+                    src={`/${country.country.toLowerCase()}.png`}
                     alt={country.country}
                     className={styles.flag}
                   />
