@@ -6,6 +6,7 @@ function Main() {
   const [activeSection, setActiveSection] = useState("donations"); // 'donations' или 'votes'
   const [activeSectionUser, setActiveSectionUser] = useState("donat"); // 'donations' или 'votes'
   const [activeTab, setActiveTab] = useState("catalog"); // начальное значение зависит от текущей страницы
+  const [countryVotes, setCountryVotes] = useState([]);
 
   const userId = localStorage.getItem("userId");
   const userType = localStorage.getItem("userType");
@@ -97,7 +98,7 @@ function Main() {
         const response = await fetch("/api/votes/by-country");
         if (response.ok) {
           const data = await response.json();
-          setTopVotedFighters(data);
+          setCountryVotes(data);
           console.log(data);
         }
       } catch (error) {
@@ -614,7 +615,19 @@ function Main() {
               </div> */}
           </div>
           <div className={styles.fightersList}>
-            <div></div>
+            {countryVotes.map((country) => (
+              <div key={country.country} className={styles.countryItem}>
+                <div className={styles.countryInfo}>
+                  <img
+                    src={`/flags/${country.country.toLowerCase()}.png`}
+                    alt={country.country}
+                    className={styles.flag}
+                  />
+                  <span>{country.country}</span>
+                </div>
+                <span>{country.total_votes}</span>
+              </div>
+            ))}
           </div>
           <div
             className={styles.watchAll}
