@@ -339,6 +339,9 @@ img {
   padding-left: 8px;
   padding-top: 9px;
 }
+.countryInfo img {
+  width: 40px;
+}
 .countryInfo {
   display: flex;
   flex-direction: column;
