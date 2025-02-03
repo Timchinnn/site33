@@ -125,7 +125,7 @@ function TopCountries() {
                 <p>{user.name}</p>
               </div>
 
-              <p className={styles.money}>{user.vote_fan}</p>
+              <p className={styles.money}>{user.total_votes}</p>
             </div>
           ))}
         </div>
