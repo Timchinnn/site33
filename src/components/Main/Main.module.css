@@ -342,7 +342,7 @@ img {
 .countyList {
   display: flex;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding-left: 8px;
   padding-top: 9px;
 }
