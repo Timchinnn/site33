@@ -11,6 +11,7 @@ function TopCountries() {
   const location = useLocation();
   const { fighters, fightersVoted } = location.state || {};
   const { users, sortedUsers, countryVotes } = location.state || {};
+  console.log(users);
 
   console.log(fighters);
   //   console.log(activeSection);
