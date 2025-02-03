@@ -597,7 +597,7 @@ function Main() {
           </div>
         </div>
         <div className={styles.topCountySection}>
-          <div className={styles.headerSection}>
+          <div className={styles.headerCountrySection}>
             <h2>Топ стран, участвующих в голосовании</h2>
             {/* <div className={styles.toggleButtons}>
                 <p

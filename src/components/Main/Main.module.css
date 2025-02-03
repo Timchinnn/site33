@@ -280,6 +280,14 @@ img {
 
   flex-direction: column;
 }
+.headerCountrySection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #0f0f0f0f;
+  padding-bottom: 10px;
+  flex-direction: column;
+}
 .headerSection p {
   font-family: Inter;
   font-size: 12px;
@@ -292,6 +300,17 @@ img {
   color: #95959b;
 }
 .headerSection h2 {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+.headerCountrySection h2 {
   font-family: Inter;
   font-size: 16px;
   font-weight: 500;
@@ -335,7 +354,7 @@ img {
   margin-top: 12px;
   border: 1px solid #0f0f0f0f;
   border-radius: 12px;
-  width: 48%;
+  /* width: 48%; */
 }
 .fighterItem {
   /* flex: 0 1 calc(50% - 10px); Каждый элемент занимает 50% ширины минус отступы */
