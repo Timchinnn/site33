@@ -11,7 +11,7 @@ function TopCountries() {
   const location = useLocation();
   const { fighters, fightersVoted } = location.state || {};
   const { users, sortedUsers, countryVotes } = location.state || {};
-  console.log(users);
+  console.log(sortedUsers);
 
   console.log(fighters);
   //   console.log(activeSection);
@@ -151,7 +151,7 @@ function TopCountries() {
                 />
                 <p className={styles.text}>{user.name}</p>
                 <p className={styles.textGrey}>{user.country}</p>
-                <p className={styles.textGrey}>{user.country}</p>
+                {/* <p className={styles.textGrey}>{user.country}</p> */}
               </div>
               <p className={styles.money}>{user.total_votes}</p>
             </div>
