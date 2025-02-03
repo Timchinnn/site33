@@ -47,25 +47,30 @@ function TopCountries() {
           </div>
         </div>
         <h2>Топ бойцов по сборам</h2>
-        {fighters.map((fighter) => (
-          <div
-            key={fighter.id}
-            className={styles.fighterItem}
-            onClick={() => handleFighterClick(fighter)}
-          >
-            <div className={styles.fighterAbout}>
-              <img
-                src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
-                alt={fighter.name}
-              />
-              <p>
-                {fighter.name} {fighter.surname[0]}.
-              </p>
-            </div>
+        <div className={styles.objects}>
+          {fighters.map((fighter) => (
+            <div
+              key={fighter.id}
+              className={styles.fighterItem}
+              onClick={() => handleFighterClick(fighter)}
+            >
+              <div className={styles.fighterAbout}>
+                <img
+                  src={
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
+                  }
+                  alt={fighter.name}
+                />
+                <p>
+                  {fighter.name} {fighter.surname[0]}.
+                </p>
+              </div>
 
-            <p className={styles.money}>{fighter.donat_now} ₽</p>
-          </div>
-        ))}
+              <p className={styles.money}>{fighter.donat_now} ₽</p>
+            </div>
+          ))}
+        </div>
+
         <h2>Топ бойцов по голосованию</h2>
         {fightersVoted.map((fighter) => (
           <div
