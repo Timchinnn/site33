@@ -595,6 +595,44 @@ function Main() {
             </div>
           </div>
         </div>
+        <div className={styles.topFightersSection}>
+          <div className={styles.headerSection}>
+            <h2>Топ стран, участвующих в голосовании</h2>
+            {/* <div className={styles.toggleButtons}>
+                <p
+                  className={activeSection === "donations" ? styles.active : ""}
+                  onClick={() => setActiveSection("donations")}
+                >
+                  По сборам
+                </p>
+                <p
+                  className={activeSection === "votes" ? styles.active : ""}
+                  onClick={() => setActiveSection("votes")}
+                >
+                  По голосам
+                </p>
+              </div> */}
+          </div>
+          <div className={styles.fightersList}>
+            <div></div>
+          </div>
+          <div
+            className={styles.watchAll}
+            onClick={() => {
+              navigate("/TopFighters", {
+                state: {
+                  fighters:
+                    activeSection === "donations"
+                      ? topFighters
+                      : topVotedFighters,
+                  activeSection: activeSection,
+                },
+              });
+            }}
+          >
+            <p>Показать всех</p>
+          </div>
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div
