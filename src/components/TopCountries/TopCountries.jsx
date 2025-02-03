@@ -51,7 +51,7 @@ function TopCountries() {
           {countryVotes.map((country, index) => (
             <div key={country.country} className={styles.countryItem}>
               {" "}
-              <p>{index + 1}</p>
+              <p className={styles.index}>{index + 1}</p>
               <div className={styles.countryInfo}>
                 <img
                   src={`/${country.country.toLowerCase()}.png`}
@@ -72,7 +72,7 @@ function TopCountries() {
               className={styles.fighterItem}
               onClick={() => handleFighterClick(fighter)}
             >
-              <p>{index + 1}</p>
+              <p className={styles.index}>{index + 1}</p>
               <div className={styles.fighterAbout}>
                 <img
                   src={
@@ -99,7 +99,7 @@ function TopCountries() {
               onClick={() => handleFighterClick(fighter)}
             >
               {" "}
-              <p>{index + 1}</p>
+              <p className={styles.index}>{index + 1}</p>
               <div className={styles.fighterAbout}>
                 <img
                   src={
@@ -122,7 +122,7 @@ function TopCountries() {
           {users.map((user, index) => (
             <div key={user.id} className={styles.userItem}>
               {" "}
-              <p>{index + 1}</p>
+              <p className={styles.index}>{index + 1}</p>
               <div className={styles.userAbout}>
                 <img
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
@@ -139,7 +139,7 @@ function TopCountries() {
           {sortedUsers.map((user, index) => (
             <div key={user.id} className={styles.userItem}>
               {" "}
-              <p>{index + 1}</p>
+              <p className={styles.index}>{index + 1}</p>
               <div className={styles.userAbout}>
                 <img
                   src={user.photo_url ? `${user.photo_url}` : "Avatar.png"}
