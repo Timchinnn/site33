@@ -156,6 +156,12 @@ function ProfileUser() {
             <img src="layout-text-window.png" alt="" />
             <p>Помощь</p>
           </div>
+          {userId === "1" && userType === "fan" && (
+            <div onClick={() => navigate("/AdminPanel")}>
+              <img src="admin-icon.png" alt="" />
+              <p>Админ панель</p>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.bottomNav}>
