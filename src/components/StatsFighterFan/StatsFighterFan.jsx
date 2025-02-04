@@ -15,10 +15,10 @@ function StatsFighterFan() {
 
   const getRatingText = (rating) => {
     if (rating === 0) return "Рейтинг отсутствует";
-    if (0 < rating < 30) return "Спасибо за отсутствие";
-    if (30 < rating < 70) return "Атакуэйшн";
-    if (70 < rating < 95) return "Пример для подражания";
-    if (95 < rating) return "Герой фанатов";
+    if (rating > 0 && rating < 30) return "Спасибо за отсутствие";
+    if (rating >= 30 && rating < 70) return "Атакуэйшн";
+    if (rating >= 70 && rating < 95) return "Пример для подражания";
+    if (rating >= 95) return "Герой фанатов";
   };
   const [selectedCategories, setSelectedCategories] = useState("");
   const [showRatingModal, setShowRatingModal] = useState(false);
