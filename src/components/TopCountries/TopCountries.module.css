@@ -213,6 +213,7 @@ img {
   text-align: right;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 8px 0 !important;
 }
 .text {
   font-family: Inter;
