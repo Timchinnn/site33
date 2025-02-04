@@ -274,6 +274,7 @@ hr {
   padding-right: 2.6vw;
   padding-left: 2.6vw;
   border: none;
+  padding-top: 12px;
 }
 
 .vote button {
