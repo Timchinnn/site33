@@ -74,23 +74,28 @@ function SupportFighters() {
             style={{ cursor: "pointer", pointerEvents: "auto" }}
           />
         </div>
-        {(searchQuery ? filteredFighters : fighters).map((fighter) => (
-          <div
-            key={fighter.id}
-            className={styles.fighterItem}
-            onClick={() => handleFighterClick(fighter)}
-          >
-            <div className={styles.fighterAbout}>
-              <img
-                src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
-                alt={fighter.name}
-              />
-              <p>
-                {fighter.name} {fighter.surname[0]}.
-              </p>
+        <div className={styles.fighterItems}>
+          {" "}
+          {(searchQuery ? filteredFighters : fighters).map((fighter) => (
+            <div
+              key={fighter.id}
+              className={styles.fighterItem}
+              onClick={() => handleFighterClick(fighter)}
+            >
+              <div className={styles.fighterAbout}>
+                <img
+                  src={
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
+                  }
+                  alt={fighter.name}
+                />
+                <p>
+                  {fighter.name} {fighter.surname[0]}.
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div
