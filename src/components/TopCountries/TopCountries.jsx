@@ -26,6 +26,9 @@ function TopCountries() {
       },
     });
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
