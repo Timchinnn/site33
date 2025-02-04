@@ -59,12 +59,14 @@ function Signin() {
   return (
     <div>
       <div className={styles.titleblock}>
-        <img
+        {/* <img
           className={styles.arrow}
           src="./arrow.png
         "
           alt="#"
-        ></img>
+        ></img> */}
+        <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
+
         <h1 className={styles.title}>BroDonate</h1>
       </div>
       <div className={styles.authForm}>
