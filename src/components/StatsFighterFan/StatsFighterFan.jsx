@@ -25,6 +25,15 @@ function StatsFighterFan() {
       ? (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90
       : -90;
   console.log(rotation);
+  const calculateVotePercentage = (totalVotes, voteFan) => {
+    if (totalVotes === 0) return 0;
+    return Math.round((voteFan / totalVotes) * 100);
+  };
+  const votePercentage = calculateVotePercentage(
+    fighterData.totalVotes,
+    fighterData.vote_fan
+  );
+  console.log(votePercentage);
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
   const [likedComments, setLikedComments] = useState({});
