@@ -331,6 +331,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-left: 8px;
+  margin: 0;
 }
 .fightersList {
   display: flex;
@@ -566,4 +567,7 @@ img {
   .referralProgram p {
     font-size: 13px;
   }
+}
+.textGrey {
+  color: #95959b !important;
 }

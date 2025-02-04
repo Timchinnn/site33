@@ -492,9 +492,7 @@ function Main() {
                         <p>
                           {fighter.name} {fighter.surname[0]}.
                         </p>
-                        <p>
-                          {fighter.name} {fighter.surname[0]}.
-                        </p>
+                        <p className={styles.textGrey}>{fighter.discipline}</p>
                       </div>
                     </div>
                   ))
@@ -516,9 +514,7 @@ function Main() {
                         <p>
                           {fighter.name} {fighter.surname[0]}.
                         </p>
-                        <p>
-                          {fighter.name} {fighter.surname[0]}.
-                        </p>
+                        <p className={styles.textGrey}>{fighter.discipline}</p>
                       </div>
                     </div>
                   ))}
@@ -575,7 +571,7 @@ function Main() {
                         />
                         <div>
                           <p>{fighter.name}</p>
-                          <p>{fighter.name}</p>
+                          <p className={styles.textGrey}>{fighter.country}</p>
                         </div>
                       </div>
                     ))
@@ -591,7 +587,7 @@ function Main() {
                         />
                         <div>
                           <p>{fighter.name}</p>
-                          <p>{fighter.name}</p>
+                          <p className={styles.textGrey}>{fighter.country}</p>
                         </div>{" "}
                       </div>
                     ))}
