@@ -20,7 +20,10 @@ function StatsFighterFan() {
   console.log(fighterData);
   const userId = localStorage.getItem("userId");
 
-  const rotation = (fighterData.rating / 100) * 180 - 90;
+  const rotation =
+    fighterData.totalVotes > 0
+      ? (fighterData.votes / fighterData.totalVotes) * 180 - 90
+      : -90;
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
   const [likedComments, setLikedComments] = useState({});
