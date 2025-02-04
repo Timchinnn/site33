@@ -120,7 +120,7 @@ img {
 .nameFlag {
   display: flex;
   justify-content: space-around;
-  width: 56%;
+  width: 70%;
   align-items: center;
 }
 .competitions {
