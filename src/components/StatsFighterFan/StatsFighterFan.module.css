@@ -230,6 +230,7 @@ img {
   -webkit-transform-style: preserve-3d;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  min-transform: rotate(-90deg); /* Добавить это свойство */
 }
 
 .percentage {
