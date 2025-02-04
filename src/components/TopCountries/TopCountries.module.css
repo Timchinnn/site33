@@ -235,7 +235,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   margin: 8px 0;
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 .textGrey {
   font-family: Inter;
