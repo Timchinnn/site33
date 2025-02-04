@@ -72,7 +72,7 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ бойцов по сборам</h2>
           <img
-            src={isGridView ? "down.png" : "up.png"}
+            src={isGridView ? "up.png" : "down.png"}
             alt="#"
             className={styles.toggleView}
             onClick={() => setIsGridView(!isGridView)}
@@ -111,7 +111,7 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ бойцов по голосованию</h2>
           <img
-            src={isGridView1 ? "down.png" : "up.png"}
+            src={isGridView1 ? "up.png" : "down.png"}
             alt="#"
             className={styles.toggleView}
             onClick={() => setIsGridView1(!isGridView1)}
@@ -152,7 +152,7 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ фанатов по донатам</h2>
           <img
-            src={isGridView2 ? "down.png" : "up.png"}
+            src={isGridView2 ? "up.png" : "down.png"}
             alt="#"
             className={styles.toggleView}
             onClick={() => setIsGridView2(!isGridView2)}
@@ -184,7 +184,7 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ фанатов по голосам</h2>
           <img
-            src={isGridView3 ? "down.png" : "up.png"}
+            src={isGridView3 ? "up.png" : "down.png"}
             alt="#"
             className={styles.toggleView}
             onClick={() => setIsGridView3(!isGridView3)}
