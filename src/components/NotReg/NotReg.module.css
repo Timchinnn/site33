@@ -138,7 +138,9 @@ img {
 .login {
   background-color: white;
   border-radius: 12px;
-  height: 124px;
+  /* height: 124px; */
+  padding: 16px;
+  margin-top: 22px;
 }
 .login p {
   font-family: Inter;
@@ -149,6 +151,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-top: 0;
 }
 .login button {
   border: none;
@@ -160,7 +163,9 @@ img {
   font-weight: 500;
   line-height: 18px;
   letter-spacing: -0.03em;
-  text-align: left;
+  text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border-radius: 4px;
+  width: 100%;
 }
