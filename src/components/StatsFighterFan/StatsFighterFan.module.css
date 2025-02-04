@@ -119,9 +119,10 @@ img {
 }
 .nameFlag {
   display: flex;
-  justify-content: space-around;
-  width: 70%;
+  justify-content: center;
+  width: auto; /* Вместо фиксированной ширины */
   align-items: center;
+  gap: 10px; /* Добавляем отступ между элементами */
 }
 .competitions {
   font-family: Inter;
@@ -1003,6 +1004,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 0;
 }
 
 .roleModel {
@@ -1015,6 +1017,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 0;
 }
 
 .heroFans {
@@ -1027,6 +1030,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 0;
 }
 
 .attackation {
@@ -1039,6 +1043,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 0;
 }
 
 .thanksForAbsence {
@@ -1051,4 +1056,5 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 0;
 }
