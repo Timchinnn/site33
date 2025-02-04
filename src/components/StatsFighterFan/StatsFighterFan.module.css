@@ -850,6 +850,9 @@ img {
 .donationProgressContainer {
   width: 100%;
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .donationProgressBar {
@@ -859,6 +862,7 @@ img {
   border-radius: 3px;
   overflow: hidden;
   position: relative; /* Добавлено для позиционирования процентов */
+  max-width: 428px;
 }
 
 .donationProgressFill {
