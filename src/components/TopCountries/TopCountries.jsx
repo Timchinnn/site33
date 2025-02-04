@@ -68,7 +68,7 @@ function TopCountries() {
                 />
                 <span className={styles.text}>{country.country}</span>
               </div>
-              <span className={styles.text}>{country.total_votes}</span>
+              <span className={styles.textCount}>{country.total_votes}</span>
             </div>
           ))}
         </div>
