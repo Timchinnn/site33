@@ -24,7 +24,7 @@ function StatsFighterFan() {
     fighterData.totalVotes > 0
       ? (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90
       : -90;
-  console.log(rotation);
+  // console.log(rotation);
   const calculateVotePercentage = (totalVotes, voteFan) => {
     if (totalVotes === 0) return 0;
     return Math.round((voteFan / totalVotes) * 100);
@@ -33,7 +33,7 @@ function StatsFighterFan() {
     fighterData.totalVotes,
     fighterData.vote_fan
   );
-  console.log(votePercentage);
+  // console.log(votePercentage);
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
   const [likedComments, setLikedComments] = useState({});
@@ -657,7 +657,7 @@ function StatsFighterFan() {
               </div>
             )}{" "}
             <p>Рейтинг одобрения</p>
-            <p>{fighterData.rating} 0%</p>
+            <p>{fighterData.votePercentage} %</p>
           </div>
         </div>
         <div className={styles.votings}>
