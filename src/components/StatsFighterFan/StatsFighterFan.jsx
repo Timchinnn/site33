@@ -6,11 +6,11 @@ function StatsFighterFan() {
 
   const { fighterData } = location.state || {};
   const getRatingClass = (rating) => {
-    if (!rating) return "noRating";
-    if (rating < 0) return "thanksForAbsence";
-    if (rating < 30) return "attackation";
-    if (rating < 70) return "roleModel";
-    return "heroFans";
+    if (rating === 0) return "noRating";
+    if (rating > 0 && rating < 30) return "thanksForAbsence";
+    if (rating >= 30 && rating < 70) return "attackation";
+    if (rating >= 70 && rating < 95) return "roleModel";
+    if (rating >= 95) return "heroFans";
   };
 
   const getRatingText = (rating) => {
