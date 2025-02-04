@@ -56,7 +56,7 @@ function ProfileUser() {
       <div className={styles.container}>
         <div className={styles.topBar}>
           <div className={styles.backArrow}>
-            <img src="arrow.png" alt="#" onClick={() => navigate("/main")} />
+            <img src="arrow.png" alt="#" onClick={() => navigate("/")} />
             <h1>BroDonate</h1>
           </div>
           <div className={styles.iconsContainer}>
