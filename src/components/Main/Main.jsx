@@ -441,15 +441,7 @@ function Main() {
                 </div>
               </div>
             ))}
-          <div
-            className={styles.game}
-            onClick={() =>
-              handleTournamentClick(
-                data.discipline_name,
-                data.tournaments[tournamentIndex].name
-              )
-            }
-          >
+          <div className={styles.game}>
             <img src="lightning.png" alt="" />
             <div className={styles.participants}>
               <p>RCC Hard</p>
