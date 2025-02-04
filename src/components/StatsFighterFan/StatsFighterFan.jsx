@@ -657,7 +657,7 @@ function StatsFighterFan() {
               </div>
             )}{" "}
             <p>Рейтинг одобрения</p>
-            <p>{fighterData.votePercentage} %</p>
+            <p>{votePercentage} %</p>
           </div>
         </div>
         <div className={styles.votings}>
