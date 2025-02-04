@@ -6,6 +6,8 @@ function ProfileUser() {
   const userType = localStorage.getItem("userType");
   const [activeTab, setActiveTab] = useState("profile"); // начальное значение зависит от текущей страницы
 
+  const userId = localStorage.getItem("userId");
+
   const navigate = useNavigate();
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
