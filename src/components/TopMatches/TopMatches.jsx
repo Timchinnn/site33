@@ -76,6 +76,7 @@ function TopMatches() {
               <div
                 onClick={() => handleMatchClick(tournament)}
                 style={{ cursor: "pointer" }}
+                className={styles.dropdownContents}
               >
                 {matches
                   .filter((match) => match.tournament_id === tournament.id)

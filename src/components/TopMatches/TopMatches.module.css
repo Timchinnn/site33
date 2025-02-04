@@ -2,6 +2,9 @@
   font-family: "Bebas Neue Cyrillic";
   src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
 }
+.dropdownContents {
+  margin-bottom: 16px;
+}
 
 img {
   width: 28px;
