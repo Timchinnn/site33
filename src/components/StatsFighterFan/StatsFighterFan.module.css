@@ -207,6 +207,7 @@ img {
   position: relative;
   width: 220px; /* Ширина полукруга */
   /* height: 110px; Высота полукруга */
+  overflow: visible; /* Предотвращает обрезание стрелки */
 }
 
 .halfCircle {
@@ -222,6 +223,9 @@ img {
   width: 7px;
   margin-left: -2.5px;
   transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%; /* Для поддержки Safari */
+  will-change: transform; /* Оптимизация производительности */
+  backface-visibility: hidden; /* Исправление артефактов рендеринга */
 }
 
 .percentage {
