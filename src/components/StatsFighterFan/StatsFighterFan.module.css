@@ -267,7 +267,7 @@ img {
   text-align: center;
 }
 .approvalRating :last-child {
-  color: #008b18;
+  /* color: #008b18; */
 }
 .container h3 {
   font-family: Inter;
