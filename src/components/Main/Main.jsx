@@ -441,6 +441,21 @@ function Main() {
                 </div>
               </div>
             ))}
+          <div
+            className={styles.game}
+            onClick={() =>
+              handleTournamentClick(
+                data.discipline_name,
+                data.tournaments[tournamentIndex].name
+              )
+            }
+          >
+            <img src="lightning.png" alt="" />
+            <div className={styles.participants}>
+              <p>RCC Hard</p>
+              <p>Кулачные бои</p>
+            </div>
+          </div>
         </div>
         <div className={styles.referralProgram}>
           <div className={styles.referralText}>
