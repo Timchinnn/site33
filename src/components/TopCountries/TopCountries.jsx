@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 function TopCountries() {
   const userType = localStorage.getItem("userType");
+  const [isGridView, setIsGridView] = useState(false);
 
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
@@ -66,7 +67,11 @@ function TopCountries() {
           ))}
         </div>
         <h2>Топ бойцов по сборам</h2>
-        <div className={styles.objects}>
+<img 
+  src={isGridView ? "grid-view.png" : "scroll-view.png"}
+  className={styles.toggleView}
+  onClick={() => setIsGridView(!isGridView)}
+/>        <div className={`${styles.objects} ${isGridView ? styles.grid : styles.scroll}`}>
           {fighters.map((fighter, index) => (
             <div
               key={fighter.id}

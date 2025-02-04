@@ -232,3 +232,25 @@ img {
   text-decoration-skip-ink: none;
   color: #95959B;
 }
+.objects {
+  display: flex;
+  transition: all 0.3s ease;
+}
+
+.objects.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.objects.scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.toggleView {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
