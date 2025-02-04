@@ -24,6 +24,7 @@ function StatsFighterFan() {
     fighterData.totalVotes > 0
       ? (fighterData.votes / fighterData.totalVotes) * 180 - 90
       : -90;
+  console.log(rotation);
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({});
   const [likedComments, setLikedComments] = useState({});
