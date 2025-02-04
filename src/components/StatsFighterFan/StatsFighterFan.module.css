@@ -215,12 +215,13 @@ img {
 }
 
 .arrow {
+  height: 89px;
+  left: 50%;
   position: absolute;
-  top: 16px;
-  left: 47%;
-  transform-origin: bottom center;
-  width: 12px;
-  height: auto;
+  top: 20px;
+  width: 7px;
+  margin-left: -2.5px;
+  transform-origin: 50% 100%;
 }
 
 .percentage {
