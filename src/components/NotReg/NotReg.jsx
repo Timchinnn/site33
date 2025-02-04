@@ -33,7 +33,10 @@ function NotReg() {
             />
           </div>
         </div>
-        <p>Для просмотра выполните вход в аккаунт или зарегигистрируйтесь</p>
+        <div className={styles.login}>
+          <p>Для просмотра выполните вход в аккаунт или зарегигистрируйтесь</p>
+          <button>Войти</button>
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div

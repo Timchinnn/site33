@@ -135,3 +135,32 @@ img {
 .catalogText {
   margin: 0; /* Убираем стандартные отступы */
 }
+.login {
+  background-color: white;
+  border-radius: 12px;
+  height: 124px;
+}
+.login p {
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.login button {
+  border: none;
+  color: white;
+  background-color: black;
+  height: 42px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
