@@ -76,7 +76,8 @@ const Router = () => {
         <Route element={<Saerch />} path="/Saerch" />
         <Route element={<AdminPanel />} path="/AdminPanel" />
         <Route element={<Balance />} path="/Balance" />
-        <Route element={<Referal />} path="/Referal" />
+        {/* <Route element={<Referal />} path="/Referal" /> */}
+        <Route element={userId ? <Referal /> : <NotReg />} path="/Referal" />
         <Route element={<Subscriptions />} path="/Subscriptions" />
         <Route element={<SubscriptionDetails />} path="/SubscriptionDetails" />
         <Route element={<SubscriptionEdit />} path="/SubscriptionEdit" />
