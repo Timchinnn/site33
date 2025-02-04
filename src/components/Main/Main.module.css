@@ -202,10 +202,10 @@ img {
 .participants {
   height: 5.6vh;
   padding-left: 2vw;
-  padding-top: 1vh;
+  /* padding-top: 1vh; */
 }
 .participants :last-child {
-  padding-top: 5px;
+  padding-top: 2px;
 
   font-family: Inter;
   font-size: 13px;

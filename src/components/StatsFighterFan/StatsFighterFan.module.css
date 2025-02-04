@@ -119,8 +119,8 @@ img {
 }
 .nameFlag {
   display: flex;
-  justify-content: space-between;
-  width: 48%;
+  justify-content: space-around;
+  width: 56%;
   align-items: center;
 }
 .competitions {
