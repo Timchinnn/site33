@@ -67,11 +67,17 @@ function TopCountries() {
           ))}
         </div>
         <h2>Топ бойцов по сборам</h2>
-<img 
-  src={isGridView ? "grid-view.png" : "scroll-view.png"}
-  className={styles.toggleView}
-  onClick={() => setIsGridView(!isGridView)}
-/>        <div className={`${styles.objects} ${isGridView ? styles.grid : styles.scroll}`}>
+        <img
+          src={isGridView ? "grid-view.png" : "scroll-view.png"}
+          alt="#"
+          className={styles.toggleView}
+          onClick={() => setIsGridView(!isGridView)}
+        />{" "}
+        <div
+          className={`${styles.objects} ${
+            isGridView ? styles.grid : styles.scroll
+          }`}
+        >
           {fighters.map((fighter, index) => (
             <div
               key={fighter.id}
@@ -96,7 +102,6 @@ function TopCountries() {
             </div>
           ))}
         </div>
-
         <h2>Топ бойцов по голосованию</h2>
         <div className={styles.objects}>
           {fightersVoted.map((fighter, index) => (
