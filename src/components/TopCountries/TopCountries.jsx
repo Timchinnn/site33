@@ -68,7 +68,7 @@ function TopCountries() {
         </div>
         <h2>Топ бойцов по сборам</h2>
         <img
-          src={isGridView ? "grid-view.png" : "scroll-view.png"}
+          src={isGridView ? "down.png" : "up.png"}
           alt="#"
           className={styles.toggleView}
           onClick={() => setIsGridView(!isGridView)}
