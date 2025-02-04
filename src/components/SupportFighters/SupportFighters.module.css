@@ -185,3 +185,13 @@ img {
   width: 20px;
   /* удалить или закомментировать pointer-events: none; */
 }
+.fighterAbout :last-child {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
