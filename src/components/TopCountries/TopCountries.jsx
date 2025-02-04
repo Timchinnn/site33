@@ -12,7 +12,6 @@ function TopCountries() {
   const { fighters, fightersVoted } = location.state || {};
   const { users, sortedUsers, countryVotes } = location.state || {};
   console.log(sortedUsers);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   console.log(fighters);
   //   console.log(activeSection);
@@ -66,36 +65,32 @@ function TopCountries() {
             </div>
           ))}
         </div>
-        
-<h2>Топ бойцов по сборам</h2>
-<div className={`${styles.objects} ${isExpanded ? styles.expanded : ''}`}>
-  {fighters.map((fighter, index) => (
-    <div
-      key={fighter.id}
-      className={styles.fighterItem}
-      onClick={() => handleFighterClick(fighter)}
-    >
-      <p className={styles.index}>{index + 1}</p>
-      <div className={styles.fighterAbout}>
-        <img
-          src={fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"}
-          alt={fighter.name}
-        />
-        <p className={styles.text}>
-          {fighter.name} {fighter.surname[0]}.
-        </p>
-        <p className={styles.textGrey}>{fighter.discipline}</p>
-      </div>
-      <p className={styles.money}>{fighter.donat_now} ₽</p>
-    </div>
-  ))}
-  <img 
-    src="down-arrow.png" 
-    alt="#"
-    className={styles.expandArrow}
-    onClick={() => setIsExpanded(!isExpanded)}
-  />
-</div>
+        <h2>Топ бойцов по сборам</h2>
+        <div className={styles.objects}>
+          {fighters.map((fighter, index) => (
+            <div
+              key={fighter.id}
+              className={styles.fighterItem}
+              onClick={() => handleFighterClick(fighter)}
+            >
+              <p className={styles.index}>{index + 1}</p>
+              <div className={styles.fighterAbout}>
+                <img
+                  src={
+                    fighter.photo_url ? `${fighter.photo_url}` : "Avatar.png"
+                  }
+                  alt={fighter.name}
+                />
+                <p className={styles.text}>
+                  {fighter.name} {fighter.surname[0]}.
+                </p>
+                <p className={styles.textGrey}>{fighter.discipline}</p>
+              </div>
+
+              <p className={styles.money}>{fighter.donat_now} ₽</p>
+            </div>
+          ))}
+        </div>
 
         <h2>Топ бойцов по голосованию</h2>
         <div className={styles.objects}>
