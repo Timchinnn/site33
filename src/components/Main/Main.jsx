@@ -340,10 +340,13 @@ function Main() {
             <p
               className={styles.donateLeaders}
               onClick={() => {
-                navigate("/TopFighters", {
+                navigate("/TopCountries", {
                   state: {
                     fighters: topFighters,
-                    activeSection: activeSection,
+                    fightersVoted: topVotedFighters,
+                    users: users,
+                    sortedUsers: sortedUsers,
+                    countryVotes: countryVotes,
                   },
                 });
               }}
@@ -522,13 +525,13 @@ function Main() {
             <div
               className={styles.watchAll}
               onClick={() => {
-                navigate("/TopFighters", {
+                navigate("/TopCountries", {
                   state: {
-                    fighters:
-                      activeSection === "donations"
-                        ? topFighters
-                        : topVotedFighters,
-                    activeSection: activeSection,
+                    fighters: topFighters,
+                    fightersVoted: topVotedFighters,
+                    users: users,
+                    sortedUsers: sortedUsers,
+                    countryVotes: countryVotes,
                   },
                 });
               }}
@@ -596,10 +599,13 @@ function Main() {
             <div
               className={styles.watchAll}
               onClick={() => {
-                navigate("/TopFan", {
+                navigate("/TopCountries", {
                   state: {
-                    users: activeSectionUser === "donat" ? users : sortedUsers,
-                    activeSectionUser: activeSectionUser,
+                    fighters: topFighters,
+                    fightersVoted: topVotedFighters,
+                    users: users,
+                    sortedUsers: sortedUsers,
+                    countryVotes: countryVotes,
                   },
                 });
               }}
