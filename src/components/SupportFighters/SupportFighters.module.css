@@ -2,7 +2,12 @@
   font-family: "Bebas Neue Cyrillic";
   src: url("../../fonts/bebasneuecyrillic.ttf") format("truetype");
 }
-
+.fighterItems {
+  grid-gap: 10px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
 img {
   width: 28px;
 }
