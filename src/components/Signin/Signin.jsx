@@ -65,7 +65,12 @@ function Signin() {
         "
           alt="#"
         ></img> */}
-        <img src="arrow.png" alt="#" onClick={() => navigate(-1)} />
+        <img
+          src="arrow.png"
+          alt="#"
+          className={styles.arrow}
+          onClick={() => navigate(-1)}
+        />
 
         <h1 className={styles.title}>BroDonate</h1>
       </div>
