@@ -488,9 +488,14 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <p>
-                        {fighter.name} {fighter.surname[0]}.
-                      </p>
+                      <div>
+                        <p>
+                          {fighter.name} {fighter.surname[0]}.
+                        </p>
+                        <p>
+                          {fighter.name} {fighter.surname[0]}.
+                        </p>
+                      </div>
                     </div>
                   ))
                 : topVotedFighters.slice(0, 4).map((fighter) => (
@@ -507,9 +512,14 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <p>
-                        {fighter.name} {fighter.surname[0]}.
-                      </p>
+                      <div>
+                        <p>
+                          {fighter.name} {fighter.surname[0]}.
+                        </p>
+                        <p>
+                          {fighter.name} {fighter.surname[0]}.
+                        </p>
+                      </div>
                     </div>
                   ))}
             </div>
@@ -563,7 +573,10 @@ function Main() {
                           }
                           alt={fighter.name}
                         />
-                        <p>{fighter.name}</p>
+                        <div>
+                          <p>{fighter.name}</p>
+                          <p>{fighter.name}</p>
+                        </div>
                       </div>
                     ))
                   : sortedUsers.slice(0, 4).map((fighter) => (
@@ -576,7 +589,10 @@ function Main() {
                           }
                           alt={fighter.name}
                         />
-                        <p>{fighter.name}</p>
+                        <div>
+                          <p>{fighter.name}</p>
+                          <p>{fighter.name}</p>
+                        </div>{" "}
                       </div>
                     ))}
               </div>
@@ -605,7 +621,7 @@ function Main() {
                 fightersVoted: topVotedFighters,
                 users: users,
                 sortedUsers: sortedUsers,
-                countryVotes:countryVotes,
+                countryVotes: countryVotes,
               },
             });
           }}
