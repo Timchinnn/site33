@@ -257,6 +257,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 15px !important;
 }
 .heroFans {
   /* color: #008b18; Green color for "Герой фанатов" */
