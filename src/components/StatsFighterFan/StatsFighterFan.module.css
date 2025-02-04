@@ -257,16 +257,13 @@ img {
   text-decoration-skip-ink: none;
 }
 .heroFans {
-  color: #008b18;
+  color: #008b18; /* Green color for "Герой фанатов" */
   font-family: Inter;
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: -0.03em;
   text-align: center;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-  margin: 0;
 }
 .approvalRating :last-child {
   color: #008b18;
@@ -994,4 +991,23 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   padding-top: 16px;
+}
+.noRating {
+  color: #95959b; /* Gray */
+}
+
+.roleModel {
+  color: #ffa500; /* Orange */
+}
+
+.heroFans {
+  color: #008b18; /* Green */
+}
+
+.attackation {
+  color: #ffff00; /* Yellow */
+}
+
+.thanksForAbsence {
+  color: #ff0000; /* Red */
 }

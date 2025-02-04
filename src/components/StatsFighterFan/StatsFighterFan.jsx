@@ -5,7 +5,21 @@ function StatsFighterFan() {
   const location = useLocation();
 
   const { fighterData } = location.state || {};
+  const getRatingClass = (rating) => {
+    if (!rating) return "noRating";
+    if (rating < 0) return "thanksForAbsence";
+    if (rating < 30) return "attackation";
+    if (rating < 70) return "roleModel";
+    return "heroFans";
+  };
 
+  const getRatingText = (rating) => {
+    if (!rating) return "Рейтинг отсутствует";
+    if (rating < 0) return "Спасибо за отсутствие";
+    if (rating < 30) return "Атакуэйшн";
+    if (rating < 70) return "Пример для подражания";
+    return "Герой фанатов";
+  };
   const [selectedCategories, setSelectedCategories] = useState("");
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [showDonateModal, setShowDonateModal] = useState(false);
@@ -613,7 +627,6 @@ function StatsFighterFan() {
           {fighterData.msg && (
             <button className={styles.inputButton}>{fighterData.msg}</button>
           )}
-
           <button className={styles.votingDonat} onClick={handleDonateClick}>
             Поддержать донатом
           </button>
@@ -641,7 +654,9 @@ function StatsFighterFan() {
             />
             <div className={styles.percentage}></div>
           </div>
-          <p className={styles.heroFans}>Герой фанатов</p>
+          <p className={styles[getRatingClass(rating)]}>
+            {getRatingText(rating)}
+          </p>{" "}
           <div className={styles.approvalRating}>
             <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
             {showInfoModal && (
