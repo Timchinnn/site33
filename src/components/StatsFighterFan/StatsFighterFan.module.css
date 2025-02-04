@@ -206,7 +206,7 @@ img {
 .gaugeContainer {
   position: relative;
   width: 220px; /* Ширина полукруга */
-  height: 110px; /* Высота полукруга */
+  /* height: 110px; Высота полукруга */
 }
 
 .halfCircle {
