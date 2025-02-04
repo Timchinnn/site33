@@ -14,11 +14,11 @@ function StatsFighterFan() {
   };
 
   const getRatingText = (rating) => {
-    if (!rating) return "Рейтинг отсутствует";
-    if (rating < 0) return "Спасибо за отсутствие";
-    if (rating < 30) return "Атакуэйшн";
-    if (rating < 70) return "Пример для подражания";
-    return "Герой фанатов";
+    if (rating === 0) return "Рейтинг отсутствует";
+    if (0 < rating < 30) return "Спасибо за отсутствие";
+    if (30 < rating < 70) return "Атакуэйшн";
+    if (70 < rating < 95) return "Пример для подражания";
+    if (95 < rating) return "Герой фанатов";
   };
   const [selectedCategories, setSelectedCategories] = useState("");
   const [showRatingModal, setShowRatingModal] = useState(false);
@@ -654,8 +654,8 @@ function StatsFighterFan() {
             />
             <div className={styles.percentage}></div>
           </div>
-          <p className={styles[getRatingClass(rating)]}>
-            {getRatingText(rating)}
+          <p className={styles[getRatingClass(votePercentage)]}>
+            {getRatingText(votePercentage)}
           </p>{" "}
           <div className={styles.approvalRating}>
             <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
