@@ -117,16 +117,22 @@ img {
 }
 
 .fighterItem {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  background: #e8e7ed;
+  height: 109px;
+  border-radius: 8px;
 }
 .fighterAbout {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  background: #e8e7ed;
+  height: 109px;
+  border-radius: 8px;
 }
 .fighterItem p {
   font-family: Inter;
