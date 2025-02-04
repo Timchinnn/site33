@@ -571,3 +571,6 @@ img {
 .textGrey {
   color: #95959b !important;
 }
+.infoAboutUser {
+  margin-top: 8px;
+}

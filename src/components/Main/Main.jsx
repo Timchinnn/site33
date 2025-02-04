@@ -488,7 +488,7 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <div>
+                      <div className={styles.infoAboutUser}>
                         <p>
                           {fighter.name} {fighter.surname[0]}.
                         </p>
@@ -510,7 +510,7 @@ function Main() {
                         }
                         alt={fighter.name}
                       />
-                      <div>
+                      <div className={styles.infoAboutUser}>
                         <p>
                           {fighter.name} {fighter.surname[0]}.
                         </p>
@@ -569,7 +569,7 @@ function Main() {
                           }
                           alt={fighter.name}
                         />
-                        <div>
+                        <div className={styles.infoAboutUser}>
                           <p>{fighter.name}</p>
                           <p className={styles.textGrey}>{fighter.country}</p>
                         </div>
@@ -585,7 +585,7 @@ function Main() {
                           }
                           alt={fighter.name}
                         />
-                        <div>
+                        <div className={styles.infoAboutUser}>
                           <p>{fighter.name}</p>
                           <p className={styles.textGrey}>{fighter.country}</p>
                         </div>{" "}
