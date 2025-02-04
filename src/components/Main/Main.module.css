@@ -187,6 +187,7 @@ img {
 .game img {
   width: 11.1vw;
   border-radius: 8px;
+  max-width: 100px;
 }
 .games p {
   margin: 0;
