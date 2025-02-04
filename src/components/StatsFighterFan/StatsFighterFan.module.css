@@ -214,7 +214,6 @@ img {
   width: 100%;
   height: auto;
 }
-
 .arrow {
   height: 89px;
   left: 50%;
@@ -226,10 +225,11 @@ img {
   -webkit-transform-origin: 50% 100%;
   will-change: transform;
   backface-visibility: hidden;
-  /* Добавить следующие свойства */
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   -webkit-transform-style: preserve-3d;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .percentage {
