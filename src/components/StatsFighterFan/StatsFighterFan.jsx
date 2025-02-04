@@ -22,7 +22,7 @@ function StatsFighterFan() {
 
   const rotation =
     fighterData.totalVotes > 0
-      ? (fighterData.votes / fighterData.totalVotes) * 180 - 90
+      ? (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90
       : -90;
   console.log(rotation);
   const [commentReplies, setCommentReplies] = useState({});
