@@ -91,6 +91,7 @@ function TopCountries() {
   ))}
   <img 
     src="down-arrow.png" 
+    alt="#"
     className={styles.expandArrow}
     onClick={() => setIsExpanded(!isExpanded)}
   />
