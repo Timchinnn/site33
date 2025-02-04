@@ -5,6 +5,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 function TopCountries() {
   const userType = localStorage.getItem("userType");
   const [isGridView, setIsGridView] = useState(false);
+  const [isGridView1, setIsGridView1] = useState(false);
+  const [isGridView2, setIsGridView2] = useState(false);
+  const [isGridView3, setIsGridView3] = useState(false);
 
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
@@ -108,16 +111,16 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ бойцов по голосованию</h2>
           <img
-            src={isGridView ? "down.png" : "up.png"}
+            src={isGridView1 ? "down.png" : "up.png"}
             alt="#"
             className={styles.toggleView}
-            onClick={() => setIsGridView(!isGridView)}
+            onClick={() => setIsGridView1(!isGridView1)}
           />{" "}
         </div>
 
         <div
           className={`${styles.objects} ${
-            isGridView ? styles.grid : styles.scroll
+            isGridView1 ? styles.grid : styles.scroll
           }`}
         >
           {fightersVoted.map((fighter, index) => (
@@ -149,16 +152,16 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ фанатов по донатам</h2>
           <img
-            src={isGridView ? "down.png" : "up.png"}
+            src={isGridView2 ? "down.png" : "up.png"}
             alt="#"
             className={styles.toggleView}
-            onClick={() => setIsGridView(!isGridView)}
+            onClick={() => setIsGridView2(!isGridView2)}
           />{" "}
         </div>
 
         <div
           className={`${styles.objects} ${
-            isGridView ? styles.grid : styles.scroll
+            isGridView2 ? styles.grid : styles.scroll
           }`}
         >
           {" "}
@@ -181,16 +184,16 @@ function TopCountries() {
         <div className={styles.top}>
           <h2>Топ фанатов по голосам</h2>
           <img
-            src={isGridView ? "down.png" : "up.png"}
+            src={isGridView3 ? "down.png" : "up.png"}
             alt="#"
             className={styles.toggleView}
-            onClick={() => setIsGridView(!isGridView)}
+            onClick={() => setIsGridView3(!isGridView3)}
           />{" "}
         </div>
 
         <div
           className={`${styles.objects} ${
-            isGridView ? styles.grid : styles.scroll
+            isGridView3 ? styles.grid : styles.scroll
           }`}
         >
           {" "}
