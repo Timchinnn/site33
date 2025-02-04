@@ -223,9 +223,13 @@ img {
   width: 7px;
   margin-left: -2.5px;
   transform-origin: 50% 100%;
-  -webkit-transform-origin: 50% 100%; /* Для поддержки Safari */
-  will-change: transform; /* Оптимизация производительности */
-  backface-visibility: hidden; /* Исправление артефактов рендеринга */
+  -webkit-transform-origin: 50% 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+  /* Добавить следующие свойства */
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform-style: preserve-3d;
 }
 
 .percentage {
