@@ -36,7 +36,10 @@ function StatsFighterFan() {
 
   const rotation =
     fighterData.totalVotes > 0
-      ? (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90
+      ? Math.max(
+          (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90,
+          -90
+        )
       : -90;
   // console.log(rotation);
   const calculateVotePercentage = (totalVotes, voteFan) => {
