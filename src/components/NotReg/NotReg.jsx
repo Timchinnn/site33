@@ -35,7 +35,13 @@ function NotReg() {
         </div>
         <div className={styles.login}>
           <p>Для просмотра выполните вход в аккаунт или зарегигистрируйтесь</p>
-          <button>Войти</button>
+          <button
+            onClick={() => {
+              navigate("/Signin");
+            }}
+          >
+            Войти
+          </button>
         </div>
       </div>
       <div className={styles.bottomNav}>
