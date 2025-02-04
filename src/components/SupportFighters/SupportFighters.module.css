@@ -111,9 +111,9 @@ img {
 }
 .fighterItem img {
   border-radius: 8px;
-  height: 40px;
-  width: 40px;
-  margin-right: 11px;
+  height: 48px;
+  width: 48px;
+  /* margin-right: 11px; */
 }
 
 .fighterItem {
