@@ -248,6 +248,7 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
   color: #95959b;
+  margin: 0;
 }
 .objects {
   display: flex;
