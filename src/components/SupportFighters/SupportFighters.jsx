@@ -92,6 +92,7 @@ function SupportFighters() {
                 <p>
                   {fighter.name} {fighter.surname[0]}.
                 </p>
+                <p className={styles.textGrey}>{fighter.discipline}</p>
               </div>
             </div>
           ))}
