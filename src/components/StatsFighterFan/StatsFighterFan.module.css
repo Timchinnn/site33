@@ -257,7 +257,7 @@ img {
   text-decoration-skip-ink: none;
 }
 .heroFans {
-  color: #008b18; /* Green color for "Герой фанатов" */
+  /* color: #008b18; Green color for "Герой фанатов" */
   font-family: Inter;
   font-size: 18px;
   font-weight: 500;
