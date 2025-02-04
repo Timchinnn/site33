@@ -195,3 +195,13 @@ img {
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
 }
+.fighterAbout :nth-child(1) {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
