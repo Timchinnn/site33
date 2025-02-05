@@ -158,7 +158,7 @@ function ProfileUser() {
             <img src="layout-text-window.png" alt="" />
             <p>Помощь</p>
           </div>
-          {userId === "3" && userType === "fan" && (
+          {userId === "1" && userType === "fan" && (
             <div onClick={() => navigate("/AdminPanel")}>
               <img src="admin-icon.png" alt="" />
               <p>Админ панель</p>
