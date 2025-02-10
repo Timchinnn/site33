@@ -68,8 +68,16 @@ const Router = () => {
         {/* <Route element={<ProfileUser />} path="/profileuser" /> */}
         <Route element={<ProfileUserAcc />} path="/profileuseracc" />
         <Route element={<ProfileFighterAcc />} path="/profilefighterAcc" />
-        <Route
+        {/* <Route
           element={userId ? <ProfileFighter /> : <NotReg />}
+          path="/profilefighter"
+        /> */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <ProfileFighter />
+            </ProtectedRoute>
+          }
           path="/profilefighter"
         />
         <Route
@@ -87,7 +95,15 @@ const Router = () => {
         <Route element={<AdminPanel />} path="/AdminPanel" />
         <Route element={<Balance />} path="/Balance" />
         {/* <Route element={<Referal />} path="/Referal" /> */}
-        <Route element={userId ? <Referal /> : <NotReg />} path="/Referal" />
+        {/* <Route element={userId ? <Referal /> : <NotReg />} path="/Referal" /> */}
+        <Route
+          element={
+            <ProtectedRoute>
+              <Referal />
+            </ProtectedRoute>
+          }
+          path="/profReferalileuser"
+        />
         <Route element={<Subscriptions />} path="/Subscriptions" />
         <Route element={<SubscriptionDetails />} path="/SubscriptionDetails" />
         <Route element={<SubscriptionEdit />} path="/SubscriptionEdit" />
