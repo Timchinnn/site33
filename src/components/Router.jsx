@@ -39,7 +39,7 @@ const Router = () => {
     const userId = localStorage.getItem("userId");
     return userId ? children : <NotReg />;
   };
-  const userId = localStorage.getItem("userId");
+  // const userId = localStorage.getItem("userId");
 
   //   const userType = localStorage.getItem("userType");
 
