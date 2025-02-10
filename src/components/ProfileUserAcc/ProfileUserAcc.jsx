@@ -170,7 +170,7 @@ function ProfileUserAcc() {
   const handleLogout = useCallback(() => {
     localStorage.removeItem("userId");
     localStorage.removeItem("userType");
-    navigate("/");
+    navigate("/Signin");
   }, [navigate]);
   const handleSavePassword = async () => {
     if (newPassword !== confirmNewPassword) {
