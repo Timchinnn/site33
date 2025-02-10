@@ -102,7 +102,7 @@ const Router = () => {
               <Referal />
             </ProtectedRoute>
           }
-          path="/profReferalileuser"
+          path="/Referal"
         />
         <Route element={<Subscriptions />} path="/Subscriptions" />
         <Route element={<SubscriptionDetails />} path="/SubscriptionDetails" />
