@@ -60,15 +60,16 @@ const Router = () => {
         <Route element={<Tournament />} path="/tournament" />
         <Route element={<AllTournaments />} path="/alltournaments" />
         <Route element={<Voting />} path="/Voting" />
-        <Route element={<ProfileUser />} path="/profileuser" />
+        {/* <Route element={<ProfileUser />} path="/profileuser" /> */}
+        <Route element={<ProfileUserAcc />} path="/profileuseracc" />
         <Route element={<ProfileFighterAcc />} path="/profilefighterAcc" />
         <Route
           element={userId ? <ProfileFighter /> : <NotReg />}
           path="/profilefighter"
         />
         <Route
-          element={userId ? <ProfileUserAcc /> : <NotReg />}
-          path="/profileuseracc"
+          element={userId ? <ProfileUser /> : <NotReg />}
+          path="/profileuser"
         />
         <Route element={<StatsFighter />} path="/StatsFighter" />
         <Route element={<Notifications />} path="/Notifications" />
