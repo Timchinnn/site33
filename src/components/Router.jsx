@@ -35,8 +35,10 @@ import TopCountries from "./TopCountries/TopCountries";
 
 const Router = () => {
   // const ProtectedSignin = () => {
-  const userId = localStorage.getItem("userId");
-  //   const userType = localStorage.getItem("userType");
+  const ProtectedRoute = ({ children }) => {
+    const userId = localStorage.getItem("userId");
+    return userId ? children : <NotReg />;
+  }; //   const userType = localStorage.getItem("userType");
 
   //   if (userId && userType) {
   //     return <Navigate to="/main" replace />;
@@ -68,7 +70,11 @@ const Router = () => {
           path="/profilefighter"
         />
         <Route
-          element={userId ? <ProfileUser /> : <NotReg />}
+          element={
+            <ProtectedRoute>
+              <ProfileUser />
+            </ProtectedRoute>
+          }
           path="/profileuser"
         />
         <Route element={<StatsFighter />} path="/StatsFighter" />
