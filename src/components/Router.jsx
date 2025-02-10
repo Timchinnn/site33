@@ -38,7 +38,10 @@ const Router = () => {
   const ProtectedRoute = ({ children }) => {
     const userId = localStorage.getItem("userId");
     return userId ? children : <NotReg />;
-  }; //   const userType = localStorage.getItem("userType");
+  };
+  const userId = localStorage.getItem("userId");
+
+  //   const userType = localStorage.getItem("userType");
 
   //   if (userId && userType) {
   //     return <Navigate to="/main" replace />;
