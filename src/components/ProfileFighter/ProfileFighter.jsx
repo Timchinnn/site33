@@ -173,7 +173,7 @@ function ProfileFighter() {
         <div
           className={styles.catalogItem}
           onClick={() => {
-            navigate("/main");
+            navigate("/");
             setActiveTab("catalog");
           }}
         >
