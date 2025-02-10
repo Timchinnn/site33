@@ -1033,7 +1033,6 @@ function Voting() {
 
             <div className={styles.choose}>
               {[
-                // { id: "fan", label: "Выбор фанатов" },
                 { id: "best-fight", label: "Лучший бой турнира" },
                 { id: "best-fighter", label: "Лучший боец турнира" },
                 { id: "best-knockout", label: "Лучший нокаут турнира" },
@@ -1052,6 +1051,17 @@ function Voting() {
                   style={{
                     backgroundColor: userVotes[category.id] ? "black" : "",
                     color: userVotes[category.id] ? "white" : "",
+                    // Делаем кнопку неактивной если выбран велосипед и текущая категория не велосипед
+                    opacity:
+                      selectedCategories.includes("best-bicycle") &&
+                      category.id !== "best-bicycle"
+                        ? 0.5
+                        : 1,
+                    pointerEvents:
+                      selectedCategories.includes("best-bicycle") &&
+                      category.id !== "best-bicycle"
+                        ? "none"
+                        : "auto",
                   }}
                 >
                   <p>{category.label}</p>
