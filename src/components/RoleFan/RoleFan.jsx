@@ -112,6 +112,7 @@ function RoleFan() {
         const data = await response.json();
         localStorage.setItem("userId", data.id);
         localStorage.setItem("userType", data.userType);
+        console.log(data.id);
         navigate("/");
       }
     } catch (error) {
