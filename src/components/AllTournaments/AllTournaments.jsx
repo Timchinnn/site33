@@ -132,7 +132,16 @@ function AllTournaments() {
             />
           </div>
         </div>{" "}
-        <div className={styles.referralProgram}>
+        <div
+          className={styles.referralProgram}
+          onClick={() =>
+            navigate("/TopMatches", {
+              state: {
+                sportData: sportData,
+              },
+            })
+          }
+        >
           <div className={styles.referralText}>
             <h2>Популярные события</h2>
             <p>
