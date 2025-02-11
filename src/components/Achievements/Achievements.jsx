@@ -90,8 +90,8 @@ function Achievements() {
                 className={styles.progressFill}
                 style={{
                   width: `${
-                    (achievements?.loyalAllyProgress.current /
-                      achievements?.loyalAllyProgress.target) *
+                    (achievements?.scoutProgress.current /
+                      achievements?.scoutProgress.target) *
                     100
                   }%`,
                 }}
