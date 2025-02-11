@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Achievements() {
   const [achievements, setAchievements] = useState(null);
+  console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
