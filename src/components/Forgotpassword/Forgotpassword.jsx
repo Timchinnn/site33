@@ -9,7 +9,7 @@ function Forgotpassword() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className={styles.Forgotpassword}>
       <div className={styles.titleblock}>
         <img
           className={styles.arrow}
