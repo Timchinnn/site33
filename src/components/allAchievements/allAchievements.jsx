@@ -38,7 +38,18 @@ function allAchievements() {
             />
           </div>
         </div>
-        <h2>Уведомления</h2>
+        <div className={styles.mainAchievement}>
+          <div className={styles.abotMainAchievement}>
+            <h2>Золотой наставник</h2>
+            <p className={styles.aboutText}>
+              Ваш вес в сообществе огромен, вы задаёте тон поддержки
+            </p>
+          </div>
+          <div className={styles.starCounts}>
+            <img src="Star icon.png" alt="" />
+            <h2>15/20</h2>
+          </div>
+        </div>{" "}
       </div>
       <div className={styles.bottomNav}>
         <div
