@@ -33,7 +33,7 @@ import TopMatches from "./TopMatches/TopMatches";
 import NotReg from "./NotReg/NotReg";
 import TopCountries from "./TopCountries/TopCountries";
 import Achievements from "./Achievements/Achievements";
-import allAchievements from "./allAchievements/allAchievements";
+import AllAchievements from "./AllAchievements/AllAchievements";
 
 const Router = () => {
   // const ProtectedSignin = () => {
@@ -117,7 +117,7 @@ const Router = () => {
         <Route element={<TopCountries />} path="/TopCountries" />
         <Route element={<Signin />} path="/Signin" />
         <Route element={<Achievements />} path="/Achievements" />
-        <Route element={<allAchievements />} path="/allAchievements" />
+        <Route element={<AllAchievements />} path="/AllAchievements" />
       </Routes>
     </BrowserRouter>
   );
