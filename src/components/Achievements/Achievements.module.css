@@ -171,6 +171,9 @@ img {
   border-radius: 12px;
   border-width: 1px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .stars {
   display: flex;
@@ -201,4 +204,12 @@ img {
   width: 152px;
   height: 158px;
   border-radius: 8px;
+}
+.task {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: -4%;
+  text-align: center;
 }

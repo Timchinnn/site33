@@ -73,7 +73,7 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p>Отправить 20 донатов разным бойцам</p>
+            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
           </div>
         </div>
       </div>
