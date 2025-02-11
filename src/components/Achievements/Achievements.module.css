@@ -170,7 +170,7 @@ img {
   height: 318px;
   border-radius: 12px;
   border-width: 1px;
-  color: white;
+  background-color: white;
 }
 .stars {
   display: flex;
