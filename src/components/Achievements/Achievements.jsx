@@ -12,7 +12,7 @@ function Achievements() {
         const response = await fetch(`/api/achievements/${userId}`);
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+          console.log(data?.scoutProgress.current);
           setAchievements(data);
         }
       } catch (error) {
