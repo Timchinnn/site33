@@ -9,18 +9,26 @@ function Achievements() {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const [achievementsResponse, votingResponse] = await Promise.all([
-          fetch(`/api/achievements/${userId}`),
-          fetch(`/api/voting-achievements/${userId}`),
-        ]);
+        const [achievementsResponse, votingResponse, negativeVotingResponse] =
+          await Promise.all([
+            fetch(`/api/achievements/${userId}`),
+            fetch(`/api/voting-achievements/${userId}`),
+            fetch(`/api/negative-voting-achievements/${userId}`),
+          ]);
 
-        if (achievementsResponse.ok && votingResponse.ok) {
+        if (
+          achievementsResponse.ok &&
+          votingResponse.ok &&
+          negativeVotingResponse.ok
+        ) {
           const achievementsData = await achievementsResponse.json();
           const votingData = await votingResponse.json();
+          const negativeVotingData = await negativeVotingResponse.json();
 
           setAchievements({
             ...achievementsData,
             ...votingData,
+            ...negativeVotingData,
           });
         }
       } catch (error) {
