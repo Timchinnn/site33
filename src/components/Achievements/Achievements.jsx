@@ -8,17 +8,24 @@ function Achievements() {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const response = await fetch(`/api/achievements/${userId}`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data?.scoutProgress.current);
-          setAchievements(data);
+        const [achievementsResponse, votingResponse] = await Promise.all([
+          fetch(`/api/achievements/${userId}`),
+          fetch(`/api/voting-achievements/${userId}`),
+        ]);
+
+        if (achievementsResponse.ok && votingResponse.ok) {
+          const achievementsData = await achievementsResponse.json();
+          const votingData = await votingResponse.json();
+
+          setAchievements({
+            ...achievementsData,
+            ...votingData,
+          });
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
       }
     };
-
     fetchAchievements();
   }, []);
 
