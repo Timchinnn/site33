@@ -135,3 +135,33 @@ img {
 .catalogText {
   margin: 0; /* Убираем стандартные отступы */
 }
+.mainAchievement {
+  background: #caafbc;
+  width: 343px;
+  height: 104px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+}
+.abotMainAchievement {
+  padding: 14px;
+}
+.aboutText {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+}
+.starCounts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-right: 10px;
+}
+.starCounts img {
+  width: 40px;
+}
+.starCounts h2 {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
+}

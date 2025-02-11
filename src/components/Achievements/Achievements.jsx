@@ -39,12 +39,14 @@ function Achievements() {
           </div>
         </div>
 
-        <div>
-          <div>
+        <div className={styles.mainAchievement}>
+          <div className={styles.abotMainAchievement}>
             <h2>Золотой наставник</h2>
-            <p>Ваш вес в сообществе огромен, вы задаёте тон поддержки</p>
+            <p className={styles.aboutText}>
+              Ваш вес в сообществе огромен, вы задаёте тон поддержки
+            </p>
           </div>
-          <div>
+          <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
             <h2>15/20</h2>
           </div>
