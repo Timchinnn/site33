@@ -133,7 +133,11 @@ function Achievements() {
               <div
                 className={styles.progressFill}
                 style={{
-                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                  width: `${
+                    (achievements?.scoutProgress.current /
+                      achievements?.scoutProgress.target) *
+                    100
+                  }%`,
                 }}
               />
             </div>
