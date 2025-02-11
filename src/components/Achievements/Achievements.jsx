@@ -75,6 +75,94 @@ function Achievements() {
             </div>
             <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
           </div>
+          <div className={styles.Achievements}>
+            <p className={styles.aboutText}>Скаут перспектив</p>
+            <img
+              className={styles.achievementImg}
+              src="boxer-beginner (1) 1.png"
+              alt=""
+            />
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                }}
+              />
+            </div>
+            <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div>
+            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
+          </div>
+          <div className={styles.Achievements}>
+            <p className={styles.aboutText}>Скаут перспектив</p>
+            <img
+              className={styles.achievementImg}
+              src="boxer-beginner (1) 1.png"
+              alt=""
+            />
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                }}
+              />
+            </div>
+            <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div>
+            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
+          </div>
+          <div className={styles.Achievements}>
+            <p className={styles.aboutText}>Скаут перспектив</p>
+            <img
+              className={styles.achievementImg}
+              src="boxer-beginner (1) 1.png"
+              alt=""
+            />
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                }}
+              />
+            </div>
+            <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div>
+            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
+          </div>
+          <div className={styles.Achievements}>
+            <p className={styles.aboutText}>Скаут перспектив</p>
+            <img
+              className={styles.achievementImg}
+              src="boxer-beginner (1) 1.png"
+              alt=""
+            />
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                }}
+              />
+            </div>
+            <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div>
+            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
+          </div>
         </div>
       </div>
       <div className={styles.bottomNav}>
