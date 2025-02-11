@@ -55,7 +55,11 @@ function Achievements() {
         <div>
           <div className={styles.Achievements}>
             <p className={styles.aboutText}>Скаут перспектив</p>
-            <img src="boxer-beginner (1) 1.png" alt="" />
+            <img
+              className={styles.achievementImg}
+              src="boxer-beginner (1) 1.png"
+              alt=""
+            />
             <div className={styles.progressBar}>
               <div
                 className={styles.progressFill}
