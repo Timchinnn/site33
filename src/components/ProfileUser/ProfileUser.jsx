@@ -98,7 +98,12 @@ function ProfileUser() {
           <h3>Достижения</h3>
           <img src="forward.png" alt="" />
         </div>
-        <div className={styles.sportsContainer}>
+        <div
+          className={styles.sportsContainer}
+          onClick={() => {
+            navigate("/Achievements");
+          }}
+        >
           <div className={styles.starCoint}>
             <p className={styles.stars}>Звезды достижений</p>
             <p className={styles.starsCount}>0</p>
