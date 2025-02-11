@@ -181,7 +181,7 @@ img {
   justify-content: space-around;
 }
 .progressBar {
-  width: 100%;
+  width: 90%;
   height: 8px;
   background-color: #eee;
   border-radius: 4px;
@@ -212,4 +212,9 @@ img {
   line-height: 15px;
   letter-spacing: -4%;
   text-align: center;
+}
+.allAchievements {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }

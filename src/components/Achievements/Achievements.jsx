@@ -52,7 +52,7 @@ function Achievements() {
           </div>
         </div>
         <h2>Все достижения</h2>
-        <div>
+        <div className={styles.allAchievements}>
           <div className={styles.Achievements}>
             <p className={styles.aboutText}>Скаут перспектив</p>
             <img
