@@ -32,6 +32,7 @@ import SupportFighters from "./SupportFighters/SupportFighters";
 import TopMatches from "./TopMatches/TopMatches";
 import NotReg from "./NotReg/NotReg";
 import TopCountries from "./TopCountries/TopCountries";
+import Achievements from "./Achievements/Achievements";
 
 const Router = () => {
   // const ProtectedSignin = () => {
@@ -114,6 +115,7 @@ const Router = () => {
         <Route element={<NotReg />} path="/NotReg" />
         <Route element={<TopCountries />} path="/TopCountries" />
         <Route element={<Signin />} path="/Signin" />
+        <Route element={<Achievements />} path="/Achievements" />
       </Routes>
     </BrowserRouter>
   );

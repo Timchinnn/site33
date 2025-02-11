@@ -6,6 +6,7 @@ function Achievements() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
+  console.log(userId);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
 
   useEffect(() => {
