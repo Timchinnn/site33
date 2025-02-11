@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styles from "./allAchievements.module.css";
+import styles from "./AllAchievements.module.css";
 import { useNavigate } from "react-router-dom";
 
-function allAchievements() {
+function AllAchievements() {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
@@ -152,4 +152,4 @@ function allAchievements() {
   );
 }
 
-export default allAchievements;
+export default AllAchievements;
