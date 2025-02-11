@@ -256,14 +256,17 @@ function Balance() {
                         5000 ₽
                       </button>
                     </div>
-                    <button
-                      className={`${styles.customAmountButton} ${
-                        selectedAmount === 1 ? styles.selected : ""
-                      }`}
-                      onClick={() => setSelectedAmount(1)}
-                    >
-                      Ввести другую сумму
-                    </button>
+                    <input
+                      type="text"
+                      className={`${styles.customAmountInput}`}
+                      placeholder="Введите сумму"
+                      value={selectedAmount || ""}
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value) || 0;
+                        setSelectedAmount(value);
+                        setDonateAmount(value);
+                      }}
+                    />
                     {selectedAmount > 0 && (
                       <div
                         className={`${styles.selectionBlock} ${styles.visible}`}
