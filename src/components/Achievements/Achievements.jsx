@@ -3,6 +3,26 @@ import styles from "./Achievements.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Achievements() {
+  const [achievements, setAchievements] = useState(null);
+
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      const userId = localStorage.getItem("userId");
+      try {
+        const response = await fetch(`/api/achievements/${userId}`);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setAchievements(data);
+        }
+      } catch (error) {
+        console.error("Error fetching achievements:", error);
+      }
+    };
+
+    fetchAchievements();
+  }, []);
+
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
