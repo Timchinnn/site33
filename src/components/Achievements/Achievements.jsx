@@ -4,16 +4,28 @@ import { useNavigate } from "react-router-dom";
 
 function Achievements() {
   const [achievements, setAchievements] = useState(null);
-  console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
       try {
-        const response = await fetch(`/api/achievements/${userId}`);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data?.scoutProgress.current);
-          setAchievements(data);
+        const [votingResponse, achievementsResponse] = await Promise.all([
+          fetch(`/api/voting-achievements/${userId}`),
+          fetch(`/api/achievements/${userId}`),
+        ]);
+
+        if (votingResponse.ok && achievementsResponse.ok) {
+          const votingData = await votingResponse.json();
+          const achievementsData = await achievementsResponse.json();
+
+          // Объединяем данные из обоих запросов
+          const combinedData = {
+            ...votingData,
+            ...achievementsData,
+            scoutProgress: achievementsData?.scoutProgress,
+          };
+
+          setAchievements(combinedData);
+          console.log(achievementsData?.scoutProgress.current);
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
@@ -22,7 +34,6 @@ function Achievements() {
 
     fetchAchievements();
   }, []);
-
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
