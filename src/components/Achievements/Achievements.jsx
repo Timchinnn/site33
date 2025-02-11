@@ -52,16 +52,26 @@ function Achievements() {
           </div>
         </div>
         <h2>Все достижения</h2>
-        {/* <div className={styles.notificationsList}>
-          {notifications.map((notification) => (
-            <div key={notification.id} className={styles.notificationItem}>
-              <p className={styles.timestamp}>
-                {new Date(notification.created_at).toLocaleString()}
-              </p>
-              <p className={styles.message}>{notification.message_content}</p>
+        <div>
+          <div className={styles.Achievements}>
+            <p className={styles.aboutText}>Скаут перспектив</p>
+            <img src="boxer-beginner (1) 1.png" alt="" />
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                }}
+              />
             </div>
-          ))}
-        </div> */}
+            <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div>
+            <p>Отправить 20 донатов разным бойцам</p>
+          </div>
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div
