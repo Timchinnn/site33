@@ -206,7 +206,11 @@ function Achievements() {
               <div
                 className={styles.progressFill}
                 style={{
-                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                  width: `${
+                    (achievements?.justiceWillPrevailProgress.current /
+                      achievements?.justiceWillPrevailProgress.target) *
+                    100
+                  }%`,
                 }}
               />
             </div>
