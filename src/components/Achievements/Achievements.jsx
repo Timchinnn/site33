@@ -39,7 +39,12 @@ function Achievements() {
           </div>
         </div>
 
-        <div className={styles.mainAchievement}>
+        <div
+          className={styles.mainAchievement}
+          onClick={() => {
+            navigate("/allAchievements");
+          }}
+        >
           <div className={styles.abotMainAchievement}>
             <h2>Золотой наставник</h2>
             <p className={styles.aboutText}>
