@@ -168,7 +168,11 @@ function Achievements() {
             <p className={styles.task}>
               {
                 achievements?.scoutProgress.descriptions[
-                  Math.floor(achievements?.scoutProgress.current)
+                  achievements?.scoutProgress.current < 5
+                    ? 0
+                    : achievements?.scoutProgress.current < 10
+                    ? 1
+                    : 2
                 ]
               }
             </p>
