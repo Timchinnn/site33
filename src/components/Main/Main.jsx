@@ -261,42 +261,42 @@ function Main() {
       console.error("Error fetching tournament data:", error);
     }
   };
-  const [topVotedUsers, setTopVotedUsers] = useState([]);
-  const currentUserId = localStorage.getItem("userId");
+  // const [topVotedUsers, setTopVotedUsers] = useState([]);
+  // const currentUserId = localStorage.getItem("userId");
 
-  // Add this useEffect to fetch top voted users
-  useEffect(() => {
-    const fetchTopVotedUsers = async () => {
-      try {
-        const response = await fetch("/api/users/sorted-by-votes");
-        if (response.ok) {
-          const data = await response.json();
-          setTopVotedUsers(data);
+  // // Add this useEffect to fetch top voted users
+  // useEffect(() => {
+  //   const fetchTopVotedUsers = async () => {
+  //     try {
+  //       const response = await fetch("/api/users/sorted-by-votes");
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setTopVotedUsers(data);
 
-          // Check if current user is top voter
-          if (data.length > 0 && data[0].id === parseInt(currentUserId)) {
-            // Send request to update top voter count
-            await fetch("/api/users/top-voter", {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                userId: currentUserId,
-              }),
-            });
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching top voted users:", error);
-      }
-    };
+  //         // Check if current user is top voter
+  //         if (data.length > 0 && data[0].id === parseInt(currentUserId)) {
+  //           // Send request to update top voter count
+  //           await fetch("/api/users/top-voter", {
+  //             method: "PUT",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //             body: JSON.stringify({
+  //               userId: currentUserId,
+  //             }),
+  //           });
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching top voted users:", error);
+  //     }
+  //   };
 
-    if (currentUserId) {
-      fetchTopVotedUsers();
-    }
-  }, [currentUserId]);
-  console.log(topVotedUsers);
+  //   if (currentUserId) {
+  //     fetchTopVotedUsers();
+  //   }
+  // }, [currentUserId]);
+  // console.log(topVotedUsers);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
