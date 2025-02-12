@@ -160,10 +160,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.scoutProgress.current < 5
+                    ? 1
+                    : achievements?.scoutProgress.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -204,10 +217,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.scoutProgress.current < 5
+                    ? 1
+                    : achievements?.scoutProgress.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             {/* <p className={styles.task}>Отправить 5 донатов одному бойцу</p> */}
             <p className={styles.aboutText}>
@@ -257,10 +283,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.scoutProgress.current < 5
+                    ? 1
+                    : achievements?.scoutProgress.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             {/* <p className={styles.task}>
               Отправить донат со ставкой 5000 и более
@@ -300,10 +339,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.scoutProgress.current < 5
+                    ? 1
+                    : achievements?.scoutProgress.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -340,10 +392,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.scoutProgress.current < 5
+                    ? 1
+                    : achievements?.scoutProgress.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
