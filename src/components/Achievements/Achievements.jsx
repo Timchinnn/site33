@@ -243,8 +243,8 @@ function Achievements() {
                 className={styles.progressFill}
                 style={{
                   width: `${
-                    (achievements?.epicFanResponse.current /
-                      achievements?.epicFanResponse.target) *
+                    (achievements?.epicFan.current /
+                      achievements?.epicFan.target) *
                     100
                   }%`,
                 }}
