@@ -162,7 +162,9 @@ function Achievements() {
             <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Верный союзник</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Верный союзник</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-boxer-master 1.png"
@@ -188,7 +190,9 @@ function Achievements() {
             <p className={styles.task}>Отправить 5 донатов одному бойцу</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Большая ставка</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Большая ставка</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-benefactor (1) 1.png"
@@ -216,7 +220,9 @@ function Achievements() {
             </p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Голос справедливости</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Голос справедливости</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-voting-man 1.png"
@@ -242,7 +248,9 @@ function Achievements() {
             <p className={styles.task}>Повысить рейтинг любому бойцу 15 раз</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Справедливость восторжествует</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Справедливость восторжествует</p>
+            </div>
             <img className={styles.achievementImg} src="fighter.png" alt="" />
             <div className={styles.progressBar}>
               <div
@@ -266,7 +274,9 @@ function Achievements() {
             </p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Эпический фанат</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Эпический фанат</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="boxer-beginner.png"
@@ -292,7 +302,9 @@ function Achievements() {
             <p className={styles.task}>Стать лидером топа фанатом 2 раза</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Совет турнира</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Совет турнира</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-boxing-referee (1) 1.png"
@@ -320,7 +332,9 @@ function Achievements() {
             </p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Внимательный рефери</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Внимательный рефери</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-boxing-referee 1.png"
@@ -346,7 +360,9 @@ function Achievements() {
             <p className={styles.task}>Участвовать в 10 голосованиях</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Выдающийся благотворитель</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Выдающийся благотворитель</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="-benefactor.png"
@@ -372,7 +388,9 @@ function Achievements() {
             <p className={styles.task}>Отправить 50 донатов любым бойцам</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Единомышленники</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Единомышленники</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="2-fighter 1.png"
@@ -398,7 +416,9 @@ function Achievements() {
             <p className={styles.task}>Пригласить 10 фанатов</p>
           </div>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Менеджер легенд</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Менеджер легенд</p>
+            </div>
             <img className={styles.achievementImg} src="image 12.png" alt="" />
             <div className={styles.progressBar}>
               <div
