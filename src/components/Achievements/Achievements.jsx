@@ -288,7 +288,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.voiceOfJusticeProgress.current /
-                      achievements?.voiceOfJusticeProgress.target) *
+                      achievements?.voiceOfJusticeProgress.targets[
+                        achievements?.voiceOfJusticeProgress.current < 5
+                          ? 0
+                          : achievements?.voiceOfJusticeProgress.current < 10
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -299,7 +305,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Повысить рейтинг любому бойцу 15 раз</p>
+            <p className={styles.task}>
+              {
+                achievements?.voiceOfJusticeProgress.descriptions[
+                  achievements?.voiceOfJusticeProgress.current < 5
+                    ? 0
+                    : achievements?.voiceOfJusticeProgress.current < 10
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
