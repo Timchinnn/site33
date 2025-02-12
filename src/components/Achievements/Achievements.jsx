@@ -17,14 +17,16 @@ function Achievements() {
           negativeVotingResponse,
           epicFanResponse,
           tournamentCouncilResponse,
-          refereeAchievementResponse, // Добавляем новый запрос
+          refereeAchievementResponse,
+          outstandingBenefactorResponse, // Новый запрос
         ] = await Promise.all([
           fetch(`/api/achievements/${userId}`),
           fetch(`/api/voting-achievements/${userId}`),
           fetch(`/api/negative-voting-achievements/${userId}`),
           fetch(`/api/user/epic-fan/${userId}`),
           fetch(`/api/tournament-council/${userId}?userType=${userType}`),
-          fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
+          fetch(`/api/referee-achievement/${userId}?userType=${userType}`),
+          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
         ]);
 
         // Проверяем успешность всех запросов
@@ -34,15 +36,11 @@ function Achievements() {
           negativeVotingResponse.ok &&
           epicFanResponse.ok &&
           tournamentCouncilResponse.ok &&
-          refereeAchievementResponse.ok // Добавляем проверку
+          refereeAchievementResponse.ok &&
+          outstandingBenefactorResponse.ok
         ) {
-          const achievementsData = await achievementsResponse.json();
-          const votingData = await votingResponse.json();
-          const negativeVotingData = await negativeVotingResponse.json();
-          const epicFanData = await epicFanResponse.json();
-          const tournamentCouncilData = await tournamentCouncilResponse.json();
-          const refereeAchievementData =
-            await refereeAchievementResponse.json(); // Получаем данные
+          const outstandingBenefactorData =
+            await outstandingBenefactorResponse.json();
 
           setAchievements({
             ...achievementsData,
@@ -50,7 +48,8 @@ function Achievements() {
             ...negativeVotingData,
             epicFan: epicFanData,
             tournamentCouncil: tournamentCouncilData,
-            refereeAchievement: refereeAchievementData, // Добавляем новое достижение
+            refereeAchievement: refereeAchievementData,
+            outstandingBenefactor: outstandingBenefactorData,
           });
         }
       } catch (error) {
