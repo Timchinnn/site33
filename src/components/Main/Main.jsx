@@ -271,19 +271,11 @@ function Main() {
         const response = await fetch("/api/users/sorted-by-votes");
         if (response.ok) {
           const data = await response.json();
-          const prevTopUser = topVotedUsers[0]?.id;
-          console.log(prevTopUser);
-          const newTopUser = data[0]?.id;
-          console.log(newTopUser);
-
           setTopVotedUsers(data);
 
-          // Проверяем изменение топ пользователя
-          if (
-            data.length > 0 &&
-            newTopUser === parseInt(currentUserId) &&
-            prevTopUser !== newTopUser
-          ) {
+          // Check if current user is top voter
+          if (data.length > 0 && data[0].id === parseInt(currentUserId)) {
+            // Send request to update top voter count
             await fetch("/api/users/top-voter", {
               method: "PUT",
               headers: {
@@ -303,7 +295,7 @@ function Main() {
     if (currentUserId) {
       fetchTopVotedUsers();
     }
-  }, [currentUserId, topVotedUsers]);
+  }, [currentUserId]);
   console.log(topVotedUsers);
   return (
     <div className={styles.header}>
