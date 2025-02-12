@@ -149,7 +149,11 @@ function Achievements() {
                   width: `${
                     (achievements?.scoutProgress.current /
                       achievements?.scoutProgress.targets[
-                        Math.floor(achievements?.scoutProgress.current)
+                        achievements?.scoutProgress.current < 5
+                          ? 0
+                          : achievements?.scoutProgress.current < 10
+                          ? 1
+                          : 2
                       ]) *
                     100
                   }%`,
