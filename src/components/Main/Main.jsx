@@ -261,37 +261,41 @@ function Main() {
       console.error("Error fetching tournament data:", error);
     }
   };
+  const [topVotedUsers, setTopVotedUsers] = useState([]);
+  const currentUserId = localStorage.getItem("userId");
+
+  // Add this useEffect to fetch top voted users
   useEffect(() => {
-    const checkAndUpdateTopVoter = async () => {
+    const fetchTopVotedUsers = async () => {
       try {
         const response = await fetch("/api/users/sorted-by-votes");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
+        if (response.ok) {
+          const data = await response.json();
+          setTopVotedUsers(data);
 
-        if (data.length > 0 && data[0].id === userId) {
-          const updateResponse = await fetch("/api/users/top-voter", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ userId }),
-          });
-
-          if (!updateResponse.ok) {
-            throw new Error("Failed to update top voter");
+          // Check if current user is top voter
+          if (data.length > 0 && data[0].id === parseInt(currentUserId)) {
+            // Send request to update top voter count
+            await fetch("/api/users/top-voter", {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                userId: currentUserId,
+              }),
+            });
           }
         }
       } catch (error) {
-        console.error("Error checking/updating top voter:", error);
+        console.error("Error fetching top voted users:", error);
       }
     };
 
-    if (userId) {
-      checkAndUpdateTopVoter();
+    if (currentUserId) {
+      fetchTopVotedUsers();
     }
-  }, [userId]);
+  }, [currentUserId]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
