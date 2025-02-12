@@ -225,9 +225,9 @@ function Achievements() {
             <div className={styles.stars}>
               {[
                 ...Array(
-                  achievements?.scoutProgress.current < 5
+                  achievements?.loyalAllyProgress.current < 2
                     ? 1
-                    : achievements?.scoutProgress.current < 10
+                    : achievements?.loyalAllyProgress.current < 3
                     ? 2
                     : 3
                 ),
@@ -291,9 +291,9 @@ function Achievements() {
             <div className={styles.stars}>
               {[
                 ...Array(
-                  achievements?.scoutProgress.current < 5
+                  achievements?.bigDonationProgress.current < 3
                     ? 1
-                    : achievements?.scoutProgress.current < 10
+                    : achievements?.bigDonationProgress.current < 5
                     ? 2
                     : 3
                 ),
@@ -347,9 +347,9 @@ function Achievements() {
             <div className={styles.stars}>
               {[
                 ...Array(
-                  achievements?.scoutProgress.current < 5
+                  achievements?.voiceOfJusticeProgress.current < 5
                     ? 1
-                    : achievements?.scoutProgress.current < 10
+                    : achievements?.voiceOfJusticeProgress.current < 10
                     ? 2
                     : 3
                 ),
@@ -400,9 +400,9 @@ function Achievements() {
             <div className={styles.stars}>
               {[
                 ...Array(
-                  achievements?.scoutProgress.current < 5
+                  achievements?.justiceWillPrevailProgress.current < 1
                     ? 1
-                    : achievements?.scoutProgress.current < 10
+                    : achievements?.justiceWillPrevailProgress.current < 3
                     ? 2
                     : 3
                 ),
