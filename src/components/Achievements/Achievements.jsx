@@ -187,7 +187,14 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Отправить 5 донатов одному бойцу</p>
+            {/* <p className={styles.task}>Отправить 5 донатов одному бойцу</p> */}
+            <p className={styles.aboutText}>
+              {
+                achievements?.bigDonationProgress.titles[
+                  achievements?.bigDonationProgress.current - 1
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -198,7 +205,7 @@ function Achievements() {
               src="-benefactor (1) 1.png"
               alt=""
             />
-            <div className={styles.progressBar}>
+            {/* <div className={styles.progressBar}>
               <div
                 className={styles.progressFill}
                 style={{
@@ -209,14 +216,35 @@ function Achievements() {
                   }%`,
                 }}
               />
+            </div> */}
+            <div className={styles.progressBar}>
+              <div
+                className={styles.progressFill}
+                style={{
+                  width: `${
+                    (achievements?.bigDonationProgress.current /
+                      achievements?.bigDonationProgress.targets[
+                        achievements?.bigDonationProgress.current - 1
+                      ]) *
+                    100
+                  }%`,
+                }}
+              />
             </div>
             <div className={styles.stars}>
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>
+            {/* <p className={styles.task}>
               Отправить донат со ставкой 5000 и более
+            </p> */}
+            <p className={styles.task}>
+              {
+                achievements?.bigDonationProgress.descriptions[
+                  achievements?.bigDonationProgress.current - 1
+                ]
+              }
             </p>
           </div>
           <div className={styles.Achievements}>
