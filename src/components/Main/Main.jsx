@@ -263,21 +263,34 @@ function Main() {
   };
   useEffect(() => {
     const checkAndUpdateTopVoter = async () => {
-      const sortedUsers = await fetch("/api/users/sorted-by-votes");
-      const data = await sortedUsers.json();
+      try {
+        const response = await fetch("/api/users/sorted-by-votes");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
 
-      if (data.length > 0 && data[0].id === userId) {
-        await fetch("/api/users/top-voter", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ userId }),
-        });
+        if (data.length > 0 && data[0].id === userId) {
+          const updateResponse = await fetch("/api/users/top-voter", {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ userId }),
+          });
+
+          if (!updateResponse.ok) {
+            throw new Error("Failed to update top voter");
+          }
+        }
+      } catch (error) {
+        console.error("Error checking/updating top voter:", error);
       }
     };
 
-    checkAndUpdateTopVoter();
+    if (userId) {
+      checkAndUpdateTopVoter();
+    }
   }, [userId]);
   return (
     <div className={styles.header}>
