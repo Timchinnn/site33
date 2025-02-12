@@ -151,6 +151,14 @@ img {
   font-weight: 400;
   font-size: 15px;
   line-height: 17px;
+  text-align: center;
+}
+.aboutTextWeight {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 17px;
+  /* text-align: center; */
 }
 .starCounts {
   display: flex;

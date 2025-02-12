@@ -122,7 +122,7 @@ function Achievements() {
         >
           <div className={styles.abotMainAchievement}>
             <h2>Золотой наставник</h2>
-            <p className={styles.aboutText}>
+            <p className={styles.aboutTextWeight}>
               Ваш вес в сообществе огромен, вы задаёте тон поддержки
             </p>
           </div>
