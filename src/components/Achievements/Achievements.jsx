@@ -148,7 +148,9 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.scoutProgress.current /
-                      achievements?.scoutProgress.target) *
+                      achievements?.scoutProgress.targets[
+                        achievements?.scoutProgress.current
+                      ]) *
                     100
                   }%`,
                 }}
@@ -159,7 +161,13 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Отправить 20 донатов разным бойцам</p>
+            <p className={styles.task}>
+              {
+                achievements?.scoutProgress.descriptions[
+                  achievements?.scoutProgress.current
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -176,7 +184,9 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.loyalAllyProgress.current /
-                      achievements?.loyalAllyProgress.target) *
+                      achievements?.loyalAllyProgress.targets[
+                        achievements?.loyalAllyProgress.current
+                      ]) *
                     100
                   }%`,
                 }}
@@ -190,8 +200,8 @@ function Achievements() {
             {/* <p className={styles.task}>Отправить 5 донатов одному бойцу</p> */}
             <p className={styles.aboutText}>
               {
-                achievements?.bigDonationProgress.titles[
-                  achievements?.bigDonationProgress.current
+                achievements?.loyalAllyProgress.descriptions[
+                  achievements?.loyalAllyProgress.current
                 ]
               }
             </p>
