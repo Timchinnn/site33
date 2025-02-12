@@ -8,8 +8,6 @@ function Achievements() {
   useEffect(() => {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
-      const userType = localStorage.getItem("userType");
-
       try {
         const [
           achievementsResponse,
@@ -22,7 +20,7 @@ function Achievements() {
           fetch(`/api/voting-achievements/${userId}`),
           fetch(`/api/negative-voting-achievements/${userId}`),
           fetch(`/api/user/epic-fan/${userId}`),
-          fetch(`/api/tournament-council/${userId}?userType=${userType}`),
+          fetch(`/api/tournament-council/${userId}`), // Новый endpoint
         ]);
 
         // Проверяем успешность всех запросов
