@@ -449,10 +449,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.epicFan.current < 2
+                    ? 1
+                    : achievements?.epicFan.current < 4
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -493,10 +506,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.tournamentCouncil.current < 1
+                    ? 1
+                    : achievements?.tournamentCouncil.current < 3
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -537,10 +563,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.refereeAchievement.current < 5
+                    ? 1
+                    : achievements?.refereeAchievement.current < 10
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -581,10 +620,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.outstandingBenefactor.current < 17
+                    ? 1
+                    : achievements?.outstandingBenefactor.current < 34
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -625,10 +677,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.referralAchievement.current < 3
+                    ? 1
+                    : achievements?.referralAchievement.current < 6
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
@@ -665,10 +730,23 @@ function Achievements() {
                 }}
               />
             </div>
+            {/* <div className={styles.stars}>
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+              <img src="Star icon.png" alt="" />
+            </div> */}
             <div className={styles.stars}>
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
-              <img src="Star icon.png" alt="" />
+              {[
+                ...Array(
+                  achievements?.referralAchievementFigh.current < 1
+                    ? 1
+                    : achievements?.referralAchievementFigh.current < 3
+                    ? 2
+                    : 3
+                ),
+              ].map((_, i) => (
+                <img key={i} src="Star icon.png" alt="" />
+              ))}
             </div>
             <p className={styles.task}>
               {
