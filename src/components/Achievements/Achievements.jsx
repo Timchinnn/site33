@@ -20,7 +20,7 @@ function Achievements() {
           fetch(`/api/voting-achievements/${userId}`),
           fetch(`/api/negative-voting-achievements/${userId}`),
           fetch(`/api/user/epic-fan/${userId}`),
-          fetch(`/api/tournament-council/${userId}`), // Новый endpoint
+          fetch(`/api/tournament-council/${userId}?userType=${userType}`),
         ]);
 
         // Проверяем успешность всех запросов
