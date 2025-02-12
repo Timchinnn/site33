@@ -372,7 +372,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.epicFan.current /
-                      achievements?.epicFan.target) *
+                      achievements?.epicFan.targets[
+                        achievements?.epicFan.current < 2
+                          ? 0
+                          : achievements?.epicFan.current < 4
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -383,7 +389,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Стать лидером топа фанатом 2 раза</p>
+            <p className={styles.task}>
+              {
+                achievements?.epicFan.descriptions[
+                  achievements?.epicFan.current < 2
+                    ? 0
+                    : achievements?.epicFan.current < 4
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -400,7 +416,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.tournamentCouncil.current /
-                      achievements?.tournamentCouncil.target) *
+                      achievements?.tournamentCouncil.targets[
+                        achievements?.tournamentCouncil.current < 1
+                          ? 0
+                          : achievements?.tournamentCouncil.current < 3
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -412,7 +434,15 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
             </div>
             <p className={styles.task}>
-              Проголосовать за все категории турнира 1 раз
+              {
+                achievements?.tournamentCouncil.descriptions[
+                  achievements?.tournamentCouncil.current < 1
+                    ? 0
+                    : achievements?.tournamentCouncil.current < 3
+                    ? 1
+                    : 2
+                ]
+              }
             </p>
           </div>
           <div className={styles.Achievements}>
@@ -430,7 +460,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.refereeAchievement.current /
-                      achievements?.refereeAchievement.target) *
+                      achievements?.refereeAchievement.targets[
+                        achievements?.refereeAchievement.current < 5
+                          ? 0
+                          : achievements?.refereeAchievement.current < 10
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -441,7 +477,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Участвовать в 10 голосованиях</p>
+            <p className={styles.task}>
+              {
+                achievements?.epicFan.descriptions[
+                  achievements?.epicFan.current < 5
+                    ? 0
+                    : achievements?.epicFan.current < 10
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -458,7 +504,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.outstandingBenefactor.current /
-                      achievements?.outstandingBenefactor.target) *
+                      achievements?.outstandingBenefactor.targets[
+                        achievements?.outstandingBenefactor.current < 17
+                          ? 0
+                          : achievements?.outstandingBenefactor.current < 34
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -469,7 +521,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Отправить 50 донатов любым бойцам</p>
+            <p className={styles.task}>
+              {
+                achievements?.outstandingBenefactor.descriptions[
+                  achievements?.outstandingBenefactor.current < 17
+                    ? 0
+                    : achievements?.outstandingBenefactor.current < 34
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -486,7 +548,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.referralAchievement.current /
-                      achievements?.referralAchievement.target) *
+                      achievements?.referralAchievement.targets[
+                        achievements?.referralAchievement.current < 3
+                          ? 0
+                          : achievements?.referralAchievement.current < 6
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -497,7 +565,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Пригласить 10 фанатов</p>
+            <p className={styles.task}>
+              {
+                achievements?.referralAchievement.descriptions[
+                  achievements?.referralAchievement.current < 3
+                    ? 0
+                    : achievements?.referralAchievement.current < 6
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -510,7 +588,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.referralAchievementFigh.current /
-                      achievements?.referralAchievementFigh.target) *
+                      achievements?.referralAchievementFigh.targets[
+                        achievements?.referralAchievementFigh.current < 1
+                          ? 0
+                          : achievements?.referralAchievementFigh.current < 3
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -521,7 +605,17 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div>
-            <p className={styles.task}>Пригласить</p>
+            <p className={styles.task}>
+              {
+                achievements?.referralAchievementFigh.descriptions[
+                  achievements?.referralAchievementFigh.current < 1
+                    ? 0
+                    : achievements?.referralAchievementFigh.current < 3
+                    ? 1
+                    : 2
+                ]
+              }
+            </p>
           </div>
         </div>
       </div>
