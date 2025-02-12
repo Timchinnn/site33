@@ -479,10 +479,10 @@ function Achievements() {
             </div>
             <p className={styles.task}>
               {
-                achievements?.epicFan.descriptions[
-                  achievements?.epicFan.current < 5
+                achievements?.refereeAchievement.descriptions[
+                  achievements?.refereeAchievement.current < 5
                     ? 0
-                    : achievements?.epicFan.current < 10
+                    : achievements?.refereeAchievement.current < 10
                     ? 1
                     : 2
                 ]
