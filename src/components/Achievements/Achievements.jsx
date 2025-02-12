@@ -8,6 +8,8 @@ function Achievements() {
   useEffect(() => {
     const fetchAchievements = async () => {
       const userId = localStorage.getItem("userId");
+      const userType = localStorage.getItem("userType");
+
       try {
         const [
           achievementsResponse,
