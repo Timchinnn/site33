@@ -261,6 +261,24 @@ function Main() {
       console.error("Error fetching tournament data:", error);
     }
   };
+  useEffect(() => {
+    const checkAndUpdateTopVoter = async () => {
+      const sortedUsers = await fetch("/api/users/sorted-by-votes");
+      const data = await sortedUsers.json();
+
+      if (data.length > 0 && data[0].id === userId) {
+        await fetch("/api/users/top-voter", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+        });
+      }
+    };
+
+    checkAndUpdateTopVoter();
+  }, [userId]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
