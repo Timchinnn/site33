@@ -19,6 +19,7 @@ function Achievements() {
           tournamentCouncilResponse,
           refereeAchievementResponse, // Добавляем новый запрос
           outstandingBenefactorResponse, // Новый запрос
+          referralAchievementResponse, // Добавляем новый запрос
         ] = await Promise.all([
           fetch(`/api/achievements/${userId}`),
           fetch(`/api/voting-achievements/${userId}`),
@@ -27,6 +28,7 @@ function Achievements() {
           fetch(`/api/tournament-council/${userId}?userType=${userType}`),
           fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
           fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
+          fetch(`/api/referral-achievement/${userId}`),
         ]);
 
         // Проверяем успешность всех запросов
@@ -37,7 +39,8 @@ function Achievements() {
           epicFanResponse.ok &&
           tournamentCouncilResponse.ok &&
           refereeAchievementResponse.ok && // Добавляем проверку
-          outstandingBenefactorResponse.ok
+          outstandingBenefactorResponse.ok &&
+          referralAchievementResponse.ok
         ) {
           const achievementsData = await achievementsResponse.json();
           const votingData = await votingResponse.json();
@@ -48,6 +51,8 @@ function Achievements() {
             await refereeAchievementResponse.json(); // Получаем данные
           const outstandingBenefactorData =
             await outstandingBenefactorResponse.json();
+          const referralAchievementData =
+            await referralAchievementResponse.json();
 
           setAchievements({
             ...achievementsData,
@@ -57,6 +62,7 @@ function Achievements() {
             tournamentCouncil: tournamentCouncilData,
             refereeAchievement: refereeAchievementData, // Добавляем новое достижение
             outstandingBenefactor: outstandingBenefactorData,
+            referralAchievement: referralAchievementData,
           });
         }
       } catch (error) {
