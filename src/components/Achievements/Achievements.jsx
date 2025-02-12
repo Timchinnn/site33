@@ -191,7 +191,7 @@ function Achievements() {
             <p className={styles.aboutText}>
               {
                 achievements?.bigDonationProgress.titles[
-                  achievements?.bigDonationProgress.current - 1
+                  achievements?.bigDonationProgress.current
                 ]
               }
             </p>
@@ -224,7 +224,7 @@ function Achievements() {
                   width: `${
                     (achievements?.bigDonationProgress.current /
                       achievements?.bigDonationProgress.targets[
-                        achievements?.bigDonationProgress.current - 1
+                        achievements?.bigDonationProgress.current
                       ]) *
                     100
                   }%`,
@@ -242,7 +242,7 @@ function Achievements() {
             <p className={styles.task}>
               {
                 achievements?.bigDonationProgress.descriptions[
-                  achievements?.bigDonationProgress.current - 1
+                  achievements?.bigDonationProgress.current
                 ]
               }
             </p>
