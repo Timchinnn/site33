@@ -296,7 +296,7 @@ function Main() {
       fetchTopVotedUsers();
     }
   }, [currentUserId]);
-  console.log(topVotedFighters);
+  console.log(topVotedUsers);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
