@@ -175,7 +175,7 @@ img {
 }
 .Achievements {
   width: 168px;
-  height: 318px;
+  height: 328px;
   border-radius: 12px;
   border-width: 1px;
   background-color: white;
@@ -226,4 +226,10 @@ img {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+}
+.aboutTextBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
 }

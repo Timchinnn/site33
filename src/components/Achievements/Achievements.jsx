@@ -134,7 +134,9 @@ function Achievements() {
         <h2>Все достижения</h2>
         <div className={styles.allAchievements}>
           <div className={styles.Achievements}>
-            <p className={styles.aboutText}>Скаут перспектив</p>
+            <div className={styles.aboutTextBlock}>
+              <p className={styles.aboutText}>Скаут перспектив</p>
+            </div>
             <img
               className={styles.achievementImg}
               src="boxer-beginner (1) 1.png"
