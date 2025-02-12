@@ -575,7 +575,9 @@ function Achievements() {
                     ? 1
                     : achievements?.refereeAchievement.current < 10
                     ? 2
-                    : 3
+                    : achievements?.refereeAchievement.current >= 15 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
