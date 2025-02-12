@@ -14,29 +14,35 @@ function Achievements() {
           votingResponse,
           negativeVotingResponse,
           epicFanResponse,
+          tournamentCouncilResponse, // Добавляем новый запрос
         ] = await Promise.all([
           fetch(`/api/achievements/${userId}`),
           fetch(`/api/voting-achievements/${userId}`),
           fetch(`/api/negative-voting-achievements/${userId}`),
-          fetch(`/api/user/epic-fan/${userId}`), // Add this new endpoint
+          fetch(`/api/user/epic-fan/${userId}`),
+          fetch(`/api/tournament-council/${userId}`), // Новый endpoint
         ]);
 
+        // Проверяем успешность всех запросов
         if (
           achievementsResponse.ok &&
           votingResponse.ok &&
           negativeVotingResponse.ok &&
-          epicFanResponse.ok
+          epicFanResponse.ok &&
+          tournamentCouncilResponse.ok
         ) {
           const achievementsData = await achievementsResponse.json();
           const votingData = await votingResponse.json();
           const negativeVotingData = await negativeVotingResponse.json();
           const epicFanData = await epicFanResponse.json();
+          const tournamentCouncilData = await tournamentCouncilResponse.json();
 
           setAchievements({
             ...achievementsData,
             ...votingData,
             ...negativeVotingData,
-            epicFan: epicFanData, // Include the epic fan achievement data
+            epicFan: epicFanData,
+            tournamentCouncil: tournamentCouncilData, // Добавляем новое достижение
           });
         }
       } catch (error) {
