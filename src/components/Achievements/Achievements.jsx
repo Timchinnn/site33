@@ -172,7 +172,9 @@ function Achievements() {
                     ? 1
                     : achievements?.scoutProgress.current < 10
                     ? 2
-                    : 3
+                    : achievements?.scoutProgress.current >= 20 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -229,7 +231,9 @@ function Achievements() {
                     ? 1
                     : achievements?.loyalAllyProgress.current < 3
                     ? 2
-                    : 3
+                    : achievements?.loyalAllyProgress.current >= 5 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -295,7 +299,9 @@ function Achievements() {
                     ? 1
                     : achievements?.bigDonationProgress.current < 5
                     ? 2
-                    : 3
+                    : achievements?.bigDonationProgress.current >= 5 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -351,7 +357,9 @@ function Achievements() {
                     ? 1
                     : achievements?.voiceOfJusticeProgress.current < 10
                     ? 2
-                    : 3
+                    : achievements?.voiceOfJusticeProgress.current >= 15 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -404,7 +412,9 @@ function Achievements() {
                     ? 1
                     : achievements?.justiceWillPrevailProgress.current < 3
                     ? 2
-                    : 3
+                    : achievements?.justiceWillPrevailProgress.current >= 5 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -461,7 +471,9 @@ function Achievements() {
                     ? 1
                     : achievements?.epicFan.current < 4
                     ? 2
-                    : 3
+                    : achievements?.epicFan.current >= 6 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -518,7 +530,9 @@ function Achievements() {
                     ? 1
                     : achievements?.tournamentCouncil.current < 3
                     ? 2
-                    : 3
+                    : achievements?.tournamentCouncil.current >= 5 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -634,7 +648,9 @@ function Achievements() {
                     ? 1
                     : achievements?.outstandingBenefactor.current < 34
                     ? 2
-                    : 3
+                    : achievements?.outstandingBenefactor.current >= 50 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -691,7 +707,9 @@ function Achievements() {
                     ? 1
                     : achievements?.referralAchievement.current < 6
                     ? 2
-                    : 3
+                    : achievements?.refereeAchievement.current >= 10 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
@@ -744,7 +762,9 @@ function Achievements() {
                     ? 1
                     : achievements?.referralAchievementFigh.current < 3
                     ? 2
-                    : 3
+                    : achievements?.referralAchievementFigh.current >= 5 // Изменено условие
+                    ? 3
+                    : 2
                 ),
               ].map((_, i) => (
                 <img key={i} src="Star icon.png" alt="" />
