@@ -20,6 +20,7 @@ function Achievements() {
           refereeAchievementResponse, // Добавляем новый запрос
           outstandingBenefactorResponse, // Новый запрос
           referralAchievementResponse, // Добавляем новый запрос
+          referralAchievementFighResponse, // Добавляем новый запрос
         ] = await Promise.all([
           fetch(`/api/achievements/${userId}`),
           fetch(`/api/voting-achievements/${userId}`),
@@ -29,6 +30,7 @@ function Achievements() {
           fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
           fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
           fetch(`/api/referral-achievement/${userId}`),
+          fetch(`/api/referral-achievement-figh/${userId}`),
         ]);
 
         // Проверяем успешность всех запросов
@@ -40,7 +42,8 @@ function Achievements() {
           tournamentCouncilResponse.ok &&
           refereeAchievementResponse.ok && // Добавляем проверку
           outstandingBenefactorResponse.ok &&
-          referralAchievementResponse.ok
+          referralAchievementResponse.ok &&
+          referralAchievementFighResponse.ok
         ) {
           const achievementsData = await achievementsResponse.json();
           const votingData = await votingResponse.json();
@@ -53,6 +56,8 @@ function Achievements() {
             await outstandingBenefactorResponse.json();
           const referralAchievementData =
             await referralAchievementResponse.json();
+          const referralAchievementFighData =
+            await referralAchievementFighResponse.json();
 
           setAchievements({
             ...achievementsData,
@@ -63,6 +68,7 @@ function Achievements() {
             refereeAchievement: refereeAchievementData, // Добавляем новое достижение
             outstandingBenefactor: outstandingBenefactorData,
             referralAchievement: referralAchievementData,
+            referralAchievementFigh: referralAchievementFighData,
           });
         }
       } catch (error) {
@@ -374,7 +380,11 @@ function Achievements() {
               <div
                 className={styles.progressFill}
                 style={{
-                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                  width: `${
+                    (achievements?.tournamentCouncil.current /
+                      achievements?.tournamentCouncil.target) *
+                    100
+                  }%`,
                 }}
               />
             </div>
@@ -392,7 +402,11 @@ function Achievements() {
               <div
                 className={styles.progressFill}
                 style={{
-                  width: `${(15 / 20) * 100}%`, // Example: 15 out of 20 donations
+                  width: `${
+                    (achievements?.tournamentCouncil.current /
+                      achievements?.tournamentCouncil.target) *
+                    100
+                  }%`,
                 }}
               />
             </div>
