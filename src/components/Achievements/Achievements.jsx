@@ -381,8 +381,8 @@ function Achievements() {
                 className={styles.progressFill}
                 style={{
                   width: `${
-                    (achievements?.tournamentCouncil.current /
-                      achievements?.tournamentCouncil.target) *
+                    (achievements?.referralAchievement.current /
+                      achievements?.referralAchievement.target) *
                     100
                   }%`,
                 }}
@@ -403,8 +403,8 @@ function Achievements() {
                 className={styles.progressFill}
                 style={{
                   width: `${
-                    (achievements?.tournamentCouncil.current /
-                      achievements?.tournamentCouncil.target) *
+                    (achievements?.referralAchievementFigh.current /
+                      achievements?.referralAchievementFigh.target) *
                     100
                   }%`,
                 }}
