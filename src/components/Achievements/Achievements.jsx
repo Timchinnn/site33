@@ -328,7 +328,13 @@ function Achievements() {
                 style={{
                   width: `${
                     (achievements?.justiceWillPrevailProgress.current /
-                      achievements?.justiceWillPrevailProgress.target) *
+                      achievements?.justiceWillPrevailProgress.targets[
+                        achievements?.justiceWillPrevailProgress.current < 1
+                          ? 0
+                          : achievements?.justiceWillPrevailProgress.current < 3
+                          ? 1
+                          : 2
+                      ]) *
                     100
                   }%`,
                 }}
@@ -340,7 +346,15 @@ function Achievements() {
               <img src="Star icon.png" alt="" />
             </div>
             <p className={styles.task}>
-              Снизить рейтинг выбранному бойцу 1 раз
+              {
+                achievements?.justiceWillPrevailProgress.descriptions[
+                  achievements?.justiceWillPrevailProgress.current < 1
+                    ? 0
+                    : achievements?.justiceWillPrevailProgress.current < 3
+                    ? 1
+                    : 2
+                ]
+              }
             </p>
           </div>
           <div className={styles.Achievements}>
