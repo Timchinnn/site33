@@ -193,9 +193,9 @@ function Achievements() {
                   width: `${
                     (achievements?.loyalAllyProgress.current /
                       achievements?.loyalAllyProgress.targets[
-                        achievements?.loyalAllyProgress.current < 5
+                        achievements?.loyalAllyProgress.current < 2
                           ? 0
-                          : achievements?.loyalAllyProgress.current < 10
+                          : achievements?.loyalAllyProgress.current < 3
                           ? 1
                           : 2
                       ]) *
@@ -213,9 +213,9 @@ function Achievements() {
             <p className={styles.aboutText}>
               {
                 achievements?.loyalAllyProgress.descriptions[
-                  achievements?.loyalAllyProgress.current < 5
+                  achievements?.loyalAllyProgress.current < 2
                     ? 0
-                    : achievements?.loyalAllyProgress.current < 10
+                    : achievements?.loyalAllyProgress.current < 3
                     ? 1
                     : 2
                 ]
