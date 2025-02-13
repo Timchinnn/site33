@@ -16,6 +16,7 @@ function Achievements() {
   const [currentAchievement, setCurrentAchievement] = useState({
     title: "",
     description: "",
+    stars: "",
   });
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(null);
@@ -200,29 +201,34 @@ function Achievements() {
               title: "Великий покровитель арены",
               description:
                 "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
+              stars: 31,
             };
           } else if (totalStars >= 20) {
             achievement = {
               title: "Платиновый авторитет",
               description:
                 "Высочайший авторитет, вы основа формирования будущего спорта",
+              stars: 30,
             };
           } else if (totalStars >= 10) {
             achievement = {
               title: "Золотой наставник",
               description:
                 "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+              stars: 20,
             };
           } else if (totalStars >= 5) {
             achievement = {
               title: "Стальной секундант",
               description:
                 "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+              stars: 10,
             };
           } else if (totalStars > 0) {
             achievement = {
               title: "Дебютант ринга",
               description: "Вы только вступили на путь поддерживающего фаната",
+              stars: 5,
             };
           }
 
@@ -295,7 +301,9 @@ function Achievements() {
           {showAchievement && (
             <div className={styles.starCounts}>
               <img src="Star icon.png" alt="" />
-              <h2>{totalStars}</h2>
+              <h2>
+                {totalStars}/{currentAchievement.stars}
+              </h2>
             </div>
           )}
         </div>
