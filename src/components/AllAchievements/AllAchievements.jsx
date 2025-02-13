@@ -75,7 +75,15 @@ function AllAchievements() {
         </div>
 
         {Object.entries(achievements).map(([title, achievement]) => (
-          <div className={styles.mainAchievement}>
+          <div
+            className={styles.mainAchievement}
+            style={{
+              backgroundColor:
+                Math.min(totalStars, achievement.stars) <= achievement.stars
+                  ? "white"
+                  : "#caafbc",
+            }}
+          >
             <div key={title} className={styles.abotMainAchievement}>
               <div>
                 {" "}
