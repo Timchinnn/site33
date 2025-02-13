@@ -123,7 +123,7 @@ function Achievements() {
         ? 3
         : 2;
     return total;
-  }, []);
+  }, [achievements]);
   console.log(achievements);
   useEffect(() => {
     const fetchAchievementsAndCalculate = async () => {
@@ -191,8 +191,9 @@ function Achievements() {
           };
 
           setAchievements(newAchievements);
-          const totalStars = calculateTotalStars();
-          setTotalStars(totalStars);
+          // const totalStars = calculateTotalStars();
+          // setTotalStars(totalStars);
+          setTotalStars(calculateTotalStars());
 
           let achievement = { title: "", description: "" };
 
