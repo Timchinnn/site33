@@ -283,7 +283,7 @@ function Achievements() {
           </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
-            <h2>{calculateTotalStars()}</h2>
+            <h2>{totalStars}</h2>
           </div>
         </div>
         <h2>Все достижения</h2>
