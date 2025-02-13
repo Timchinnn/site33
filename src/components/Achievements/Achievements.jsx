@@ -80,7 +80,7 @@ function Achievements() {
       }
     };
     fetchAchievements();
-  }, []);
+  }, [calculateTotalStars]);
 
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
