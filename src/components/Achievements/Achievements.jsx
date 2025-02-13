@@ -191,8 +191,8 @@ function Achievements() {
           };
 
           setAchievements(newAchievements);
-          const totalStarsCalculated = calculateTotalStars(newAchievements);
-          setTotalStars(totalStarsCalculated);
+          const totalStars = calculateTotalStars(newAchievements);
+          setTotalStars(totalStars);
 
           let achievement = { title: "", description: "" };
 
