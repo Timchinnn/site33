@@ -283,6 +283,7 @@ function Achievements() {
             navigate("/allAchievements", {
               state: {
                 totalStars: totalStars,
+                currentAchievement: currentAchievement.title,
               },
             });
           }}

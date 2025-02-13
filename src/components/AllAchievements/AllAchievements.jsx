@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 function AllAchievements() {
   const location = useLocation();
-  const { totalStars } = location.state || {};
+  const { totalStars, currentAchievement } = location.state || {};
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
@@ -79,7 +79,8 @@ function AllAchievements() {
             className={styles.mainAchievement}
             style={{
               backgroundColor:
-                Math.min(totalStars, achievement.stars) >= achievement.stars
+                Math.min(totalStars, achievement.stars) >= achievement.stars ||
+                currentAchievement === achievement.title
                   ? "#caafbc"
                   : "white",
             }}
