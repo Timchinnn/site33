@@ -117,7 +117,7 @@ function Achievements() {
   console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
-      setIsLoading(true); // Начало загрузки
+      // setIsLoading(true); // Начало загрузки
 
       const userId = localStorage.getItem("userId");
       const userType = localStorage.getItem("userType");
@@ -187,8 +187,6 @@ function Achievements() {
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
-      } finally {
-        setIsLoading(false); // Окончание загрузки
       }
     };
     fetchAchievements();
