@@ -318,17 +318,7 @@ function Achievements() {
               src="boxer-beginner (1) 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -396,17 +386,7 @@ function Achievements() {
               src="-boxer-master 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -475,17 +455,7 @@ function Achievements() {
               src="-benefactor (1) 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {/* <div className={styles.progressBar}>
@@ -560,17 +530,7 @@ function Achievements() {
               src="-voting-man 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -638,17 +598,7 @@ function Achievements() {
               src="fighter.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -717,17 +667,7 @@ function Achievements() {
               src="boxer-beginner.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -795,17 +735,7 @@ function Achievements() {
               src="-boxing-referee (1) 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -867,17 +797,7 @@ function Achievements() {
               src="-boxing-referee 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -939,17 +859,7 @@ function Achievements() {
               src="-benefactor.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -1011,17 +921,7 @@ function Achievements() {
               src="2-fighter 1.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -1083,17 +983,7 @@ function Achievements() {
               src="image 12.png"
               alt=""
               style={{
-                opacity:
-                  achievements?.scoutProgress.current ===
-                  achievements?.scoutProgress.targets[
-                    achievements?.scoutProgress.current < 5
-                      ? 0
-                      : achievements?.scoutProgress.current < 10
-                      ? 1
-                      : 2
-                  ]
-                    ? 0.5
-                    : 1,
+                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
