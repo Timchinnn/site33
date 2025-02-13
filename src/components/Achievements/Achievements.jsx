@@ -184,39 +184,40 @@ function Achievements() {
           const totalStars = calculateTotalStars();
           setTotalStars(totalStars);
 
-          // Вычисление текущего достижения на основе totalStars
-          if (totalStars === null || totalStars === undefined) {
-            setCurrentAchievement({ title: "", description: "" });
-          } else if (totalStars < 5) {
-            setCurrentAchievement({
-              title: "Дебютант ринга",
-              description: "Вы только вступили на путь поддерживающего фаната",
-            });
-          } else if (totalStars >= 5 && totalStars < 10) {
-            setCurrentAchievement({
-              title: "Стальной секундант",
-              description:
-                "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
-            });
-          } else if (totalStars >= 10 && totalStars < 20) {
-            setCurrentAchievement({
-              title: "Золотой наставник",
-              description:
-                "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
-            });
-          } else if (totalStars >= 20 && totalStars < 30) {
-            setCurrentAchievement({
-              title: "Платиновый авторитет",
-              description:
-                "Высочайший авторитет, вы основа формирования будущего спорта",
-            });
-          } else if (totalStars >= 30) {
-            setCurrentAchievement({
+          let achievement = { title: "", description: "" };
+
+          if (totalStars >= 30) {
+            achievement = {
               title: "Великий покровитель арены",
               description:
                 "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
-            });
+            };
+          } else if (totalStars >= 20) {
+            achievement = {
+              title: "Платиновый авторитет",
+              description:
+                "Высочайший авторитет, вы основа формирования будущего спорта",
+            };
+          } else if (totalStars >= 10) {
+            achievement = {
+              title: "Золотой наставник",
+              description:
+                "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+            };
+          } else if (totalStars >= 5) {
+            achievement = {
+              title: "Стальной секундант",
+              description:
+                "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+            };
+          } else if (totalStars > 0) {
+            achievement = {
+              title: "Дебютант ринга",
+              description: "Вы только вступили на путь поддерживающего фаната",
+            };
           }
+
+          setCurrentAchievement(achievement);
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
