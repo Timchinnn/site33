@@ -282,7 +282,7 @@ function Achievements() {
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
             <h2>
-              {calculateTotalStars()}/{getAchievementLevel(totalVotes)}
+              {/* {calculateTotalStars()}/{getAchievementLevel(totalVotes)} */}
             </h2>
           </div>
         </div>
