@@ -193,7 +193,7 @@ function Achievements() {
   }, [calculateTotalStars]);
   useEffect(() => {
     const calculateAchievement = () => {
-      if (totalStars === null) {
+      if (totalStars === null || totalStars === undefined) {
         setCurrentAchievement({
           title: "",
           description: "",
