@@ -9,7 +9,7 @@ function Achievements() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowAchievement(true);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
