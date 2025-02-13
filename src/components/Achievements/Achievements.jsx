@@ -319,7 +319,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -397,7 +397,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -476,7 +476,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -561,7 +561,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -639,7 +639,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -718,7 +718,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -796,7 +796,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -868,7 +868,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -940,7 +940,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -1012,7 +1012,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
@@ -1084,7 +1084,7 @@ function Achievements() {
               alt=""
               style={{
                 opacity:
-                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.current ===
                   achievements?.scoutProgress.targets[
                     achievements?.scoutProgress.current < 5
                       ? 0
