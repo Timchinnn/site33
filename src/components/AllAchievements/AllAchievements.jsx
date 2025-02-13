@@ -1,14 +1,49 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AllAchievements.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function AllAchievements() {
+  const location = useLocation();
+  const { totalStars } = location.state || {};
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
   console.log(userId);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-
+  const achievements = {
+    "Дебютант ринга": {
+      title: "Дебютант ринга",
+      description: "Вы только вступили на путь поддерживающего фаната",
+      stars: 5,
+      requirement: totalStars > 0,
+    },
+    "Стальной секундант": {
+      title: "Стальной секундант",
+      description: "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+      stars: 10,
+      requirement: totalStars >= 5,
+    },
+    "Золотой наставник": {
+      title: "Золотой наставник",
+      description: "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+      stars: 20,
+      requirement: totalStars >= 10,
+    },
+    "Платиновый авторитет": {
+      title: "Платиновый авторитет",
+      description:
+        "Высочайший авторитет, вы основа формирования будущего спорта",
+      stars: 30,
+      requirement: totalStars >= 20,
+    },
+    "Великий покровитель арены": {
+      title: "Великий покровитель арены",
+      description:
+        "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
+      stars: 31,
+      requirement: totalStars >= 30,
+    },
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -39,17 +74,19 @@ function AllAchievements() {
           </div>
         </div>
         <div className={styles.mainAchievement}>
-          <div className={styles.abotMainAchievement}>
-            <h2>Золотой наставник</h2>
-            <p className={styles.aboutText}>
-              Ваш вес в сообществе огромен, вы задаёте тон поддержки
-            </p>
-          </div>
-          <div className={styles.starCounts}>
-            <img src="Star icon.png" alt="" />
-            <h2>15/20</h2>
-          </div>
-        </div>{" "}
+          {Object.entries(achievements).map(([title, achievement]) => (
+            <div key={title} className={styles.abotMainAchievement}>
+              <h2>{achievement.title}</h2>
+              <p className={styles.aboutText}>{achievement.description}</p>
+              <div className={styles.starCounts}>
+                <img src="Star icon.png" alt="" />
+                <h2>
+                  {totalStars}/{achievement.stars}
+                </h2>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.bottomNav}>
         <div

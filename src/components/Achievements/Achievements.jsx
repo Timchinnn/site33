@@ -280,7 +280,11 @@ function Achievements() {
         <div
           className={styles.mainAchievement}
           onClick={() => {
-            navigate("/allAchievements");
+            navigate("/allAchievements", {
+              state: {
+                totalStars: totalStars,
+              },
+            });
           }}
         >
           {/* <div className={styles.abotMainAchievement}>
