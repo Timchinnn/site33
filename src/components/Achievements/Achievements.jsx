@@ -83,7 +83,6 @@ function Achievements() {
   const userId = localStorage.getItem("userId");
   console.log(userId);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-  const [totalVotes, setTotalVotes] = useState(null); // начальное значение зависит от текущей страницы
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -201,48 +200,9 @@ function Achievements() {
         : achievements.referralAchievementFigh.current >= 5
         ? 3
         : 2;
-    setTotalVotes(total);
-    // const achievement = getAchievementLevel(total);
 
     return total;
   };
-  const getAchievementLevel = (totalVotes) => {
-    if (totalVotes <= 5)
-      return {
-        title: "Дебютант ринга",
-        description: "Вы только вступили на путь поддерживающего фаната",
-        starts: 5,
-      };
-    else if (totalVotes <= 10)
-      return {
-        title: "Стальной секундант",
-        description:
-          "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
-        starts: 10,
-      };
-    else if (totalVotes <= 20)
-      return {
-        title: "Золотой наставник",
-        description: "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
-        starts: 20,
-      };
-    else if (totalVotes <= 30)
-      return {
-        title: "Платиновый авторитет",
-        description:
-          "Высочайший авторитет, вы основа формирования будущего спорта",
-        starts: 30,
-      };
-    else
-      return {
-        title: "Великий покровитель арены",
-        description:
-          "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
-        starts: 31,
-      };
-  };
-
-  // In the render:
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -276,14 +236,14 @@ function Achievements() {
           }}
         >
           <div className={styles.abotMainAchievement}>
-            {/* <h2>{achievement.title}</h2>{" "} */}
-            {/* <p className={styles.aboutTextWeight}>{achievement.description}</p> */}
+            <h2>Золотой наставник</h2>
+            <p className={styles.aboutTextWeight}>
+              Ваш вес в сообществе огромен, вы задаёте тон поддержки
+            </p>
           </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
-            <h2>
-              {/* {calculateTotalStars()}/{getAchievementLevel(totalVotes)} */}
-            </h2>
+            <h2>{calculateTotalStars()}/15</h2>
           </div>
         </div>
         <h2>Все достижения</h2>
