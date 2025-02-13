@@ -3,8 +3,11 @@ import styles from "./Achievements.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Achievements() {
-  const [isLoading, setIsLoading] = useState(true);
-
+  // const [isLoading, setIsLoading] = useState(true);
+  const [currentAchievement, setCurrentAchievement] = useState({
+    title: "",
+    description: "",
+  });
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(0);
   const calculateTotalStars = useCallback(() => {
@@ -190,7 +193,41 @@ function Achievements() {
     };
     fetchAchievements();
   }, [calculateTotalStars]);
+  useEffect(() => {
+    const calculateAchievement = () => {
+      if (totalStars < 5) {
+        setCurrentAchievement({
+          title: "Дебютант ринга",
+          description: "Вы только вступили на путь поддерживающего фаната",
+        });
+      } else if (totalStars >= 5 && totalStars < 10) {
+        setCurrentAchievement({
+          title: "Стальной секундант",
+          description:
+            "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+        });
+      } else if (totalStars >= 10 && totalStars < 20) {
+        setCurrentAchievement({
+          title: "Золотой наставник",
+          description: "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+        });
+      } else if (totalStars >= 20 && totalStars < 30) {
+        setCurrentAchievement({
+          title: "Платиновый авторитет",
+          description:
+            "Высочайший авторитет, вы основа формирования будущего спорта",
+        });
+      } else if (totalStars >= 30) {
+        setCurrentAchievement({
+          title: "Великий покровитель арены",
+          description:
+            "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
+        });
+      }
+    };
 
+    calculateAchievement();
+  }, [totalStars]);
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
@@ -239,53 +276,13 @@ function Achievements() {
               Ваш вес в сообществе огромен, вы задаёте тон поддержки
             </p>
           </div> */}
-          {isLoading ? (
-            <p>Загрузка...</p>
-          ) : (
-            <div className={styles.abotMainAchievement}>
-              {totalStars < 5 && (
-                <>
-                  <h2>Дебютант ринга</h2>
-                  <p className={styles.aboutTextWeight}>
-                    Вы только вступили на путь поддерживающего фаната
-                  </p>
-                </>
-              )}
-              {totalStars >= 5 && totalStars < 10 && (
-                <>
-                  <h2>Стальной секундант</h2>
-                  <p className={styles.aboutTextWeight}>
-                    Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити
-                  </p>
-                </>
-              )}
-              {totalStars >= 10 && totalStars < 20 && (
-                <>
-                  <h2>Золотой наставник</h2>
-                  <p className={styles.aboutTextWeight}>
-                    Ваш вес в сообществе огромен, вы задаёте тон поддержки
-                  </p>
-                </>
-              )}
-              {totalStars >= 20 && totalStars < 30 && (
-                <>
-                  <h2>Платиновый авторитет</h2>
-                  <p className={styles.aboutTextWeight}>
-                    Высочайший авторитет, вы основа формирования будущего спорта
-                  </p>
-                </>
-              )}
-              {totalStars >= 30 && (
-                <>
-                  <h2>Великий покровитель арены</h2>
-                  <p className={styles.aboutTextWeight}>
-                    Легендарный статус, ваше имя - символ щедрости и любви к
-                    спорту
-                  </p>
-                </>
-              )}
-            </div>
-          )}
+
+          <div className={styles.abotMainAchievement}>
+            <h2>{currentAchievement.title}</h2>
+            <p className={styles.aboutTextWeight}>
+              {currentAchievement.description}
+            </p>
+          </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
             <h2>{calculateTotalStars()}</h2>
