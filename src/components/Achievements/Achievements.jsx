@@ -5,92 +5,6 @@ import { useNavigate } from "react-router-dom";
 function Achievements() {
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(0);
-
-  console.log(achievements);
-  useEffect(() => {
-    const fetchAchievements = async () => {
-      const userId = localStorage.getItem("userId");
-      const userType = localStorage.getItem("userType");
-
-      try {
-        const [
-          achievementsResponse,
-          votingResponse,
-          negativeVotingResponse,
-          epicFanResponse,
-          tournamentCouncilResponse,
-          refereeAchievementResponse, // Добавляем новый запрос
-          outstandingBenefactorResponse, // Новый запрос
-          referralAchievementResponse, // Добавляем новый запрос
-          referralAchievementFighResponse, // Добавляем новый запрос
-        ] = await Promise.all([
-          fetch(`/api/achievements/${userId}`),
-          fetch(`/api/voting-achievements/${userId}`),
-          fetch(`/api/negative-voting-achievements/${userId}`),
-          fetch(`/api/user/epic-fan/${userId}`),
-          fetch(`/api/tournament-council/${userId}?userType=${userType}`),
-          fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
-          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
-          fetch(`/api/referral-achievement/${userId}`),
-          fetch(`/api/referral-achievement-figh/${userId}`),
-        ]);
-
-        // Проверяем успешность всех запросов
-        if (
-          achievementsResponse.ok &&
-          votingResponse.ok &&
-          negativeVotingResponse.ok &&
-          epicFanResponse.ok &&
-          tournamentCouncilResponse.ok &&
-          refereeAchievementResponse.ok && // Добавляем проверку
-          outstandingBenefactorResponse.ok &&
-          referralAchievementResponse.ok &&
-          referralAchievementFighResponse.ok
-        ) {
-          const achievementsData = await achievementsResponse.json();
-          const votingData = await votingResponse.json();
-          const negativeVotingData = await negativeVotingResponse.json();
-          const epicFanData = await epicFanResponse.json();
-          const tournamentCouncilData = await tournamentCouncilResponse.json();
-          const refereeAchievementData =
-            await refereeAchievementResponse.json(); // Получаем данные
-          const outstandingBenefactorData =
-            await outstandingBenefactorResponse.json();
-          const referralAchievementData =
-            await referralAchievementResponse.json();
-          const referralAchievementFighData =
-            await referralAchievementFighResponse.json();
-
-          setAchievements({
-            ...achievementsData,
-            ...votingData,
-            ...negativeVotingData,
-            epicFan: epicFanData,
-            tournamentCouncil: tournamentCouncilData,
-            refereeAchievement: refereeAchievementData, // Добавляем новое достижение
-            outstandingBenefactor: outstandingBenefactorData,
-            referralAchievement: referralAchievementData,
-            referralAchievementFigh: referralAchievementFighData,
-          });
-          const totalStars = calculateTotalStars();
-          setTotalStars(totalStars);
-        }
-      } catch (error) {
-        console.error("Error fetching achievements:", error);
-      }
-    };
-    fetchAchievements();
-  }, [calculateTotalStars]);
-
-  const navigate = useNavigate();
-  const userType = localStorage.getItem("userType");
-  const userId = localStorage.getItem("userId");
-  console.log(userId);
-  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const calculateTotalStars = () => {
     if (!achievements) return 0;
     let total = 0;
@@ -207,6 +121,92 @@ function Achievements() {
 
     return total;
   };
+  console.log(achievements);
+  useEffect(() => {
+    const fetchAchievements = async () => {
+      const userId = localStorage.getItem("userId");
+      const userType = localStorage.getItem("userType");
+
+      try {
+        const [
+          achievementsResponse,
+          votingResponse,
+          negativeVotingResponse,
+          epicFanResponse,
+          tournamentCouncilResponse,
+          refereeAchievementResponse, // Добавляем новый запрос
+          outstandingBenefactorResponse, // Новый запрос
+          referralAchievementResponse, // Добавляем новый запрос
+          referralAchievementFighResponse, // Добавляем новый запрос
+        ] = await Promise.all([
+          fetch(`/api/achievements/${userId}`),
+          fetch(`/api/voting-achievements/${userId}`),
+          fetch(`/api/negative-voting-achievements/${userId}`),
+          fetch(`/api/user/epic-fan/${userId}`),
+          fetch(`/api/tournament-council/${userId}?userType=${userType}`),
+          fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
+          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
+          fetch(`/api/referral-achievement/${userId}`),
+          fetch(`/api/referral-achievement-figh/${userId}`),
+        ]);
+
+        // Проверяем успешность всех запросов
+        if (
+          achievementsResponse.ok &&
+          votingResponse.ok &&
+          negativeVotingResponse.ok &&
+          epicFanResponse.ok &&
+          tournamentCouncilResponse.ok &&
+          refereeAchievementResponse.ok && // Добавляем проверку
+          outstandingBenefactorResponse.ok &&
+          referralAchievementResponse.ok &&
+          referralAchievementFighResponse.ok
+        ) {
+          const achievementsData = await achievementsResponse.json();
+          const votingData = await votingResponse.json();
+          const negativeVotingData = await negativeVotingResponse.json();
+          const epicFanData = await epicFanResponse.json();
+          const tournamentCouncilData = await tournamentCouncilResponse.json();
+          const refereeAchievementData =
+            await refereeAchievementResponse.json(); // Получаем данные
+          const outstandingBenefactorData =
+            await outstandingBenefactorResponse.json();
+          const referralAchievementData =
+            await referralAchievementResponse.json();
+          const referralAchievementFighData =
+            await referralAchievementFighResponse.json();
+
+          setAchievements({
+            ...achievementsData,
+            ...votingData,
+            ...negativeVotingData,
+            epicFan: epicFanData,
+            tournamentCouncil: tournamentCouncilData,
+            refereeAchievement: refereeAchievementData, // Добавляем новое достижение
+            outstandingBenefactor: outstandingBenefactorData,
+            referralAchievement: referralAchievementData,
+            referralAchievementFigh: referralAchievementFighData,
+          });
+          const totalStars = calculateTotalStars();
+          setTotalStars(totalStars);
+        }
+      } catch (error) {
+        console.error("Error fetching achievements:", error);
+      }
+    };
+    fetchAchievements();
+  }, [calculateTotalStars]);
+
+  const navigate = useNavigate();
+  const userType = localStorage.getItem("userType");
+  const userId = localStorage.getItem("userId");
+  console.log(userId);
+  const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.header}>
       <div className={styles.container}>
