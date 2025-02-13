@@ -9,7 +9,7 @@ function Achievements() {
     description: "",
   });
   const [achievements, setAchievements] = useState(null);
-  const [totalStars, setTotalStars] = useState(null);
+  const [totalStars, setTotalStars] = useState(0);
   const calculateTotalStars = useCallback(() => {
     if (!achievements) return 0;
     let total = 0;
@@ -193,6 +193,12 @@ function Achievements() {
   }, [calculateTotalStars]);
   useEffect(() => {
     const calculateAchievement = () => {
+      if (totalStars === 0) {
+        setCurrentAchievement({
+          title: "",
+          description: "",
+        });
+      }
       if (totalStars < 5) {
         setCurrentAchievement({
           title: "Дебютант ринга",
