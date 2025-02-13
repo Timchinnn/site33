@@ -891,6 +891,7 @@ img {
   font-family: Inter;
   font-size: 12px;
   color: #95959b;
+  width: 100%;
 }
 .donationProgressContainer p {
   font-family: Inter;
