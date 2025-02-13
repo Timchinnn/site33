@@ -310,55 +310,61 @@ function Achievements() {
               src="boxer-beginner (1) 1.png"
               alt=""
             />
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{
-                  width: `${
-                    (achievements?.scoutProgress.current /
-                      achievements?.scoutProgress.targets[
-                        achievements?.scoutProgress.current < 5
-                          ? 0
-                          : achievements?.scoutProgress.current < 10
-                          ? 1
-                          : 2
-                      ]) *
-                    100
-                  }%`,
-                }}
-              />
-            </div>
+            {showAchievement && (
+              <div className={styles.progressBar}>
+                <div
+                  className={styles.progressFill}
+                  style={{
+                    width: `${
+                      (achievements?.scoutProgress.current /
+                        achievements?.scoutProgress.targets[
+                          achievements?.scoutProgress.current < 5
+                            ? 0
+                            : achievements?.scoutProgress.current < 10
+                            ? 1
+                            : 2
+                        ]) *
+                      100
+                    }%`,
+                  }}
+                />
+              </div>
+            )}
             {/* <div className={styles.stars}>
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div> */}
-            <div className={styles.stars}>
-              {[
-                ...Array(
-                  achievements?.scoutProgress.current < 5
-                    ? 1
-                    : achievements?.scoutProgress.current < 10
-                    ? 2
-                    : achievements?.scoutProgress.current >= 20 // Изменено условие
-                    ? 3
-                    : 2
-                ),
-              ].map((_, i) => (
-                <img key={i} src="Star icon.png" alt="" />
-              ))}
-            </div>
-            <p className={styles.task}>
-              {
-                achievements?.scoutProgress.descriptions[
-                  achievements?.scoutProgress.current < 5
-                    ? 0
-                    : achievements?.scoutProgress.current < 10
-                    ? 1
-                    : 2
-                ]
-              }
-            </p>
+            {showAchievement && (
+              <div className={styles.stars}>
+                {[
+                  ...Array(
+                    achievements?.scoutProgress.current < 5
+                      ? 1
+                      : achievements?.scoutProgress.current < 10
+                      ? 2
+                      : achievements?.scoutProgress.current >= 20 // Изменено условие
+                      ? 3
+                      : 2
+                  ),
+                ].map((_, i) => (
+                  <img key={i} src="Star icon.png" alt="" />
+                ))}
+              </div>
+            )}
+            {showAchievement && (
+              <p className={styles.task}>
+                {
+                  achievements?.scoutProgress.descriptions[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                }
+              </p>
+            )}
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
