@@ -142,6 +142,8 @@ img {
   border-radius: 12px;
   display: flex;
   align-items: center;
+  margin-top: 15px;
+  margin-bottom: 50px;
 }
 .abotMainAchievement {
   padding: 14px;
