@@ -395,6 +395,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-boxer-master 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             {showAchievement && (
               <div className={styles.progressBar}>
@@ -461,6 +474,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-benefactor (1) 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             {/* <div className={styles.progressBar}>
               <div
@@ -533,6 +559,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-voting-man 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             {showAchievement && (
               <div className={styles.progressBar}>
@@ -594,7 +633,24 @@ function Achievements() {
             <div className={styles.aboutTextBlock}>
               <p className={styles.aboutText}>Справедливость восторжествует</p>
             </div>
-            <img className={styles.achievementImg} src="fighter.png" alt="" />
+            <img
+              className={styles.achievementImg}
+              src="fighter.png"
+              alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
+            />
             {showAchievement && (
               <div className={styles.progressBar}>
                 <div
@@ -660,6 +716,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="boxer-beginner.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             {showAchievement && (
               <div className={styles.progressBar}>
@@ -725,6 +794,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-boxing-referee (1) 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             <div className={styles.progressBar}>
               <div
@@ -784,6 +866,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-boxing-referee 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             <div className={styles.progressBar}>
               <div
@@ -843,6 +938,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="-benefactor.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             <div className={styles.progressBar}>
               <div
@@ -902,6 +1010,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="2-fighter 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             <div className={styles.progressBar}>
               <div
@@ -957,7 +1078,24 @@ function Achievements() {
             <div className={styles.aboutTextBlock}>
               <p className={styles.aboutText}>Менеджер легенд</p>
             </div>
-            <img className={styles.achievementImg} src="image 12.png" alt="" />
+            <img
+              className={styles.achievementImg}
+              src="image 12.png"
+              alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
+            />
             <div className={styles.progressBar}>
               <div
                 className={styles.progressFill}
