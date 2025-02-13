@@ -76,8 +76,12 @@ function AllAchievements() {
         <div className={styles.mainAchievement}>
           {Object.entries(achievements).map(([title, achievement]) => (
             <div key={title} className={styles.abotMainAchievement}>
-              <h2>{achievement.title}</h2>
-              <p className={styles.aboutText}>{achievement.description}</p>
+              <div>
+                {" "}
+                <h2>{achievement.title}</h2>
+                <p className={styles.aboutText}>{achievement.description}</p>
+              </div>
+
               <div className={styles.starCounts}>
                 <img src="Star icon.png" alt="" />
                 <h2>
