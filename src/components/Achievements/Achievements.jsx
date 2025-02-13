@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./Achievements.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Achievements() {
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(0);
-  const calculateTotalStars = () => {
+  const calculateTotalStars = useCallback(() => {
     if (!achievements) return 0;
     let total = 0;
-
     // Scout Progress stars (Скаут перспектив)
     total +=
       achievements.scoutProgress.current < 5
@@ -18,7 +17,6 @@ function Achievements() {
         : achievements.scoutProgress.current >= 20
         ? 3
         : 2;
-
     // Loyal Ally stars (Верный союзник)
     total +=
       achievements.loyalAllyProgress.current < 2
@@ -28,7 +26,6 @@ function Achievements() {
         : achievements.loyalAllyProgress.current >= 5
         ? 3
         : 2;
-
     // Big Donation stars (Большая ставка)
     total +=
       achievements.bigDonationProgress.current < 3
@@ -38,7 +35,6 @@ function Achievements() {
         : achievements.bigDonationProgress.current >= 5
         ? 3
         : 2;
-
     // Voice of Justice stars (Голос справедливости)
     total +=
       achievements.voiceOfJusticeProgress.current < 5
@@ -48,7 +44,6 @@ function Achievements() {
         : achievements.voiceOfJusticeProgress.current >= 15
         ? 3
         : 2;
-
     // Justice Will Prevail stars (Справедливость восторжествует)
     total +=
       achievements.justiceWillPrevailProgress.current < 1
@@ -58,7 +53,6 @@ function Achievements() {
         : achievements.justiceWillPrevailProgress.current >= 5
         ? 3
         : 2;
-
     // Epic Fan stars (Эпический фанат)
     total +=
       achievements.epicFan.current < 2
@@ -68,7 +62,6 @@ function Achievements() {
         : achievements.epicFan.current >= 6
         ? 3
         : 2;
-
     // Tournament Council stars (Совет турнира)
     total +=
       achievements.tournamentCouncil.current < 1
@@ -78,7 +71,6 @@ function Achievements() {
         : achievements.tournamentCouncil.current >= 5
         ? 3
         : 2;
-
     // Referee Achievement stars (Внимательный рефери)
     total +=
       achievements.refereeAchievement.current < 5
@@ -88,7 +80,6 @@ function Achievements() {
         : achievements.refereeAchievement.current >= 15
         ? 3
         : 2;
-
     // Outstanding Benefactor stars (Выдающийся благотворитель)
     total +=
       achievements.outstandingBenefactor.current < 17
@@ -98,17 +89,15 @@ function Achievements() {
         : achievements.outstandingBenefactor.current >= 50
         ? 3
         : 2;
-
     // Referral Achievement stars (Единомышленники)
     total +=
       achievements.referralAchievement.current < 3
         ? 1
         : achievements.referralAchievement.current < 6
         ? 2
-        : achievements.referralAchievement.current >= 10
+        : achievements.refereeAchievement.current >= 10
         ? 3
         : 2;
-
     // Referral Achievement Fighter stars (Менеджер легенд)
     total +=
       achievements.referralAchievementFigh.current < 1
@@ -118,9 +107,8 @@ function Achievements() {
         : achievements.referralAchievementFigh.current >= 5
         ? 3
         : 2;
-
     return total;
-  };
+  }, [achievements]);
   console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
