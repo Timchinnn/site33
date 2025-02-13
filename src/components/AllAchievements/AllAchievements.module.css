@@ -136,7 +136,7 @@ img {
   margin: 0; /* Убираем стандартные отступы */
 }
 .mainAchievement {
-  /* background: #caafbc; */
+  background: #caafbc;
   width: 343px;
   height: 104px;
   border-radius: 12px;
