@@ -145,8 +145,9 @@ img {
   flex-direction: column;
 }
 .abotMainAchievement {
-  padding: 14px;
+  padding-left: 10px;
   display: flex;
+  align-items: center;
 }
 .aboutText {
   font-family: Inter;
