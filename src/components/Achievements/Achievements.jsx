@@ -317,6 +317,19 @@ function Achievements() {
               className={styles.achievementImg}
               src="boxer-beginner (1) 1.png"
               alt=""
+              style={{
+                opacity:
+                  achievements?.scoutProgress.current <
+                  achievements?.scoutProgress.targets[
+                    achievements?.scoutProgress.current < 5
+                      ? 0
+                      : achievements?.scoutProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                    ? 0.5
+                    : 1,
+              }}
             />
             {showAchievement && (
               <div className={styles.progressBar}>
