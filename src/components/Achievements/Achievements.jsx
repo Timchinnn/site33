@@ -198,8 +198,7 @@ function Achievements() {
           title: "",
           description: "",
         });
-      }
-      if (totalStars < 5) {
+      } else if (totalStars < 5) {
         setCurrentAchievement({
           title: "Дебютант ринга",
           description: "Вы только вступили на путь поддерживающего фаната",
