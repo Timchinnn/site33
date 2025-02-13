@@ -116,9 +116,7 @@ function Achievements() {
   }, [achievements]);
   console.log(achievements);
   useEffect(() => {
-    const fetchAchievements = async () => {
-      // setIsLoading(true); // Начало загрузки
-
+    const fetchAchievementsAndCalculate = async () => {
       const userId = localStorage.getItem("userId");
       const userType = localStorage.getItem("userType");
 
@@ -129,30 +127,29 @@ function Achievements() {
           negativeVotingResponse,
           epicFanResponse,
           tournamentCouncilResponse,
-          refereeAchievementResponse, // Добавляем новый запрос
-          outstandingBenefactorResponse, // Новый запрос
-          referralAchievementResponse, // Добавляем новый запрос
-          referralAchievementFighResponse, // Добавляем новый запрос
+          refereeAchievementResponse,
+          outstandingBenefactorResponse,
+          referralAchievementResponse,
+          referralAchievementFighResponse,
         ] = await Promise.all([
           fetch(`/api/achievements/${userId}`),
           fetch(`/api/voting-achievements/${userId}`),
           fetch(`/api/negative-voting-achievements/${userId}`),
           fetch(`/api/user/epic-fan/${userId}`),
           fetch(`/api/tournament-council/${userId}?userType=${userType}`),
-          fetch(`/api/referee-achievement/${userId}?userType=${userType}`), // Новый эндпоинт
-          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`), // Новый эндпоинт
+          fetch(`/api/referee-achievement/${userId}?userType=${userType}`),
+          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`),
           fetch(`/api/referral-achievement/${userId}`),
           fetch(`/api/referral-achievement-figh/${userId}`),
         ]);
 
-        // Проверяем успешность всех запросов
         if (
           achievementsResponse.ok &&
           votingResponse.ok &&
           negativeVotingResponse.ok &&
           epicFanResponse.ok &&
           tournamentCouncilResponse.ok &&
-          refereeAchievementResponse.ok && // Добавляем проверку
+          refereeAchievementResponse.ok &&
           outstandingBenefactorResponse.ok &&
           referralAchievementResponse.ok &&
           referralAchievementFighResponse.ok
@@ -163,7 +160,7 @@ function Achievements() {
           const epicFanData = await epicFanResponse.json();
           const tournamentCouncilData = await tournamentCouncilResponse.json();
           const refereeAchievementData =
-            await refereeAchievementResponse.json(); // Получаем данные
+            await refereeAchievementResponse.json();
           const outstandingBenefactorData =
             await outstandingBenefactorResponse.json();
           const referralAchievementData =
@@ -171,66 +168,63 @@ function Achievements() {
           const referralAchievementFighData =
             await referralAchievementFighResponse.json();
 
-          setAchievements({
+          const newAchievements = {
             ...achievementsData,
             ...votingData,
             ...negativeVotingData,
             epicFan: epicFanData,
             tournamentCouncil: tournamentCouncilData,
-            refereeAchievement: refereeAchievementData, // Добавляем новое достижение
+            refereeAchievement: refereeAchievementData,
             outstandingBenefactor: outstandingBenefactorData,
             referralAchievement: referralAchievementData,
             referralAchievementFigh: referralAchievementFighData,
-          });
+          };
+
+          setAchievements(newAchievements);
           const totalStars = calculateTotalStars();
           setTotalStars(totalStars);
+
+          // Вычисление текущего достижения на основе totalStars
+          if (totalStars === null || totalStars === undefined) {
+            setCurrentAchievement({ title: "", description: "" });
+          } else if (totalStars < 5) {
+            setCurrentAchievement({
+              title: "Дебютант ринга",
+              description: "Вы только вступили на путь поддерживающего фаната",
+            });
+          } else if (totalStars >= 5 && totalStars < 10) {
+            setCurrentAchievement({
+              title: "Стальной секундант",
+              description:
+                "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+            });
+          } else if (totalStars >= 10 && totalStars < 20) {
+            setCurrentAchievement({
+              title: "Золотой наставник",
+              description:
+                "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+            });
+          } else if (totalStars >= 20 && totalStars < 30) {
+            setCurrentAchievement({
+              title: "Платиновый авторитет",
+              description:
+                "Высочайший авторитет, вы основа формирования будущего спорта",
+            });
+          } else if (totalStars >= 30) {
+            setCurrentAchievement({
+              title: "Великий покровитель арены",
+              description:
+                "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
+            });
+          }
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
       }
     };
-    fetchAchievements();
-  }, [calculateTotalStars]);
-  useEffect(() => {
-    const calculateAchievement = () => {
-      if (totalStars === null || totalStars === undefined) {
-        setCurrentAchievement({
-          title: "",
-          description: "",
-        });
-      } else if (totalStars < 5) {
-        setCurrentAchievement({
-          title: "Дебютант ринга",
-          description: "Вы только вступили на путь поддерживающего фаната",
-        });
-      } else if (totalStars >= 5 && totalStars < 10) {
-        setCurrentAchievement({
-          title: "Стальной секундант",
-          description:
-            "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
-        });
-      } else if (totalStars >= 10 && totalStars < 20) {
-        setCurrentAchievement({
-          title: "Золотой наставник",
-          description: "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
-        });
-      } else if (totalStars >= 20 && totalStars < 30) {
-        setCurrentAchievement({
-          title: "Платиновый авторитет",
-          description:
-            "Высочайший авторитет, вы основа формирования будущего спорта",
-        });
-      } else if (totalStars >= 30) {
-        setCurrentAchievement({
-          title: "Великий покровитель арены",
-          description:
-            "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
-        });
-      }
-    };
 
-    calculateAchievement();
-  }, [totalStars]);
+    fetchAchievementsAndCalculate();
+  }, [calculateTotalStars]);
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
