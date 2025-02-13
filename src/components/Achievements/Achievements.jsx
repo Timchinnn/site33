@@ -386,7 +386,8 @@ function Achievements() {
               src="-boxer-master 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.loyalAllyProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -455,7 +456,8 @@ function Achievements() {
               src="-benefactor (1) 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.bigDonationProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {/* <div className={styles.progressBar}>
@@ -530,7 +532,8 @@ function Achievements() {
               src="-voting-man 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.voiceOfJusticeProgress.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -598,7 +601,10 @@ function Achievements() {
               src="fighter.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.justiceWillPrevailProgress.current === 0
+                    ? 0.5
+                    : 1,
               }}
             />
             {showAchievement && (
@@ -667,7 +673,7 @@ function Achievements() {
               src="boxer-beginner.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity: achievements?.epicFan.current === 0 ? 0.5 : 1,
               }}
             />
             {showAchievement && (
@@ -735,7 +741,8 @@ function Achievements() {
               src="-boxing-referee (1) 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.tournamentCouncil.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -797,7 +804,8 @@ function Achievements() {
               src="-boxing-referee 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.refereeAchievement.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -859,7 +867,8 @@ function Achievements() {
               src="-benefactor.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.outstandingBenefactor.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -921,7 +930,8 @@ function Achievements() {
               src="2-fighter 1.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.referralAchievement.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
@@ -983,7 +993,8 @@ function Achievements() {
               src="image 12.png"
               alt=""
               style={{
-                opacity: achievements?.scoutProgress.current === 0 ? 0.5 : 1,
+                opacity:
+                  achievements?.referralAchievementFigh.current === 0 ? 0.5 : 1,
               }}
             />
             <div className={styles.progressBar}>
