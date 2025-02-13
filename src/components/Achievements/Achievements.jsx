@@ -202,6 +202,8 @@ function Achievements() {
         ? 3
         : 2;
     setTotalVotes(total);
+    // const achievement = getAchievementLevel(total);
+
     return total;
   };
   const getAchievementLevel = (totalVotes) => {
@@ -241,7 +243,6 @@ function Achievements() {
   };
 
   // In the render:
-  const achievement = getAchievementLevel(totalVotes);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -275,13 +276,13 @@ function Achievements() {
           }}
         >
           <div className={styles.abotMainAchievement}>
-            <h2>{achievement.title}</h2>{" "}
-            <p className={styles.aboutTextWeight}>{achievement.description}</p>
+            {/* <h2>{achievement.title}</h2>{" "} */}
+            {/* <p className={styles.aboutTextWeight}>{achievement.description}</p> */}
           </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
             <h2>
-              {calculateTotalStars()}/{achievement.stars}
+              {calculateTotalStars()}/{getAchievementLevel(totalVotes)}
             </h2>
           </div>
         </div>
