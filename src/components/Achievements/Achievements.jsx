@@ -4,6 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 function Achievements() {
   // const [isLoading, setIsLoading] = useState(true);
+  const [showAchievement, setShowAchievement] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowAchievement(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
   const [currentAchievement, setCurrentAchievement] = useState({
     title: "",
     description: "",
@@ -275,16 +284,20 @@ function Achievements() {
             </p>
           </div> */}
 
-          <div className={styles.abotMainAchievement}>
-            <h2>{currentAchievement.title}</h2>
-            <p className={styles.aboutTextWeight}>
-              {currentAchievement.description}
-            </p>
-          </div>
-          <div className={styles.starCounts}>
-            <img src="Star icon.png" alt="" />
-            <h2>{totalStars}</h2>
-          </div>
+          {showAchievement && (
+            <div className={styles.abotMainAchievement}>
+              <h2>{currentAchievement.title}</h2>
+              <p className={styles.aboutTextWeight}>
+                {currentAchievement.description}
+              </p>
+            </div>
+          )}
+          {showAchievement && (
+            <div className={styles.starCounts}>
+              <img src="Star icon.png" alt="" />
+              <h2>{totalStars}</h2>
+            </div>
+          )}
         </div>
         <h2>Все достижения</h2>
         <div className={styles.allAchievements}>
