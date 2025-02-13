@@ -3,6 +3,8 @@ import styles from "./Achievements.module.css";
 import { useNavigate } from "react-router-dom";
 
 function Achievements() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(0);
   const calculateTotalStars = useCallback(() => {
@@ -112,6 +114,8 @@ function Achievements() {
   console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
+      setIsLoading(true); // Начало загрузки
+
       const userId = localStorage.getItem("userId");
       const userType = localStorage.getItem("userType");
 
@@ -180,6 +184,8 @@ function Achievements() {
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
+      } finally {
+        setIsLoading(false); // Окончание загрузки
       }
     };
     fetchAchievements();
@@ -233,49 +239,53 @@ function Achievements() {
               Ваш вес в сообществе огромен, вы задаёте тон поддержки
             </p>
           </div> */}
-          <div className={styles.abotMainAchievement}>
-            {totalStars < 5 && (
-              <>
-                <h2>Дебютант ринга</h2>
-                <p className={styles.aboutTextWeight}>
-                  Вы только вступили на путь поддерживающего фаната
-                </p>
-              </>
-            )}
-            {totalStars >= 5 && totalStars < 10 && (
-              <>
-                <h2>Стальной секундант</h2>
-                <p className={styles.aboutTextWeight}>
-                  Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити
-                </p>
-              </>
-            )}
-            {totalStars >= 10 && totalStars < 20 && (
-              <>
-                <h2>Золотой наставник</h2>
-                <p className={styles.aboutTextWeight}>
-                  Ваш вес в сообществе огромен, вы задаёте тон поддержки
-                </p>
-              </>
-            )}
-            {totalStars >= 20 && totalStars < 30 && (
-              <>
-                <h2>Платиновый авторитет</h2>
-                <p className={styles.aboutTextWeight}>
-                  Высочайший авторитет, вы основа формирования будущего спорта
-                </p>
-              </>
-            )}
-            {totalStars >= 30 && (
-              <>
-                <h2>Великий покровитель арены</h2>
-                <p className={styles.aboutTextWeight}>
-                  Легендарный статус, ваше имя - символ щедрости и любви к
-                  спорту
-                </p>
-              </>
-            )}
-          </div>
+          {isLoading ? (
+            <p>Загрузка...</p>
+          ) : (
+            <div className={styles.abotMainAchievement}>
+              {totalStars < 5 && (
+                <>
+                  <h2>Дебютант ринга</h2>
+                  <p className={styles.aboutTextWeight}>
+                    Вы только вступили на путь поддерживающего фаната
+                  </p>
+                </>
+              )}
+              {totalStars >= 5 && totalStars < 10 && (
+                <>
+                  <h2>Стальной секундант</h2>
+                  <p className={styles.aboutTextWeight}>
+                    Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити
+                  </p>
+                </>
+              )}
+              {totalStars >= 10 && totalStars < 20 && (
+                <>
+                  <h2>Золотой наставник</h2>
+                  <p className={styles.aboutTextWeight}>
+                    Ваш вес в сообществе огромен, вы задаёте тон поддержки
+                  </p>
+                </>
+              )}
+              {totalStars >= 20 && totalStars < 30 && (
+                <>
+                  <h2>Платиновый авторитет</h2>
+                  <p className={styles.aboutTextWeight}>
+                    Высочайший авторитет, вы основа формирования будущего спорта
+                  </p>
+                </>
+              )}
+              {totalStars >= 30 && (
+                <>
+                  <h2>Великий покровитель арены</h2>
+                  <p className={styles.aboutTextWeight}>
+                    Легендарный статус, ваше имя - символ щедрости и любви к
+                    спорту
+                  </p>
+                </>
+              )}
+            </div>
+          )}
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
             <h2>{calculateTotalStars()}</h2>
