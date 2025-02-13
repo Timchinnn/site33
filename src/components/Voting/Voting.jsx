@@ -156,17 +156,25 @@ function Voting() {
   };
   const handleCategoryClick = (category) => {
     setSelectedCategories((prevSelected) => {
-      // Если выбран "best-bicycle", сбрасываем все остальные категории
+      // If best-bicycle is already selected and clicked again, remove it
+      if (
+        category === "best-bicycle" &&
+        prevSelected.includes("best-bicycle")
+      ) {
+        return [];
+      }
+
+      // If best-bicycle is being selected, clear other categories
       if (category === "best-bicycle") {
         return ["best-bicycle"];
       }
 
-      // Если уже выбран "best-bicycle", не даем выбрать другие категории
+      // If best-bicycle is already selected, don't allow other categories
       if (prevSelected.includes("best-bicycle")) {
         return prevSelected;
       }
 
-      // Стандартная логика для остальных категорий
+      // Standard logic for other categories
       if (prevSelected.includes(category)) {
         return prevSelected.filter((item) => item !== category);
       } else {
