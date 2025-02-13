@@ -9,7 +9,7 @@ function Achievements() {
     description: "",
   });
   const [achievements, setAchievements] = useState(null);
-  const [totalStars, setTotalStars] = useState(0);
+  const [totalStars, setTotalStars] = useState(null);
   const calculateTotalStars = useCallback(() => {
     if (!achievements) return 0;
     let total = 0;
