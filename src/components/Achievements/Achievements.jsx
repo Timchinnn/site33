@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 function Achievements() {
   const [achievements, setAchievements] = useState(null);
+  const [totalStars, setTotalStars] = useState(0);
+
   console.log(achievements);
   useEffect(() => {
     const fetchAchievements = async () => {
@@ -70,6 +72,8 @@ function Achievements() {
             referralAchievement: referralAchievementData,
             referralAchievementFigh: referralAchievementFighData,
           });
+          const totalStars = calculateTotalStars();
+          setTotalStars(totalStars);
         }
       } catch (error) {
         console.error("Error fetching achievements:", error);
@@ -242,7 +246,7 @@ function Achievements() {
             </p>
           </div> */}
           <div className={styles.abotMainAchievement}>
-            {calculateTotalStars() < 5 && (
+            {totalStars < 5 && (
               <>
                 <h2>Дебютант ринга</h2>
                 <p className={styles.aboutTextWeight}>
@@ -250,7 +254,7 @@ function Achievements() {
                 </p>
               </>
             )}
-            {calculateTotalStars() >= 5 && calculateTotalStars() < 10 && (
+            {totalStars >= 5 && totalStars < 10 && (
               <>
                 <h2>Стальной секундант</h2>
                 <p className={styles.aboutTextWeight}>
@@ -258,7 +262,7 @@ function Achievements() {
                 </p>
               </>
             )}
-            {calculateTotalStars() >= 10 && calculateTotalStars() < 20 && (
+            {totalStars >= 10 && totalStars < 20 && (
               <>
                 <h2>Золотой наставник</h2>
                 <p className={styles.aboutTextWeight}>
@@ -266,7 +270,7 @@ function Achievements() {
                 </p>
               </>
             )}
-            {calculateTotalStars() >= 20 && calculateTotalStars() < 30 && (
+            {totalStars >= 20 && totalStars < 30 && (
               <>
                 <h2>Платиновый авторитет</h2>
                 <p className={styles.aboutTextWeight}>
@@ -274,7 +278,7 @@ function Achievements() {
                 </p>
               </>
             )}
-            {calculateTotalStars() >= 30 && (
+            {totalStars >= 30 && (
               <>
                 <h2>Великий покровитель арены</h2>
                 <p className={styles.aboutTextWeight}>
