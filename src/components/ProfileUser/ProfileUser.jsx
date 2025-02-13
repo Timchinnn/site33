@@ -12,6 +12,188 @@ function ProfileUser() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [userName, setUserName] = useState("");
   const [balance, setBalance] = useState(0);
+  // const [achievements, setAchievements] = useState(null);
+  const [totalStars, setTotalStars] = useState(null);
+  const calculateTotalStars = (achievements) => {
+    if (!achievements) return 0;
+    let total = 0;
+    // Scout Progress stars (Скаут перспектив)
+    total +=
+      achievements.scoutProgress.current < 5
+        ? 1
+        : achievements.scoutProgress.current < 10
+        ? 2
+        : achievements.scoutProgress.current >= 20
+        ? 3
+        : 2;
+    // Loyal Ally stars (Верный союзник)
+    total +=
+      achievements.loyalAllyProgress.current < 2
+        ? 1
+        : achievements.loyalAllyProgress.current < 3
+        ? 2
+        : achievements.loyalAllyProgress.current >= 5
+        ? 3
+        : 2;
+    // Big Donation stars (Большая ставка)
+    total +=
+      achievements.bigDonationProgress.current < 3
+        ? 1
+        : achievements.bigDonationProgress.current < 5
+        ? 2
+        : achievements.bigDonationProgress.current >= 5
+        ? 3
+        : 2;
+    // Voice of Justice stars (Голос справедливости)
+    total +=
+      achievements.voiceOfJusticeProgress.current < 5
+        ? 1
+        : achievements.voiceOfJusticeProgress.current < 10
+        ? 2
+        : achievements.voiceOfJusticeProgress.current >= 15
+        ? 3
+        : 2;
+    // Justice Will Prevail stars (Справедливость восторжествует)
+    total +=
+      achievements.justiceWillPrevailProgress.current < 1
+        ? 1
+        : achievements.justiceWillPrevailProgress.current < 3
+        ? 2
+        : achievements.justiceWillPrevailProgress.current >= 5
+        ? 3
+        : 2;
+    // Epic Fan stars (Эпический фанат)
+    total +=
+      achievements.epicFan.current < 2
+        ? 1
+        : achievements.epicFan.current < 4
+        ? 2
+        : achievements.epicFan.current >= 6
+        ? 3
+        : 2;
+    // Tournament Council stars (Совет турнира)
+    total +=
+      achievements.tournamentCouncil.current < 1
+        ? 1
+        : achievements.tournamentCouncil.current < 3
+        ? 2
+        : achievements.tournamentCouncil.current >= 5
+        ? 3
+        : 2;
+    // Referee Achievement stars (Внимательный рефери)
+    total +=
+      achievements.refereeAchievement.current < 5
+        ? 1
+        : achievements.refereeAchievement.current < 10
+        ? 2
+        : achievements.refereeAchievement.current >= 15
+        ? 3
+        : 2;
+    // Outstanding Benefactor stars (Выдающийся благотворитель)
+    total +=
+      achievements.outstandingBenefactor.current < 17
+        ? 1
+        : achievements.outstandingBenefactor.current < 34
+        ? 2
+        : achievements.outstandingBenefactor.current >= 50
+        ? 3
+        : 2;
+    // Referral Achievement stars (Единомышленники)
+    total +=
+      achievements.referralAchievement.current < 3
+        ? 1
+        : achievements.referralAchievement.current < 6
+        ? 2
+        : achievements.refereeAchievement.current >= 10
+        ? 3
+        : 2;
+    // Referral Achievement Fighter stars (Менеджер легенд)
+    total +=
+      achievements.referralAchievementFigh.current < 1
+        ? 1
+        : achievements.referralAchievementFigh.current < 3
+        ? 2
+        : achievements.referralAchievementFigh.current >= 5
+        ? 3
+        : 2;
+    return total;
+  };
+  useEffect(() => {
+    const fetchAchievementsAndCalculate = async () => {
+      const userId = localStorage.getItem("userId");
+      const userType = localStorage.getItem("userType");
+
+      try {
+        const [
+          achievementsResponse,
+          votingResponse,
+          negativeVotingResponse,
+          epicFanResponse,
+          tournamentCouncilResponse,
+          refereeAchievementResponse,
+          outstandingBenefactorResponse,
+          referralAchievementResponse,
+          referralAchievementFighResponse,
+        ] = await Promise.all([
+          fetch(`/api/achievements/${userId}`),
+          fetch(`/api/voting-achievements/${userId}`),
+          fetch(`/api/negative-voting-achievements/${userId}`),
+          fetch(`/api/user/epic-fan/${userId}`),
+          fetch(`/api/tournament-council/${userId}?userType=${userType}`),
+          fetch(`/api/referee-achievement/${userId}?userType=${userType}`),
+          fetch(`/api/outstanding-benefactor/${userId}?userType=${userType}`),
+          fetch(`/api/referral-achievement/${userId}`),
+          fetch(`/api/referral-achievement-figh/${userId}`),
+        ]);
+
+        if (
+          achievementsResponse.ok &&
+          votingResponse.ok &&
+          negativeVotingResponse.ok &&
+          epicFanResponse.ok &&
+          tournamentCouncilResponse.ok &&
+          refereeAchievementResponse.ok &&
+          outstandingBenefactorResponse.ok &&
+          referralAchievementResponse.ok &&
+          referralAchievementFighResponse.ok
+        ) {
+          const achievementsData = await achievementsResponse.json();
+          const votingData = await votingResponse.json();
+          const negativeVotingData = await negativeVotingResponse.json();
+          const epicFanData = await epicFanResponse.json();
+          const tournamentCouncilData = await tournamentCouncilResponse.json();
+          const refereeAchievementData =
+            await refereeAchievementResponse.json();
+          const outstandingBenefactorData =
+            await outstandingBenefactorResponse.json();
+          const referralAchievementData =
+            await referralAchievementResponse.json();
+          const referralAchievementFighData =
+            await referralAchievementFighResponse.json();
+
+          const newAchievements = {
+            ...achievementsData,
+            ...votingData,
+            ...negativeVotingData,
+            epicFan: epicFanData,
+            tournamentCouncil: tournamentCouncilData,
+            refereeAchievement: refereeAchievementData,
+            outstandingBenefactor: outstandingBenefactorData,
+            referralAchievement: referralAchievementData,
+            referralAchievementFigh: referralAchievementFighData,
+          };
+
+          // setAchievements(newAchievements);
+          const totalStars = calculateTotalStars(newAchievements);
+          setTotalStars(totalStars);
+        }
+      } catch (error) {
+        console.error("Error fetching achievements:", error);
+      }
+    };
+
+    fetchAchievementsAndCalculate();
+  }, []);
   useEffect(() => {
     const images = [
       "ui-checks-grid-black.png",
@@ -106,7 +288,7 @@ function ProfileUser() {
         >
           <div className={styles.starCoint}>
             <p className={styles.stars}>Звезды достижений</p>
-            <p className={styles.starsCount}>0</p>
+            <p className={styles.starsCount}>{totalStars}</p>
           </div>
           <img src="/Frame 9411.png" alt="" />
           {/* <img src="Frame 9261.png" alt="#" />
