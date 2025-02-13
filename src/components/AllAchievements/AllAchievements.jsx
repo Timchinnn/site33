@@ -80,8 +80,8 @@ function AllAchievements() {
             style={{
               backgroundColor:
                 Math.min(totalStars, achievement.stars) >= achievement.stars
-                  ? "white"
-                  : "#caafbc",
+                  ? "#caafbc"
+                  : "white",
             }}
           >
             <div key={title} className={styles.abotMainAchievement}>
