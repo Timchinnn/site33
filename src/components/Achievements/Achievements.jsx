@@ -235,15 +235,58 @@ function Achievements() {
             navigate("/allAchievements");
           }}
         >
-          <div className={styles.abotMainAchievement}>
+          {/* <div className={styles.abotMainAchievement}>
             <h2>Золотой наставник</h2>
             <p className={styles.aboutTextWeight}>
               Ваш вес в сообществе огромен, вы задаёте тон поддержки
             </p>
+          </div> */}
+          <div className={styles.abotMainAchievement}>
+            {calculateTotalStars() < 5 && (
+              <>
+                <h2>Дебютант ринга</h2>
+                <p className={styles.aboutTextWeight}>
+                  Вы только вступили на путь поддерживающего фаната
+                </p>
+              </>
+            )}
+            {calculateTotalStars() >= 5 && calculateTotalStars() < 10 && (
+              <>
+                <h2>Стальной секундант</h2>
+                <p className={styles.aboutTextWeight}>
+                  Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити
+                </p>
+              </>
+            )}
+            {calculateTotalStars() >= 10 && calculateTotalStars() < 20 && (
+              <>
+                <h2>Золотой наставник</h2>
+                <p className={styles.aboutTextWeight}>
+                  Ваш вес в сообществе огромен, вы задаёте тон поддержки
+                </p>
+              </>
+            )}
+            {calculateTotalStars() >= 20 && calculateTotalStars() < 30 && (
+              <>
+                <h2>Платиновый авторитет</h2>
+                <p className={styles.aboutTextWeight}>
+                  Высочайший авторитет, вы основа формирования будущего спорта
+                </p>
+              </>
+            )}
+            {calculateTotalStars() >= 30 && (
+              <>
+                <h2>Великий покровитель арены</h2>
+                <p className={styles.aboutTextWeight}>
+                  Легендарный статус, ваше имя - символ щедрости и любви к
+                  спорту
+                </p>
+              </>
+            )}
           </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
-            <h2>{calculateTotalStars()}/15</h2>
+            <h2>{calculateTotalStars()}</h2>
           </div>
         </div>
         <h2>Все достижения</h2>
