@@ -375,56 +375,62 @@ function Achievements() {
               src="-boxer-master 1.png"
               alt=""
             />
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{
-                  width: `${
-                    (achievements?.loyalAllyProgress.current /
-                      achievements?.loyalAllyProgress.targets[
-                        achievements?.loyalAllyProgress.current < 2
-                          ? 0
-                          : achievements?.loyalAllyProgress.current < 3
-                          ? 1
-                          : 2
-                      ]) *
-                    100
-                  }%`,
-                }}
-              />
-            </div>
+            {showAchievement && (
+              <div className={styles.progressBar}>
+                <div
+                  className={styles.progressFill}
+                  style={{
+                    width: `${
+                      (achievements?.loyalAllyProgress.current /
+                        achievements?.loyalAllyProgress.targets[
+                          achievements?.loyalAllyProgress.current < 2
+                            ? 0
+                            : achievements?.loyalAllyProgress.current < 3
+                            ? 1
+                            : 2
+                        ]) *
+                      100
+                    }%`,
+                  }}
+                />
+              </div>
+            )}
             {/* <div className={styles.stars}>
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div> */}
-            <div className={styles.stars}>
-              {[
-                ...Array(
-                  achievements?.loyalAllyProgress.current < 2
-                    ? 1
-                    : achievements?.loyalAllyProgress.current < 3
-                    ? 2
-                    : achievements?.loyalAllyProgress.current >= 5 // Изменено условие
-                    ? 3
-                    : 2
-                ),
-              ].map((_, i) => (
-                <img key={i} src="Star icon.png" alt="" />
-              ))}
-            </div>
+            {showAchievement && (
+              <div className={styles.stars}>
+                {[
+                  ...Array(
+                    achievements?.loyalAllyProgress.current < 2
+                      ? 1
+                      : achievements?.loyalAllyProgress.current < 3
+                      ? 2
+                      : achievements?.loyalAllyProgress.current >= 5 // Изменено условие
+                      ? 3
+                      : 2
+                  ),
+                ].map((_, i) => (
+                  <img key={i} src="Star icon.png" alt="" />
+                ))}
+              </div>
+            )}
             {/* <p className={styles.task}>Отправить 5 донатов одному бойцу</p> */}
-            <p className={styles.aboutText}>
-              {
-                achievements?.loyalAllyProgress.descriptions[
-                  achievements?.loyalAllyProgress.current < 2
-                    ? 0
-                    : achievements?.loyalAllyProgress.current < 3
-                    ? 1
-                    : 2
-                ]
-              }
-            </p>
+            {showAchievement && (
+              <p className={styles.aboutText}>
+                {
+                  achievements?.loyalAllyProgress.descriptions[
+                    achievements?.loyalAllyProgress.current < 2
+                      ? 0
+                      : achievements?.loyalAllyProgress.current < 3
+                      ? 1
+                      : 2
+                  ]
+                }
+              </p>
+            )}
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -447,50 +453,56 @@ function Achievements() {
                 }}
               />
             </div> */}
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{
-                  width: `${
-                    (achievements?.bigDonationProgress.current /
-                      achievements?.bigDonationProgress.targets[
-                        achievements?.bigDonationProgress.current
-                      ]) *
-                    100
-                  }%`,
-                }}
-              />
-            </div>
+            {showAchievement && (
+              <div className={styles.progressBar}>
+                <div
+                  className={styles.progressFill}
+                  style={{
+                    width: `${
+                      (achievements?.bigDonationProgress.current /
+                        achievements?.bigDonationProgress.targets[
+                          achievements?.bigDonationProgress.current
+                        ]) *
+                      100
+                    }%`,
+                  }}
+                />
+              </div>
+            )}
             {/* <div className={styles.stars}>
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div> */}
-            <div className={styles.stars}>
-              {[
-                ...Array(
-                  achievements?.bigDonationProgress.current < 3
-                    ? 1
-                    : achievements?.bigDonationProgress.current < 5
-                    ? 2
-                    : achievements?.bigDonationProgress.current >= 5 // Изменено условие
-                    ? 3
-                    : 2
-                ),
-              ].map((_, i) => (
-                <img key={i} src="Star icon.png" alt="" />
-              ))}
-            </div>
+            {showAchievement && (
+              <div className={styles.stars}>
+                {[
+                  ...Array(
+                    achievements?.bigDonationProgress.current < 3
+                      ? 1
+                      : achievements?.bigDonationProgress.current < 5
+                      ? 2
+                      : achievements?.bigDonationProgress.current >= 5 // Изменено условие
+                      ? 3
+                      : 2
+                  ),
+                ].map((_, i) => (
+                  <img key={i} src="Star icon.png" alt="" />
+                ))}
+              </div>
+            )}
             {/* <p className={styles.task}>
               Отправить донат со ставкой 5000 и более
             </p> */}
-            <p className={styles.task}>
-              {
-                achievements?.bigDonationProgress.descriptions[
-                  achievements?.bigDonationProgress.current
-                ]
-              }
-            </p>
+            {showAchievement && (
+              <p className={styles.task}>
+                {
+                  achievements?.bigDonationProgress.descriptions[
+                    achievements?.bigDonationProgress.current
+                  ]
+                }
+              </p>
+            )}
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
@@ -501,55 +513,61 @@ function Achievements() {
               src="-voting-man 1.png"
               alt=""
             />
-            <div className={styles.progressBar}>
-              <div
-                className={styles.progressFill}
-                style={{
-                  width: `${
-                    (achievements?.voiceOfJusticeProgress.current /
-                      achievements?.voiceOfJusticeProgress.targets[
-                        achievements?.voiceOfJusticeProgress.current < 5
-                          ? 0
-                          : achievements?.voiceOfJusticeProgress.current < 10
-                          ? 1
-                          : 2
-                      ]) *
-                    100
-                  }%`,
-                }}
-              />
-            </div>
+            {showAchievement && (
+              <div className={styles.progressBar}>
+                <div
+                  className={styles.progressFill}
+                  style={{
+                    width: `${
+                      (achievements?.voiceOfJusticeProgress.current /
+                        achievements?.voiceOfJusticeProgress.targets[
+                          achievements?.voiceOfJusticeProgress.current < 5
+                            ? 0
+                            : achievements?.voiceOfJusticeProgress.current < 10
+                            ? 1
+                            : 2
+                        ]) *
+                      100
+                    }%`,
+                  }}
+                />
+              </div>
+            )}
             {/* <div className={styles.stars}>
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
               <img src="Star icon.png" alt="" />
             </div> */}
-            <div className={styles.stars}>
-              {[
-                ...Array(
-                  achievements?.voiceOfJusticeProgress.current < 5
-                    ? 1
-                    : achievements?.voiceOfJusticeProgress.current < 10
-                    ? 2
-                    : achievements?.voiceOfJusticeProgress.current >= 15 // Изменено условие
-                    ? 3
-                    : 2
-                ),
-              ].map((_, i) => (
-                <img key={i} src="Star icon.png" alt="" />
-              ))}
-            </div>
-            <p className={styles.task}>
-              {
-                achievements?.voiceOfJusticeProgress.descriptions[
-                  achievements?.voiceOfJusticeProgress.current < 5
-                    ? 0
-                    : achievements?.voiceOfJusticeProgress.current < 10
-                    ? 1
-                    : 2
-                ]
-              }
-            </p>
+            {showAchievement && (
+              <div className={styles.stars}>
+                {[
+                  ...Array(
+                    achievements?.voiceOfJusticeProgress.current < 5
+                      ? 1
+                      : achievements?.voiceOfJusticeProgress.current < 10
+                      ? 2
+                      : achievements?.voiceOfJusticeProgress.current >= 15 // Изменено условие
+                      ? 3
+                      : 2
+                  ),
+                ].map((_, i) => (
+                  <img key={i} src="Star icon.png" alt="" />
+                ))}
+              </div>
+            )}
+            {showAchievement && (
+              <p className={styles.task}>
+                {
+                  achievements?.voiceOfJusticeProgress.descriptions[
+                    achievements?.voiceOfJusticeProgress.current < 5
+                      ? 0
+                      : achievements?.voiceOfJusticeProgress.current < 10
+                      ? 1
+                      : 2
+                  ]
+                }
+              </p>
+            )}
           </div>
           <div className={styles.Achievements}>
             <div className={styles.aboutTextBlock}>
