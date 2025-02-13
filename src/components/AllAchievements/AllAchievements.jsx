@@ -73,8 +73,9 @@ function AllAchievements() {
             />
           </div>
         </div>
-        <div className={styles.mainAchievement}>
-          {Object.entries(achievements).map(([title, achievement]) => (
+
+        {Object.entries(achievements).map(([title, achievement]) => (
+          <div className={styles.mainAchievement}>
             <div key={title} className={styles.abotMainAchievement}>
               <div>
                 {" "}
@@ -89,8 +90,8 @@ function AllAchievements() {
                 </h2>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
       <div className={styles.bottomNav}>
         <div
