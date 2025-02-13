@@ -156,6 +156,17 @@ function Voting() {
   };
   const handleCategoryClick = (category) => {
     setSelectedCategories((prevSelected) => {
+      // Если выбран "best-bicycle", сбрасываем все остальные категории
+      if (category === "best-bicycle") {
+        return ["best-bicycle"];
+      }
+
+      // Если уже выбран "best-bicycle", не даем выбрать другие категории
+      if (prevSelected.includes("best-bicycle")) {
+        return prevSelected;
+      }
+
+      // Стандартная логика для остальных категорий
       if (prevSelected.includes(category)) {
         return prevSelected.filter((item) => item !== category);
       } else {
@@ -1049,13 +1060,9 @@ function Voting() {
                     !userVotes[category.id] && handleCategoryClick(category.id)
                   }
                   style={{
-                    backgroundColor: userVotes[category.id]
-                      ? "black"
-                      : selectedCategories.includes("best-bicycle") &&
-                        category.id !== "best-bicycle"
-                      ? "grey" // Добавляем серый фон для неактивных категорий
-                      : "",
+                    backgroundColor: userVotes[category.id] ? "black" : "",
                     color: userVotes[category.id] ? "white" : "",
+                    // Делаем кнопку неактивной если выбран велосипед и текущая категория не велосипед
                     opacity:
                       selectedCategories.includes("best-bicycle") &&
                       category.id !== "best-bicycle"
