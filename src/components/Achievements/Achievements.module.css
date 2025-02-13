@@ -142,9 +142,11 @@ img {
   border-radius: 12px;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 .abotMainAchievement {
   padding: 14px;
+  display: flex;
 }
 .aboutText {
   font-family: Inter;
