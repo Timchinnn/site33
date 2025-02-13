@@ -1049,9 +1049,13 @@ function Voting() {
                     !userVotes[category.id] && handleCategoryClick(category.id)
                   }
                   style={{
-                    backgroundColor: userVotes[category.id] ? "black" : "",
+                    backgroundColor: userVotes[category.id]
+                      ? "black"
+                      : selectedCategories.includes("best-bicycle") &&
+                        category.id !== "best-bicycle"
+                      ? "grey" // Добавляем серый фон для неактивных категорий
+                      : "",
                     color: userVotes[category.id] ? "white" : "",
-                    // Делаем кнопку неактивной если выбран велосипед и текущая категория не велосипед
                     opacity:
                       selectedCategories.includes("best-bicycle") &&
                       category.id !== "best-bicycle"
