@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Achievements.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ function Achievements() {
   });
   const [achievements, setAchievements] = useState(null);
   const [totalStars, setTotalStars] = useState(null);
-  const calculateTotalStars = useCallback(() => {
+  const calculateTotalStars = (achievements) => {
     if (!achievements) return 0;
     let total = 0;
     // Scout Progress stars (Скаут перспектив)
@@ -123,7 +123,7 @@ function Achievements() {
         ? 3
         : 2;
     return total;
-  }, [achievements]);
+  };
   console.log(achievements);
   useEffect(() => {
     const fetchAchievementsAndCalculate = async () => {
@@ -191,9 +191,8 @@ function Achievements() {
           };
 
           setAchievements(newAchievements);
-          // const totalStars = calculateTotalStars();
-          // setTotalStars(totalStars);
-          setTotalStars(calculateTotalStars());
+          const totalStarsCalculated = calculateTotalStars(newAchievements);
+          setTotalStars(totalStarsCalculated);
 
           let achievement = { title: "", description: "" };
 
