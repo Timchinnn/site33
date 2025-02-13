@@ -203,6 +203,44 @@ function Achievements() {
 
     return total;
   };
+  const getAchievementLevel = (totalVotes) => {
+    if (totalVotes <= 5)
+      return {
+        title: "Дебютант ринга",
+        description: "Вы только вступили на путь поддерживающего фаната",
+        starts: 5,
+      };
+    else if (totalVotes <= 10)
+      return {
+        title: "Стальной секундант",
+        description:
+          "Вас уважают и бойцы, и фанаты, вы важный элемент комьюнити",
+        starts: 10,
+      };
+    else if (totalVotes <= 20)
+      return {
+        title: "Золотой наставник",
+        description: "Ваш вес в сообществе огромен, вы задаёте тон поддержки",
+        starts: 20,
+      };
+    else if (totalVotes <= 30)
+      return {
+        title: "Платиновый авторитет",
+        description:
+          "Высочайший авторитет, вы основа формирования будущего спорта",
+        starts: 30,
+      };
+    else
+      return {
+        title: "Великий покровитель арены",
+        description:
+          "Легендарный статус, ваше имя - символ щедрости и любви к спорту",
+        starts: 31,
+      };
+  };
+
+  // In the render:
+  const achievement = getAchievementLevel(fighterData.totalVotes);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -236,14 +274,14 @@ function Achievements() {
           }}
         >
           <div className={styles.abotMainAchievement}>
-            <h2>Золотой наставник</h2>
-            <p className={styles.aboutTextWeight}>
-              Ваш вес в сообществе огромен, вы задаёте тон поддержки
-            </p>
+            <h2>{achievement.title}</h2>{" "}
+            <p className={styles.aboutTextWeight}>{achievement.description}</p>
           </div>
           <div className={styles.starCounts}>
             <img src="Star icon.png" alt="" />
-            <h2>{calculateTotalStars()}</h2>
+            <h2>
+              {calculateTotalStars()}/{achievement.stars}
+            </h2>
           </div>
         </div>
         <h2>Все достижения</h2>
