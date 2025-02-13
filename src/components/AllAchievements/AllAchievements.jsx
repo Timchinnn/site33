@@ -79,7 +79,7 @@ function AllAchievements() {
             className={styles.mainAchievement}
             style={{
               backgroundColor:
-                Math.min(totalStars, achievement.stars) <= achievement.stars
+                Math.min(totalStars, achievement.stars) >= achievement.stars
                   ? "white"
                   : "#caafbc",
             }}
