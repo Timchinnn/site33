@@ -83,6 +83,7 @@ function Achievements() {
   const userId = localStorage.getItem("userId");
   console.log(userId);
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
+  const [totalVotes, setTotalVotes] = useState(null); // начальное значение зависит от текущей страницы
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -200,7 +201,7 @@ function Achievements() {
         : achievements.referralAchievementFigh.current >= 5
         ? 3
         : 2;
-
+    setTotalVotes(total);
     return total;
   };
   const getAchievementLevel = (totalVotes) => {
@@ -240,7 +241,7 @@ function Achievements() {
   };
 
   // In the render:
-  const achievement = getAchievementLevel(fighterData.totalVotes);
+  const achievement = getAchievementLevel(totalVotes);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
