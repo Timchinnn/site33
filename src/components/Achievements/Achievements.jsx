@@ -123,7 +123,7 @@ function Achievements() {
         ? 3
         : 2;
     return total;
-  }, [achievements]);
+  }, []);
   console.log(achievements);
   useEffect(() => {
     const fetchAchievementsAndCalculate = async () => {
@@ -240,7 +240,7 @@ function Achievements() {
     };
 
     fetchAchievementsAndCalculate();
-  }, [calculateTotalStars]);
+  }, []);
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const userId = localStorage.getItem("userId");
