@@ -86,7 +86,10 @@ function AllAchievements() {
               <div className={styles.starCounts}>
                 <img src="Star icon.png" alt="" />
                 <h2>
-                  {totalStars}/{achievement.stars}
+                  <h2>
+                    {Math.min(totalStars, achievement.stars)}/
+                    {achievement.stars}
+                  </h2>
                 </h2>
               </div>
             </div>

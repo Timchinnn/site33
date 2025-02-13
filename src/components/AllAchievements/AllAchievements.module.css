@@ -143,6 +143,7 @@ img {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 15px;
 }
 .abotMainAchievement {
   padding-left: 10px;
