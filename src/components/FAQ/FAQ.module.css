@@ -135,3 +135,23 @@ img {
 .catalogText {
   margin: 0; /* Убираем стандартные отступы */
 }
+.questionBlock {
+  display: flex;
+  align-items: center;
+}
+.questionBlock img {
+  width: 20px;
+}
+.questionBlock h2 {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+.answer {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: -3%;
+}
