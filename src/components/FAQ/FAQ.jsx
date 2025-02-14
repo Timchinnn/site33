@@ -96,16 +96,24 @@ function FAQ() {
             <div key={q.id} className={styles.questionBlock}>
               <div
                 className={styles.questionHeader}
-                onClick={() => toggleQuestion(q.id)}
+                // onClick={() => toggleQuestion(q.id)}
               >
                 <h3>{q.question}</h3>
                 <img
-                  src="chevron-down.png"
+                  // src="chevron-down.png"
+                  src={openQuestions[q.id] ? "up.png" : "down.png"}
                   alt="Toggle"
                   className={`${styles.arrow} ${
                     openQuestions[q.id] ? styles.expanded : ""
                   }`}
+                  onClick={() => toggleQuestion(q.id)}
                 />
+                {/* <img
+                src={isOpen[tournament.id] ? "up.png" : "down.png"}
+                alt=""
+                onClick={() => toggleOpen(tournament.id)}
+                style={{ cursor: "pointer" }}
+              /> */}
               </div>
               {openQuestions[q.id] && (
                 <div className={styles.answer}>{q.answer}</div>
