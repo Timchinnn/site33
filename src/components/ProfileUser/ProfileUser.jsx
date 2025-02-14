@@ -337,7 +337,7 @@ function ProfileUser() {
             <img src="gift (1).png" alt="" />
             <p>Реферальная программа</p>
           </div>
-          <div>
+          <div onClick={() => navigate("/FAQ")}>
             <img src="ui-checks.png" alt="" />
             <p>FAQ</p>
           </div>

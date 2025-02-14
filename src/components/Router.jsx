@@ -34,6 +34,7 @@ import NotReg from "./NotReg/NotReg";
 import TopCountries from "./TopCountries/TopCountries";
 import Achievements from "./Achievements/Achievements";
 import AllAchievements from "./AllAchievements/AllAchievements";
+import FAQ from "./FAQ/FAQ";
 
 const Router = () => {
   // const ProtectedSignin = () => {
@@ -118,6 +119,7 @@ const Router = () => {
         <Route element={<Signin />} path="/Signin" />
         <Route element={<Achievements />} path="/Achievements" />
         <Route element={<AllAchievements />} path="/AllAchievements" />
+        <Route element={<FAQ />} path="/FAQ" />
       </Routes>
     </BrowserRouter>
   );
