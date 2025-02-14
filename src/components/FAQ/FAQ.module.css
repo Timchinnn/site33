@@ -142,7 +142,7 @@ img {
 .questionHeader img {
   width: 20px;
 }
-.questionHeader h2 {
+.questionHeader h3 {
   font-family: Inter;
   font-weight: 500;
   font-size: 18px;
