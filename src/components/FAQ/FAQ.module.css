@@ -138,6 +138,7 @@ img {
 .questionHeader {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .questionHeader img {
   width: 20px;
