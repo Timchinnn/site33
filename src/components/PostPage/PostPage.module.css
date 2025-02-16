@@ -303,11 +303,13 @@ img {
 }
 
 .modalContent {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
+  background: #fff;
   max-width: 400px;
+  width: 132px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modalButtons {
