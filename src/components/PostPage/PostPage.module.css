@@ -123,6 +123,7 @@ img {
   height: 40px;
   padding-right: 0;
   margin-right: 9px;
+  border-radius: 8px;
 }
 .notification {
   padding-right: 2vw;
