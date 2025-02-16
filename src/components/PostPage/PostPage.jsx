@@ -5,7 +5,9 @@ import styles from "./PostPage.module.css";
 const PostPage = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCommentId, setSelectedCommentId] = useState(null);
+  const [isReport, setIsReport] = useState(false);
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
@@ -390,7 +392,6 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
-                jsx
                 {comment.user_id ===
                 parseInt(localStorage.getItem("userId")) ? (
                   <div className={styles.deleteIconContainer}>
@@ -400,13 +401,8 @@ const PostPage = () => {
                       className={styles.deleteIcon}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (
-                          window.confirm(
-                            "Вы уверены что хотите удалить комментарий?"
-                          )
-                        ) {
-                          handleDeleteComment(comment.id);
-                        }
+                        setShowModal(true);
+                        setSelectedCommentId(comment.id);
                       }}
                     />
                   </div>
@@ -418,14 +414,37 @@ const PostPage = () => {
                       className={styles.reportIcon}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (
-                          window.confirm("Пожаловаться на этот комментарий?")
-                        ) {
-                          // Здесь можно добавить функцию обработки жалобы
-                          console.log("Жалоба отправлена");
-                        }
+                        setShowModal(true);
+                        setIsReport(true);
                       }}
                     />
+                  </div>
+                )}
+
+                {showModal && (
+                  <div className={styles.modalOverlay}>
+                    <div className={styles.modalContent}>
+                      <h3>
+                        {isReport ? "Пожаловаться" : "Удалить комментарий?"}
+                      </h3>
+                      <div className={styles.modalButtons}>
+                        <button
+                          onClick={() => {
+                            if (isReport) {
+                              // Логика для жалобы
+                            } else {
+                              handleDeleteComment(selectedCommentId);
+                            }
+                            setShowModal(false);
+                          }}
+                        >
+                          {isReport ? "Пожаловаться" : "Удалить"}
+                        </button>
+                        <button onClick={() => setShowModal(false)}>
+                          Отмена
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
