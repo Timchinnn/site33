@@ -8,7 +8,21 @@ function StatsFighter() {
   const [editedTarget, setEditedTarget] = useState("");
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
+  const getRatingClass = (rating) => {
+    if (rating === 0) return "noRating";
+    if (rating > 0 && rating < 30) return "thanksForAbsence";
+    if (rating >= 30 && rating < 70) return "attackation";
+    if (rating >= 70 && rating < 95) return "roleModel";
+    if (rating >= 95) return "heroFans";
+  };
 
+  const getRatingText = (rating) => {
+    if (rating === 0) return "Рейтинг отсутствует";
+    if (rating > 0 && rating < 30) return "Спасибо за отсутствие";
+    if (rating >= 30 && rating < 70) return "Атакуэйшн";
+    if (rating >= 70 && rating < 95) return "Пример для подражания";
+    if (rating >= 95) return "Герой фанатов";
+  };
   const handleDonationClick = () => {
     setShowEditDonationModal(true);
   };
@@ -75,7 +89,22 @@ function StatsFighter() {
   console.log(fighterData);
   const [showPostForm, setShowPostForm] = useState(false);
   const [postContent, setPostContent] = useState("");
-  const rotation = (fighterData.userData.rating / 100) * 180 - 90;
+  const rotation =
+    fighterData.totalVotes > 0
+      ? Math.max(
+          (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90,
+          -90
+        )
+      : -90;
+  const calculateVotePercentage = (totalVotes, voteFan) => {
+    if (totalVotes === 0) return 0;
+    const percentage = Math.round((voteFan / totalVotes) * 100);
+    return Math.max(0, percentage); // Гарантирует, что возвращаемое значение не меньше 0
+  };
+  const votePercentage = calculateVotePercentage(
+    fighterData.totalVotes,
+    fighterData.vote_fan
+  );
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({}); // Добавить состояние для отслеживания лайкнутых постов
   const [likedComments, setLikedComments] = useState({}); // Added state for comment likes
@@ -454,7 +483,6 @@ function StatsFighter() {
               className={styles.profileImage}
             />
           </div>
-
           <div className={styles.nameFlag}>
             <h1>
               {fighterData.userData.name} {fighterData.userData.surname}
@@ -499,11 +527,9 @@ function StatsFighter() {
               <span>{donationProgress.target.toLocaleString()} ₽</span>
             </div>
           </div>
-
           <button className={styles.inputButton} onClick={setShowMessageModal}>
             {fighterData.userData.msg || "Ввести сообщение"}
           </button>
-
           <div className={styles.donations}>
             <div>
               <p>Донаты</p>
@@ -528,11 +554,27 @@ function StatsFighter() {
             />
             <div className={styles.percentage}></div>
           </div>
-          <p className={styles.heroFans}>Герой фанатов</p>
+          <p className={styles[getRatingClass(votePercentage)]}>
+            {getRatingText(votePercentage)}
+          </p>{" "}
           <div className={styles.approvalRating}>
-            <img src="lucide_info_20.png" alt="#" />
+            <img src="lucide_info_20.png" alt="#" onClick={handleInfoClick} />
+            {showInfoModal && (
+              <div className={styles.infoModal}>
+                <div className={styles.infoModalContent}>
+                  <p>
+                    Рейтинг одобрения складывается из текущих результататов
+                    голосования. Если по результатам голосования вы получаете
+                    отрицательный рейтинг, вам будет ограничен вывод средств со
+                    счета до тех пор, пока рейтинг не станет положительным
+                  </p>
+                </div>
+              </div>
+            )}{" "}
             <p>Рейтинг одобрения</p>
-            <p>{fighterData.userData.rating} %</p>
+            <p className={styles[getRatingClass(votePercentage)]}>
+              {votePercentage} %
+            </p>{" "}
           </div>
         </div>
         <h3>Статистика</h3>
