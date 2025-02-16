@@ -426,32 +426,19 @@ const PostPage = () => {
                 {showModal && (
                   <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
-                      <h3>
-                        {isReport ? "Пожаловаться" : "Удалить комментарий?"}
-                      </h3>
-                      <div className={styles.modalButtons}>
-                        <button
-                          onClick={() => {
-                            if (isReport) {
-                              // Логика для жалобы
-                            } else {
-                              handleDeleteComment(selectedCommentId);
-                            }
-                            setShowModal(false);
-                            setIsReport(false); // Сбрасываем состояние при закрытии
-                          }}
-                        >
-                          {isReport ? "Пожаловаться" : "Удалить"}
-                        </button>
-                        <button
-                          onClick={() => {
-                            setShowModal(false);
-                            setIsReport(false); // Сбрасываем состояние при закрытии
-                          }}
-                        >
-                          Отмена
-                        </button>
-                      </div>
+                      <p
+                        onClick={() => {
+                          if (isReport) {
+                            // Логика для жалобы
+                          } else {
+                            handleDeleteComment(selectedCommentId);
+                          }
+                          setShowModal(false);
+                          setIsReport(false); // Сбрасываем состояние при закрытии
+                        }}
+                      >
+                        {isReport ? "Пожаловаться" : "Удалить"}
+                      </p>
                     </div>
                   </div>
                 )}
