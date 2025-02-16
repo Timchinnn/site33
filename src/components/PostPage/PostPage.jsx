@@ -309,24 +309,20 @@ const PostPage = () => {
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const headerElement = document.querySelector(`.${styles.header}`);
-      const modalContent = document.querySelector(`.${styles.modalContent}`);
-
-      if (
-        headerElement &&
-        modalContent &&
-        headerElement.contains(event.target) &&
-        !modalContent.contains(event.target)
-      ) {
-        setShowModal(false);
-        setIsReport(false);
+      if (showModal) {
+        // Проверяем, был ли клик вне модального контента
+        const modalContent = document.querySelector(`.${styles.modalContent}`);
+        if (modalContent && !modalContent.contains(event.target)) {
+          setShowModal(false);
+          setIsReport(false); // Сбрасываем состояние при закрытии
+        }
       }
     };
 
-    if (showModal) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    // Добавляем слушатель события при монтировании
+    document.addEventListener("mousedown", handleClickOutside);
 
+    // Удаляем слушатель события при размонтировании
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
