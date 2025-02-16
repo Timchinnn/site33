@@ -316,7 +316,7 @@ const PostPage = () => {
         modalOverlay &&
         modalContent &&
         !modalContent.contains(event.target) &&
-        event.target === modalOverlay
+        // event.target === modalOverlay
       ) {
         setShowModal(false);
         setIsReport(false);
