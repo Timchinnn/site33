@@ -309,9 +309,15 @@ const PostPage = () => {
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const modalContent = document.getElementById("modalContent");
+      const headerElement = document.querySelector(`.${styles.header}`);
+      const modalContent = document.querySelector(`.${styles.modalContent}`);
 
-      if (event.target !== modalContent) {
+      if (
+        headerElement &&
+        modalContent &&
+        headerElement.contains(event.target) &&
+        !modalContent.contains(event.target)
+      ) {
         setShowModal(false);
         setIsReport(false);
       }
@@ -445,12 +451,10 @@ const PostPage = () => {
                   <div className={styles.modalOverlay}>
                     <div className={styles.modalContent}>
                       <p
-                        onClick={(e) => {
+                        onClick={() => {
                           if (isReport) {
                             // Логика для жалобы
                           } else {
-                            e.stopPropagation();
-
                             handleDeleteComment(selectedCommentId);
                           }
                           setShowModal(false);
