@@ -316,7 +316,8 @@ const PostPage = () => {
       if (
         // modalOverlay &&
         // modalContent &&
-        !modalContent.contains(event.target) // Клик не по контенту модального окна
+        // !modalContent.contains(event.target) // Клик не по контенту модального окна
+        event.target !== modalContent
       ) {
         setShowModal(false);
         setIsReport(false);
