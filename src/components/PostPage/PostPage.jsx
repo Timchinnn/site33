@@ -489,8 +489,8 @@ const PostPage = () => {
           <img
             src={
               activeTab === "catalog"
-                ? "ui-checks-grid-black.png"
-                : "ui-checks-grid.png"
+                ? "/ui-checks-grid-black.png"
+                : "/ui-checks-grid.png"
             }
             alt=""
             className={styles.catalogImage}
@@ -514,8 +514,8 @@ const PostPage = () => {
           <img
             src={
               activeTab === "tournaments"
-                ? "lightning-charge-black.png"
-                : "lightning-charge.png"
+                ? "/lightning-charge-black.png"
+                : "/lightning-charge.png"
             }
             alt=""
             className={styles.catalogImage}
@@ -537,7 +537,7 @@ const PostPage = () => {
           }}
         >
           <img
-            src={activeTab === "referrals" ? "gift-black.png" : "gift.png"}
+            src={activeTab === "referrals" ? "/gift-black.png" : "/gift.png"}
             alt=""
             className={styles.catalogImage}
           />
@@ -562,7 +562,7 @@ const PostPage = () => {
           }}
         >
           <img
-            src={activeTab === "profile" ? "person-black.png" : "person.png"}
+            src={activeTab === "profile" ? "/person-black.png" : "/person.png"}
             alt=""
             className={styles.catalogImage}
           />
