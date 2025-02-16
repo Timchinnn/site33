@@ -323,7 +323,7 @@ const PostPage = () => {
               }}
             />
             <img
-              src="search.png"
+              src="/search.png"
               alt=""
               className={styles.search}
               onClick={() => navigate("/Saerch")}
