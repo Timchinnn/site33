@@ -7,7 +7,7 @@ const PostPage = () => {
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [showModal, setShowModal] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
-  const [isReport, setIsReport] = useState(false);
+  // const [isReport, setIsReport] = useState(false);
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
