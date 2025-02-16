@@ -403,6 +403,7 @@ const PostPage = () => {
                         e.stopPropagation();
                         setShowModal(true);
                         setSelectedCommentId(comment.id);
+                        setIsReport(false); // Add this line to reset isReport state
                       }}
                     />
                   </div>
