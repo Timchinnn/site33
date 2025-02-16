@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./StatsFighter.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
+  const [showInfoModal, setShowInfoModal] = useState(false);
+
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [showEditDonationModal, setShowEditDonationModal] = useState(false);
   const [editedDream, setEditedDream] = useState("");
@@ -22,6 +24,10 @@ function StatsFighter() {
     if (rating >= 30 && rating < 70) return "Атакуэйшн";
     if (rating >= 70 && rating < 95) return "Пример для подражания";
     if (rating >= 95) return "Герой фанатов";
+  };
+  const handleInfoClick = (e) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
+    setShowInfoModal(true);
   };
   const handleDonationClick = () => {
     setShowEditDonationModal(true);
