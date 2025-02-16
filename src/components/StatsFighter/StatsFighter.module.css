@@ -213,7 +213,8 @@ img {
 .gaugeContainer {
   position: relative;
   width: 220px; /* Ширина полукруга */
-  height: 110px; /* Высота полукруга */
+  /* height: 110px; Высота полукруга */
+  overflow: visible; /* Предотвращает обрезание стрелки */
 }
 
 .halfCircle {
@@ -222,12 +223,22 @@ img {
 }
 
 .arrow {
+  height: 89px;
+  left: 50%;
   position: absolute;
-  top: 16px;
-  left: 47%;
-  transform-origin: bottom center;
-  width: 12px;
-  height: auto;
+  top: 19px;
+  width: 6px;
+  margin-left: -2.5px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  min-transform: rotate(-90deg); /* Добавить это свойство */
 }
 
 .percentage {
@@ -241,6 +252,7 @@ img {
 .approvalRating {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .approvalRating p {
   padding-left: 10px;
@@ -252,6 +264,7 @@ img {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin-bottom: 15px !important;
 }
 .heroFans {
   color: #008b18;
@@ -708,4 +721,90 @@ img {
   text-underline-position: from-font;
   margin-bottom: 0;
   margin-top: 0;
+}
+.noRating {
+  color: #979797; /* Gray */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+
+.roleModel {
+  color: #fcbb51; /* Orange */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+
+.heroFans {
+  color: #008b18; /* Green */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+
+.attackation {
+  color: #e5da0a; /* Yellow */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+
+.thanksForAbsence {
+  color: #ff0033; /* Red */
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin-bottom: 0;
+}
+.infoModal {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #0000001a;
+  max-width: 213px;
+  width: 213px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1000;
+  top: 42px;
+  left: 31px;
+}
+
+.infoModalContent {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.infoModalContent p {
+  color: #95959b !important;
+  margin: 0;
 }
