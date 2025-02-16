@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styles from "./PostPage.module.css";
 
@@ -22,6 +22,7 @@ const PostPage = () => {
   const [likedComments, setLikedComments] = useState({});
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
+  const modalRef = useRef(null);
 
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
@@ -309,8 +310,7 @@ const PostPage = () => {
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const modalContent = document.querySelector(`.${styles.modalContent}`);
-      if (modalContent && !modalContent.contains(event.target)) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
         setShowModal(false);
       }
     };
@@ -441,7 +441,7 @@ const PostPage = () => {
 
                 {showModal && (
                   <div className={styles.modalOverlay}>
-                    <div className={styles.modalContent}>
+                    <div className={styles.modalContent} ref={modalRef}>
                       <p
                         onClick={() => {
                           if (isReport) {
