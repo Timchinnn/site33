@@ -7,7 +7,7 @@ const PostPage = () => {
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [showModal, setShowModal] = useState(false);
   const [selectedCommentId, setSelectedCommentId] = useState(null);
-  // const [isReport, setIsReport] = useState(false);
+  const [isReport, setIsReport] = useState(false);
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
@@ -419,14 +419,9 @@ const PostPage = () => {
                       className={styles.deleteIcon}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setModalStates((prev) => ({
-                          ...prev,
-                          [comment.id]: {
-                            isOpen: true,
-                            isReport: false,
-                          },
-                        }));
+                        setShowModal(true);
                         setSelectedCommentId(comment.id);
+                        setIsReport(false);
                       }}
                     />
                   </div>
@@ -438,41 +433,28 @@ const PostPage = () => {
                       className={styles.reportIcon}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setModalStates((prev) => ({
-                          ...prev,
-                          [comment.id]: {
-                            isOpen: true,
-                            isReport: true,
-                          },
-                        }));
+                        setShowModal(true);
+                        setIsReport(true);
                       }}
                     />
                   </div>
                 )}
 
-                {/* Модальное окно для каждого комментария */}
-                {modalStates[comment.id]?.isOpen && (
+                {showModal && (
                   <div className={styles.modalOverlay}>
                     <div className={styles.modalContent} ref={modalRef}>
                       <p
                         onClick={() => {
-                          if (modalStates[comment.id].isReport) {
+                          if (isReport) {
                             // Логика для жалобы
                           } else {
                             handleDeleteComment(selectedCommentId);
                           }
-                          setModalStates((prev) => ({
-                            ...prev,
-                            [comment.id]: {
-                              ...prev[comment.id],
-                              isOpen: false,
-                            },
-                          }));
+                          setShowModal(false);
+                          setIsReport(false); // Сбрасываем состояние при закрытии
                         }}
                       >
-                        {modalStates[comment.id].isReport
-                          ? "Пожаловаться"
-                          : "Удалить"}
+                        {isReport ? "Пожаловаться" : "Удалить"}
                       </p>
                     </div>
                   </div>
