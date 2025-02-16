@@ -96,9 +96,11 @@ function StatsFighter() {
   const [showPostForm, setShowPostForm] = useState(false);
   const [postContent, setPostContent] = useState("");
   const rotation =
-    fighterData.totalVotes > 0
+    fighterData.userData.totalVotes > 0
       ? Math.max(
-          (fighterData.vote_fan / fighterData.totalVotes) * 180 - 90,
+          (fighterData.userData.vote_fan / fighterData.userData.totalVotes) *
+            180 -
+            90,
           -90
         )
       : -90;
