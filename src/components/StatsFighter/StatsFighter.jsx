@@ -109,8 +109,8 @@ function StatsFighter() {
     return Math.max(0, percentage); // Гарантирует, что возвращаемое значение не меньше 0
   };
   const votePercentage = calculateVotePercentage(
-    fighterData.totalVotes,
-    fighterData.vote_fan
+    fighterData.userData.totalVotes,
+    fighterData.userData.vote_fan
   );
   const [commentReplies, setCommentReplies] = useState({});
   const [likedPosts, setLikedPosts] = useState({}); // Добавить состояние для отслеживания лайкнутых постов
