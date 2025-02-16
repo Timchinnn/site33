@@ -23,6 +23,7 @@ const PostPage = () => {
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
   const modalRef = useRef(null);
+  const [modalStates, setModalStates] = useState({});
 
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
@@ -408,56 +409,70 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
-                <div
-                  className={styles.iconContainer}
-                  style={{ position: "relative" }}
-                >
-                  {comment.user_id ===
-                  parseInt(localStorage.getItem("userId")) ? (
-                    <div className={styles.deleteIconContainer}>
-                      <img
-                        src="/delete-icon.png"
-                        alt="delete"
-                        className={styles.deleteIcon}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowModal(true);
-                          setSelectedCommentId(comment.id);
-                          setIsReport(false);
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div className={styles.reportIconContainer}>
-                      <img
-                        src="/delete-icon.png"
-                        alt="report"
-                        className={styles.reportIcon}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowModal(true);
-                          setIsReport(true);
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
 
-                {showModal && (
+                {comment.user_id ===
+                parseInt(localStorage.getItem("userId")) ? (
+                  <div className={styles.deleteIconContainer}>
+                    <img
+                      src="/delete-icon.png"
+                      alt="delete"
+                      className={styles.deleteIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setModalStates((prev) => ({
+                          ...prev,
+                          [comment.id]: {
+                            isOpen: true,
+                            isReport: false,
+                          },
+                        }));
+                        setSelectedCommentId(comment.id);
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.reportIconContainer}>
+                    <img
+                      src="/delete-icon.png"
+                      alt="report"
+                      className={styles.reportIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setModalStates((prev) => ({
+                          ...prev,
+                          [comment.id]: {
+                            isOpen: true,
+                            isReport: true,
+                          },
+                        }));
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* Модальное окно для каждого комментария */}
+                {modalStates[comment.id]?.isOpen && (
                   <div className={styles.modalOverlay}>
                     <div className={styles.modalContent} ref={modalRef}>
                       <p
                         onClick={() => {
-                          if (isReport) {
+                          if (modalStates[comment.id].isReport) {
                             // Логика для жалобы
                           } else {
                             handleDeleteComment(selectedCommentId);
                           }
-                          setShowModal(false);
-                          setIsReport(false); // Сбрасываем состояние при закрытии
+                          setModalStates((prev) => ({
+                            ...prev,
+                            [comment.id]: {
+                              ...prev[comment.id],
+                              isOpen: false,
+                            },
+                          }));
                         }}
                       >
-                        {isReport ? "Пожаловаться" : "Удалить"}
+                        {modalStates[comment.id].isReport
+                          ? "Пожаловаться"
+                          : "Удалить"}
                       </p>
                     </div>
                   </div>
