@@ -309,15 +309,15 @@ const PostPage = () => {
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // const modalOverlay = document.querySelector(`.${styles.modalOverlay}`);
-      const modalContent = document.getElementById("modalContent");
+      const modalOverlay = document.querySelector(`.${styles.modalOverlay}`);
+      // const modalContent = document.getElementById("modalContent");
 
       // Проверяем клик по оверлею, но не по контенту модального окна
       if (
         // modalOverlay &&
         // modalContent &&
         // !modalContent.contains(event.target) // Клик не по контенту модального окна
-        event.target !== modalContent
+        event.target !== modalOverlay
       ) {
         setShowModal(false);
         setIsReport(false);
