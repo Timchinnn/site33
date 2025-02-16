@@ -311,7 +311,7 @@ const PostPage = () => {
     const handleClickOutside = (event) => {
       const modalContent = document.getElementById("modalContent");
 
-      if (modalContent && !modalContent.contains(event.target)) {
+      if (event.target !== modalContent) {
         setShowModal(false);
         setIsReport(false);
       }
