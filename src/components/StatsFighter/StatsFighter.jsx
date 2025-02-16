@@ -103,6 +103,7 @@ function StatsFighter() {
         )
       : -90;
   const calculateVotePercentage = (totalVotes, voteFan) => {
+    console.log(totalVotes, voteFan);
     if (totalVotes === 0) return 0;
     const percentage = Math.round((voteFan / totalVotes) * 100);
     return Math.max(0, percentage); // Гарантирует, что возвращаемое значение не меньше 0
