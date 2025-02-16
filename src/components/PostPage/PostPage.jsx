@@ -392,6 +392,7 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
+
                 {comment.user_id ===
                 parseInt(localStorage.getItem("userId")) ? (
                   <div className={styles.deleteIconContainer}>
@@ -403,14 +404,14 @@ const PostPage = () => {
                         e.stopPropagation();
                         setShowModal(true);
                         setSelectedCommentId(comment.id);
-                        setIsReport(false); // Add this line to reset isReport state
+                        setIsReport(false);
                       }}
                     />
                   </div>
                 ) : (
                   <div className={styles.reportIconContainer}>
                     <img
-                      src="/report-icon.png"
+                      src="/delete-icon.png"
                       alt="report"
                       className={styles.reportIcon}
                       onClick={(e) => {
@@ -437,11 +438,17 @@ const PostPage = () => {
                               handleDeleteComment(selectedCommentId);
                             }
                             setShowModal(false);
+                            setIsReport(false); // Сбрасываем состояние при закрытии
                           }}
                         >
                           {isReport ? "Пожаловаться" : "Удалить"}
                         </button>
-                        <button onClick={() => setShowModal(false)}>
+                        <button
+                          onClick={() => {
+                            setShowModal(false);
+                            setIsReport(false); // Сбрасываем состояние при закрытии
+                          }}
+                        >
                           Отмена
                         </button>
                       </div>
