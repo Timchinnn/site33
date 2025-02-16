@@ -390,17 +390,43 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
+                jsx
                 {comment.user_id ===
-                  parseInt(localStorage.getItem("userId")) && (
-                  <img
-                    src="/delete-icon.png" // Текущий путь относительный
-                    alt="delete"
-                    className={styles.deleteIcon}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteComment(comment.id);
-                    }}
-                  />
+                parseInt(localStorage.getItem("userId")) ? (
+                  <div className={styles.deleteIconContainer}>
+                    <img
+                      src="/delete-icon.png"
+                      alt="delete"
+                      className={styles.deleteIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (
+                          window.confirm(
+                            "Вы уверены что хотите удалить комментарий?"
+                          )
+                        ) {
+                          handleDeleteComment(comment.id);
+                        }
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.reportIconContainer}>
+                    <img
+                      src="/report-icon.png"
+                      alt="report"
+                      className={styles.reportIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (
+                          window.confirm("Пожаловаться на этот комментарий?")
+                        ) {
+                          // Здесь можно добавить функцию обработки жалобы
+                          console.log("Жалоба отправлена");
+                        }
+                      }}
+                    />
+                  </div>
                 )}
               </div>
               <p className={styles.commentContent}>
