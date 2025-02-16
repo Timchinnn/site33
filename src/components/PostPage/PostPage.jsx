@@ -307,6 +307,30 @@ const PostPage = () => {
       setNewComment(inputValue);
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const modalOverlay = document.querySelector(`.${styles.modalOverlay}`);
+      const modalContent = document.querySelector(`.${styles.modalContent}`);
+
+      if (
+        modalOverlay &&
+        modalContent &&
+        !modalContent.contains(event.target) &&
+        event.target === modalOverlay
+      ) {
+        setShowModal(false);
+        setIsReport(false);
+      }
+    };
+
+    if (showModal) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showModal]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
