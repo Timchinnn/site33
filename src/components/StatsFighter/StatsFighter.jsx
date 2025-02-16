@@ -449,7 +449,33 @@ function StatsFighter() {
       console.error("Error liking post:", error);
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Проверяем, был ли клик вне модального окна
+      const modalContent = document.querySelector(
+        `.${styles.infoModalContent}`
+      );
+      const infoButton = document.querySelector('[src="lucide_info_20.png"]');
 
+      if (
+        modalContent &&
+        !modalContent.contains(event.target) &&
+        event.target !== infoButton
+      ) {
+        setShowInfoModal(false);
+      }
+    };
+
+    // Добавляем слушатель события при монтировании
+    if (showInfoModal) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Удаляем слушатель события при размонтировании
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInfoModal]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
