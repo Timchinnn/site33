@@ -516,11 +516,43 @@ img {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
+.noPostsMessage {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  padding-top: 16px;
+}
 .commentLikeIcon:hover {
   transform: scale(1.1);
 }
-
+.donats {
+  background: #0f0f0f0f;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.donats :last-child {
+  color: #008b18;
+  padding-right: 16px;
+}
+.donats :first-child {
+  padding-left: 16px;
+}
 .commentLikeIcon.active {
   filter: invert(40%) sepia(100%) saturate(1000%) hue-rotate(340deg);
 }
