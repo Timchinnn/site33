@@ -300,13 +300,15 @@ img {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  width: 132px;
+  height: 42px;
 }
 
 .modalContent {
   background: #fff;
   max-width: 400px;
-  width: 132px;
-  height: 42px;
+  /* width: 132px;
+  height: 42px; */
   display: flex;
   align-items: center;
   justify-content: center;

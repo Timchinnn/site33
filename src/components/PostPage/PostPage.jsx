@@ -408,36 +408,40 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
-
-                {comment.user_id ===
-                parseInt(localStorage.getItem("userId")) ? (
-                  <div className={styles.deleteIconContainer}>
-                    <img
-                      src="/delete-icon.png"
-                      alt="delete"
-                      className={styles.deleteIcon}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setShowModal(true);
-                        setSelectedCommentId(comment.id);
-                        setIsReport(false);
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div className={styles.reportIconContainer}>
-                    <img
-                      src="/delete-icon.png"
-                      alt="report"
-                      className={styles.reportIcon}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setShowModal(true);
-                        setIsReport(true);
-                      }}
-                    />
-                  </div>
-                )}
+                <div
+                  className={styles.iconContainer}
+                  style={{ position: "relative" }}
+                >
+                  {comment.user_id ===
+                  parseInt(localStorage.getItem("userId")) ? (
+                    <div className={styles.deleteIconContainer}>
+                      <img
+                        src="/delete-icon.png"
+                        alt="delete"
+                        className={styles.deleteIcon}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowModal(true);
+                          setSelectedCommentId(comment.id);
+                          setIsReport(false);
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className={styles.reportIconContainer}>
+                      <img
+                        src="/delete-icon.png"
+                        alt="report"
+                        className={styles.reportIcon}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowModal(true);
+                          setIsReport(true);
+                        }}
+                      />
+                    </div>
+                  )}
+                </div>
 
                 {showModal && (
                   <div className={styles.modalOverlay}>
