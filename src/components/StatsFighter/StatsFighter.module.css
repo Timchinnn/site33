@@ -304,6 +304,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .statistic :last-child {
   font-family: Inter;
@@ -314,6 +315,7 @@ img {
   text-align: center;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  margin: 0;
 }
 .statisticReit {
   background-color: #e8e7ed4d;
@@ -338,24 +340,26 @@ img {
 .statisticReit {
 }
 .statistic {
-  background-color: #e8e7ed4d;
-  width: 164px;
-  height: 58px;
-  padding: 12px;
-  border: 1px;
-  margin: 6px;
-  margin-top: 0;
-  margin-bottom: 0;
-  border-top-width: 1px;
-  border-style: solid;
-  border-image-source: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    #ef5050 50.5%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  border-image-slice: 1;
+  background-color: #e8e7ed;
   border-bottom: none;
+  height: 62px;
+  margin: 0 6px;
+  /* padding: 12px; */
+  width: 164px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 12px;
+  background-color: #e8e7ed;
+  border-bottom: none;
+  height: 62px;
+  margin: 0 6px;
+  /* padding: 12px; */
+  width: 164px;
+  border: 1px solid #0f0f0f0f;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .community {
   display: flex;
