@@ -312,11 +312,11 @@ const PostPage = () => {
       const modalOverlay = document.querySelector(`.${styles.modalOverlay}`);
       const modalContent = document.querySelector(`.${styles.modalContent}`);
 
+      // Проверяем клик по оверлею, но не по контенту модального окна
       if (
         modalOverlay &&
         modalContent &&
-        !modalContent.contains(event.target) &&
-        event.target === modalOverlay
+        !modalContent.contains(event.target) // Клик не по контенту модального окна
       ) {
         setShowModal(false);
         setIsReport(false);
