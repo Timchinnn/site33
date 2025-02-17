@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import styles from "./PostPage.module.css";
 
 const PostPage = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-  const [showModal, setShowModal] = useState(false);
-  const [selectedCommentId, setSelectedCommentId] = useState(null);
-  const [isReport, setIsReport] = useState(false);
+
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
@@ -22,8 +20,6 @@ const PostPage = () => {
   const [likedComments, setLikedComments] = useState({});
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
-  const modalRef = useRef(null);
-  const [modalStates, setModalStates] = useState({});
 
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
@@ -309,21 +305,7 @@ const PostPage = () => {
       setNewComment(inputValue);
     }
   };
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setShowModal(false);
-      }
-    };
 
-    if (showModal) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showModal]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -417,12 +399,6 @@ const PostPage = () => {
                       src="/delete-icon.png"
                       alt="delete"
                       className={styles.deleteIcon}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setShowModal(true);
-                        setSelectedCommentId(comment.id);
-                        setIsReport(false);
-                      }}
                     />
                   </div>
                 ) : (
@@ -431,32 +407,7 @@ const PostPage = () => {
                       src="/delete-icon.png"
                       alt="report"
                       className={styles.reportIcon}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setShowModal(true);
-                        setIsReport(true);
-                      }}
                     />
-                  </div>
-                )}
-
-                {showModal && (
-                  <div className={styles.modalOverlay}>
-                    <div className={styles.modalContent} ref={modalRef}>
-                      <p
-                        onClick={() => {
-                          if (isReport) {
-                            // Логика для жалобы
-                          } else {
-                            handleDeleteComment(selectedCommentId);
-                          }
-                          setShowModal(false);
-                          setIsReport(false); // Сбрасываем состояние при закрытии
-                        }}
-                      >
-                        {isReport ? "Пожаловаться" : "Удалить"}
-                      </p>
-                    </div>
                   </div>
                 )}
               </div>

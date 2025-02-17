@@ -289,33 +289,3 @@ img {
   width: 28px;
   /* удалить или закомментировать pointer-events: none; */
 }
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background: rgba(0, 0, 0, 0.5); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  width: 132px;
-  height: 42px;
-}
-
-.modalContent {
-  background: #fff;
-  max-width: 400px;
-  /* width: 132px;
-  height: 42px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modalButtons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
