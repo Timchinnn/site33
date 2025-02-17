@@ -308,16 +308,16 @@ const PostPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const handleClickOutside = (e) => {
-  //     if (showPopup) {
-  //       setShowPopup(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (activePopupId !== null) {
+        setActivePopupId(null);
+      }
+    };
 
-  //   document.addEventListener("click", handleClickOutside);
-  //   return () => document.removeEventListener("click", handleClickOutside);
-  // }, [showPopup]);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [activePopupId]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
