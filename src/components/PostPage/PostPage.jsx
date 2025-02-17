@@ -402,7 +402,7 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
-                jsx
+
                 {comment.user_id ===
                 parseInt(localStorage.getItem("userId")) ? (
                   <div className={styles.deleteIconContainer}>
