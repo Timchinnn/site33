@@ -5,7 +5,7 @@ import styles from "./PostPage.module.css";
 const PostPage = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   //   const navigate = useNavigate();
   const location = useLocation();
@@ -21,6 +21,7 @@ const PostPage = () => {
   const [likedComments, setLikedComments] = useState({});
   const navigate = useNavigate();
   const userType = localStorage.getItem("userType");
+  const [activePopupId, setActivePopupId] = useState(null);
 
   const handleBackClick = () => {
     navigate(-1); // Возврат на предыдущую страницу
@@ -307,16 +308,16 @@ const PostPage = () => {
     }
   };
 
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (showPopup) {
-        setShowPopup(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (e) => {
+  //     if (showPopup) {
+  //       setShowPopup(false);
+  //     }
+  //   };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [showPopup]);
+  //   document.addEventListener("click", handleClickOutside);
+  //   return () => document.removeEventListener("click", handleClickOutside);
+  // }, [showPopup]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -417,7 +418,10 @@ const PostPage = () => {
                           x: rect.right + 5,
                           y: rect.top,
                         });
-                        setShowPopup(true);
+                        setActivePopupId(
+                          activePopupId === commentId ? null : commentId
+                        );
+                        // setShowPopup(true);
                       }}
                     />
                   </div>
@@ -434,12 +438,15 @@ const PostPage = () => {
                           x: rect.right + 5,
                           y: rect.top,
                         });
-                        setShowPopup(true);
+                        setActivePopupId(
+                          activePopupId === commentId ? null : commentId
+                        );
+                        // setShowPopup(true);
                       }}
                     />
                   </div>
                 )}
-                {showPopup && (
+                {activePopupId === comment.id && (
                   <div
                     className={styles.popup}
                     style={{
