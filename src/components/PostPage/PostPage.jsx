@@ -444,7 +444,8 @@ const PostPage = () => {
                     className={styles.popup}
                     style={{
                       position: "absolute",
-                      left: popupPosition.x - popupWidth,
+                      left: popupPosition.x,
+                      transform: "translateX(-100%)",
                       top: popupPosition.y,
                       zIndex: 1000,
                       background: "white",
