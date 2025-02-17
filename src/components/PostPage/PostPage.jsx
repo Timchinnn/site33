@@ -459,9 +459,7 @@ const PostPage = () => {
                         Удалить
                       </button>
                     ) : (
-                      <button onClick={() => handleReportComment(comment.id)}>
-                        Пожаловаться
-                      </button>
+                      <button>Пожаловаться</button>
                     )}
                   </div>
                 )}
