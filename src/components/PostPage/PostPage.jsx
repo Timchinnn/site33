@@ -5,7 +5,8 @@ import styles from "./PostPage.module.css";
 const PostPage = () => {
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   //   const navigate = useNavigate();
   const location = useLocation();
   const { post, fighterData } = location.state || {};
@@ -306,6 +307,16 @@ const PostPage = () => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (showPopup) {
+        setShowPopup(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [showPopup]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -391,7 +402,7 @@ const PostPage = () => {
                     </p>
                   </div>
                 </div>
-
+                jsx
                 {comment.user_id ===
                 parseInt(localStorage.getItem("userId")) ? (
                   <div className={styles.deleteIconContainer}>
@@ -399,6 +410,15 @@ const PostPage = () => {
                       src="/delete-icon.png"
                       alt="delete"
                       className={styles.deleteIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const rect = e.target.getBoundingClientRect();
+                        setPopupPosition({
+                          x: rect.right + 5,
+                          y: rect.top,
+                        });
+                        setShowPopup(true);
+                      }}
                     />
                   </div>
                 ) : (
@@ -407,7 +427,42 @@ const PostPage = () => {
                       src="/delete-icon.png"
                       alt="report"
                       className={styles.reportIcon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        const rect = e.target.getBoundingClientRect();
+                        setPopupPosition({
+                          x: rect.right + 5,
+                          y: rect.top,
+                        });
+                        setShowPopup(true);
+                      }}
                     />
+                  </div>
+                )}
+                {showPopup && (
+                  <div
+                    className={styles.popup}
+                    style={{
+                      position: "absolute",
+                      left: popupPosition.x,
+                      top: popupPosition.y,
+                      zIndex: 1000,
+                      background: "white",
+                      padding: "8px",
+                      borderRadius: "4px",
+                      boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                    }}
+                  >
+                    {comment.user_id ===
+                    parseInt(localStorage.getItem("userId")) ? (
+                      <button onClick={() => handleDeleteComment(comment.id)}>
+                        Удалить
+                      </button>
+                    ) : (
+                      <button onClick={() => handleReportComment(comment.id)}>
+                        Пожаловаться
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
