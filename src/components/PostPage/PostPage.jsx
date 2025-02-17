@@ -419,7 +419,7 @@ const PostPage = () => {
                           y: rect.top,
                         });
                         setActivePopupId(
-                          activePopupId === commentId ? null : commentId
+                          activePopupId === comment.id ? null : comment.id
                         );
                         // setShowPopup(true);
                       }}
@@ -439,7 +439,7 @@ const PostPage = () => {
                           y: rect.top,
                         });
                         setActivePopupId(
-                          activePopupId === commentId ? null : commentId
+                          activePopupId === comment.id ? null : comment.id
                         );
                         // setShowPopup(true);
                       }}
