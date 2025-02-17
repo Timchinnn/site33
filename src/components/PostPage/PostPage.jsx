@@ -454,13 +454,18 @@ const PostPage = () => {
                       boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
                     }}
                   >
-                    {comment.user_id ===
-                    parseInt(localStorage.getItem("userId")) ? (
-                      <button onClick={() => handleDeleteComment(comment.id)}>
+                    {String(comment.user_id) ===
+                    localStorage.getItem("userId") ? (
+                      <button
+                        onClick={() => handleDeleteComment(comment.id)}
+                        style={{ border: "none", background: "white" }}
+                      >
                         Удалить
                       </button>
                     ) : (
-                      <button>Пожаловаться</button>
+                      <button style={{ border: "none", background: "white" }}>
+                        Пожаловаться
+                      </button>
                     )}
                   </div>
                 )}
