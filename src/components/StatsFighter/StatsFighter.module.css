@@ -609,6 +609,10 @@ img {
   padding: 8px;
   cursor: pointer;
 }
+.optionsIcon {
+  position: relative;
+  cursor: pointer;
+}
 .passwordinput {
   border: none;
   background-color: rgba(15, 15, 15, 0.06);

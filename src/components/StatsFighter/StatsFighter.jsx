@@ -814,33 +814,40 @@ function StatsFighter() {
                           </div>
                         </div>
 
-                        <img
-                          src="pepicons-pop_dots-y_20.png"
-                          alt="Options"
-                          onClick={(e) => handleOptionsClick(comment.id, e)}
-                          style={{ cursor: "pointer" }}
-                        />
-
-                        {activePopupId === comment.id && (
-                          <div className={styles.optionsPopup}>
-                            {parseInt(comment.user_id) ===
-                            parseInt(localStorage.getItem("userId")) ? (
-                              <button
-                                onClick={() =>
-                                  handleDeleteComment(comment.id, post.id)
-                                }
-                              >
-                                Удалить
-                              </button>
-                            ) : (
-                              <button
-                                onClick={() => handleReportComment(comment.id)}
-                              >
-                                Пожаловаться
-                              </button>
-                            )}
-                          </div>
-                        )}
+                        <div className={styles.optionsIcon}>
+                          <img
+                            src="pepicons-pop_dots-y_20.png"
+                            alt="Options"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActivePopupId(
+                                activePopupId === comment.id ? null : comment.id
+                              );
+                            }}
+                          />
+                          {activePopupId === comment.id && (
+                            <div className={styles.optionsPopup}>
+                              {parseInt(comment.user_id) ===
+                              parseInt(localStorage.getItem("userId")) ? (
+                                <button
+                                  onClick={() =>
+                                    handleDeleteComment(comment.id, post.id)
+                                  }
+                                >
+                                  Удалить
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    handleReportComment(comment.id)
+                                  }
+                                >
+                                  Пожаловаться
+                                </button>
+                              )}
+                            </div>
+                          )}
+                        </div>
                       </div>
                       <p className={styles.message}>{comment.content}</p>
                       <div className={styles.cardFooter}>
