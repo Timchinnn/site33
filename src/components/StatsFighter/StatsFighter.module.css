@@ -591,13 +591,11 @@ img {
   border-radius: 4px;
 }
 .optionsPopup {
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background: white;
+  background: #fff;
   border: 1px solid #e8e7ed;
-  border-radius: 8px;
-  padding: 8px;
+  position: absolute;
+  right: 11px;
+  top: 13%;
   z-index: 10;
 }
 
