@@ -553,6 +553,51 @@ function StatsFighterFan() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, [activePopupId]);
+  const handleDeleteComment = async (commentId, postId) => {
+    try {
+      const response = await fetch(`/api/comments/${commentId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
+
+      if (response.ok) {
+        // Обновить список комментариев
+        setComments((prev) => ({
+          ...prev,
+          [postId]: prev[postId].filter((c) => c.id !== commentId),
+        }));
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
+  };
+
+  const handleReportComment = async (commentId) => {
+    try {
+      const response = await fetch(`/api/comments/${commentId}/report`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Жалоба отправлена");
+      }
+    } catch (error) {
+      console.error("Error reporting comment:", error);
+    }
+  };
   return (
     <div className={styles.header}>
       <div className={styles.container}>
