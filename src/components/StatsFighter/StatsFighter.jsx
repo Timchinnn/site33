@@ -4,12 +4,64 @@ import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighter() {
   const [showInfoModal, setShowInfoModal] = useState(false);
 
+  const [activePopupId, setActivePopupId] = useState(null);
   const [showMessageModal, setShowMessageModal] = useState(false);
   const [showEditDonationModal, setShowEditDonationModal] = useState(false);
   const [editedDream, setEditedDream] = useState("");
   const [editedTarget, setEditedTarget] = useState("");
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
+
+  const handleOptionsClick = (commentId, e) => {
+    e.stopPropagation();
+    setActivePopupId(activePopupId === commentId ? null : commentId);
+  };
+  jsx;
+  const handleDeleteComment = async (commentId) => {
+    try {
+      const response = await fetch(`/api/comments/${commentId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
+
+      if (response.ok) {
+        // Обновить список комментариев
+        setComments((prev) => ({
+          ...prev,
+          [postId]: prev[postId].filter((c) => c.id !== commentId),
+        }));
+      }
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
+  };
+
+  const handleReportComment = async (commentId) => {
+    try {
+      const response = await fetch(`/api/comments/${commentId}/report`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem("userId"),
+          userType: userType,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Жалоба отправлена");
+      }
+    } catch (error) {
+      console.error("Error reporting comment:", error);
+    }
+  };
   const getRatingClass = (rating) => {
     if (rating === 0) return "noRating";
     if (rating > 0 && rating < 30) return "thanksForAbsence";
@@ -762,6 +814,32 @@ function StatsFighter() {
                             </p>
                           </div>
                         </div>
+
+                        <img
+                          src="pepicons-pop_dots-y_20.png"
+                          alt="Options"
+                          onClick={(e) => handleOptionsClick(comment.id, e)}
+                          style={{ cursor: "pointer" }}
+                        />
+
+                        {activePopupId === comment.id && (
+                          <div className={styles.optionsPopup}>
+                            {comment.user_id ===
+                            localStorage.getItem("userId") ? (
+                              <button
+                                onClick={() => handleDeleteComment(comment.id)}
+                              >
+                                Удалить
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => handleReportComment(comment.id)}
+                              >
+                                Пожаловаться
+                              </button>
+                            )}
+                          </div>
+                        )}
                       </div>
                       <p className={styles.message}>{comment.content}</p>
                       <div className={styles.cardFooter}>
