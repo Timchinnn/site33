@@ -12,10 +12,10 @@ function StatsFighter() {
   const [activeTab, setActiveTab] = useState(null); // начальное значение зависит от текущей страницы
   const [activeTab2, setActiveTab2] = useState("community"); // начальное значение - community
 
-  const handleOptionsClick = (commentId, e) => {
-    e.stopPropagation();
-    setActivePopupId(activePopupId === commentId ? null : commentId);
-  };
+  // const handleOptionsClick = (commentId, e) => {
+  //   e.stopPropagation();
+  //   setActivePopupId(activePopupId === commentId ? null : commentId);
+  // };
   const handleDeleteComment = async (commentId, postId) => {
     try {
       const response = await fetch(`/api/comments/${commentId}`, {
