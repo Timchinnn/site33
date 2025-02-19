@@ -3,6 +3,7 @@ import styles from "./StatsFighterFan.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 function StatsFighterFan() {
   const location = useLocation();
+  const [activePopupId, setActivePopupId] = useState(null);
 
   const { fighterData } = location.state || {};
   const getRatingClass = (rating) => {
@@ -542,7 +543,16 @@ function StatsFighterFan() {
       console.error("Error liking post:", error);
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (activePopupId !== null) {
+        setActivePopupId(null);
+      }
+    };
 
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [activePopupId]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -815,6 +825,40 @@ function StatsFighterFan() {
                               {new Date(comment.created_at).toLocaleString()}
                             </p>
                           </div>
+                        </div>
+                        <div className={styles.optionsIcon}>
+                          <img
+                            src="pepicons-pop_dots-y_20.png"
+                            alt="Options"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActivePopupId(
+                                activePopupId === comment.id ? null : comment.id
+                              );
+                            }}
+                          />
+                          {activePopupId === comment.id && (
+                            <div className={styles.optionsPopup}>
+                              {parseInt(comment.user_id) ===
+                              parseInt(localStorage.getItem("userId")) ? (
+                                <button
+                                  onClick={() =>
+                                    handleDeleteComment(comment.id, post.id)
+                                  }
+                                >
+                                  Удалить
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() =>
+                                    handleReportComment(comment.id)
+                                  }
+                                >
+                                  Пожаловаться
+                                </button>
+                              )}
+                            </div>
+                          )}
                         </div>
                       </div>
                       <p className={styles.message}>{comment.content}</p>
