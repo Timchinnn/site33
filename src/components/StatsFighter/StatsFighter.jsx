@@ -629,7 +629,7 @@ function StatsFighter() {
           <div className={styles.donations}>
             <div>
               <p>Донаты</p>
-              <p>562 000 ₽</p>
+              <p>{fighterData.userData.donat_now} ₽</p>
             </div>
             <div>
               <p>Благотворительность</p>
