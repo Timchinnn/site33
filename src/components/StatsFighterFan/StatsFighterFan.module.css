@@ -356,6 +356,27 @@ img {
   flex-direction: column;
   justify-content: space-evenly;
 }
+.optionsPopup {
+  background: #fff;
+  border: 1px solid #e8e7ed;
+  position: absolute;
+  right: 11px;
+  top: 13%;
+  z-index: 10;
+}
+
+.optionsPopup button {
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+}
+.optionsIcon {
+  position: relative;
+  cursor: pointer;
+}
 .community {
   display: flex;
 }
