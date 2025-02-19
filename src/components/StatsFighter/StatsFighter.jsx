@@ -16,7 +16,7 @@ function StatsFighter() {
     e.stopPropagation();
     setActivePopupId(activePopupId === commentId ? null : commentId);
   };
-  const handleDeleteComment = async (commentId) => {
+  const handleDeleteComment = async (commentId, postId) => {
     try {
       const response = await fetch(`/api/comments/${commentId}`, {
         method: "DELETE",
