@@ -16,7 +16,6 @@ function StatsFighter() {
     e.stopPropagation();
     setActivePopupId(activePopupId === commentId ? null : commentId);
   };
-  jsx;
   const handleDeleteComment = async (commentId) => {
     try {
       const response = await fetch(`/api/comments/${commentId}`, {
@@ -827,7 +826,9 @@ function StatsFighter() {
                             {comment.user_id ===
                             localStorage.getItem("userId") ? (
                               <button
-                                onClick={() => handleDeleteComment(comment.id)}
+                                onClick={() =>
+                                  handleDeleteComment(comment.id, post.id)
+                                }
                               >
                                 Удалить
                               </button>
