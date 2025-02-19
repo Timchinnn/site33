@@ -527,6 +527,16 @@ function StatsFighter() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showInfoModal]);
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (activePopupId !== null) {
+        setActivePopupId(null);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [activePopupId]);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
