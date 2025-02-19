@@ -823,8 +823,8 @@ function StatsFighter() {
 
                         {activePopupId === comment.id && (
                           <div className={styles.optionsPopup}>
-                            {comment.user_id ===
-                            localStorage.getItem("userId") ? (
+                            {parseInt(comment.user_id) ===
+                            parseInt(localStorage.getItem("userId")) ? (
                               <button
                                 onClick={() =>
                                   handleDeleteComment(comment.id, post.id)
